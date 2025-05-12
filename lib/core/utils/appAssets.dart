@@ -193,5 +193,17 @@ class Assets {
   /// Assets for imagesGraphLogo
   /// assets/images/graph_logo.png
   static const String imagesGraphLogo = "assets/images/graph_logo.png";
+
+  /// Assets for imagesOnboarding1
+  /// assets/images/onboarding1.json
+  static const String imagesOnboarding1 = "assets/images/onboarding1.json";
+
+  /// Assets for imagesOnboarding2
+  /// assets/images/onboarding2.json
+  static const String imagesOnboarding2 = "assets/images/onboarding2.json";
+
+  /// Assets for imagesOnboarding3
+  /// assets/images/onboarding3.json
+  static const String imagesOnboarding3 = "assets/images/onboarding3.json";
 }
 

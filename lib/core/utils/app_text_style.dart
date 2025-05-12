@@ -85,6 +85,12 @@ abstract class AppTextStyle {
     fontSize: 18,
   );
 
+    static const TextStyle cairoBold22 = TextStyle(
+    fontFamily: 'Cairo',
+    fontWeight: FontWeight.bold,
+    fontSize: 22,
+  );
+
   static const TextStyle cairoBold30 = TextStyle(
     fontFamily: 'Cairo',
     fontWeight: FontWeight.bold,
