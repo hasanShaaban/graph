@@ -6,6 +6,10 @@ class Assets {
   /// assets/icons/add.svg
   static const String iconsAdd = "assets/icons/add.svg";
 
+  /// Assets for iconsAppLogo
+  /// assets/icons/app_logo.svg
+  static const String iconsAppLogo = "assets/icons/app_logo.svg";
+
   /// Assets for iconsArrowLeft
   /// assets/icons/arrow_left.svg
   static const String iconsArrowLeft = "assets/icons/arrow_left.svg";
@@ -185,5 +189,9 @@ class Assets {
   /// Assets for imagesGirlProfile
   /// assets/images/girl_profile.json
   static const String imagesGirlProfile = "assets/images/girl_profile.json";
+
+  /// Assets for imagesGraphLogo
+  /// assets/images/graph_logo.png
+  static const String imagesGraphLogo = "assets/images/graph_logo.png";
 }
 
