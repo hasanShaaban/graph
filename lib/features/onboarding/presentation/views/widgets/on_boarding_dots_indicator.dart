@@ -12,21 +12,16 @@ class OnBoardingDotsIndecator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 400,
-      right: 0,
-      left: 0,
-      child: DotsIndicator(
-        dotsCount: 3,
-        position: _currentPage.toDouble(),
-        decorator: DotsDecorator(
-          color: Constants.primaryColor,
-          activeColor: Constants.primaryColor,
-          size: const Size.square(10.0),
-          activeSize: const Size(25.0, 10.0),
-          activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0)),
-        ),
+    return DotsIndicator(
+      dotsCount: 3,
+      position: _currentPage.toDouble(),
+      decorator: DotsDecorator(
+        color: Constants.primaryColor,
+        activeColor: Constants.primaryColor,
+        size: const Size.square(10.0),
+        activeSize: const Size(25.0, 10.0),
+        activeShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0)),
       ),
     );
   }

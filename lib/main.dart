@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:graph/core/functions/on_generate_route.dart';
+import 'package:graph/core/services/get_it_service.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/features/splash/presentation/views/splash_view.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  setupGetit();
   runApp(const MyApp());
 }
 
@@ -17,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
         scaffoldBackgroundColor: Constants.lightPrimaryColor,
         colorScheme: ColorScheme.fromSeed(seedColor: Constants.primaryColor),
-        fontFamily: 'Cairo'
+        fontFamily: 'Cairo',
       ),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoute,
