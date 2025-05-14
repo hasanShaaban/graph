@@ -2,6 +2,7 @@
 import 'package:graph/core/services/local_data_base/local_data_base_service.dart';
 import 'package:hive/hive.dart';
 
+//the implemntation of the local data base methods
 class HiveDataBaseService implements LocalDataBaseService {
   @override
   Future<void> addData({required String boxName, required String key, required dynamic value}) async {

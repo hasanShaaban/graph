@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/auth/presentation/views/widgets/login_view_body.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
   static const name = 'loginView';
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold());
+    return SafeArea(child: Scaffold(body: LoginViewBody()));
   }
 }
+

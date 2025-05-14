@@ -5,6 +5,9 @@ import 'package:graph/features/onboarding/data/repos/on_boarding_local_data_sour
 
 final getIt = GetIt.instance;
 
+/// Registers all the services needed by the application in the [GetIt] service
+/// locator. This function should be called before calling [runApp] to ensure
+/// that all services are registered and ready to be used.
 void setupGetit() {
   //hive data base service
   getIt.registerSingleton<LocalDataBaseService>(HiveDataBaseService());
