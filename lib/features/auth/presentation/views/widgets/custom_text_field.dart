@@ -40,7 +40,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           }
           return null;
         },
-        style: AppTextStyle.cairoRegular20.copyWith(
+        style: AppTextStyle.cairoRegular18.copyWith(
           color: Constants.darkPrimaryColor,
         ),
         keyboardType: widget.textInputType,
@@ -62,7 +62,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       : Constants.darkSecondryColor,
             ),
           ),
-          hintText: 'Email',
+          hintText: widget.hintText,
           hintStyle: AppTextStyle.cairoRegular20,
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
+import 'package:graph/features/auth/presentation/views/sign_up_view.dart';
 import 'package:graph/features/auth/presentation/views/widgets/auth_button.dart';
 import 'package:graph/features/auth/presentation/views/widgets/auth_redirect_text.dart';
 import 'package:graph/features/auth/presentation/views/widgets/custom_password_field.dart';
@@ -38,7 +39,9 @@ class LoginViewBody extends StatelessWidget {
             AuthRedirectText(
               staitcText: 'Don\'t have an account?',
               redirectorText: ' create one!',
-              onTap: () {},
+              onTap: () {
+                 Navigator.pushReplacementNamed(context, SignUpView.name);
+              },
             ),
           ],
         ),
