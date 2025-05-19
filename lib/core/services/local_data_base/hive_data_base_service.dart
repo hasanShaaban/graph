@@ -1,6 +1,7 @@
 
-import 'package:graph/core/services/local_data_base/local_data_base_service.dart';
 import 'package:hive/hive.dart';
+
+import 'local_data_base_service.dart';
 
 //the implemntation of the local data base methods
 class HiveDataBaseService implements LocalDataBaseService {

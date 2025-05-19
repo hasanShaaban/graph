@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/functions/on_generate_route.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/splash/presentation/views/splash_view.dart';
+import 'core/functions/on_generate_route.dart';
+import 'core/services/get_it_service.dart';
+import 'core/utils/constants.dart';
+import 'features/splash/presentation/views/splash_view.dart';
 import 'package:hive_flutter/adapters.dart';
 
 void main() async {

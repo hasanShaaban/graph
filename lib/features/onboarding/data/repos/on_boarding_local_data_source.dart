@@ -1,6 +1,6 @@
 
-import 'package:graph/core/services/local_data_base/local_data_base_service.dart';
-import 'package:graph/core/utils/hive_boxes.dart';
+import '../../../../core/services/local_data_base/local_data_base_service.dart';
+import '../../../../core/utils/hive_boxes.dart';
 
 class OnBoardingLocalDataSource {
   final LocalDataBaseService localDataBaseService;

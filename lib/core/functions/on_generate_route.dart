@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/login_view.dart';
-import 'package:graph/features/auth/presentation/views/sign_up_view.dart';
-import 'package:graph/features/onboarding/presentation/views/on_boarding_view.dart';
-import 'package:graph/features/splash/presentation/views/splash_view.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_username_section.dart';
+import '../../features/auth/presentation/views/login_view.dart';
+import '../../features/auth/presentation/views/sign_up_view.dart';
+import '../../features/onboarding/presentation/views/on_boarding_view.dart';
+import '../../features/splash/presentation/views/splash_view.dart';
 
 /// Returns a route based on [settings.name].
 ///
@@ -24,6 +25,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const LoginView());
     case SignUpView.name:
       return MaterialPageRoute(builder: (context) => const SignUpView());
+    case SignupUsernameSection.name:
+      return MaterialPageRoute(
+        builder: (context) => const SignupUsernameSection(),
+      );
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
