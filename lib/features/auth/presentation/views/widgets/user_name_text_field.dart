@@ -3,18 +3,27 @@ import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 
 class userNameTextField extends StatelessWidget {
-  const userNameTextField({super.key, required this.text});
+  const userNameTextField({
+    super.key,
+    required this.text,
+    this.controller,
+    required this.width,
+    this.textInputType,
+  });
   final String text;
+  final TextEditingController? controller;
+  final double width;
+  final TextInputType? textInputType;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 155,
+      width: width,
       height: 55,
-      child: TextField(
-        onTap: () {},
-        
+      child: TextFormField(
+        keyboardType: textInputType,
+        controller: controller,
+        //  textAlign: TextAlign.center,
         decoration: InputDecoration(
-          
           filled: true,
           fillColor: Constants.lightSecondryColor,
 

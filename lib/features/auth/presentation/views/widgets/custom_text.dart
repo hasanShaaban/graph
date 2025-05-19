@@ -8,10 +8,13 @@ class customText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topLeft,
-      child: Text(
-        text,
-
-        style: AppTextStyle.cairoSemiBold20,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: Text(
+          text,
+        
+          style: AppTextStyle.cairoSemiBold20,
+        ),
       ),
     );
   }

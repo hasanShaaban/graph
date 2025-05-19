@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           gradient: LinearGradient(
             end: Alignment.topRight,
             begin: Alignment.bottomLeft,
-            colors: [Color(0xFFF007571), Color(0xFFFC0EFE0)],
+            colors: [Color(0xfff007571), Color(0xfffc0efe0)],
           ),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(52),
@@ -57,6 +57,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 text1,
                 style: AppTextStyle.cairoBold34.copyWith(
                   color: Constants.lightPrimaryColor,
+                  
                 ),
               ),
 
