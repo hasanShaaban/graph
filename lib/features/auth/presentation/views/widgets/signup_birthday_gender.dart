@@ -3,6 +3,8 @@ import 'package:graph/features/auth/presentation/views/widgets/custom_app_bar.da
 import 'package:graph/features/auth/presentation/views/widgets/custom_text.dart';
 import 'package:graph/features/auth/presentation/views/widgets/gender_button.dart';
 import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_path_section.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_username_section.dart';
 import 'package:graph/features/auth/presentation/views/widgets/user_name_text_field.dart';
 
 class SignupBirthdayGender extends StatelessWidget {
@@ -21,6 +23,9 @@ class SignupBirthdayGender extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: CustomAppBar(
+           onPressed: () {
+            Navigator.popAndPushNamed(context, SignupUsernameSection.name);
+          },
           text1: 'Welcom $firstName',
           text2: 'Tell Us About Yourself',
         ),
@@ -44,7 +49,11 @@ class SignupBirthdayGender extends StatelessWidget {
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
-          child: NextButton(onPressed: () {}),
+          child: NextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, SignupPathSection.name);
+            },
+          ),
         ),
       ),
     );

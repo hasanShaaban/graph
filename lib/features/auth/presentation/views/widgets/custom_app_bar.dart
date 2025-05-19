@@ -6,18 +6,20 @@ import 'package:graph/core/utils/constants.dart';
 import 'package:graph/features/auth/presentation/views/sign_up_view.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.text1, required this.text2});
+  const CustomAppBar({super.key, required this.text1, required this.text2, required this.onPressed});
   final String text1;
   final String text2;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        onPressed: () {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            Navigator.popAndPushNamed(context, SignUpView.name);
-          });
-        },
+        onPressed: onPressed,
+        // onPressed: () {
+        //   WidgetsBinding.instance.addPostFrameCallback((_) {
+        //     Navigator.canPop(context);
+        //   });
+        // },
         icon: Align(
           alignment: Alignment.topLeft,
 
@@ -57,7 +59,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 text1,
                 style: AppTextStyle.cairoBold34.copyWith(
                   color: Constants.lightPrimaryColor,
-                  
+                  height: 1.5,
                 ),
               ),
 

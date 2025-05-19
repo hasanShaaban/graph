@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/auth/presentation/views/sign_up_view.dart';
 import 'package:graph/features/auth/presentation/views/widgets/custom_app_bar.dart';
 import 'package:graph/features/auth/presentation/views/widgets/custom_text.dart';
 import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
+import 'package:graph/features/auth/presentation/views/widgets/sign_up_view_body.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_birthday_gender.dart';
 import 'package:graph/features/auth/presentation/views/widgets/user_name_text_field.dart';
 
@@ -38,6 +40,9 @@ class _SignupUsernameSectionState extends State<SignupUsernameSection> {
         appBar: CustomAppBar(
           text1: "Who's Joining Us?",
           text2: "Let's Get To Know You",
+          onPressed: () {
+            Navigator.popAndPushNamed(context, SignUpView.name);
+          },
         ),
         body: Padding(
           padding: const EdgeInsets.all(20),
