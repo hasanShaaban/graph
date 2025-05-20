@@ -84,12 +84,12 @@ class _SignupUsernameSectionState extends State<SignupUsernameSection> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(
             onPressed: () {
-              final  firstName = firstNameController!.text;
+              final firstName = firstNameController!.text;
               final lastName = lastNameController!.text;
               Navigator.pushNamed(
                 context,
                 SignupBirthdayGender.name,
-                arguments: {'firstName': firstName, 'lastName': lastName, },
+                arguments: {'firstName': firstName, 'lastName': lastName},
               );
             },
           ),

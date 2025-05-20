@@ -7,7 +7,7 @@ import 'signup_path_section.dart';
 import 'signup_username_section.dart';
 import 'user_name_text_field.dart';
 
-class SignupBirthdayGender extends StatelessWidget {
+class SignupBirthdayGender extends StatefulWidget {
   const SignupBirthdayGender({
     super.key,
     required this.firstName,
@@ -17,8 +17,15 @@ class SignupBirthdayGender extends StatelessWidget {
 
   final String firstName;
   final String lastName;
+
+  @override
+  State<SignupBirthdayGender> createState() => _SignupBirthdayGenderState();
+}
+
+class _SignupBirthdayGenderState extends State<SignupBirthdayGender> {
   @override
   Widget build(BuildContext context) {
+  
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
@@ -26,7 +33,7 @@ class SignupBirthdayGender extends StatelessWidget {
           onPressed: () {
             Navigator.popAndPushNamed(context, SignupUsernameSection.name);
           },
-          text1: 'Welcome $firstName',
+          text1: 'Welcome ${widget.firstName}',
           text2: 'Tell Us About Yourself',
         ),
         body: SingleChildScrollView(
@@ -43,7 +50,9 @@ class SignupBirthdayGender extends StatelessWidget {
                 ),
                 SizedBox(height: 22),
                 customText(text: 'Pick your gender:'),
-                GenderButton(),
+                GenderButton(
+                
+                ),
               ],
             ),
           ),
@@ -52,7 +61,11 @@ class SignupBirthdayGender extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(
             onPressed: () {
-              Navigator.pushNamed(context, SignupPathSection.name);
+              Navigator.pushNamed(
+                context,
+                SignupPathSection.name,
+           
+              );
             },
           ),
         ),

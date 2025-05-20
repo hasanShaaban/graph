@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
 import 'custom_text.dart';
 import 'next_button.dart';
 import 'signup_role_section.dart';
@@ -24,7 +24,7 @@ class _SpacializationSectionState extends State<SpacializationSection> {
         SizedBox(height: 60),
         NextButton(
           onPressed: () {
-            Navigator.pushNamed(context, SignupRoleSection.name);
+            Navigator.pushNamed(context, SignupProfilePictureSection.name);
           },
         ),
       ],
