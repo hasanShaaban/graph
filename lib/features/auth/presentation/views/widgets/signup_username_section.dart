@@ -3,7 +3,6 @@ import 'package:graph/features/auth/presentation/views/sign_up_view.dart';
 import 'package:graph/features/auth/presentation/views/widgets/custom_app_bar.dart';
 import 'package:graph/features/auth/presentation/views/widgets/custom_text.dart';
 import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/sign_up_view_body.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_birthday_gender.dart';
 import 'package:graph/features/auth/presentation/views/widgets/user_name_text_field.dart';
 
@@ -17,8 +16,8 @@ class SignupUsernameSection extends StatefulWidget {
 }
 
 class _SignupUsernameSectionState extends State<SignupUsernameSection> {
-  late TextEditingController firstNameController;
-  late TextEditingController lastNameController;
+  late TextEditingController? firstNameController;
+  late TextEditingController? lastNameController;
   @override
   void initState() {
     super.initState();
@@ -28,8 +27,8 @@ class _SignupUsernameSectionState extends State<SignupUsernameSection> {
 
   @override
   void dispose() {
-    firstNameController.dispose();
-    lastNameController.dispose();
+    firstNameController!.dispose();
+    lastNameController!.dispose();
     super.dispose();
   }
 
@@ -46,53 +45,51 @@ class _SignupUsernameSectionState extends State<SignupUsernameSection> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(20),
-          child: Flexible(
-            child: Column(
-              children: [
-                customText(text: 'What should we call you?'),
-                SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    userNameTextField(
-                      width: MediaQuery.sizeOf(context).width / 2 - 23,
-                      text: 'First name',
-                      controller: firstNameController,
-                    ),
-                    SizedBox(width: 3),
-                    userNameTextField(
-                      width: MediaQuery.sizeOf(context).width / 2 - 23,
-                      text: 'Last name',
-                      controller: lastNameController,
-                    ),
-                  ],
-                ),
-                // Spacer(),
-                // NextButton(
-                //   onPressed: () {
-                //     final firstName = firstNameController.text;
-                //     final lastName = lastNameController.text;
-                //     Navigator.pushNamed(
-                //       context,
-                //       SignupBirthdayGender.name,
-                //       arguments: {'firstName': firstName, 'lastName': lastName},
-                //     );
-                //   },
-                // ),
-              ],
-            ),
+          child: Column(
+            children: [
+              customText(text: 'What should we call you?'),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  userNameTextField(
+                    width: MediaQuery.sizeOf(context).width / 2 - 23,
+                    text: 'First name',
+                    controller: firstNameController,
+                  ),
+                  SizedBox(width: 3),
+                  userNameTextField(
+                    width: MediaQuery.sizeOf(context).width / 2 - 23,
+                    text: 'Last name',
+                    controller: lastNameController,
+                  ),
+                ],
+              ),
+              // Spacer(),
+              // NextButton(
+              //   onPressed: () {
+              //     final firstName = firstNameController.text;
+              //     final lastName = lastNameController.text;
+              //     Navigator.pushNamed(
+              //       context,
+              //       SignupBirthdayGender.name,
+              //       arguments: {'firstName': firstName, 'lastName': lastName},
+              //     );
+              //   },
+              // ),
+            ],
           ),
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(
             onPressed: () {
-              final firstName = firstNameController.text;
-              final lastName = lastNameController.text;
+              final  firstName = firstNameController!.text;
+              final lastName = lastNameController!.text;
               Navigator.pushNamed(
                 context,
                 SignupBirthdayGender.name,
-                arguments: {'firstName': firstName, 'lastName': lastName},
+                arguments: {'firstName': firstName, 'lastName': lastName, },
               );
             },
           ),

@@ -26,7 +26,7 @@ class SignupBirthdayGender extends StatelessWidget {
            onPressed: () {
             Navigator.popAndPushNamed(context, SignupUsernameSection.name);
           },
-          text1: 'Welcom $firstName',
+          text1: 'Welcome $firstName',
           text2: 'Tell Us About Yourself',
         ),
         body: SingleChildScrollView(

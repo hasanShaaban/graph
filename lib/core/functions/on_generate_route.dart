@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_birthday_gender.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_path_section.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_role_section.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_username_section.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
@@ -30,16 +31,21 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case SignupUsernameSection.name:
       return MaterialPageRoute(builder: (context) => SignupUsernameSection());
     case SignupBirthdayGender.name:
-      final args = settings.arguments as Map<String, dynamic>;
-      return MaterialPageRoute(
-        builder:
-            (context) => SignupBirthdayGender(
-              firstName: args['firstName'],
-              lastName: args['lastName'],
-            ),
-      );
+      final args = settings.arguments as Map<String,dynamic>;
+    
+        return MaterialPageRoute(
+          builder:
+              (context) => SignupBirthdayGender(
+                firstName: args['firstName'],
+                lastName: args['lastName'],
+              ),
+        );
+      
+
     case SignupPathSection.name:
       return MaterialPageRoute(builder: (context) => SignupPathSection());
+    case SignupRoleSection.name:
+      return MaterialPageRoute(builder: (context) => SignupRoleSection());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

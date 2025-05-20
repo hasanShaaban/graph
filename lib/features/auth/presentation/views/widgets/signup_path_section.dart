@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:graph/features/auth/presentation/views/widgets/custom_app_bar.dart';
 import 'package:graph/features/auth/presentation/views/widgets/custom_text.dart';
-import 'package:graph/features/auth/presentation/views/widgets/gender_button.dart';
+
 import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_birthday_gender.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_role_section.dart';
 import 'package:graph/features/auth/presentation/views/widgets/student_or_not_button.dart';
 
 class SignupPathSection extends StatelessWidget {
@@ -33,7 +34,7 @@ class SignupPathSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(
             onPressed: () {
-              Navigator.pushNamed(context, SignupPathSection.name);
+              Navigator.pushNamed(context, SignupRoleSection.name);
             },
           ),
         ),

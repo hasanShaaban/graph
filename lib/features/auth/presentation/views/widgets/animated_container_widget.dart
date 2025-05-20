@@ -26,8 +26,9 @@ class AnimatedContainerWidget extends StatelessWidget {
       height: 55,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
+
         color:
-            whatSelect ? Constants.primaryColor : Constants.darkSecondryColor,
+            whatSelect ? Constants.primaryColor : Constants.lightSecondryColor,
         boxShadow:
             whatSelect
                 ? [
