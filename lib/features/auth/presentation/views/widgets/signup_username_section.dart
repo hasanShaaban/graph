@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/sign_up_view.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_app_bar.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_text.dart';
-import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_birthday_gender.dart';
-import 'package:graph/features/auth/presentation/views/widgets/user_name_text_field.dart';
+import '../sign_up_view.dart';
+import 'custom_app_bar.dart';
+import 'custom_text.dart';
+import 'next_button.dart';
+import 'signup_birthday_gender.dart';
+import 'user_name_text_field.dart';
 
 // ignore: must_be_immutable
 class SignupUsernameSection extends StatefulWidget {

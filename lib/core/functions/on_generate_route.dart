@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_birthday_gender.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_path_section.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_role_section.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_username_section.dart';
+import '../../features/auth/presentation/views/widgets/signup_birthday_gender.dart';
+import '../../features/auth/presentation/views/widgets/signup_collage_stage_section.dart';
+import '../../features/auth/presentation/views/widgets/signup_path_section.dart';
+import '../../features/auth/presentation/views/widgets/signup_role_section.dart';
+import '../../features/auth/presentation/views/widgets/signup_username_section.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
 import '../../features/onboarding/presentation/views/on_boarding_view.dart';
@@ -46,6 +47,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => SignupPathSection());
     case SignupRoleSection.name:
       return MaterialPageRoute(builder: (context) => SignupRoleSection());
+       case SignupCollageStageSection.name:
+      return MaterialPageRoute(builder: (context) => SignupCollageStageSection());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

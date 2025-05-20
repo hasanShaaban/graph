@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/app_text_style.dart';
+import '../../../../../core/utils/app_text_style.dart';
 
 class customText extends StatelessWidget {
   const customText({super.key, required this.text});
@@ -8,13 +8,10 @@ class customText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topLeft,
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 16),
-        child: Text(
-          text,
-        
-          style: AppTextStyle.cairoSemiBold20,
-        ),
+      child: Text(
+        text,
+      
+        style: AppTextStyle.cairoSemiBold20,
       ),
     );
   }

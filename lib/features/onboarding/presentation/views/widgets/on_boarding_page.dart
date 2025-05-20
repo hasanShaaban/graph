@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import 'package:lottie/lottie.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({super.key, required this.text, required this.image, required this.width});

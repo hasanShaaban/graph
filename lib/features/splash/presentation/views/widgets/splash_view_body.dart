@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../../core/services/get_it_service.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../auth/presentation/views/login_view.dart';

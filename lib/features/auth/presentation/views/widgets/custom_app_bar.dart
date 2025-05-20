@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/auth/presentation/views/sign_up_view.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
+
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key, required this.text1, required this.text2, required this.onPressed});

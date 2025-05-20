@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_app_bar.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_text.dart';
-import 'package:graph/features/auth/presentation/views/widgets/gender_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_path_section.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_username_section.dart';
-import 'package:graph/features/auth/presentation/views/widgets/user_name_text_field.dart';
+import 'custom_app_bar.dart';
+import 'custom_text.dart';
+import 'gender_button.dart';
+import 'next_button.dart';
+import 'signup_path_section.dart';
+import 'signup_username_section.dart';
+import 'user_name_text_field.dart';
 
 class SignupBirthdayGender extends StatelessWidget {
   const SignupBirthdayGender({
@@ -23,7 +23,7 @@ class SignupBirthdayGender extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: CustomAppBar(
-           onPressed: () {
+          onPressed: () {
             Navigator.popAndPushNamed(context, SignupUsernameSection.name);
           },
           text1: 'Welcome $firstName',
@@ -35,6 +35,7 @@ class SignupBirthdayGender extends StatelessWidget {
             child: Column(
               children: [
                 customText(text: "When's your birthday?"),
+                SizedBox(height: 16),
                 userNameTextField(
                   text: 'yyyy-mm-dd',
                   width: double.infinity,

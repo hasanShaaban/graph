@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/features/auth/presentation/views/widgets/auth_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/auth_redirect_text.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_text_field.dart';
-import 'package:graph/features/auth/presentation/views/widgets/remeber_me_section.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_username_section.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import 'auth_button.dart';
+import 'auth_redirect_text.dart';
+import 'custom_text_field.dart';
+import 'remeber_me_section.dart';
+import 'signup_username_section.dart';
 import '../login_view.dart';
 
 class SignupEmailPasswordSection extends StatelessWidget {
@@ -56,7 +56,10 @@ class SignupEmailPasswordSection extends StatelessWidget {
             AuthButton(
               title: 'Sign Up',
               onPressed: () {
-                Navigator.pushReplacementNamed(context, SignupUsernameSection.name);
+                Navigator.pushReplacementNamed(
+                  context,
+                  SignupUsernameSection.name,
+                );
               },
             ),
             SizedBox(height: 25),

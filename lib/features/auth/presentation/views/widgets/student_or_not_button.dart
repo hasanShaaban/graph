@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/features/auth/presentation/views/widgets/animated_container_widget.dart';
+import '../../../../../core/utils/appAssets.dart';
+import 'animated_container_widget.dart';
 
 class StudentOrNotButton extends StatefulWidget {
   const StudentOrNotButton({super.key});

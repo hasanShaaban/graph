@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:graph/core/utils/appAssets.dart';
+import '../../../../../core/utils/appAssets.dart';
 
-import 'package:graph/features/auth/presentation/views/widgets/animated_container_widget.dart';
+import 'animated_container_widget.dart';
 
 class GenderButton extends StatefulWidget {
   const GenderButton({super.key});

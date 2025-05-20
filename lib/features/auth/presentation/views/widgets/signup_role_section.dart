@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_app_bar.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_dropdown_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_text.dart';
-import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_path_section.dart';
-
-
+import 'custom_app_bar.dart';
+import 'custom_dropdown_button.dart';
+import 'custom_text.dart';
+import 'next_button.dart';
+import 'signup_collage_stage_section.dart';
+import 'signup_path_section.dart';
 
 class SignupRoleSection extends StatefulWidget {
   const SignupRoleSection({super.key});
@@ -22,7 +17,7 @@ class SignupRoleSection extends StatefulWidget {
 class _SignupRoleSectionState extends State<SignupRoleSection> {
   String? selectedValue;
 
-  final List<String> roles = ['Flutter', 'Backend', 'Laravel'];
+  final List<String> role = ['Flutter', 'Backend', 'Laravel'];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,7 +53,7 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(
             onPressed: () {
-              Navigator.pushNamed(context, SignupRoleSection.name);
+              Navigator.pushNamed(context, SignupCollageStageSection.name);
             },
           ),
         ),
