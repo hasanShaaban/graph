@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
@@ -40,7 +40,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           }
           return null;
         },
-        style: AppTextStyle.cairoRegular20.copyWith(
+        style: AppTextStyle.cairoRegular18.copyWith(
           color: Constants.darkPrimaryColor,
         ),
         keyboardType: widget.textInputType,
@@ -62,7 +62,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       : Constants.darkSecondryColor,
             ),
           ),
-          hintText: 'Email',
+          hintText: widget.hintText,
           hintStyle: AppTextStyle.cairoRegular20,
         ),
       ),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/features/auth/presentation/views/login_view.dart';
-import 'package:graph/features/onboarding/data/repos/on_boarding_local_data_source.dart';
-import 'package:graph/features/onboarding/presentation/views/on_boarding_view.dart';
+
+import '../../../../../core/services/get_it_service.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../auth/presentation/views/login_view.dart';
+import '../../../../onboarding/data/repos/on_boarding_local_data_source.dart';
+import '../../../../onboarding/presentation/views/on_boarding_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});

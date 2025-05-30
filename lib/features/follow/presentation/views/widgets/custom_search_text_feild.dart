@@ -21,7 +21,7 @@ class CustomSearchTextField extends StatelessWidget {
           ),
           contentPadding: EdgeInsets.only(top: 10),
           fillColor: Constants.lightSecondryColor,
-        
+
           border: buildBorder(),
           enabledBorder: buildBorder(),
           focusedBorder: buildFocusedBorder(),
@@ -35,14 +35,20 @@ class CustomSearchTextField extends StatelessWidget {
   }
 
   OutlineInputBorder buildBorder() {
-    return OutlineInputBorder(borderRadius: BorderRadius.circular(11),
-     borderSide: const BorderSide(width: 1, color: Colors.transparent),
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(11),
+      borderSide: const BorderSide(width: 1, color: Colors.transparent),
     );
   }
 
- OutlineInputBorder buildFocusedBorder() {
-  return OutlineInputBorder(borderRadius: BorderRadius.circular(11),
-  
-   borderSide: const BorderSide(width: 2, color: Constants.darkSecondryColor),);
- }
+  OutlineInputBorder buildFocusedBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(11),
+
+      borderSide: const BorderSide(
+        width: 2,
+        color: Constants.darkSecondryColor,
+      ),
+    );
+  }
 }

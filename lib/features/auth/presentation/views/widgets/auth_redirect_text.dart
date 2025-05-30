@@ -1,11 +1,14 @@
-
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
+
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
 
 class AuthRedirectText extends StatelessWidget {
   const AuthRedirectText({
-    super.key, required this.staitcText, required this.redirectorText, required this.onTap,
+    super.key,
+    required this.staitcText,
+    required this.redirectorText,
+    required this.onTap,
   });
   final String staitcText;
   final String redirectorText;
@@ -17,17 +20,19 @@ class AuthRedirectText extends StatelessWidget {
       children: [
         Text(
           staitcText,
-          style: AppTextStyle.cairoRegular14
-              .copyWith(color: Constants.darkSecondryColor),
+          style: AppTextStyle.cairoRegular14.copyWith(
+            color: Constants.darkSecondryColor,
+          ),
         ),
         GestureDetector(
           onTap: onTap,
           child: Text(
             redirectorText,
-            style: AppTextStyle.cairoRegular14
-                .copyWith(color: Constants.secondryColor),
+            style: AppTextStyle.cairoRegular14.copyWith(
+              color: Constants.secondryColor,
+            ),
           ),
-        )
+        ),
       ],
     );
   }

@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/login_view.dart';
-import 'package:graph/features/onboarding/presentation/views/on_boarding_view.dart';
-import 'package:graph/features/splash/presentation/views/splash_view.dart';
+import 'package:graph/features/follow/presentation/views/following_view.dart';
+import '../../features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
+import '../../features/follow/presentation/views/followers_view.dart';
+import '../../features/auth/presentation/views/widgets/signup_birthday_gender.dart';
+import '../../features/auth/presentation/views/widgets/signup_collage_stage_section.dart';
+import '../../features/auth/presentation/views/widgets/signup_path_section.dart';
+import '../../features/auth/presentation/views/widgets/signup_role_section.dart';
+import '../../features/auth/presentation/views/widgets/signup_username_section.dart';
+import '../../features/auth/presentation/views/login_view.dart';
+import '../../features/auth/presentation/views/sign_up_view.dart';
+import '../../features/onboarding/presentation/views/on_boarding_view.dart';
+import '../../features/splash/presentation/views/splash_view.dart';
 
 /// Returns a route based on [settings.name].
 ///
@@ -21,6 +30,43 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const OnBoardingView());
     case LoginView.name:
       return MaterialPageRoute(builder: (context) => const LoginView());
+    case SignUpView.name:
+      return MaterialPageRoute(builder: (context) => const SignUpView());
+    case SignupUsernameSection.name:
+      return MaterialPageRoute(builder: (context) => SignupUsernameSection());
+    case SignupBirthdayGender.name:
+      final args = settings.arguments as Map<String, dynamic>;
+
+      return MaterialPageRoute(
+        builder:
+            (context) => SignupBirthdayGender(
+              firstName: args['firstName'],
+              lastName: args['lastName'],
+            ),
+      );
+
+    case SignupPathSection.name:
+      return MaterialPageRoute(
+        builder: (context) => SignupPathSection(onNext: (bool isStrudent) {}),
+      );
+    case SignupRoleSection.name:
+      return MaterialPageRoute(builder: (context) => SignupRoleSection());
+    case SignupCollageStageSection.name:
+      return MaterialPageRoute(
+        builder: (context) => SignupCollageStageSection(),
+      );
+    case SignupProfilePictureSection.name:
+      return MaterialPageRoute(
+        builder: (context) => const SignupProfilePictureSection(),
+      );
+       case FollowersView.name:
+      return MaterialPageRoute(
+        builder: (context) => const FollowersView(),
+      );
+        case FollowingView.name:
+      return MaterialPageRoute(
+        builder: (context) => const FollowingView(),
+      );
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
