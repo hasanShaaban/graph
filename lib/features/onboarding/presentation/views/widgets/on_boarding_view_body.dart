@@ -17,9 +17,10 @@ class OnBoardingViewBody extends StatefulWidget {
 }
 
 class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
-  final OnBoardingLocalDataSource onBoardingLocalDataSource = getIt<OnBoardingLocalDataSource>();
+  final OnBoardingLocalDataSource onBoardingLocalDataSource =
+      getIt<OnBoardingLocalDataSource>();
 
-  void skipOnBoarding(context) async{
+  void skipOnBoarding(context) async {
     await onBoardingLocalDataSource.setOnBoardingSeen();
     Navigator.pushReplacementNamed(context, LoginView.name);
   }
@@ -89,7 +90,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               ],
             ),
           ),
-          
+
           OnBoardingDotsIndecator(currentPage: _currentPage),
           Spacer(),
           Visibility(
@@ -111,7 +112,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               ),
             ),
           ),
-          SizedBox(height: 30,)
+          SizedBox(height: 30),
         ],
       ),
     );

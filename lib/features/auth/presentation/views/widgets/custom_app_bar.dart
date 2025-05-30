@@ -13,26 +13,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        onPressed: onPressed,
-        // onPressed: () {
-        //   WidgetsBinding.instance.addPostFrameCallback((_) {
-        //     Navigator.canPop(context);
-        //   });
-        // },
-        icon: Align(
-          alignment: Alignment.topLeft,
+      // leading: IconButton(
+      //   onPressed: onPressed,
+      //   // onPressed: () {
+      //   //   WidgetsBinding.instance.addPostFrameCallback((_) {
+      //   //     Navigator.canPop(context);
+      //   //   });
+      //   // },
+      //   icon: Align(
+      //     alignment: Alignment.topLeft,
 
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: SvgPicture.asset(
-              Assets.iconsArrowLeft,
+      //     child: Padding(
+      //       padding: const EdgeInsets.all(8),
+      //       child: SvgPicture.asset(
+      //         Assets.iconsArrowLeft,
 
-              color: Constants.lightSecondryColor,
-            ),
-          ),
-        ),
-      ),
+      //         color: Constants.lightSecondryColor,
+      //       ),
+      //     ),
+      //   ),
+      // ),
 
       backgroundColor: Colors.transparent,
       elevation: 0,

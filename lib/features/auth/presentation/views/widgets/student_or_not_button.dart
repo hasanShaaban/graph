@@ -1,49 +1,45 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';
 
-class StudentOrNotButton extends StatefulWidget {
-  const StudentOrNotButton({super.key});
+class StudentOrNotButton extends StatelessWidget {
+  const StudentOrNotButton({
+    super.key,
+    required this.selectStudent,
+    required this.selectNonStudent,
+    required this.onSelectStudent,
+    required this.onSelectNotStudent,
+  });
 
-  @override
-  State<StudentOrNotButton> createState() => _StudentOrNotButtonState();
-}
+  final bool selectStudent;
 
-class _StudentOrNotButtonState extends State<StudentOrNotButton> {
-  bool selectStudent = false;
-  bool selectNonStudent = false;
+  final bool selectNonStudent;
+  final VoidCallback onSelectStudent;
+  final VoidCallback onSelectNotStudent;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         GestureDetector(
-          onTap: () {
-            setState(() {
-              selectStudent = true;
-              selectNonStudent = false;
-            });
-          },
+          onTap: onSelectStudent,
           child: AnimatedContainerWidget(
             whatSelect: selectStudent,
             text: 'Student Account',
             icon: Assets.iconsUserGraduate,
-            widthSelected: double.infinity,
+            widthSelected: 310,
             widthNotSelected: 300,
           ),
         ),
         SizedBox(height: 15),
         GestureDetector(
-          onTap: () {
-            setState(() {
-              selectStudent = false;
-              selectNonStudent = true;
-            });
-          },
+          onTap: onSelectNotStudent,
           child: AnimatedContainerWidget(
             whatSelect: selectNonStudent,
             text: ' Non-Student Account',
             icon: Assets.iconsUserTieHair,
-            widthSelected: double.infinity,
+            widthSelected: 310,
             widthNotSelected: 300,
           ),
         ),

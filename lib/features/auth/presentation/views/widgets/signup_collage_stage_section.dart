@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
+import 'custom_app_bar.dart';
+import 'next_button.dart';
+import 'signup_path_section.dart';
+import 'signup_profile_picture_section.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import 'custom_app_bar.dart';
 import 'custom_dropdown_button.dart';
 import 'custom_text.dart';
-import 'next_button.dart';
-import 'signup_role_section.dart';
 
 import 'spacialization_section.dart';
 
@@ -29,16 +29,18 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
   ];
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return 
+    SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(
           text1: 'Almost there.',
           text2: 'just a few details',
           onPressed: () {
-            Navigator.popAndPushNamed(context, SignupRoleSection.name);
+            Navigator.popAndPushNamed(context, SignupPathSection.name);
           },
         ),
-        body: SingleChildScrollView(
+        body:
+         SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -56,21 +58,26 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                   ),
                 ),
                 SizedBox(height: 15),
-                customDropDownButton(
-                  list: studyYear,
-                  text:
-                      selectVal == null
-                          ? 'Select your study year'
-                          : "${selectVal!} year",
-                  onChanged: (value) {
-                    setState(() {
-                      selectVal = value;
-                    });
-                  },
+                Material(
+                  child: customDropDownButton(
+                    list: studyYear,
+                    text:
+                        selectVal == null
+                            ? 'Select your study year'
+                            : "${selectVal!} year",
+                    onChanged: (value) {
+                      setState(() {
+                        selectVal = value;
+                      });
+                    },
+                  ),
                 ),
 
-                (selectVal == studyYear![3] || selectVal == studyYear![4])
-                    ? SpacializationSection()
+                (selectVal == studyYear![3] || selectVal == studyYear![4])?
+SpacializationSection()
+               
+                     
+                    
                     : Padding(
                       padding: const EdgeInsets.only(top: 280),
                       child: NextButton(
@@ -84,9 +91,9 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                     ),
               ],
             ),
-          ),
+         ),)
         ),
-      ),
+     
     );
   }
 }

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'user_name_body.dart';
 import '../sign_up_view.dart';
 import 'custom_app_bar.dart';
-import 'custom_text.dart';
 import 'next_button.dart';
 import 'signup_birthday_gender.dart';
-import 'user_name_text_field.dart';
 
 // ignore: must_be_immutable
 class SignupUsernameSection extends StatefulWidget {
-  SignupUsernameSection({super.key});
+  const SignupUsernameSection({super.key});
   static const name = 'UserNameSec';
 
   @override
@@ -43,43 +42,9 @@ class _SignupUsernameSectionState extends State<SignupUsernameSection> {
             Navigator.popAndPushNamed(context, SignUpView.name);
           },
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              customText(text: 'What should we call you?'),
-              SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  userNameTextField(
-                    width: MediaQuery.sizeOf(context).width / 2 - 23,
-                    text: 'First name',
-                    controller: firstNameController,
-                  ),
-                  SizedBox(width: 3),
-                  userNameTextField(
-                    width: MediaQuery.sizeOf(context).width / 2 - 23,
-                    text: 'Last name',
-                    controller: lastNameController,
-                  ),
-                ],
-              ),
-              // Spacer(),
-              // NextButton(
-              //   onPressed: () {
-              //     final firstName = firstNameController.text;
-              //     final lastName = lastNameController.text;
-              //     Navigator.pushNamed(
-              //       context,
-              //       SignupBirthdayGender.name,
-              //       arguments: {'firstName': firstName, 'lastName': lastName},
-              //     );
-              //   },
-              // ),
-            ],
+        body: UserNameBody(
+          firstNameController: firstNameController, lastNameController: lastNameController
           ),
-        ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(

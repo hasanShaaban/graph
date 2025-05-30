@@ -1,21 +1,23 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:graph/features/follow/presentation/views/following_view.dart';
 
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_app_bar.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_text.dart';
-import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_collage_stage_section.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
+import 'custom_app_bar.dart';
+import 'custom_text.dart';
+import 'next_button.dart';
+import 'signup_path_section.dart';
+import '../../../../follow/presentation/views/followers_view.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 
 class SignupProfilePictureSection extends StatefulWidget {
   const SignupProfilePictureSection({super.key});
   static const name = 'profilePictureSec';
- 
+
   @override
   State<SignupProfilePictureSection> createState() =>
       _SignupProfilePictureSectionState();
@@ -32,12 +34,7 @@ class _SignupProfilePictureSectionState
           text1: "Let's customize your profile",
           text2: r'"optional"',
           onPressed: () {
-          
-              Navigator.popAndPushNamed(
-                context,
-                SignupCollageStageSection.name,
-              );
-           
+            Navigator.popAndPushNamed(context, SignupPathSection.name);
           },
         ),
         body: Padding(
@@ -118,9 +115,8 @@ class _SignupProfilePictureSectionState
                             color: Constants.lightSecondryColor,
                           ),
                         ),
-                       
-                             Lottie.asset(Assets.imagesBoyProfile)
-                          
+
+                        Lottie.asset(Assets.imagesBoyProfile),
                       ],
                     ),
                   ),
@@ -132,7 +128,7 @@ class _SignupProfilePictureSectionState
           child: NextButton(
             title: 'Submit',
             onPressed: () {
-              Navigator.pushNamed(context, SignupCollageStageSection.name);
+              Navigator.pushNamed(context, FollowingView.name);
             },
           ),
         ),

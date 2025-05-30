@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'features/splash/presentation/views/splash_view.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'core/functions/on_generate_route.dart';
 import 'core/services/get_it_service.dart';
 import 'core/utils/constants.dart';
-import 'features/splash/presentation/views/splash_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoute,
-      initialRoute: SplashView.name,
+        initialRoute: SplashView.name,
+     // initialRoute: FollowersView.name,
     );
   }
 }

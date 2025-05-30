@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
-import 'custom_text.dart';
 import 'next_button.dart';
-import 'signup_role_section.dart';
+import 'signup_profile_picture_section.dart';
+import 'custom_text.dart';
+
 import 'spacialization_button.dart';
 
 class SpacializationSection extends StatefulWidget {

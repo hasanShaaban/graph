@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../../core/utils/constants.dart';
 
 class OnBoardingDotsIndecator extends StatelessWidget {

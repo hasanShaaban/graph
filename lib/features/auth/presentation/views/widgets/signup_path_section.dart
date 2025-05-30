@@ -1,15 +1,56 @@
 import 'package:flutter/material.dart';
+import 'next_button.dart';
+import 'signup_collage_stage_section.dart';
+import 'signup_role_section.dart';
 import 'custom_app_bar.dart';
 import 'custom_text.dart';
 
-import 'next_button.dart';
 import 'signup_birthday_gender.dart';
-import 'signup_role_section.dart';
+
 import 'student_or_not_button.dart';
 
-class SignupPathSection extends StatelessWidget {
-  const SignupPathSection({super.key});
+class SignupPathSection extends StatefulWidget {
+  const SignupPathSection({super.key, required Null Function(bool isStrudent) onNext});
   static const name = 'pathSection';
+
+  @override
+  State<SignupPathSection> createState() => _SignupPathSectionState();
+}
+
+class _SignupPathSectionState extends State<SignupPathSection> {
+  bool selectStudent = false;
+  bool selectNonStudent = false;
+
+  void onSelectStudent() {
+    setState(() {
+      selectStudent = true;
+      selectNonStudent = false;
+    });
+  }
+
+  void onSelectNotStudent() {
+    setState(() {
+      selectStudent = false;
+      selectNonStudent = true;
+    });
+  }
+
+  void goToStudentPage() {
+    Navigator.pushNamed(context, SignupCollageStageSection.name);
+  }
+
+  void goToNotStudentPage() {
+    Navigator.pushNamed(context, SignupRoleSection.name);
+  }
+
+  void handleNext() {
+    if (selectStudent) {
+      goToStudentPage();
+    } else if (selectNonStudent) {
+      goToNotStudentPage();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,24 +62,36 @@ class SignupPathSection extends StatelessWidget {
           text1: 'How will you be using the app?',
           text2: '',
         ),
-        body: Padding(
+        body:
+
+        Padding(
           padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              customText(text: 'which path will you use?'),
-              SizedBox(height: 16),
-              StudentOrNotButton(),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                customText(text: 'which path will you use?'),
+                SizedBox(height: 16),
+                StudentOrNotButton(
+                  selectStudent: selectStudent,
+                  selectNonStudent: selectNonStudent,
+                  onSelectStudent: onSelectStudent,
+                  onSelectNotStudent: onSelectNotStudent,
+                ),
+                SizedBox(height: 300),
+              ],
+            ),
           ),
         ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
-          child: NextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, SignupRoleSection.name);
-            },
-          ),
-        ),
+        bottomNavigationBar:
+            (selectStudent || selectNonStudent)
+                ? Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
+                  child: NextButton(onPressed: handleNext),
+                )
+                : null,
       ),
     );
   }

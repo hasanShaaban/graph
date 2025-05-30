@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 
@@ -34,9 +35,9 @@ class AnimatedContainerWidget extends StatelessWidget {
                 ? [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.9),
-                    offset: Offset(8, 8),
-                    blurRadius: 20,
-                  ),
+                    offset: Offset(8, 9),
+                    blurRadius: 15,
+                  )
                 ]
                 : [],
       ),

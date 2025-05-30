@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'auth_button.dart';
+import 'signup_text_form_fields.dart';
+import 'signup_username_section.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
-import 'auth_button.dart';
 import 'auth_redirect_text.dart';
-import 'custom_text_field.dart';
 import 'remeber_me_section.dart';
-import 'signup_username_section.dart';
 import '../login_view.dart';
 
 class SignupEmailPasswordSection extends StatelessWidget {
@@ -26,43 +26,26 @@ class SignupEmailPasswordSection extends StatelessWidget {
               },
               icon: SvgPicture.asset(Assets.iconsArrowLeft),
             ),
-            SizedBox(height: 40),
+           const SizedBox(height: 40),
             Text(
               'create new account',
               style: AppTextStyle.cairoBold60.copyWith(height: 1.2),
             ),
-            SizedBox(height: 60),
-            CustomTextField(
-              hintText: 'Email',
-
-              prefixIcon: Assets.iconsEnvelope,
-              textInputType: TextInputType.emailAddress,
-            ),
-            SizedBox(height: 25),
-            CustomTextField(
-              hintText: 'Password',
-              prefixIcon: Assets.iconsPassword,
-              textInputType: TextInputType.visiblePassword,
-            ),
-            SizedBox(height: 25),
-            CustomTextField(
-              hintText: 'Confirm password',
-              prefixIcon: Assets.iconsPassword,
-              textInputType: TextInputType.visiblePassword,
-            ),
-            SizedBox(height: 29),
-            RemeberMeSection(),
-            SizedBox(height: 24),
+           const SizedBox(height: 60),
+           SignupTextFormFields(),
+          const  SizedBox(height: 29),
+         const   RemeberMeSection(),
+          const  SizedBox(height: 24),
             AuthButton(
               title: 'Sign Up',
               onPressed: () {
-                Navigator.pushReplacementNamed(
+                Navigator.pushNamed(
                   context,
                   SignupUsernameSection.name,
                 );
               },
             ),
-            SizedBox(height: 25),
+          const  SizedBox(height: 25),
             AuthRedirectText(
               staitcText: 'Already have an account? ',
               redirectorText: 'Login!',
@@ -76,3 +59,11 @@ class SignupEmailPasswordSection extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+

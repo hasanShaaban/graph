@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 
+// ignore: camel_case_types
 class customDropDownButton extends StatelessWidget {
   const customDropDownButton({
     super.key,
@@ -28,7 +30,7 @@ class customDropDownButton extends StatelessWidget {
           isExpanded: true,
           items:
               list!.map((String items) {
-                return DropdownMenuItem(child: Text(items), value: items);
+                return DropdownMenuItem(value: items, child: Text(items));
               }).toList(),
           onChanged: onChanged,
           hint: Center(
@@ -45,7 +47,7 @@ class customDropDownButton extends StatelessWidget {
             child: SvgPicture.asset(Assets.iconsDrobeDownArrow),
           ),
           iconSize: 20,
-          //  menuWidth: 200,
+//           menuWidth: 200,
         ),
       ),
     );
