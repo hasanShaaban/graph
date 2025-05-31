@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:graph/core/services/sources/langeage_data_source.dart';
 
 import '../../features/onboarding/data/repos/on_boarding_local_data_source.dart';
 import 'local_data_base/hive_data_base_service.dart';
@@ -16,5 +17,10 @@ void setupGetit() {
   //onboarding local data source
   getIt.registerSingleton<OnBoardingLocalDataSource>(
     OnBoardingLocalDataSource(getIt<LocalDataBaseService>()),
+  );
+
+  //Language local data source
+  getIt.registerSingleton<LangeageDataSource>(
+    LangeageDataSource(getIt<LocalDataBaseService>()),
   );
 }

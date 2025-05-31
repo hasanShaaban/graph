@@ -1,0 +1,94 @@
+// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
+// This is a library that provides messages for a ar locale. All the
+// messages from the main program should be duplicated here with the same
+// function name.
+
+// Ignore issues from commonly used lints in this file.
+// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
+// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
+// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
+// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
+// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+
+import 'package:intl/intl.dart';
+import 'package:intl/message_lookup_by_library.dart';
+
+final messages = new MessageLookup();
+
+typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'ar';
+
+  final messages = _notInlinedMessages(_notInlinedMessages);
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "ai": MessageLookupByLibrary.simpleMessage("الذكاء الاصطناعي"),
+    "almostThere": MessageLookupByLibrary.simpleMessage("اقتربنا."),
+    "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "هل لديك حساب بالفعل؟",
+    ),
+    "begin": MessageLookupByLibrary.simpleMessage("بدء"),
+    "birthday": MessageLookupByLibrary.simpleMessage("ما هو تاريخ ميلادك؟"),
+    "collageStage": MessageLookupByLibrary.simpleMessage(
+      "دعنا نتعرف على مرحلتك الجامعية.",
+    ),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور",
+    ),
+    "createNewAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب جديد"),
+    "createOne": MessageLookupByLibrary.simpleMessage("أنشئ واحدًا!"),
+    "customizeFeatures": MessageLookupByLibrary.simpleMessage(
+      "سيساعدنا ذلك في تخصيص ميزاتك لاحقًا",
+    ),
+    "customizeProfile": MessageLookupByLibrary.simpleMessage(
+      "لنخصص ملفك الشخصي",
+    ),
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "female": MessageLookupByLibrary.simpleMessage("أنثى"),
+    "fewDetails": MessageLookupByLibrary.simpleMessage("بقيت بعض التفاصيل!"),
+    "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+    "getToKnowYou": MessageLookupByLibrary.simpleMessage("دعنا نتعرف عليك"),
+    "howUsingApp": MessageLookupByLibrary.simpleMessage("كيف ستستخدم التطبيق؟"),
+    "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
+    "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول!"),
+    "loginTitle": MessageLookupByLibrary.simpleMessage(
+      "تسجيل الدخول إلى حسابك",
+    ),
+    "male": MessageLookupByLibrary.simpleMessage("ذكر"),
+    "networks": MessageLookupByLibrary.simpleMessage("الشبكات ونظم التشغيل"),
+    "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "nonStudentAccount": MessageLookupByLibrary.simpleMessage("حساب غير طالب"),
+    "onboarding1": MessageLookupByLibrary.simpleMessage(
+      "مع Graph، أنت دائمًا جزء من مجتمع ITE.",
+    ),
+    "onboarding2": MessageLookupByLibrary.simpleMessage(
+      "من الأفكار السريعة إلى المفاهيم العميقة، كل شيء يبدأ بمنشور.",
+    ),
+    "onboarding3": MessageLookupByLibrary.simpleMessage(
+      "ابحث عن زملاء، وأنشئ مجموعات مشاريع، وتعاون بسهولة.",
+    ),
+    "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
+    "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "pickGender": MessageLookupByLibrary.simpleMessage("اختر جنسك:"),
+    "pickSpecialization": MessageLookupByLibrary.simpleMessage("اختر تخصصك"),
+    "pictureHelp": MessageLookupByLibrary.simpleMessage(
+      "تساعد الصور الآخرين على التعرف عليك.",
+    ),
+    "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "selectRole": MessageLookupByLibrary.simpleMessage("اختر دورك"),
+    "selectYear": MessageLookupByLibrary.simpleMessage("اختر سنتك الدراسية"),
+    "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
+    "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+    "softwareEng": MessageLookupByLibrary.simpleMessage("هندسة البرمجيات"),
+    "specifyRole": MessageLookupByLibrary.simpleMessage("لنحدد دورك."),
+    "studentAccount": MessageLookupByLibrary.simpleMessage("حساب طالب"),
+    "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
+    "tellAboutYourself": MessageLookupByLibrary.simpleMessage("حدثنا عن نفسك"),
+    "uploadPicture": MessageLookupByLibrary.simpleMessage("ارفع صورتك الشخصية"),
+    "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
+    "whatToCallYou": MessageLookupByLibrary.simpleMessage("بماذا نناديك؟"),
+    "whichPath": MessageLookupByLibrary.simpleMessage("أي مسار ستسلك؟"),
+    "whoIsJoining": MessageLookupByLibrary.simpleMessage("من ينضم إلينا؟"),
+  };
+}

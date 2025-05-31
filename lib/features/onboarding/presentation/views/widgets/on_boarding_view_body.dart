@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/generated/l10n.dart';
 import '../../../../../core/services/get_it_service.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -30,6 +31,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
@@ -47,7 +49,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                 onPressed: () => skipOnBoarding(context),
                 child: Text(
-                  'skip',
+                  lang.skip,
                   style: AppTextStyle.cairoRegular16.copyWith(
                     decoration: TextDecoration.underline,
                   ),
@@ -68,21 +70,19 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               },
               children: [
                 OnBoardingPage(
-                  text: 'With Graph, you\'re always part of the ITE circle.',
+                  text: lang.onboarding1,
                   image: Assets.imagesOnboarding1,
                   width: 300,
                 ),
                 OnBoardingPage(
-                  text:
-                      'From quick thoughts to deep ideas everything starts with a post.',
+                  text: lang.onboarding2,
                   image: Assets.imagesOnboarding2,
                   width: 300,
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 70),
                   child: OnBoardingPage(
-                    text:
-                        'Find teammates, create project groups, and collaborate with ease',
+                    text: lang.onboarding3,
                     image: Assets.imagesOnboarding3,
                     width: 400,
                   ),
@@ -105,7 +105,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               ),
               onPressed: () => skipOnBoarding(context),
               child: Text(
-                'begin',
+                lang.begin,
                 style: AppTextStyle.cairoBold22.copyWith(
                   color: Constants.lightPrimaryColor,
                 ),

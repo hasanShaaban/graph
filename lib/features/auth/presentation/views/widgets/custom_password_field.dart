@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/generated/l10n.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
@@ -18,6 +19,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   bool obscure = false;
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return SizedBox(
       height: 60,
       child: TextFormField(
@@ -70,7 +72,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
                       : Constants.darkSecondryColor,
             ),
           ),
-          hintText: 'Password',
+          hintText: lang.password,
           hintStyle: AppTextStyle.cairoRegular20,
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/generated/l10n.dart';
 import 'auth_button.dart';
 import 'signup_text_form_fields.dart';
 import 'signup_username_section.dart';
@@ -14,6 +15,7 @@ class SignupEmailPasswordSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -26,29 +28,26 @@ class SignupEmailPasswordSection extends StatelessWidget {
               },
               icon: SvgPicture.asset(Assets.iconsArrowLeft),
             ),
-           const SizedBox(height: 40),
+            const SizedBox(height: 40),
             Text(
-              'create new account',
-              style: AppTextStyle.cairoBold60.copyWith(height: 1.2),
+              lang.createNewAccount,
+              style: AppTextStyle.cairoBold55.copyWith(height: 1.2),
             ),
-           const SizedBox(height: 60),
-           SignupTextFormFields(),
-          const  SizedBox(height: 29),
-         const   RemeberMeSection(),
-          const  SizedBox(height: 24),
+            const SizedBox(height: 60),
+            SignupTextFormFields(),
+            const SizedBox(height: 29),
+            const RemeberMeSection(),
+            const SizedBox(height: 24),
             AuthButton(
-              title: 'Sign Up',
+              title: lang.signUp,
               onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  SignupUsernameSection.name,
-                );
+                Navigator.pushNamed(context, SignupUsernameSection.name);
               },
             ),
-          const  SizedBox(height: 25),
+            const SizedBox(height: 25),
             AuthRedirectText(
-              staitcText: 'Already have an account? ',
-              redirectorText: 'Login!',
+              staitcText: lang.alreadyHaveAccount,
+              redirectorText: lang.login,
               onTap: () {
                 Navigator.popAndPushNamed(context, LoginView.name);
               },
@@ -59,11 +58,3 @@ class SignupEmailPasswordSection extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-

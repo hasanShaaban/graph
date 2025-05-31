@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
@@ -15,6 +16,7 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
   bool checked = false;
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +50,7 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
           ),
         ),
         SizedBox(width: 5),
-        Text('Remember me', style: AppTextStyle.cairoRegular18.copyWith(color: Constants.secondryColor))
+        Text(lang.rememberMe, style: AppTextStyle.cairoRegular18.copyWith(color: Constants.secondryColor))
       ],
     );
   }
