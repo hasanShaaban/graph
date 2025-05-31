@@ -48,5 +48,8 @@
   "uploadPicture": "ارفع صورتك الشخصية",
   "pictureHelp": "تساعد الصور الآخرين على التعرف عليك.",
   "submit": "إرسال",
-  "fieldRequired": "هذا الحقل مطلوب"
+  "fieldRequired": "هذا الحقل مطلوب",
+  "followers": "المتابعون",
+  "search": "ابحث",
+
 }

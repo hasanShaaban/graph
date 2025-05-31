@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 import 'next_button.dart';
 import 'signup_collage_stage_section.dart';
 import 'signup_role_section.dart';
@@ -10,7 +11,10 @@ import 'signup_birthday_gender.dart';
 import 'student_or_not_button.dart';
 
 class SignupPathSection extends StatefulWidget {
-  const SignupPathSection({super.key, required Null Function(bool isStrudent) onNext});
+  const SignupPathSection({
+    super.key,
+    required Null Function(bool isStrudent) onNext,
+  });
   static const name = 'pathSection';
 
   @override
@@ -53,23 +57,22 @@ class _SignupPathSectionState extends State<SignupPathSection> {
 
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(
           onPressed: () {
             Navigator.popAndPushNamed(context, SignupBirthdayGender.name);
           },
-          text1: 'How will you be using the app?',
+          text1: lang.howUsingApp,
           text2: '',
         ),
-        body:
-
-        Padding(
+        body: Padding(
           padding: const EdgeInsets.all(20),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                customText(text: 'which path will you use?'),
+                customText(text: lang.whichPath),
                 SizedBox(height: 16),
                 StudentOrNotButton(
                   selectStudent: selectStudent,

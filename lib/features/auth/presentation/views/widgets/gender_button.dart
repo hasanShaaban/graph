@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 
 import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';
@@ -15,6 +16,7 @@ class _GenderButtonState extends State<GenderButton> {
   bool selectFeMale = false;
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -27,7 +29,7 @@ class _GenderButtonState extends State<GenderButton> {
           },
           child: AnimatedContainerWidget(
             whatSelect: selectMale,
-            text: 'Male',
+            text: lang.male,
             icon: Assets.iconsSmilingBoy,
             widthSelected: 150,
             widthNotSelected: 140,
@@ -44,7 +46,7 @@ class _GenderButtonState extends State<GenderButton> {
 
           child: AnimatedContainerWidget(
             whatSelect: selectFeMale,
-            text: 'Female',
+            text: lang.female,
             icon: Assets.iconsSmilingGirl,
             widthSelected: 150,
             widthNotSelected: 140,

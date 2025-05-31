@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 import 'birthday_gender_body.dart';
 import 'next_button.dart';
 import 'signup_path_section.dart';
@@ -23,6 +24,7 @@ class SignupBirthdayGender extends StatefulWidget {
 class _SignupBirthdayGenderState extends State<SignupBirthdayGender> {
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
@@ -30,20 +32,16 @@ class _SignupBirthdayGenderState extends State<SignupBirthdayGender> {
           onPressed: () {
             Navigator.popAndPushNamed(context, SignupUsernameSection.name);
           },
-           text1: 'Welcome ${widget.firstName}',
-       
-          text2: 'Tell Us About Yourself',
+          text1: '${lang.welcome}${widget.firstName}',
+
+          text2: lang.tellAboutYourself,
         ),
         body: BirthdayGenderBody(),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(
             onPressed: () {
-              Navigator.pushNamed(
-                context,
-                SignupPathSection.name,
-
-              );
+              Navigator.pushNamed(context, SignupPathSection.name);
             },
           ),
         ),

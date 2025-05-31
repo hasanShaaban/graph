@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 import 'next_button.dart';
 import 'signup_profile_picture_section.dart';
 import 'custom_text.dart';
@@ -15,10 +16,11 @@ class SpacializationSection extends StatefulWidget {
 class _SpacializationSectionState extends State<SpacializationSection> {
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return Column(
       children: [
         SizedBox(height: 20),
-        customText(text: 'Pick your spacialization :'),
+        customText(text: lang.pickSpecialization),
         SizedBox(height: 16),
         SpacializationButton(),
         SizedBox(height: 60),

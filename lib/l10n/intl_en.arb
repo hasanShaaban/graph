@@ -48,5 +48,8 @@
   "uploadPicture": "Upload Your Picture",
   "pictureHelp": "Profile pictures help others recognize you.",
   "submit": "Submit",
-  "fieldRequired": "This field is required"
+  "fieldRequired": "This field is required",
+  "followers": "Followers",
+   "search":  "Search"
+
 }

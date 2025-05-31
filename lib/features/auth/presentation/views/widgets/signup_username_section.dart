@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 import 'user_name_body.dart';
 import '../sign_up_view.dart';
 import 'custom_app_bar.dart';
@@ -33,18 +34,21 @@ class _SignupUsernameSectionState extends State<SignupUsernameSection> {
 
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(
-          text1: "Who's Joining Us?",
-          text2: "Let's Get To Know You",
+          text1: lang.whoIsJoining,
+          //text2: "Let's Get To Know You",
+          text2: lang.getToKnowYou,
           onPressed: () {
             Navigator.popAndPushNamed(context, SignUpView.name);
           },
         ),
         body: UserNameBody(
-          firstNameController: firstNameController, lastNameController: lastNameController
-          ),
+          firstNameController: firstNameController,
+          lastNameController: lastNameController,
+        ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:graph/features/follow/presentation/views/followers_view.dart';
+import 'package:graph/generated/l10n.dart';
 
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -28,11 +29,12 @@ class _SignupProfilePictureSectionState
   File? selectedImage;
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(
-          text1: "Let's customize your profile",
-          text2: r'"optional"',
+          text1: lang.customizeProfile,
+          text2: lang.optional,
           onPressed: () {
             Navigator.popAndPushNamed(context, SignupPathSection.name);
           },
@@ -41,11 +43,11 @@ class _SignupProfilePictureSectionState
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              customText(text: 'Upload Your Picture'),
+              customText(text: lang.uploadPicture),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Profile pictures help others recognize you.',
+                  lang.pictureHelp,
                   style: AppTextStyle.cairoRegular14.copyWith(
                     color: Constants.darkSecondryColor,
                   ),
@@ -126,9 +128,13 @@ class _SignupProfilePictureSectionState
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 70),
           child: NextButton(
-            title: 'Submit',
+            title: lang.submit,
             onPressed: () {
-              Navigator.pushNamed(context, FollowersView.name);
+              //Navigator.pushNamed(context, FollowersView.name);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FollowersView()),
+              );
             },
           ),
         ),

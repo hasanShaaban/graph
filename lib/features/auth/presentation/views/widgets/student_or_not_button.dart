@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 
 import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';
@@ -20,13 +21,14 @@ class StudentOrNotButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return Column(
       children: [
         GestureDetector(
           onTap: onSelectStudent,
           child: AnimatedContainerWidget(
             whatSelect: selectStudent,
-            text: 'Student Account',
+            text: lang.studentAccount,
             icon: Assets.iconsUserGraduate,
             widthSelected: 310,
             widthNotSelected: 300,
@@ -37,7 +39,7 @@ class StudentOrNotButton extends StatelessWidget {
           onTap: onSelectNotStudent,
           child: AnimatedContainerWidget(
             whatSelect: selectNonStudent,
-            text: ' Non-Student Account',
+            text: lang.nonStudentAccount,
             icon: Assets.iconsUserTieHair,
             widthSelected: 310,
             widthNotSelected: 300,

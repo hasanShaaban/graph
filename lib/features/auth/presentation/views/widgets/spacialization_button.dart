@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';
 
@@ -19,6 +20,7 @@ class _SacializationButtonState extends State<SpacializationButton> {
 
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return Column(
       children: [
         GestureDetector(
@@ -31,7 +33,7 @@ class _SacializationButtonState extends State<SpacializationButton> {
           },
           child: AnimatedContainerWidget(
             whatSelect: se,
-            text: 'Software Engineering',
+            text: lang.softwareEng,
             icon: Assets.iconsCodeWindow,
             widthSelected: double.infinity,
             widthNotSelected: 300,
@@ -48,7 +50,7 @@ class _SacializationButtonState extends State<SpacializationButton> {
           },
           child: AnimatedContainerWidget(
             whatSelect: ai,
-            text: 'Artificial Inteligence',
+            text: lang.ai,
             icon: Assets.iconsMicrochipAi,
             widthSelected: double.infinity,
             widthNotSelected: 300,
@@ -65,7 +67,7 @@ class _SacializationButtonState extends State<SpacializationButton> {
           },
           child: AnimatedContainerWidget(
             whatSelect: no,
-            text: 'Network and OS',
+            text: lang.networks,
             icon: Assets.iconsDataModel,
             widthSelected: double.infinity,
             widthNotSelected: 300,

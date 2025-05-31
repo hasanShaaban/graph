@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 import 'custom_app_bar.dart';
 import 'next_button.dart';
 import 'signup_path_section.dart';
@@ -29,29 +30,26 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
   ];
   @override
   Widget build(BuildContext context) {
-    return 
-    SafeArea(
+    final lang = S.of(context);
+    return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(
-          text1: 'Almost there.',
-          text2: 'just a few details',
+          text1: lang.almostThere,
+          text2: lang.fewDetails,
           onPressed: () {
             Navigator.popAndPushNamed(context, SignupPathSection.name);
           },
         ),
-        body:
-         SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                customText(
-                  text: "Let's get requaiented with your collage stage.",
-                ),
+                customText(text: lang.collageStage),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'That will help us cutomize your feature later',
+                    lang.customizeFeatures,
                     style: AppTextStyle.cairoRegular14.copyWith(
                       color: Constants.darkSecondryColor,
                     ),
@@ -63,7 +61,7 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                     list: studyYear,
                     text:
                         selectVal == null
-                            ? 'Select your study year'
+                            ? lang.selectYear
                             : "${selectVal!} year",
                     onChanged: (value) {
                       setState(() {
@@ -73,11 +71,8 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                   ),
                 ),
 
-                (selectVal == studyYear![3] || selectVal == studyYear![4])?
-SpacializationSection()
-               
-                     
-                    
+                (selectVal == studyYear![3] || selectVal == studyYear![4])
+                    ? SpacializationSection()
                     : Padding(
                       padding: const EdgeInsets.only(top: 280),
                       child: NextButton(
@@ -91,9 +86,9 @@ SpacializationSection()
                     ),
               ],
             ),
-         ),)
+          ),
         ),
-     
+      ),
     );
   }
 }
