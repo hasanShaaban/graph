@@ -103,10 +103,10 @@ abstract class AppTextStyle {
     fontSize: 34,
   );
 
-  static const TextStyle cairoBold60 = TextStyle(
+  static const TextStyle cairoBold55 = TextStyle(
     fontFamily: 'Cairo',
     fontWeight: FontWeight.bold,
-    fontSize: 60,
+    fontSize: 55,
   );
 
   static const TextStyle corbelBold100 = TextStyle(

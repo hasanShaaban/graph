@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/generated/l10n.dart';
 
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -14,6 +15,7 @@ class LoginViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(20),
@@ -21,12 +23,12 @@ class LoginViewBody extends StatelessWidget {
           children: [
             SizedBox(height: 100),
             Text(
-              'login to your account ',
-              style: AppTextStyle.cairoBold60.copyWith(height: 1.2),
+              lang.loginTitle,
+              style: AppTextStyle.cairoBold55.copyWith(height: 1.2),
             ),
             SizedBox(height: 60),
             CustomTextField(
-              hintText: 'Email',
+              hintText: lang.email,
               prefixIcon: Assets.iconsEnvelope,
               textInputType: TextInputType.emailAddress,
             ),
@@ -35,11 +37,11 @@ class LoginViewBody extends StatelessWidget {
             SizedBox(height: 25),
             RemeberMeSection(),
             SizedBox(height: 20),
-            AuthButton(title: 'Login', onPressed: (){},),
+            AuthButton(title: lang.signUp, onPressed: (){},),
             SizedBox(height: 25),
             AuthRedirectText(
-              staitcText: 'Don\'t have an account?',
-              redirectorText: ' create one!',
+              staitcText: lang.dontHaveAccount,
+              redirectorText: lang.createOne,
               onTap: () {
                  Navigator.pushReplacementNamed(context, SignUpView.name);
               },

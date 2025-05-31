@@ -9,14 +9,12 @@ class HiveDataBaseService implements LocalDataBaseService {
   Future<void> addData({required String boxName, required String key, required dynamic value}) async {
     var box = await Hive.openBox(boxName);
     await box.put(key, value);
-    await box.close();
   }
 
   @override
   Future<dynamic> getData({required String boxName, required String key}) async {
     var box = await Hive.openBox(boxName);
     var data = box.get(key);
-    await box.close();
     return data;
   }
 
@@ -24,6 +22,5 @@ class HiveDataBaseService implements LocalDataBaseService {
   Future<void> deleteData({required String boxName, required String key}) async {
     var box = await Hive.openBox(boxName);
     await box.delete(key);
-    await box.close();
   }
 }

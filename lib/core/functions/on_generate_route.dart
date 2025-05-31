@@ -59,14 +59,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const SignupProfilePictureSection(),
       );
-       case FollowersView.name:
-      return MaterialPageRoute(
-        builder: (context) => const FollowersView(),
-      );
-        case FollowingView.name:
-      return MaterialPageRoute(
-        builder: (context) => const FollowingView(),
-      );
+    case FollowersView.name:
+      return MaterialPageRoute(builder: (context) => const FollowersView());
+    case FollowingView.name:
+      return MaterialPageRoute(builder: (context) => const FollowingView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

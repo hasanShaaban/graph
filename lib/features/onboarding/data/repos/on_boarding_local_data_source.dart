@@ -1,4 +1,3 @@
-
 import '../../../../core/services/local_data_base/local_data_base_service.dart';
 import '../../../../core/utils/hive_boxes.dart';
 
@@ -7,14 +6,19 @@ class OnBoardingLocalDataSource {
 
   OnBoardingLocalDataSource(this.localDataBaseService);
 
-  static const key = 'onBoardingSeen';
-
   Future<void> setOnBoardingSeen() async {
-    await localDataBaseService.addData(boxName: HiveBoxes.settingsBox, key: key, value: true);
+    await localDataBaseService.addData(
+      boxName: HiveBoxes.settingsBox,
+      key: HiveBoxes.onBoardingSeen,
+      value: true,
+    );
   }
 
   Future<bool> isOnBoardingSeen() async {
-    final seen = await localDataBaseService.getData(boxName: HiveBoxes.settingsBox, key: key);
+    final seen = await localDataBaseService.getData(
+      boxName: HiveBoxes.settingsBox,
+      key: HiveBoxes.onBoardingSeen,
+    );
     return seen ?? false;
   }
 }
