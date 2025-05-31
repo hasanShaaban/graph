@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:graph/features/follow/presentation/views/following_view.dart';
+import 'package:graph/features/follow/presentation/views/followers_view.dart';
 
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -10,7 +10,7 @@ import 'custom_app_bar.dart';
 import 'custom_text.dart';
 import 'next_button.dart';
 import 'signup_path_section.dart';
-import '../../../../follow/presentation/views/followers_view.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 
@@ -128,7 +128,7 @@ class _SignupProfilePictureSectionState
           child: NextButton(
             title: 'Submit',
             onPressed: () {
-              Navigator.pushNamed(context, FollowingView.name);
+              Navigator.pushNamed(context, FollowersView.name);
             },
           ),
         ),
