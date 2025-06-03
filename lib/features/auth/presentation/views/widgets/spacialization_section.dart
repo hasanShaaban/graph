@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 import 'next_button.dart';
 import 'signup_profile_picture_section.dart';
 import 'custom_text.dart';

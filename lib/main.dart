@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:graph/core/services/providers/local_provider.dart';
+import 'package:graph/features/groups/presentation/views/my_group_view.dart';
+import 'core/services/providers/local_provider.dart';
 import 'package:provider/provider.dart';
-import 'features/splash/presentation/views/splash_view.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'core/functions/on_generate_route.dart';
 import 'core/services/get_it_service.dart';
@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoute,
-      initialRoute: SplashView.name,
-      // initialRoute: FollowersView.name,
+      // initialRoute: SplashView.name,
+      initialRoute: MyGroupView.name,
     );
   }
 }

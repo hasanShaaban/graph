@@ -28,10 +28,9 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -455,15 +454,54 @@ class S {
     return Intl.message('Submit', name: 'submit', desc: '', args: []);
   }
 
+  /// `This field is required`
+  String get fieldRequired {
+    return Intl.message(
+      'This field is required',
+      name: 'fieldRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Followers`
   String get followers {
     return Intl.message('Followers', name: 'followers', desc: '', args: []);
   }
 
-  
   /// `Search`
   String get search {
     return Intl.message('Search', name: 'search', desc: '', args: []);
+  }
+
+  /// `Follower`
+  String get follower {
+    return Intl.message('Follower', name: 'follower', desc: '', args: []);
+  }
+
+  /// `following`
+  String get following {
+    return Intl.message('following', name: 'following', desc: '', args: []);
+  }
+
+  /// `MY Groups`
+  String get myGroups {
+    return Intl.message('MY Groups', name: 'myGroups', desc: '', args: []);
+  }
+
+  /// `Year`
+  String get year {
+    return Intl.message('Year', name: 'year', desc: '', args: []);
+  }
+
+  /// `subject`
+  String get subject {
+    return Intl.message('subject', name: 'subject', desc: '', args: []);
+  }
+
+  /// `Team Rate`
+  String get teamRate {
+    return Intl.message('Team Rate', name: 'teamRate', desc: '', args: []);
   }
 }
 

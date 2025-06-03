@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/core/services/providers/local_provider.dart';
-import 'package:graph/core/services/sources/langeage_data_source.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/auth/presentation/views/login_view.dart';
-import 'package:graph/features/onboarding/presentation/views/on_boarding_view.dart';
+import '../../../../../core/services/get_it_service.dart';
+import '../../../../../core/services/providers/local_provider.dart';
+import '../../../../../core/services/sources/langeage_data_source.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../auth/presentation/views/login_view.dart';
+import '../../../../onboarding/presentation/views/on_boarding_view.dart';
 import 'package:provider/provider.dart';
 
 class SplashViewBody extends StatefulWidget {

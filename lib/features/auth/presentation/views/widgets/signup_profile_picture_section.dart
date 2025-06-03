@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:graph/features/follow/presentation/views/followers_view.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../follow/presentation/views/followers_view.dart';
+import '../../../../../generated/l10n.dart';
 
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';

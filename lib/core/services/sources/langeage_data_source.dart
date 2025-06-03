@@ -1,5 +1,5 @@
-import 'package:graph/core/services/local_data_base/local_data_base_service.dart';
-import 'package:graph/core/utils/hive_boxes.dart';
+import '../local_data_base/local_data_base_service.dart';
+import '../../utils/hive_boxes.dart';
 
 class LangeageDataSource {
   final LocalDataBaseService localDataBaseService;

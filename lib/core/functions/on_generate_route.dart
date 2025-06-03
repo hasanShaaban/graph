@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/follow/presentation/views/following_view.dart';
-import '../../features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
-import '../../features/follow/presentation/views/followers_view.dart';
+import 'package:graph/features/groups/presentation/views/my_group_view.dart';
+
+import '../../features/auth/presentation/views/login_view.dart';
+import '../../features/auth/presentation/views/sign_up_view.dart';
 import '../../features/auth/presentation/views/widgets/signup_birthday_gender.dart';
 import '../../features/auth/presentation/views/widgets/signup_collage_stage_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_path_section.dart';
+import '../../features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_role_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_username_section.dart';
-import '../../features/auth/presentation/views/login_view.dart';
-import '../../features/auth/presentation/views/sign_up_view.dart';
+import '../../features/follow/presentation/views/followers_view.dart';
+import '../../features/follow/presentation/views/following_view.dart';
 import '../../features/onboarding/presentation/views/on_boarding_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
@@ -63,6 +65,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const FollowersView());
     case FollowingView.name:
       return MaterialPageRoute(builder: (context) => const FollowingView());
+       case MyGroupView.name:
+      return MaterialPageRoute(builder: (context) => const MyGroupView());
+      
+
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

@@ -1,12 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
 
-class FollowListViewItem extends StatelessWidget {
+class FollowListViewItem extends StatefulWidget {
   const FollowListViewItem({super.key});
 
+  @override
+  State<FollowListViewItem> createState() => _FollowListViewItemState();
+}
+
+class _FollowListViewItemState extends State<FollowListViewItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,6 +19,7 @@ class FollowListViewItem extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 30,
+            backgroundColor: Colors.grey,
             backgroundImage: NetworkImage(
               'https://plus.unsplash.com/premium_photo-1663054688278-ebf09d654d33?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdpcmwlMjBmYWNlfGVufDB8fDB8fHww',
             ),

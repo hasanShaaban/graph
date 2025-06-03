@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 import 'custom_app_bar.dart';
 import 'next_button.dart';
 import 'signup_path_section.dart';
@@ -45,6 +45,9 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
 
               Material(
                 child: customDropDownButton(
+                  border: 15,
+                  width: 300,
+                  height: 55,
                   list: role,
                   text:
                       selectedValue == null ? lang.selectRole : selectedValue!,
@@ -53,6 +56,7 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
                       selectedValue = value;
                     });
                   },
+                  iconPadding: 70,
                 ),
               ),
             ],

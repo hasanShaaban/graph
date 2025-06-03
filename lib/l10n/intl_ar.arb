@@ -51,5 +51,11 @@
   "fieldRequired": "هذا الحقل مطلوب",
   "followers": "المتابعون",
   "search": "ابحث",
+  "follower":"متابع",
+  "following":"من تتابع",
+  "myGroups": "فريقي",
+  "year":"السنة",
+  "subject":"اختصاص",
+  "teamRate":"معدل الفريق"
 
 }

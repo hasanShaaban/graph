@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/appAssets.dart';
 import 'custom_text_field.dart';
 

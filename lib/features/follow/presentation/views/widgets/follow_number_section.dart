@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/app_text_style.dart';
+import '../../../../../core/utils/app_text_style.dart';
 
 class FollowNumberSection extends StatelessWidget {
   const FollowNumberSection({super.key, required this.text});

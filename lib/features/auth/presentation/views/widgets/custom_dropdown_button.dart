@@ -12,18 +12,28 @@ class customDropDownButton extends StatelessWidget {
     required this.list,
     required this.text,
     required this.onChanged,
+    required this.width,
+    required this.height,
+    required this.border,
+    required this.iconPadding,
   });
   final List<String>? list;
   final String text;
   final ValueChanged onChanged;
+  final double width;
+  final double height;
+  final double border;
+  final double iconPadding;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
-      height: 55,
+      width: width,
+      height: height,
+      //   width: 300,
+      // height: 55,
       decoration: BoxDecoration(
         color: Constants.primaryColor,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(border),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton(
@@ -37,17 +47,17 @@ class customDropDownButton extends StatelessWidget {
             child: Text(
               text,
 
-              style: AppTextStyle.cairoBold18.copyWith(
+              style: AppTextStyle.cairoRegular18.copyWith(
                 color: Constants.lightPrimaryColor,
               ),
             ),
           ),
           icon: Padding(
-            padding: const EdgeInsets.only(right: 70),
+            padding: EdgeInsets.only(right: iconPadding),
             child: SvgPicture.asset(Assets.iconsDrobeDownArrow),
           ),
           iconSize: 20,
-//           menuWidth: 200,
+          //           menuWidth: 200,
         ),
       ),
     );

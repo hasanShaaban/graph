@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -37,13 +37,13 @@ class LoginViewBody extends StatelessWidget {
             SizedBox(height: 25),
             RemeberMeSection(),
             SizedBox(height: 20),
-            AuthButton(title: lang.signUp, onPressed: (){},),
+            AuthButton(title: lang.login, onPressed: () {}),
             SizedBox(height: 25),
             AuthRedirectText(
               staitcText: lang.dontHaveAccount,
               redirectorText: lang.createOne,
               onTap: () {
-                 Navigator.pushReplacementNamed(context, SignUpView.name);
+                Navigator.pushReplacementNamed(context, SignUpView.name);
               },
             ),
           ],

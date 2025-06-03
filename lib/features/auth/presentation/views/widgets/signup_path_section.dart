@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 import 'next_button.dart';
 import 'signup_collage_stage_section.dart';
 import 'signup_role_section.dart';

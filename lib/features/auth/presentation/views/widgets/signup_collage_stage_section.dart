@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 import 'custom_app_bar.dart';
 import 'next_button.dart';
 import 'signup_path_section.dart';
@@ -67,7 +67,7 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                       setState(() {
                         selectVal = value;
                       });
-                    },
+                    }, width: 300, height: 55, border: 15, iconPadding: 70,
                   ),
                 ),
 

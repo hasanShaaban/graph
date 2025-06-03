@@ -50,6 +50,11 @@
   "submit": "Submit",
   "fieldRequired": "This field is required",
   "followers": "Followers",
-   "search":  "Search"
-
+   "search":  "Search",
+    "follower":"Follower",
+"following":"following",
+"myGroups": "MY Groups",
+"year":"Year",
+"subject":"subject",
+"teamRate": "Team Rate"
 }

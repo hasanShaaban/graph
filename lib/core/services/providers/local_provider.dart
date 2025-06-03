@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/core/services/sources/langeage_data_source.dart';
+import '../get_it_service.dart';
+import '../sources/langeage_data_source.dart';
 
 class LocalProvider extends ChangeNotifier {
   final LangeageDataSource langeageDataSource =

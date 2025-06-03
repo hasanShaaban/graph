@@ -49,7 +49,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "fewDetails": MessageLookupByLibrary.simpleMessage("Just a few details!"),
+    "fieldRequired": MessageLookupByLibrary.simpleMessage(
+      "This field is required",
+    ),
     "firstName": MessageLookupByLibrary.simpleMessage("First name"),
+    "follower": MessageLookupByLibrary.simpleMessage("Follower"),
+    "followers": MessageLookupByLibrary.simpleMessage("Followers"),
+    "following": MessageLookupByLibrary.simpleMessage("following"),
     "getToKnowYou": MessageLookupByLibrary.simpleMessage(
       "Let’s Get to Know You",
     ),
@@ -60,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "login": MessageLookupByLibrary.simpleMessage("Login!"),
     "loginTitle": MessageLookupByLibrary.simpleMessage("Login to your account"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
+    "myGroups": MessageLookupByLibrary.simpleMessage("MY Groups"),
     "networks": MessageLookupByLibrary.simpleMessage("Networks and OS"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "nonStudentAccount": MessageLookupByLibrary.simpleMessage(
@@ -84,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Profile pictures help others recognize you.",
     ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "search": MessageLookupByLibrary.simpleMessage("Search"),
     "selectRole": MessageLookupByLibrary.simpleMessage("Select your role"),
     "selectYear": MessageLookupByLibrary.simpleMessage(
       "Select your study year",
@@ -95,7 +103,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Let\'s specify your role.",
     ),
     "studentAccount": MessageLookupByLibrary.simpleMessage("Student Account"),
+    "subject": MessageLookupByLibrary.simpleMessage("subject"),
     "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+    "teamRate": MessageLookupByLibrary.simpleMessage("Team Rate"),
     "tellAboutYourself": MessageLookupByLibrary.simpleMessage(
       "Tell Us About Yourself",
     ),
@@ -110,5 +120,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Which path will you use?",
     ),
     "whoIsJoining": MessageLookupByLibrary.simpleMessage("Who’s Joining Us?"),
+    "year": MessageLookupByLibrary.simpleMessage("Year"),
   };
 }
