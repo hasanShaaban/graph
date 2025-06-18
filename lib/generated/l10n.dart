@@ -503,6 +503,16 @@ class S {
   String get teamRate {
     return Intl.message('Team Rate', name: 'teamRate', desc: '', args: []);
   }
+
+  /// `Groups management`
+  String get groupsManagement {
+    return Intl.message(
+      'Groups management',
+      name: 'groupsManagement',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

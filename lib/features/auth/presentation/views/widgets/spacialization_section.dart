@@ -6,14 +6,9 @@ import 'custom_text.dart';
 
 import 'spacialization_button.dart';
 
-class SpacializationSection extends StatefulWidget {
+class SpacializationSection extends StatelessWidget {
   const SpacializationSection({super.key});
 
-  @override
-  State<SpacializationSection> createState() => _SpacializationSectionState();
-}
-
-class _SpacializationSectionState extends State<SpacializationSection> {
   @override
   Widget build(BuildContext context) {
     final lang = S.of(context);

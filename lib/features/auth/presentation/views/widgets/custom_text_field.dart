@@ -10,7 +10,7 @@ class CustomTextField extends StatefulWidget {
     required this.hintText,
     required this.prefixIcon,
     required this.textInputType,
-    this.onSaved,
+    this.onSaved, required TextEditingController controller,
   });
   final String hintText;
   final String prefixIcon;

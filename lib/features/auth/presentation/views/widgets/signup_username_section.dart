@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/services/providers/user_info_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../../../generated/l10n.dart';
 import 'user_name_body.dart';
 import '../sign_up_view.dart';
@@ -7,33 +9,14 @@ import 'next_button.dart';
 import 'signup_birthday_gender.dart';
 
 // ignore: must_be_immutable
-class SignupUsernameSection extends StatefulWidget {
+class SignupUsernameSection extends StatelessWidget {
   const SignupUsernameSection({super.key});
   static const name = 'UserNameSec';
 
   @override
-  State<SignupUsernameSection> createState() => _SignupUsernameSectionState();
-}
-
-class _SignupUsernameSectionState extends State<SignupUsernameSection> {
-  late TextEditingController? firstNameController;
-  late TextEditingController? lastNameController;
-  @override
-  void initState() {
-    super.initState();
-    firstNameController = TextEditingController();
-    lastNameController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    firstNameController!.dispose();
-    lastNameController!.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final firstNameController = TextEditingController();
+    final lastNameController = TextEditingController();
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
@@ -53,12 +36,17 @@ class _SignupUsernameSectionState extends State<SignupUsernameSection> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(
             onPressed: () {
-              final firstName = firstNameController!.text;
-              final lastName = lastNameController!.text;
+      
+              final userInfo = Provider.of<UserInfoProvider>(
+                context,
+                listen: false,
+              );
+              userInfo.setFirstName(newFirstName: firstNameController.text);
+              userInfo.setLasttName(newLastName: lastNameController.text);
               Navigator.pushNamed(
                 context,
                 SignupBirthdayGender.name,
-                arguments: {'firstName': firstName, 'lastName': lastName},
+              
               );
             },
           ),

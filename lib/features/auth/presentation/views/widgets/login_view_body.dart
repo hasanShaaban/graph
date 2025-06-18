@@ -11,7 +11,8 @@ import 'custom_text_field.dart';
 import 'remeber_me_section.dart';
 
 class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+  final TextEditingController emailController;
+  const LoginViewBody({super.key, required this.emailController});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ class LoginViewBody extends StatelessWidget {
             ),
             SizedBox(height: 60),
             CustomTextField(
+              controller: emailController,
               hintText: lang.email,
               prefixIcon: Assets.iconsEnvelope,
               textInputType: TextInputType.emailAddress,

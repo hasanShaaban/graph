@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/groups/presentation/views/groups_management_view.dart';
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
@@ -37,19 +38,16 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case SignupUsernameSection.name:
       return MaterialPageRoute(builder: (context) => SignupUsernameSection());
     case SignupBirthdayGender.name:
-      final args = settings.arguments as Map<String, dynamic>;
+     
 
-      return MaterialPageRoute(
-        builder:
-            (context) => SignupBirthdayGender(
-              firstName: args['firstName'],
-              lastName: args['lastName'],
-            ),
-      );
+      return MaterialPageRoute(builder: (context) => SignupBirthdayGender());
 
     case SignupPathSection.name:
       return MaterialPageRoute(
-        builder: (context) => SignupPathSection(onNext: (bool isStrudent) {}),
+        builder:
+            (context) => SignupPathSection(
+              //onNext: (bool isStrudent) {}
+            ),
       );
     case SignupRoleSection.name:
       return MaterialPageRoute(builder: (context) => SignupRoleSection());
@@ -65,9 +63,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const FollowersView());
     case FollowingView.name:
       return MaterialPageRoute(builder: (context) => const FollowingView());
-       case MyGroupView.name:
+    case MyGroupView.name:
       return MaterialPageRoute(builder: (context) => const MyGroupView());
-      
+    case GroupsManagementView.name:
+      return MaterialPageRoute(
+        builder: (context) => const GroupsManagementView(),
+      );
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/services/providers/user_info_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../../../generated/l10n.dart';
 import 'custom_app_bar.dart';
 import 'next_button.dart';
@@ -7,16 +9,9 @@ import 'signup_profile_picture_section.dart';
 import 'custom_dropdown_button.dart';
 import 'custom_text.dart';
 
-class SignupRoleSection extends StatefulWidget {
-  const SignupRoleSection({super.key});
+class SignupRoleSection extends StatelessWidget {
+  SignupRoleSection({super.key});
   static const name = 'roleSec';
-
-  @override
-  State<SignupRoleSection> createState() => _SignupRoleSectionState();
-}
-
-class _SignupRoleSectionState extends State<SignupRoleSection> {
-  String? selectedValue;
 
   final List<String> role = [
     'teacher',
@@ -24,14 +19,16 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
     'commercial account',
     'normal user account',
   ];
+
   @override
   Widget build(BuildContext context) {
+  
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(
           text1: lang.almostThere,
-          text2: lang.fewDetails,
+          text2: lang.fewDetails, 
           onPressed: () {
             Navigator.popAndPushNamed(context, SignupPathSection.name);
           },
@@ -43,21 +40,24 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
               customText(text: lang.specifyRole),
               SizedBox(height: 34),
 
-              Material(
-                child: customDropDownButton(
-                  border: 15,
-                  width: 300,
-                  height: 55,
-                  list: role,
-                  text:
-                      selectedValue == null ? lang.selectRole : selectedValue!,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedValue = value;
-                    });
-                  },
-                  iconPadding: 70,
-                ),
+              Consumer<UserInfoProvider>(
+                builder: (context, userProvider, _) {
+                  return Material(
+                    child: customDropDownButton(
+                      border: 15,
+                      width: 300,
+                      height: 55,
+                      list: role,
+                      text: userProvider.role ?? lang.selectRole,
+                      onChanged: (value) {
+                        if (value != null) {
+                          userProvider.setRole(newRole: value);
+                        }
+                      },
+                      iconPadding: 70,
+                    ),
+                  );
+                },
               ),
             ],
           ),

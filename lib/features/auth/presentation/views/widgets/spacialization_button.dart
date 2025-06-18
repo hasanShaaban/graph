@@ -1,38 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/services/providers/user_info_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';
 
-class SpacializationButton extends StatefulWidget {
+class SpacializationButton extends StatelessWidget {
   const SpacializationButton({super.key});
 
   @override
-  State<SpacializationButton> createState() => _SacializationButtonState();
-}
-
-class _SacializationButtonState extends State<SpacializationButton> {
-  //Software Engineering
-  bool se = false;
-  //Artificial Inteligence
-  bool ai = false;
-  //Network and OS
-  bool no = false;
-
-  @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserInfoProvider>(context);
+    final selected = userProvider.spacialization;
     final lang = S.of(context);
     return Column(
       children: [
         GestureDetector(
           onTap: () {
-            setState(() {
-              se = true;
-              ai = false;
-              no = false;
-            });
+            userProvider.setSpacialization(newSpacialization: lang.softwareEng);
           },
           child: AnimatedContainerWidget(
-            whatSelect: se,
+            whatSelect: selected == lang.softwareEng,
             text: lang.softwareEng,
             icon: Assets.iconsCodeWindow,
             widthSelected: double.infinity,
@@ -42,14 +30,10 @@ class _SacializationButtonState extends State<SpacializationButton> {
         SizedBox(height: 10),
         GestureDetector(
           onTap: () {
-            setState(() {
-              se = false;
-              ai = true;
-              no = false;
-            });
+            userProvider.setSpacialization(newSpacialization: lang.ai);
           },
           child: AnimatedContainerWidget(
-            whatSelect: ai,
+            whatSelect: selected == lang.ai,
             text: lang.ai,
             icon: Assets.iconsMicrochipAi,
             widthSelected: double.infinity,
@@ -59,14 +43,10 @@ class _SacializationButtonState extends State<SpacializationButton> {
         SizedBox(height: 10),
         GestureDetector(
           onTap: () {
-            setState(() {
-              se = false;
-              ai = false;
-              no = true;
-            });
+            userProvider.setSpacialization(newSpacialization: lang.networks);
           },
           child: AnimatedContainerWidget(
-            whatSelect: no,
+            whatSelect: selected == lang.networks,
             text: lang.networks,
             icon: Assets.iconsDataModel,
             widthSelected: double.infinity,

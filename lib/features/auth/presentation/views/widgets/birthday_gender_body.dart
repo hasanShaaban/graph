@@ -5,10 +5,12 @@ import 'gender_button.dart';
 import 'user_name_text_field.dart';
 
 class BirthdayGenderBody extends StatelessWidget {
-  const BirthdayGenderBody({super.key});
+  final TextEditingController birthDateController;
+  const BirthdayGenderBody({super.key, required this.birthDateController});
 
   @override
   Widget build(BuildContext context) {
+
     final lang = S.of(context);
     return SingleChildScrollView(
       child: Padding(
@@ -18,6 +20,7 @@ class BirthdayGenderBody extends StatelessWidget {
             customText(text: lang.birthday),
             SizedBox(height: 16),
             userNameTextField(
+              controller: birthDateController,
               text: 'yyyy-mm-dd',
               width: double.infinity,
               textInputType: TextInputType.datetime,

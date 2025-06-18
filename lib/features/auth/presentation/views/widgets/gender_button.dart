@@ -1,34 +1,86 @@
+// import 'package:flutter/material.dart';
+// import '../../../../../generated/l10n.dart';
+
+// import '../../../../../core/utils/appAssets.dart';
+// import 'animated_container_widget.dart';
+
+// class GenderButton extends StatefulWidget {
+//   const GenderButton({super.key});
+
+//   @override
+//   State<GenderButton> createState() => _GenderButtonState();
+// }
+
+// class _GenderButtonState extends State<GenderButton> {
+//   bool selectMale = false;
+//   bool selectFeMale = false;
+//   @override
+//   Widget build(BuildContext context) {
+//     final lang = S.of(context);
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//       children: [
+//         GestureDetector(
+//           onTap: () {
+//             setState(() {
+//               selectMale = true;
+//               selectFeMale = false;
+//             });
+//           },
+//           child: AnimatedContainerWidget(
+//             whatSelect: selectMale,
+//             text: lang.male,
+//             icon: Assets.iconsSmilingBoy,
+//             widthSelected: 150,
+//             widthNotSelected: 140,
+//           ),
+//         ),
+//         SizedBox(width: 8),
+//         GestureDetector(
+//           onTap: () {
+//             setState(() {
+//               selectFeMale = true;
+//               selectMale = false;
+//             });
+//           },
+
+//           child: AnimatedContainerWidget(
+//             whatSelect: selectFeMale,
+//             text: lang.female,
+//             icon: Assets.iconsSmilingGirl,
+//             widthSelected: 150,
+//             widthNotSelected: 140,
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 import 'package:flutter/material.dart';
+import 'package:graph/core/services/providers/user_info_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../../../generated/l10n.dart';
 
 import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';
 
-class GenderButton extends StatefulWidget {
+class GenderButton extends StatelessWidget {
   const GenderButton({super.key});
 
   @override
-  State<GenderButton> createState() => _GenderButtonState();
-}
-
-class _GenderButtonState extends State<GenderButton> {
-  bool selectMale = false;
-  bool selectFeMale = false;
-  @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserInfoProvider>(context);
+    final selectGender = userProvider.gender;
     final lang = S.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         GestureDetector(
           onTap: () {
-            setState(() {
-              selectMale = true;
-              selectFeMale = false;
-            });
+            userProvider.setGender(newGender: 'Male');
           },
           child: AnimatedContainerWidget(
-            whatSelect: selectMale,
+            whatSelect: selectGender == 'Male',
             text: lang.male,
             icon: Assets.iconsSmilingBoy,
             widthSelected: 150,
@@ -38,14 +90,11 @@ class _GenderButtonState extends State<GenderButton> {
         SizedBox(width: 8),
         GestureDetector(
           onTap: () {
-            setState(() {
-              selectFeMale = true;
-              selectMale = false;
-            });
+            userProvider.setGender(newGender: 'Female');
           },
 
           child: AnimatedContainerWidget(
-            whatSelect: selectFeMale,
+            whatSelect: selectGender == 'Female',
             text: lang.female,
             icon: Assets.iconsSmilingGirl,
             widthSelected: 150,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:graph/features/groups/presentation/views/my_group_view.dart';
+import 'package:graph/bloc_providers.dart';
+import 'package:graph/core/services/providers/user_info_provider.dart';
+import 'package:graph/features/splash/presentation/views/splash_view.dart';
 import 'core/services/providers/local_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -14,10 +17,19 @@ void main() async {
   await Hive.initFlutter();
   setupGetit();
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => LocalProvider()..loadLocale(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => LocalProvider()..loadLocale(),
+        ),
+        ChangeNotifierProvider(create: (context) => UserInfoProvider()),
+      ],
       child: MyApp(),
     ),
+    // ChangeNotifierProvider(
+    //   create: (context) => LocalProvider()..loadLocale(),
+    //   child: MyApp(),
+    // ),
   );
 }
 
@@ -27,26 +39,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LocalProvider>(context);
-    return MaterialApp(
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-
-      supportedLocales: S.delegate.supportedLocales,
-      locale: languageProvider.locale,
-      theme: ThemeData(
-        useMaterial3: false,
-        scaffoldBackgroundColor: Constants.lightPrimaryColor,
-        colorScheme: ColorScheme.fromSeed(seedColor: Constants.primaryColor),
-        fontFamily: 'Cairo',
+    return MultiBlocProvider(
+      providers: providers,
+      child: MaterialApp(
+        localizationsDelegates: [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+      
+        supportedLocales: S.delegate.supportedLocales,
+        locale: languageProvider.locale,
+        theme: ThemeData(
+          useMaterial3: false,
+          scaffoldBackgroundColor: Constants.lightPrimaryColor,
+          colorScheme: ColorScheme.fromSeed(seedColor: Constants.primaryColor),
+          fontFamily: 'Cairo',
+        ),
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: onGenerateRoute,
+         initialRoute: SplashView.name,
+       // initialRoute: GroupsManagementView.name,
       ),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: onGenerateRoute,
-      // initialRoute: SplashView.name,
-      initialRoute: MyGroupView.name,
     );
   }
 }

@@ -53,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "followers": MessageLookupByLibrary.simpleMessage("المتابعون"),
     "following": MessageLookupByLibrary.simpleMessage("من تتابع"),
     "getToKnowYou": MessageLookupByLibrary.simpleMessage("دعنا نتعرف عليك"),
+    "groupsManagement": MessageLookupByLibrary.simpleMessage("ادارة الفرق"),
     "howUsingApp": MessageLookupByLibrary.simpleMessage("كيف ستستخدم التطبيق؟"),
     "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول!"),

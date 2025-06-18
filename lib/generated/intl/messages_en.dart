@@ -59,6 +59,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "getToKnowYou": MessageLookupByLibrary.simpleMessage(
       "Let’s Get to Know You",
     ),
+    "groupsManagement": MessageLookupByLibrary.simpleMessage(
+      "Groups management",
+    ),
     "howUsingApp": MessageLookupByLibrary.simpleMessage(
       "How will you be using the app?",
     ),
