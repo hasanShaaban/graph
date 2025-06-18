@@ -40,7 +40,7 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              customText(text: lang.specifyRole),
+              CustomText(text: lang.specifyRole),
               SizedBox(height: 34),
 
               Material(

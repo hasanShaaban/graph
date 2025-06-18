@@ -14,6 +14,10 @@ class Assets {
   /// assets/icons/arrow_left.svg
   static const String iconsArrowLeft = "assets/icons/arrow_left.svg";
 
+  /// Assets for iconsArrowRight
+  /// assets/icons/arrow_right.svg
+  static const String iconsArrowRight = "assets/icons/arrow_right.svg";
+
   /// Assets for iconsArrowRightToBracket
   /// assets/icons/arrow-right-to-bracket.svg
   static const String iconsArrowRightToBracket = "assets/icons/arrow-right-to-bracket.svg";

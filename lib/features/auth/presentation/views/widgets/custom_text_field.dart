@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/generated/l10n.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
@@ -26,46 +27,45 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      child: TextFormField(
-        onTap: () {
-          setState(() {
-            isFoused = true;
-          });
-        },
-        onSaved: widget.onSaved,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'This field is required';
-          }
-          return null;
-        },
-        style: AppTextStyle.cairoRegular18.copyWith(
-          color: Constants.darkPrimaryColor,
-        ),
-        keyboardType: widget.textInputType,
-        decoration: InputDecoration(
-          border: buildBorder(),
-          enabledBorder: buildBorder(),
-          focusedBorder: buildFocusedBorder(),
-          filled: true,
-          fillColor: Constants.lightSecondryColor,
-
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              widget.prefixIcon,
-              width: 26,
-              color:
-                  isFoused
-                      ? Constants.darkPrimaryColor
-                      : Constants.darkSecondryColor,
-            ),
+    var lang = S.of(context);
+    return TextFormField(
+      onTap: () {
+        setState(() {
+          isFoused = true;
+        });
+      },
+      onSaved: widget.onSaved,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return lang.thisFieldRequired;
+        }
+        return null;
+      },
+      style: AppTextStyle.cairoRegular18.copyWith(
+        color: Constants.darkPrimaryColor,
+      ),
+      keyboardType: widget.textInputType,
+      decoration: InputDecoration(
+        
+        border: buildBorder(),
+        enabledBorder: buildBorder(),
+        focusedBorder: buildFocusedBorder(),
+        filled: true,
+        fillColor: Constants.lightSecondryColor,
+    
+        prefixIcon: Padding(
+          padding: const EdgeInsets.all(20),
+          child: SvgPicture.asset(
+            widget.prefixIcon,
+            width: 26,
+            color:
+                isFoused
+                    ? Constants.darkPrimaryColor
+                    : Constants.darkSecondryColor,
           ),
-          hintText: widget.hintText,
-          hintStyle: AppTextStyle.cairoRegular20,
         ),
+        hintText: widget.hintText,
+        hintStyle: AppTextStyle.cairoRegular20,
       ),
     );
   }

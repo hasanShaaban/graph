@@ -50,11 +50,13 @@
   "submit": "Submit",
   "fieldRequired": "This field is required",
   "followers": "Followers",
-   "search":  "Search",
-    "follower":"Follower",
-"following":"following",
-"myGroups": "MY Groups",
-"year":"Year",
-"subject":"subject",
-"teamRate": "Team Rate"
+  "search":  "Search",
+  "follower":"Follower",
+  "following":"following",
+  "myGroups": "MY Groups",
+  "year":"Year",
+  "subject":"subject",
+  "teamRate": "Team Rate",
+  "lang":"en",
+  "thisFieldRequired": "This field is required"
 }

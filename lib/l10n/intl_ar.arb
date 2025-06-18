@@ -56,6 +56,7 @@
   "myGroups": "فريقي",
   "year":"السنة",
   "subject":"اختصاص",
-  "teamRate":"معدل الفريق"
-
+  "teamRate":"معدل الفريق",
+  "lang":"ar",
+  "thisFieldRequired":"هذا الحقل مطلوب"
 }

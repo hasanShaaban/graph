@@ -62,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "howUsingApp": MessageLookupByLibrary.simpleMessage(
       "How will you be using the app?",
     ),
+    "lang": MessageLookupByLibrary.simpleMessage("en"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
     "login": MessageLookupByLibrary.simpleMessage("Login!"),
     "loginTitle": MessageLookupByLibrary.simpleMessage("Login to your account"),
@@ -108,6 +109,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "teamRate": MessageLookupByLibrary.simpleMessage("Team Rate"),
     "tellAboutYourself": MessageLookupByLibrary.simpleMessage(
       "Tell Us About Yourself",
+    ),
+    "thisFieldRequired": MessageLookupByLibrary.simpleMessage(
+      "This field is required",
     ),
     "uploadPicture": MessageLookupByLibrary.simpleMessage(
       "Upload Your Picture",

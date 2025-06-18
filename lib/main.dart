@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
+import 'package:graph/features/splash/presentation/views/splash_view.dart';
 import 'core/services/providers/local_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -45,8 +46,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoute,
-      // initialRoute: SplashView.name,
-      initialRoute: MyGroupView.name,
+      initialRoute: SplashView.name,
     );
   }
 }

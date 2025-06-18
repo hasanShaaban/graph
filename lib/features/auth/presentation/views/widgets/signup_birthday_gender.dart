@@ -32,7 +32,7 @@ class _SignupBirthdayGenderState extends State<SignupBirthdayGender> {
           onPressed: () {
             Navigator.popAndPushNamed(context, SignupUsernameSection.name);
           },
-          text1: '${lang.welcome}${widget.firstName}',
+          text1: '${lang.welcome} ${widget.firstName}',
 
           text2: lang.tellAboutYourself,
         ),

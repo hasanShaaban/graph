@@ -45,7 +45,7 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                customText(text: lang.collageStage),
+                CustomText(text: lang.collageStage),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(

@@ -503,6 +503,21 @@ class S {
   String get teamRate {
     return Intl.message('Team Rate', name: 'teamRate', desc: '', args: []);
   }
+
+  /// `en`
+  String get lang {
+    return Intl.message('en', name: 'lang', desc: '', args: []);
+  }
+
+  /// `This field is required`
+  String get thisFieldRequired {
+    return Intl.message(
+      'This field is required',
+      name: 'thisFieldRequired',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
