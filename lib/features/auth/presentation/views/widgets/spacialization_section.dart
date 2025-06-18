@@ -15,7 +15,7 @@ class SpacializationSection extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: 20),
-        customText(text: lang.pickSpecialization),
+        CustomText(text: lang.pickSpecialization),
         SizedBox(height: 16),
         SpacializationButton(),
         SizedBox(height: 60),

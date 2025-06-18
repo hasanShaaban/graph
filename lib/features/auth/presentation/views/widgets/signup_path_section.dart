@@ -140,7 +140,7 @@ class SignupPathSection extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                customText(text: lang.whichPath),
+                CustomText(text: lang.whichPath),
                 SizedBox(height: 16),
                 StudentOrNotButton(
                   selectStudent: isStudent==true,

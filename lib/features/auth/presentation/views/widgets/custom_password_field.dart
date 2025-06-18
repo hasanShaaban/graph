@@ -20,61 +20,58 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   @override
   Widget build(BuildContext context) {
     final lang = S.of(context);
-    return SizedBox(
-      height: 60,
-      child: TextFormField(
-        obscureText: obscure,
-        obscuringCharacter: '•',
-        onTap: () {
-          setState(() {
-            isFoused = true;
-          });
-        },
-        onSaved: widget.onSaved,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'This field is required';
-          }
-          return null;
-        },
-        style: AppTextStyle.cairoRegular20.copyWith(
-          color: Constants.darkPrimaryColor,
-        ),
-        keyboardType: TextInputType.visiblePassword,
-        decoration: InputDecoration(
-          border: buildBorder(),
-          enabledBorder: buildBorder(),
-          focusedBorder: buildFocusedBorder(),
-          filled: true,
-          fillColor: Constants.lightSecondryColor,
-          suffixIcon: GestureDetector(
-            onTap: () {
-              setState(() {
-                obscure = !obscure;
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: SvgPicture.asset(
-                obscure ? Assets.iconsEyeCrossed : Assets.iconsEye,
-                width: 24,
-              ),
-            ),
-          ),
-          prefixIcon: Padding(
+    return TextFormField(
+      obscureText: obscure,
+      obscuringCharacter: '•',
+      onTap: () {
+        setState(() {
+          isFoused = true;
+        });
+      },
+      onSaved: widget.onSaved,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return lang.thisFieldRequired;
+        }
+        return null;
+      },
+      style: AppTextStyle.cairoRegular20.copyWith(
+        color: Constants.darkPrimaryColor,
+      ),
+      keyboardType: TextInputType.visiblePassword,
+      decoration: InputDecoration(
+        border: buildBorder(),
+        enabledBorder: buildBorder(),
+        focusedBorder: buildFocusedBorder(),
+        filled: true,
+        fillColor: Constants.lightSecondryColor,
+        suffixIcon: GestureDetector(
+          onTap: () {
+            setState(() {
+              obscure = !obscure;
+            });
+          },
+          child: Padding(
             padding: const EdgeInsets.all(20),
             child: SvgPicture.asset(
-              Assets.iconsPassword,
-              width: 26,
-              color:
-                  isFoused
-                      ? Constants.darkPrimaryColor
-                      : Constants.darkSecondryColor,
+              obscure ? Assets.iconsEyeCrossed : Assets.iconsEye,
+              width: 24,
             ),
           ),
-          hintText: lang.password,
-          hintStyle: AppTextStyle.cairoRegular20,
         ),
+        prefixIcon: Padding(
+          padding: const EdgeInsets.all(20),
+          child: SvgPicture.asset(
+            Assets.iconsPassword,
+            width: 26,
+            color:
+                isFoused
+                    ? Constants.darkPrimaryColor
+                    : Constants.darkSecondryColor,
+          ),
+        ),
+        hintText: lang.password,
+        hintStyle: AppTextStyle.cairoRegular20,
       ),
     );
   }

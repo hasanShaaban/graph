@@ -202,7 +202,7 @@ class _SignupProfilePictureSectionState
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              customText(text: lang.uploadPicture),
+              CustomText(text: lang.uploadPicture),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(

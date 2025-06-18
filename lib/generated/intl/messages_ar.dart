@@ -55,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "getToKnowYou": MessageLookupByLibrary.simpleMessage("دعنا نتعرف عليك"),
     "groupsManagement": MessageLookupByLibrary.simpleMessage("ادارة الفرق"),
     "howUsingApp": MessageLookupByLibrary.simpleMessage("كيف ستستخدم التطبيق؟"),
+    "lang": MessageLookupByLibrary.simpleMessage("ar"),
     "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول!"),
     "loginTitle": MessageLookupByLibrary.simpleMessage(
@@ -94,6 +95,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
     "teamRate": MessageLookupByLibrary.simpleMessage("معدل الفريق"),
     "tellAboutYourself": MessageLookupByLibrary.simpleMessage("حدثنا عن نفسك"),
+    "thisFieldRequired": MessageLookupByLibrary.simpleMessage(
+      "هذا الحقل مطلوب",
+    ),
     "uploadPicture": MessageLookupByLibrary.simpleMessage("ارفع صورتك الشخصية"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
     "whatToCallYou": MessageLookupByLibrary.simpleMessage("بماذا نناديك؟"),

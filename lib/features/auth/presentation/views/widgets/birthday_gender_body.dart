@@ -17,16 +17,15 @@ class BirthdayGenderBody extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            customText(text: lang.birthday),
+            CustomText(text: lang.birthday),
             SizedBox(height: 16),
-            userNameTextField(
-              controller: birthDateController,
+            UserNameTextField(
               text: 'yyyy-mm-dd',
               width: double.infinity,
               textInputType: TextInputType.datetime,
             ),
             SizedBox(height: 22),
-            customText(text: lang.pickGender),
+            CustomText(text: lang.pickGender),
             GenderButton(),
           ],
         ),
