@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
+import 'package:graph/features/profile/presentation/views/profile_view.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
@@ -65,9 +66,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const FollowersView());
     case FollowingView.name:
       return MaterialPageRoute(builder: (context) => const FollowingView());
-       case MyGroupView.name:
+    case MyGroupView.name:
       return MaterialPageRoute(builder: (context) => const MyGroupView());
-      
+    case ProfileView.name:
+      return MaterialPageRoute(builder: (context) => const ProfileView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

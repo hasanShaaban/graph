@@ -129,9 +129,9 @@ class S {
     );
   }
 
-  /// `Create one!`
+  /// `Create one`
   String get createOne {
-    return Intl.message('Create one!', name: 'createOne', desc: '', args: []);
+    return Intl.message('Create one', name: 'createOne', desc: '', args: []);
   }
 
   /// `Create new account`
@@ -479,9 +479,9 @@ class S {
     return Intl.message('Follower', name: 'follower', desc: '', args: []);
   }
 
-  /// `following`
+  /// `Following`
   String get following {
-    return Intl.message('following', name: 'following', desc: '', args: []);
+    return Intl.message('Following', name: 'following', desc: '', args: []);
   }
 
   /// `MY Groups`
@@ -494,9 +494,9 @@ class S {
     return Intl.message('Year', name: 'year', desc: '', args: []);
   }
 
-  /// `subject`
+  /// `Subject`
   String get subject {
-    return Intl.message('subject', name: 'subject', desc: '', args: []);
+    return Intl.message('Subject', name: 'subject', desc: '', args: []);
   }
 
   /// `Team Rate`
@@ -517,6 +517,101 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Add post`
+  String get addPost {
+    return Intl.message('Add post', name: 'addPost', desc: '', args: []);
+  }
+
+  /// `About me`
+  String get aboutMe {
+    return Intl.message('About me', name: 'aboutMe', desc: '', args: []);
+  }
+
+  /// `Tech tools`
+  String get techTools {
+    return Intl.message('Tech tools', name: 'techTools', desc: '', args: []);
+  }
+
+  /// `Social links`
+  String get socialLinks {
+    return Intl.message(
+      'Social links',
+      name: 'socialLinks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My SV`
+  String get mySV {
+    return Intl.message('My SV', name: 'mySV', desc: '', args: []);
+  }
+
+  /// `Edit Profile `
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile ',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to preview the document`
+  String get tapToPreviewTheDocument {
+    return Intl.message(
+      'Tap to preview the document',
+      name: 'tapToPreviewTheDocument',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current group:`
+  String get currentGroup {
+    return Intl.message(
+      'Current group:',
+      name: 'currentGroup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See all`
+  String get seeAll {
+    return Intl.message('See all', name: 'seeAll', desc: '', args: []);
+  }
+
+  /// `Activities`
+  String get activities {
+    return Intl.message('Activities', name: 'activities', desc: '', args: []);
+  }
+
+  /// `Info`
+  String get info {
+    return Intl.message('Info', name: 'info', desc: '', args: []);
+  }
+
+  /// `View Profile`
+  String get viewProfile {
+    return Intl.message(
+      'View Profile',
+      name: 'viewProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow`
+  String get follow {
+    return Intl.message('Follow', name: 'follow', desc: '', args: []);
+  }
+
+  /// `Message`
+  String get message {
+    return Intl.message('Message', name: 'message', desc: '', args: []);
   }
 }
 
