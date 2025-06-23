@@ -162,6 +162,10 @@ class Assets {
   /// assets/icons/search.svg
   static const String iconsSearch = "assets/icons/search.svg";
 
+  /// Assets for iconsShare
+  /// assets/icons/share.svg
+  static const String iconsShare = "assets/icons/share.svg";
+
   /// Assets for iconsSmilingBoy
   /// assets/icons/smiling-boy.svg
   static const String iconsSmilingBoy = "assets/icons/smiling-boy.svg";

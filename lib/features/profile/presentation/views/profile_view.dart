@@ -83,6 +83,7 @@ class ProfileViewBody extends StatelessWidget {
                 SizedBox(height: 5),
                 Text(lang.activities, style: AppTextStyle.cairoSemiBold14),
                 PublicPost(lang: lang, width: width, height: height,),
+                SizedBox(height: 300,)
               ],
             ),
           ),

@@ -43,7 +43,7 @@ class AboutMeContainer extends StatelessWidget {
             ),
             infoRow(Assets.iconsCakeBirthday, 'january-1-1999'),
             infoRow(Assets.iconsTerminal, lang.techTools),
-            TechToolsListView(lang: lang, width: double.infinity, iconSize: 48, listPadding: 20, borderRadius: 14,),
+            TechToolsListView(lang: lang, width: double.infinity, iconSize: 48, listPadding: 10, borderRadius: 14,),
             infoRow(Assets.iconsLink, lang.socialLinks),
             SocilaLinksListView(lang: lang),
             infoRow(Assets.iconsCv, lang.mySV),
