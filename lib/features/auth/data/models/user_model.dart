@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:graph/features/auth/domain/Entity/user_entity.dart';
+import '../../domain/Entity/user_entity.dart';
 
 class UserModel extends UserEntity {
   UserModel({

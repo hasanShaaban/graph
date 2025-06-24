@@ -82,6 +82,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "pictureHelp": MessageLookupByLibrary.simpleMessage(
       "تساعد الصور الآخرين على التعرف عليك.",
     ),
+    "pleasePickGender": MessageLookupByLibrary.simpleMessage(
+      "يرجى اختيار الجنس",
+    ),
+    "pleaseSelectRole": MessageLookupByLibrary.simpleMessage(
+      "يرجى اختيار دورك",
+    ),
+    "pleaseSelectSpacialization": MessageLookupByLibrary.simpleMessage(
+      " يرجى اختيار اختصاصك",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "search": MessageLookupByLibrary.simpleMessage("ابحث"),
     "selectRole": MessageLookupByLibrary.simpleMessage("اختر دورك"),

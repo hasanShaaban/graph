@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_dropdown_button.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../auth/presentation/views/widgets/custom_dropdown_button.dart';
+import '../../../../../generated/l10n.dart';
 
 class GroupManagementDropDown extends StatefulWidget {
   const GroupManagementDropDown({super.key});

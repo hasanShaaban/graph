@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/services/providers/user_info_provider.dart';
-import 'package:graph/features/auth/data/models/user_model.dart';
-import 'package:graph/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
-import 'package:provider/provider.dart';
+import '../../../data/models/signup_data_model.dart';
+
 import '../../../../../generated/l10n.dart';
 import 'auth_button.dart';
 import 'signup_text_form_fields.dart';
@@ -15,104 +13,121 @@ import 'auth_redirect_text.dart';
 import 'remeber_me_section.dart';
 import '../login_view.dart';
 
-class SignupEmailPasswordSection extends StatelessWidget {
+// ignore: must_be_immutable
+class SignupEmailPasswordSection extends StatefulWidget {
   const SignupEmailPasswordSection({super.key});
 
   @override
+  State<SignupEmailPasswordSection> createState() =>
+      _SignupEmailPasswordSectionState();
+}
+
+class _SignupEmailPasswordSectionState
+    extends State<SignupEmailPasswordSection> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+
+  late SignupDataModel signupData;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args == null || args is! SignupDataModel) {
+
+      signupData = SignupDataModel(
+        email: '',
+        password: '',
+        confirmPassword: '',
+      );
+     
+    } else {
+      signupData = args;
+    }
+  }
+
+  String email = '';
+  String password = '';
+  String confirmPassword = '';
+  @override
   Widget build(BuildContext context) {
-    final emilController = TextEditingController();
-    final passwordContrller = TextEditingController();
-    final confirmPasswordController = TextEditingController();
     final lang = S.of(context);
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IconButton(
-              onPressed: () {
-                Navigator.popAndPushNamed(context, LoginView.name);
-              },
-              icon: SvgPicture.asset(Assets.iconsArrowLeft),
-            ),
-            const SizedBox(height: 40),
-            Text(
-              lang.createNewAccount,
-              style: AppTextStyle.cairoBold55.copyWith(height: 1.2),
-            ),
-            const SizedBox(height: 60),
-            SignupTextFormFields(
-              emailController: emilController,
-              passwordController: passwordContrller,
-              confirmPasswordController: confirmPasswordController,
-            ),
-            const SizedBox(height: 29),
-            const RemeberMeSection(),
-            const SizedBox(height: 24),
+      child: Form(
+        key: formKey,
+        autovalidateMode: autovalidateMode,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.popAndPushNamed(context, LoginView.name);
+                },
+                icon: SvgPicture.asset(Assets.iconsArrowLeft),
+              ),
+              const SizedBox(height: 40),
+              Text(
+                lang.createNewAccount,
+                style: AppTextStyle.cairoBold55.copyWith(height: 1.2),
+              ),
+              const SizedBox(height: 60),
+              SignupTextFormFields(
+                onEmailSaved: (value) => email = value!.trim(),
+                onPasswordSaved: (String? newValue) {
+                  print('pass saved: $newValue');
+                  password = newValue!.trim();
+                },
+                onConfirmPasswordSaved: (String? newValue) {
+                  print('confirmPass saved: $newValue');
+                  confirmPassword = newValue!.trim();
+                },
 
-            BlocConsumer<SignupCubit, SignupState>(
-              listener: (context, state) {
-                if (state is SignupSuccess) {
-                  Navigator.pushNamed(context, SignupUsernameSection.name);
-                  print('Signup success, navigating...');
-                } else if (state is SignupFailuer) {
-                  print('Signup failed with error: ${state.errorMessage}');
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
-                }
-              },
-              builder: (context, state) {
-                if (state is SignupLoading) {
-                  return Center(child: CircularProgressIndicator());
-                } else {
-                  return AuthButton(
-                    title: lang.signUp,
+                ),
+              const SizedBox(height: 29),
+              const RemeberMeSection(),
+              const SizedBox(height: 24),
 
-                    onPressed: () {
-                      final userProvider = Provider.of<UserInfoProvider>(
-                        context,
-                        listen: false,
-                      );
-                      userProvider.setEmail(newEmail: emilController.text);
-                      userProvider.setPassword(
-                        newPassword: passwordContrller.text,
-                      );
-                      userProvider.setConfirmPassword(
-                        newConfirmPassword: confirmPasswordController.text,
-                      );
+              AuthButton(
+                title: lang.signUp,
 
-                      context.read<SignupCubit>().signup(
-                        userModel: UserModel(
-                          firstName: '',
-                          lastName: '',
-                          email: emilController.text,
-                          passWord: passwordContrller.text,
-                          confirmPassword: confirmPasswordController.text,
-                          dateOfBirht: '',
-                          gender: '',
-                          studyYear: 0,
-                          spacialization: 0,
-                       //   image: '',
-                        ),
-                      );
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    print(
+                      'Email: $email, Password: $password, Confirm: $confirmPassword',
+                    );
+                    final signupData = SignupDataModel(
+                      email: email,
+                      password: password,
+                      confirmPassword: confirmPassword,
+                    );
+                    Navigator.pushNamed(
+                      context,
+                      SignupUsernameSection.name,
+                      arguments: signupData,
+                    );
+                  } else {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
+                  }
+                },
+              ),
+              const SizedBox(height: 25),
 
-                      // Navigator.pushNamed(context, SignupUsernameSection.name);
-                    },
-                  );
-                }
-              },
-            ),
-            const SizedBox(height: 25),
-            AuthRedirectText(
-              staitcText: lang.alreadyHaveAccount,
-              redirectorText: lang.login,
-              onTap: () {
-                Navigator.popAndPushNamed(context, LoginView.name);
-              },
-            ),
-          ],
+              AuthRedirectText(
+                staitcText: lang.alreadyHaveAccount,
+                redirectorText: lang.login,
+                onTap: () {
+                  Navigator.popAndPushNamed(context, LoginView.name);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

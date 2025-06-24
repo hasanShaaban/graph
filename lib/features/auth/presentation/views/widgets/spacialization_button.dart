@@ -1,24 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/services/providers/user_info_provider.dart';
+import '../../../../../core/services/providers/user_info_provider.dart';
+import '../../../data/models/signup_data_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';
 
-class SpacializationButton extends StatelessWidget {
-  const SpacializationButton({super.key});
+class SpacializationButton extends StatefulWidget {
+  final FormFieldSetter<int> selectSpacialization;
+  const SpacializationButton({super.key, required this.selectSpacialization});
+
+  @override
+  State<SpacializationButton> createState() => _SpacializationButtonState();
+}
+
+class _SpacializationButtonState extends State<SpacializationButton> {
+  String? selected;
+  int? selectedSpacializationId;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void _selectSpacialization(String spacialization, int id) {
+    setState(() {
+      selected = spacialization;
+      selectedSpacializationId = id;
+    });
+     widget.selectSpacialization(id); 
+  }
 
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserInfoProvider>(context);
-    final selected = userProvider.spacialization;
-    final lang = S.of(context);
+   
+      final lang = S.of(context);
     return Column(
       children: [
         GestureDetector(
           onTap: () {
-            userProvider.setSpacialization(newSpacialization: lang.softwareEng);
-          },
+            _selectSpacialization(lang.softwareEng, 1);
+             },
           child: AnimatedContainerWidget(
             whatSelect: selected == lang.softwareEng,
             text: lang.softwareEng,
@@ -30,8 +52,8 @@ class SpacializationButton extends StatelessWidget {
         SizedBox(height: 10),
         GestureDetector(
           onTap: () {
-            userProvider.setSpacialization(newSpacialization: lang.ai);
-          },
+            _selectSpacialization(lang.ai, 2);
+             },
           child: AnimatedContainerWidget(
             whatSelect: selected == lang.ai,
             text: lang.ai,
@@ -43,8 +65,8 @@ class SpacializationButton extends StatelessWidget {
         SizedBox(height: 10),
         GestureDetector(
           onTap: () {
-            userProvider.setSpacialization(newSpacialization: lang.networks);
-          },
+            _selectSpacialization(lang.networks, 3);
+             },
           child: AnimatedContainerWidget(
             whatSelect: selected == lang.networks,
             text: lang.networks,

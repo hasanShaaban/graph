@@ -1,47 +1,90 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/services/providers/user_info_provider.dart';
+import '../../../../../core/services/providers/user_info_provider.dart';
+import '../../../data/models/signup_data_model.dart';
+import 'auth_app_bar.dart';
 import 'package:provider/provider.dart';
 import '../../../../../generated/l10n.dart';
 import 'birthday_gender_body.dart';
 import 'next_button.dart';
 import 'signup_path_section.dart';
-import 'custom_app_bar.dart';
-import 'signup_username_section.dart';
 
-class SignupBirthdayGender extends StatelessWidget {
+class SignupBirthdayGender extends StatefulWidget {
   const SignupBirthdayGender({super.key});
   static const name = 'birthday&genderSec';
 
   @override
+  State<SignupBirthdayGender> createState() => _SignupBirthdayGenderState();
+}
+
+class _SignupBirthdayGenderState extends State<SignupBirthdayGender> {
+  late SignupDataModel signupData;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+@override
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  signupData = ModalRoute.of(context)!.settings.arguments as SignupDataModel;
+}
+  @override
   Widget build(BuildContext context) {
-    final userInfo = Provider.of<UserInfoProvider>(context, listen: false);
-    String firstName = userInfo.firstName ?? '';
-    final birthDateController = TextEditingController();
+  
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: CustomAppBar(
-          onPressed: () {
-            Navigator.popAndPushNamed(context, SignupUsernameSection.name);
-          },
-          text1: '${lang.welcome} $firstName',
 
-          text2: lang.tellAboutYourself,
+        body: SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            autovalidateMode: autovalidateMode,
+            child: Column(
+              children: [
+                AuthAppBar(
+                  text1: '${lang.welcome} ${signupData.firstName}',
+                  text2: lang.tellAboutYourself,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                BirthdayGenderBody(
+                  onBirthDateSaved: (String? newValue) {
+                    setState(() {
+                      
+                    signupData = signupData.copyWith(birthDate: newValue!.trim());
+                    });
+                  },
+                  onGenderSaved: (String? newValue) {
+                    setState(() {
+                       signupData = signupData.copyWith(gender: newValue!.trim());
+                    });
+                   
+                  },
+                 
+                ),
+              ],
+            ),
+          ),
         ),
-        body: BirthdayGenderBody(birthDateController: birthDateController),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
           child: NextButton(
             onPressed: () {
-              final userProvider = Provider.of<UserInfoProvider>(
-                context,
-                listen: false,
-              );
-              userProvider.setDateOfBirth(
-                newDateOfBirth: birthDateController.text,
-              );
-              Navigator.pushNamed(context, SignupPathSection.name);
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save(); 
+
+                Navigator.pushNamed(
+                  context,
+                  SignupPathSection.name,
+                  arguments: signupData,
+                );
+              } else {
+                setState(() {
+                  autovalidateMode = AutovalidateMode.always;
+                });
+              }
+       
             },
           ),
         ),

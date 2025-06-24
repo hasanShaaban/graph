@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/groups/presentation/views/groups_management_view.dart';
-import 'package:graph/features/groups/presentation/views/my_group_view.dart';
+import '../../features/groups/presentation/views/groups_management_view.dart';
+import '../../features/groups/presentation/views/my_group_view.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
@@ -36,11 +36,15 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case SignUpView.name:
       return MaterialPageRoute(builder: (context) => const SignUpView());
     case SignupUsernameSection.name:
-      return MaterialPageRoute(builder: (context) => SignupUsernameSection());
+      return MaterialPageRoute(
+        builder: (context) => SignupUsernameSection(),
+        settings: settings,
+      );
     case SignupBirthdayGender.name:
-     
-
-      return MaterialPageRoute(builder: (context) => SignupBirthdayGender());
+      return MaterialPageRoute(
+        builder: (context) => SignupBirthdayGender(),
+        settings: settings,
+      );
 
     case SignupPathSection.name:
       return MaterialPageRoute(
@@ -48,16 +52,22 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
             (context) => SignupPathSection(
               //onNext: (bool isStrudent) {}
             ),
+        settings: settings,
       );
     case SignupRoleSection.name:
-      return MaterialPageRoute(builder: (context) => SignupRoleSection());
+      return MaterialPageRoute(
+        builder: (context) => SignupRoleSection(),
+        settings: settings,
+      );
     case SignupCollageStageSection.name:
       return MaterialPageRoute(
         builder: (context) => SignupCollageStageSection(),
+        settings: settings,
       );
     case SignupProfilePictureSection.name:
       return MaterialPageRoute(
         builder: (context) => const SignupProfilePictureSection(),
+        settings: settings,
       );
     case FollowersView.name:
       return MaterialPageRoute(builder: (context) => const FollowersView());

@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:graph/core/errors/failures.dart';
-import 'package:graph/core/services/api_service.dart';
-import 'package:graph/features/auth/data/models/user_model.dart';
-import 'package:graph/features/auth/domain/repos/auth_repo.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../../core/services/api_service.dart';
+import '../models/user_model.dart';
+import '../../domain/repos/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final ApiService apiService;
@@ -13,20 +13,27 @@ class AuthRepoImpl implements AuthRepo {
   AuthRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failures, UserModel>> signup({
+  Future<Either<Failures, Map<String, dynamic>>> signup({
     required UserModel userModel,
   }) async {
     try {
       Map<String, dynamic> response = await apiService.post(
-        endPoint: 'Register',
+        endPoint: 'Register?',
         data: userModel.toJson(),
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
       );
 
       print('Response from signup: $response');
 
-      final UserModel registeredUser = UserModel.fromJson(response);
+      // final UserModel registeredUser = UserModel.fromJson(response);
 
-      return right(registeredUser);
+      // return right(registeredUser);
+      return right(response);
     } catch (e) {
       if (e is DioException) {
         print('Dio exception: ${e.response?.data}');

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../data/models/signup_data_model.dart';
 import '../../../../../generated/l10n.dart';
 import 'next_button.dart';
 import 'signup_profile_picture_section.dart';
@@ -6,9 +7,19 @@ import 'custom_text.dart';
 
 import 'spacialization_button.dart';
 
-class SpacializationSection extends StatelessWidget {
-  const SpacializationSection({super.key});
+class SpacializationSection extends StatefulWidget {
+  final SignupDataModel signupData;
 
+  SpacializationSection({super.key, required this.signupData});
+
+  @override
+  State<SpacializationSection> createState() => _SpacializationSectionState();
+}
+
+class _SpacializationSectionState extends State<SpacializationSection> {
+  String? selectedSpecialization;
+  int? spacializationId;
+  late SignupDataModel signupData;
   @override
   Widget build(BuildContext context) {
     final lang = S.of(context);
@@ -17,11 +28,31 @@ class SpacializationSection extends StatelessWidget {
         SizedBox(height: 20),
         CustomText(text: lang.pickSpecialization),
         SizedBox(height: 16),
-        SpacializationButton(),
+        SpacializationButton(
+          selectSpacialization: (int? newValue) {
+            setState(() {
+              spacializationId = newValue;
+            });
+          },
+        ),
         SizedBox(height: 60),
         NextButton(
           onPressed: () {
-            Navigator.pushNamed(context, SignupProfilePictureSection.name);
+   
+            if (spacializationId != null) {
+              final updatedData = widget.signupData.copyWith(
+                specialization: spacializationId!.toString(),
+              );
+              Navigator.pushNamed(
+                context,
+                SignupProfilePictureSection.name,
+                arguments: updatedData,
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(lang.pleaseSelectSpacialization)),
+              );
+            }
           },
         ),
       ],

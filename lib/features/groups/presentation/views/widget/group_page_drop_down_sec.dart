@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_dropdown_button.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../auth/presentation/views/widgets/custom_dropdown_button.dart';
+import '../../../../../generated/l10n.dart';
 
 class GroupPageDropDownSec extends StatefulWidget {
   const GroupPageDropDownSec({super.key});

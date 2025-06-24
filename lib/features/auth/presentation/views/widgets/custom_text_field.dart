@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
@@ -11,12 +11,16 @@ class CustomTextField extends StatefulWidget {
     required this.hintText,
     required this.prefixIcon,
     required this.textInputType,
-    this.onSaved, required TextEditingController controller,
+    this.onSaved,
+    TextEditingController? controller,
+    this.validator,  this.onChanged,
   });
   final String hintText;
   final String prefixIcon;
   final TextInputType textInputType;
   final Function(String?)? onSaved;
+  final String? Function(String?)? validator;
+  final ValueChanged<String>? onChanged;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -35,24 +39,27 @@ class _CustomTextFieldState extends State<CustomTextField> {
         });
       },
       onSaved: widget.onSaved,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return lang.thisFieldRequired;
-        }
-        return null;
-      },
+      onChanged: widget.onChanged,
+      validator:
+          widget.validator ??
+          (value) {
+            if (value == null || value.isEmpty) {
+              return lang.thisFieldRequired;
+            }
+            return null;
+          },
+ 
       style: AppTextStyle.cairoRegular18.copyWith(
         color: Constants.darkPrimaryColor,
       ),
       keyboardType: widget.textInputType,
       decoration: InputDecoration(
-        
         border: buildBorder(),
         enabledBorder: buildBorder(),
         focusedBorder: buildFocusedBorder(),
         filled: true,
         fillColor: Constants.lightSecondryColor,
-    
+
         prefixIcon: Padding(
           padding: const EdgeInsets.all(20),
           child: SvgPicture.asset(

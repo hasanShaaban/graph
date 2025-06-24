@@ -7,8 +7,8 @@ class LoginView extends StatelessWidget {
   static const name = 'loginView';
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController();
-    return SafeArea(child: Scaffold(body: LoginViewBody(emailController: emailController,)));
+   
+    return SafeArea(child: Scaffold(body: LoginViewBody()));
   }
 }
 

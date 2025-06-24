@@ -58,13 +58,10 @@
   "subject":"subject",
   "teamRate": "Team Rate",
   "lang":"en",
-  "thisFieldRequired": "This field is required"
-   "search":  "Search",
-    "follower":"Follower",
-"following":"following",
-"myGroups": "MY Groups",
-"year":"Year",
-"subject":"subject",
-"teamRate": "Team Rate",
-"groupsManagement":"Groups management"
+  "thisFieldRequired": "This field is required",
+  
+"groupsManagement":"Groups management",
+"pleasePickGender": "Please, pick your gender!",
+"pleaseSelectRole":"Plese, Select Your role!",
+"pleaseSelectSpacialization": "Please, Select your specialization!"
 }

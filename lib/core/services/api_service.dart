@@ -21,6 +21,7 @@ class ApiService {
   Future<Map<String, dynamic>> post({
     required String endPoint,
     var data,
+    Options? options,
   }) async {
     var response = await _dio.post('$_baseURL$endPoint', data: data);
     print(response.data);

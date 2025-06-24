@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:graph/bloc_providers.dart';
-import 'package:graph/core/services/providers/user_info_provider.dart';
-import 'package:graph/features/splash/presentation/views/splash_view.dart';
+import 'bloc_providers.dart';
+import 'core/services/providers/user_info_provider.dart';
+import 'features/splash/presentation/views/splash_view.dart';
 import 'core/services/providers/local_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-      
+
         supportedLocales: S.delegate.supportedLocales,
         locale: languageProvider.locale,
         theme: ThemeData(
@@ -59,8 +59,8 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerateRoute,
-         initialRoute: SplashView.name,
-       // initialRoute: GroupsManagementView.name,
+        initialRoute: SplashView.name,
+        // initialRoute: GroupsManagementView.name,
       ),
     );
   }

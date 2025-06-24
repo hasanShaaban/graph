@@ -58,8 +58,11 @@
   "subject":"اختصاص",
   "teamRate":"معدل الفريق",
   "lang":"ar",
-  "thisFieldRequired":"هذا الحقل مطلوب"
-  "teamRate":"معدل الفريق",
-  "groupsManagement":"ادارة الفرق"
+  "thisFieldRequired":"هذا الحقل مطلوب",
+ 
+  "groupsManagement":"ادارة الفرق",
+  "pleasePickGender": "يرجى اختيار الجنس",
+  "pleaseSelectRole": "يرجى اختيار دورك",
+  "pleaseSelectSpacialization" : " يرجى اختيار اختصاصك"
 
 }

@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -524,6 +525,36 @@ class S {
     return Intl.message(
       'Groups management',
       name: 'groupsManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please, pick your gender!`
+  String get pleasePickGender {
+    return Intl.message(
+      'Please, pick your gender!',
+      name: 'pleasePickGender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plese, Select Your role!`
+  String get pleaseSelectRole {
+    return Intl.message(
+      'Plese, Select Your role!',
+      name: 'pleaseSelectRole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please, Select your specialization!`
+  String get pleaseSelectSpacialization {
+    return Intl.message(
+      'Please, Select your specialization!',
+      name: 'pleaseSelectSpacialization',
       desc: '',
       args: [],
     );

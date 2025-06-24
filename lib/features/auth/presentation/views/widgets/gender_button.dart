@@ -56,6 +56,7 @@
 //     );
 //   }
 // }
+
 import 'package:flutter/material.dart';
 import 'package:graph/core/services/providers/user_info_provider.dart';
 import 'package:provider/provider.dart';
@@ -64,23 +65,54 @@ import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';
 
-class GenderButton extends StatelessWidget {
-  const GenderButton({super.key});
+class GenderButton extends StatefulWidget {
+  final FormFieldSetter<String> onGenderSelected;
+
+  const GenderButton({
+    super.key,
+    required this.onGenderSelected,
+
+  });
+ 
+
+  @override
+  State<GenderButton> createState() => _GenderButtonState();
+}
+
+class _GenderButtonState extends State<GenderButton> {
+  String? selectedGender;
+  @override
+  void initState() {
+    super.initState();
+
+  }
+
+  void _selectGender(String gender) {
+    setState(() {
+      selectedGender = gender;
+      widget.onGenderSelected(gender);
+     
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserInfoProvider>(context);
-    final selectGender = userProvider.gender;
+
+
     final lang = S.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         GestureDetector(
           onTap: () {
-            userProvider.setGender(newGender: 'Male');
+          
+            setState(() {
+              _selectGender('Male');
+            });
+
           },
           child: AnimatedContainerWidget(
-            whatSelect: selectGender == 'Male',
+            whatSelect: selectedGender == 'Male',
             text: lang.male,
             icon: Assets.iconsSmilingBoy,
             widthSelected: 150,
@@ -90,11 +122,14 @@ class GenderButton extends StatelessWidget {
         SizedBox(width: 8),
         GestureDetector(
           onTap: () {
-            userProvider.setGender(newGender: 'Female');
+            setState(() {
+              _selectGender('Female');
+            });
+          
           },
 
           child: AnimatedContainerWidget(
-            whatSelect: selectGender == 'Female',
+            whatSelect: selectedGender == 'Female',
             text: lang.female,
             icon: Assets.iconsSmilingGirl,
             widthSelected: 150,

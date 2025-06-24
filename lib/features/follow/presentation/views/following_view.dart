@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/groups/presentation/views/my_group_view.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../groups/presentation/views/my_group_view.dart';
+import '../../../../generated/l10n.dart';
 
 import 'widgets/custom_search_text_feild.dart';
 import 'widgets/follow_list_view_item.dart';

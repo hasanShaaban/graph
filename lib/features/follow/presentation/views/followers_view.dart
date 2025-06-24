@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/follow/presentation/views/following_view.dart';
+import 'following_view.dart';
 
 import 'widgets/custom_search_text_feild.dart';
 import 'widgets/follow_list_view_item.dart';

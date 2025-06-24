@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/groups/presentation/views/widget/member_role_sec.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
+import 'member_role_sec.dart';
 
 class MemberContainer extends StatelessWidget {
   const MemberContainer({super.key});

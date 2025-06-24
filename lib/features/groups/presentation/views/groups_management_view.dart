@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/follow/presentation/views/widgets/custom_app_bar.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_management_drop_down.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../follow/presentation/views/widgets/custom_app_bar.dart';
+import 'widget/group_management_drop_down.dart';
+import '../../../../generated/l10n.dart';
 
 class GroupsManagementView extends StatelessWidget {
   const GroupsManagementView({super.key});
