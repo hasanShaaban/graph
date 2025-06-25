@@ -158,6 +158,18 @@ class Assets {
   /// assets/icons/profile.svg
   static const String iconsProfile = "assets/icons/profile.svg";
 
+  /// Assets for iconsReactClap
+  /// assets/icons/react_clap.svg
+  static const String iconsReactClap = "assets/icons/react_clap.svg";
+
+  /// Assets for iconsReactLaugh
+  /// assets/icons/react_laugh.svg
+  static const String iconsReactLaugh = "assets/icons/react_laugh.svg";
+
+  /// Assets for iconsReactLove
+  /// assets/icons/react_love.svg
+  static const String iconsReactLove = "assets/icons/react_love.svg";
+
   /// Assets for iconsSearch
   /// assets/icons/search.svg
   static const String iconsSearch = "assets/icons/search.svg";

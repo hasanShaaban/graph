@@ -82,7 +82,7 @@ class PublicPost extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 200),
+                // SizedBox(height: 200),
                 Divider(color: Constants.deviderColor, thickness: 1),
                 Row(
                   children: [
@@ -100,5 +100,3 @@ class PublicPost extends StatelessWidget {
     );
   }
 }
-
-
