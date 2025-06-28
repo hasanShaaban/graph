@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import '../../../../follow/presentation/views/followers_view.dart';
 import '../../../../../generated/l10n.dart';
 
 import '../../../../../core/utils/appAssets.dart';
@@ -131,10 +130,6 @@ class _SignupProfilePictureSectionState
             title: lang.submit,
             onPressed: () {
               //Navigator.pushNamed(context, FollowersView.name);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FollowersView()),
-              );
             },
           ),
         ),

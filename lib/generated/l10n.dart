@@ -613,6 +613,16 @@ class S {
   String get message {
     return Intl.message('Message', name: 'message', desc: '', args: []);
   }
+
+  /// `Tap to return to the top`
+  String get tapToReturntoTheTop {
+    return Intl.message(
+      'Tap to return to the top',
+      name: 'tapToReturntoTheTop',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

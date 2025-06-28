@@ -23,7 +23,6 @@ class AboutMeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      height: height * 345 / 890,
       decoration: BoxDecoration(
         color: Constants.lightSecondryColor,
         borderRadius: BorderRadius.circular(6),

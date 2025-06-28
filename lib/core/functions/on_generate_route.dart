@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
 
@@ -10,8 +11,6 @@ import '../../features/auth/presentation/views/widgets/signup_path_section.dart'
 import '../../features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_role_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_username_section.dart';
-import '../../features/follow/presentation/views/followers_view.dart';
-import '../../features/follow/presentation/views/following_view.dart';
 import '../../features/onboarding/presentation/views/on_boarding_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
@@ -62,10 +61,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const SignupProfilePictureSection(),
       );
-    case FollowersView.name:
-      return MaterialPageRoute(builder: (context) => const FollowersView());
-    case FollowingView.name:
-      return MaterialPageRoute(builder: (context) => const FollowingView());
+    case FollowView.name:
+    final args = settings.arguments as Map<String, dynamic>;
+      return MaterialPageRoute(builder: (context) => FollowView(type: args['type'],));
     case MyGroupView.name:
       return MaterialPageRoute(builder: (context) => const MyGroupView());
     case ProfileView.name:

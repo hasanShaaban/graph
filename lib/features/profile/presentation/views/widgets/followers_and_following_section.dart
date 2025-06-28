@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
+import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
 import 'package:graph/generated/l10n.dart';
 
 class FollowersAndFollowingSection extends StatelessWidget {
@@ -23,22 +24,15 @@ class FollowersAndFollowingSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            lang.followers,
-            style: AppTextStyle.cairoRegular14.copyWith(
-              color: Constants.darkSecondryColor,
-            ),
+          FollowersAndFollowingButton(
+            title: lang.followers,
+            count: '322',
+            onTap: () {
+              Navigator.pushNamed(context, FollowView.name, arguments: {'type': lang.followers});
+            },
           ),
-          SizedBox(width: 10),
-          Text(
-            '314',
-            style: AppTextStyle.cairoSemiBold18.copyWith(
-              color: Constants.secondryColor,
-            ),
-          ),
-          SizedBox(width: 15),
           VerticalDivider(
             color: Constants.deviderColor,
             width: 1,
@@ -46,16 +40,44 @@ class FollowersAndFollowingSection extends StatelessWidget {
             indent: 7,
             endIndent: 7,
           ),
-          SizedBox(width: 15),
+          FollowersAndFollowingButton(
+            title: lang.following,
+            count: '412',
+            onTap: () {
+              Navigator.pushNamed(context, FollowView.name, arguments: {'type': lang.following});
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FollowersAndFollowingButton extends StatelessWidget {
+  const FollowersAndFollowingButton({
+    super.key,
+    required this.title,
+    required this.count,
+    required this.onTap,
+  });
+
+  final String title, count;
+  final void Function() onTap;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
           Text(
-            lang.following,
+            title,
             style: AppTextStyle.cairoRegular14.copyWith(
               color: Constants.darkSecondryColor,
             ),
           ),
-          SizedBox(width: 10),
+          SizedBox(width: 5),
           Text(
-            '314',
+            count,
             style: AppTextStyle.cairoSemiBold18.copyWith(
               color: Constants.secondryColor,
             ),

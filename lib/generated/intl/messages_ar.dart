@@ -106,6 +106,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "tapToPreviewTheDocument": MessageLookupByLibrary.simpleMessage(
       "انقر لمعاينة المستند",
     ),
+    "tapToReturntoTheTop": MessageLookupByLibrary.simpleMessage(
+      "انقر للعودة الى الاعلى",
+    ),
     "teamRate": MessageLookupByLibrary.simpleMessage("معدل الفريق"),
     "techTools": MessageLookupByLibrary.simpleMessage("الأدوات"),
     "tellAboutYourself": MessageLookupByLibrary.simpleMessage("حدثنا عن نفسك"),

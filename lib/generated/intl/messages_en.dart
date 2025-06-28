@@ -120,6 +120,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "tapToPreviewTheDocument": MessageLookupByLibrary.simpleMessage(
       "Tap to preview the document",
     ),
+    "tapToReturntoTheTop": MessageLookupByLibrary.simpleMessage(
+      "Tap to return to the top",
+    ),
     "teamRate": MessageLookupByLibrary.simpleMessage("Team Rate"),
     "techTools": MessageLookupByLibrary.simpleMessage("Tech tools"),
     "tellAboutYourself": MessageLookupByLibrary.simpleMessage(

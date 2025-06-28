@@ -20,7 +20,7 @@ class GroupProfileListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height * 105 / 890,
+      height: height * 140 / 890,
       width: width,
       child: ListView.builder(
         itemCount: 6,

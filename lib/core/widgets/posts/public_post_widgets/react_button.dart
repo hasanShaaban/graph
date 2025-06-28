@@ -1,10 +1,10 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
+import 'dart:developer' as dev;
 
 class ReactButton extends StatefulWidget {
   const ReactButton({super.key, required this.height, required this.width});
@@ -18,13 +18,17 @@ class ReactButton extends StatefulWidget {
 
 class _ReactButtonState extends State<ReactButton>
     with TickerProviderStateMixin {
-  bool _showReacts = false;
-  bool _showArc = false;
-
   late AnimationController arcController;
-  late AnimationController reactController;
+  late Animation<double> arcAnimation;
 
-  final double radius = 80;
+  late AnimationController reactController;
+  late Animation<double> reactAnimation;
+
+  bool _showArc = false;
+  bool _showReacts = false;
+  bool isPressed = false;
+  String icon = Assets.iconsHeart;
+  Color color = Constants.lightSecondryColor;
 
   final List<String> reacts = [
     Assets.iconsReactLove,
@@ -36,18 +40,26 @@ class _ReactButtonState extends State<ReactButton>
   void initState() {
     super.initState();
     arcController = AnimationController(
-      duration: Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 600),
       vsync: this,
-    )..addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        setState(() => _showReacts = true);
-        reactController.forward();
-      }
-    });
+    );
+
+    arcAnimation = CurvedAnimation(parent: arcController, curve: Curves.ease)
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          setState(() => _showReacts = true);
+          reactController.forward();
+        }
+      });
 
     reactController = AnimationController(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       vsync: this,
+    );
+
+    reactAnimation = CurvedAnimation(
+      parent: reactController,
+      curve: Curves.easeInOutQuint, // or Curves.easeOutBack, etc.
     );
   }
 
@@ -61,12 +73,12 @@ class _ReactButtonState extends State<ReactButton>
   }
 
   void _onTapCancel() {
-    arcController.reverse();
-    reactController.reverse();
-    setState(() {
-      _showArc = false;
-      _showReacts = false;
-    });
+    arcController.reverse().whenComplete(
+      () => setState(() => _showArc = false),
+    );
+    reactController.reverse().whenComplete(
+      () => setState(() => _showReacts = false),
+    );
   }
 
   @override
@@ -78,75 +90,124 @@ class _ReactButtonState extends State<ReactButton>
 
   @override
   Widget build(BuildContext context) {
+    final double radius = (widget.width * 138 / 412) / 2;
     final buttonSize = widget.width * 60 / 412;
+
     return Positioned.fill(
       bottom: -(widget.height * 60 / 890) / 3,
       child: Align(
         alignment: Alignment.bottomCenter,
-        child: GestureDetector(
-          onLongPress: _onLongPress,
-          onLongPressCancel: _onTapCancel,
-          child: Stack(
-            clipBehavior: Clip.none,
-            alignment: Alignment.center,
-            children: [
-              if (_showArc)
-                AnimatedBuilder(
+        child: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.bottomCenter,
+          fit: StackFit.passthrough,
+          children: [
+            if (_showArc)
+              Positioned(
+                bottom: -widget.height * 138 / 890 / 2,
+                child: AnimatedBuilder(
                   animation: arcController,
                   builder: (_, __) {
                     return CustomPaint(
                       painter: AnimatedHalfCirclePainter(
-                        progress: arcController.value,
+                        progress: arcAnimation.value,
+                        screenWidth: widget.width,
                       ),
                       size: Size(radius * 2, radius),
                     );
                   },
                 ),
-              if (_showReacts)
-                ...List.generate(reacts.length, (index) {
-                  final angle = pi * (index / (reacts.length - 1));
-                  final dx = radius * cos(angle);
-                  final dy = radius * sin(angle);
-                  return AnimatedBuilder(
-                    animation: reactController,
-                    builder: (_, __) {
-                      return Positioned(
-                        bottom: radius + dy * reactController.value,
-                        left:
-                            (widget.width / 2) -
-                            buttonSize / 2 +
-                            dx * reactController.value,
-                        child: Opacity(
-                          opacity: reactController.value,
-                          child: SvgPicture.asset(
-                            reacts[index],
-                            width: 24,
-                            height: 24,
+              ),
+            if (_showReacts)
+              ...List.generate(reacts.length, (index) {
+                double angle = pi * (index / (reacts.length - 1));
+                if (index == 0) angle += pi / 7;
+                if (index == reacts.length - 1) angle -= pi / 7;
+                final dx = radius * cos(angle);
+                final dy = radius * sin(angle);
+                return AnimatedBuilder(
+                  animation: reactController,
+                  builder: (_, __) {
+                    return Positioned(
+                      bottom: dy * reactAnimation.value ,
+                      left: dx * reactAnimation.value + widget.width * 138 / 412 / 2 + 15,
+                      child: Align(
+
+                        alignment: Alignment.center,
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            dev.log('tapped');
+                            setState(() {
+                              icon = reacts[index];
+                            });
+                            _onTapCancel();
+                          },
+                          child: Opacity(
+                            opacity: reactAnimation.value,
+                            child: SvgPicture.asset(
+                              reacts[index],
+                              height: 30,
+                              width: 30,
+                            ),
                           ),
                         ),
-                      );
-                    },
-                  );
-                }),
-              Container(
-                width: widget.width * 60 / 412,
-                height: widget.height * 60 / 890,
-                decoration: BoxDecoration(
-                  color: Constants.lightSecondryColor,
-                  borderRadius: BorderRadius.circular(buttonSize / 2),
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SvgPicture.asset(Assets.iconsHeart),
-                      Text('234', style: AppTextStyle.cairoRegular12),
-                    ],
+                      ),
+                    );
+                  },
+                );
+              }),
+            // React button
+            Listener(
+              onPointerDown: (_) => setState(() => isPressed = true),
+              onPointerUp: (_) => setState(() => isPressed = false),
+              onPointerCancel: (_) => setState(() => isPressed = false),
+              child: GestureDetector(
+                onLongPress: _onLongPress,
+                onLongPressCancel: () => _onTapCancel(),
+                onDoubleTap: () {
+                  setState(() {
+                    if (icon == Assets.iconsHeart) {
+                      icon = Assets.iconsReactLove;
+                    } else {
+                      icon = Assets.iconsHeart;
+                    }
+                  });
+                },
+                child: Container(
+                  width: buttonSize,
+                  height: buttonSize,
+                  decoration: BoxDecoration(
+                    color:
+                        isPressed
+                            ? Constants.deviderColor
+                            : Constants.lightSecondryColor,
+                    borderRadius: BorderRadius.circular(buttonSize),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset(icon, width: 24),
+                        SizedBox(height: 3),
+                        Text(
+                          '2.3k',
+                          style: AppTextStyle.cairoRegular12.copyWith(
+                            height: 1,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+
+            SizedBox(
+              width: widget.width * 138 / 412 * 1.5,
+              height: widget.height * 60 / 412 * 0.9,
+            ),
+          ],
         ),
       ),
     );
@@ -155,15 +216,19 @@ class _ReactButtonState extends State<ReactButton>
 
 class AnimatedHalfCirclePainter extends CustomPainter {
   final double progress; // 0.0 to 1.0
-
-  AnimatedHalfCirclePainter({required this.progress});
+  final double screenWidth;
+  AnimatedHalfCirclePainter({
+    required this.screenWidth,
+    required this.progress,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint =
         Paint()
-          ..color = Colors.white
-          ..style = PaintingStyle.fill;
+          ..color = Constants.lightPrimaryColor
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = screenWidth * 138 / 412 - screenWidth * 60 / 412;
 
     final Rect rect = Rect.fromCircle(
       center: Offset(size.width / 2, 0),

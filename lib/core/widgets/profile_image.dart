@@ -16,11 +16,11 @@ class ProfileImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width * imageWidth / 412,
-      height: height * imageHeight / 890,
+      height: width * imageWidth / 412,
       decoration: BoxDecoration(
         border: Border.all(color: Constants.lightPrimaryColor, width: borderThick),
         shape: BoxShape.circle,
-        image: DecorationImage(image: AssetImage(Assets.imagesProfileImage), fit: BoxFit.fill),
+        image: DecorationImage(image: AssetImage(Assets.imagesProfileImage), fit: BoxFit.contain),
       ),
     );
   }

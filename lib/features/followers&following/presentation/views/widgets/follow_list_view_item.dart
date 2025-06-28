@@ -1,46 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/core/utils/constants.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 
-class FollowListViewItem extends StatefulWidget {
+class FollowListViewItem extends StatelessWidget {
   const FollowListViewItem({super.key});
 
-  @override
-  State<FollowListViewItem> createState() => _FollowListViewItemState();
-}
-
-class _FollowListViewItemState extends State<FollowListViewItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.grey,
-            backgroundImage: NetworkImage(
-              'https://plus.unsplash.com/premium_photo-1663054688278-ebf09d654d33?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdpcmwlMjBmYWNlfGVufDB8fDB8fHww',
-            ),
-
-            //https://plus.unsplash.com/premium_photo-1668895511243-1696733f4fcb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z2lybCUyMGZhY2V8ZW58MHx8MHx8fDA%3D
+            backgroundImage: AssetImage(Assets.imagesProfileImage),
           ),
           SizedBox(width: 5),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
                 'Saly Karim',
                 style: AppTextStyle.cairoRegular18.copyWith(height: 1),
               ),
-              Text('Teacher', style: AppTextStyle.cairoRegular14),
+              Text(
+                'Teacher',
+                style: AppTextStyle.cairoRegular14.copyWith(
+                  color: Constants.darkSecondryColor,
+                ),
+              ),
             ],
           ),
           Spacer(),
           SvgPicture.asset(
             Assets.iconsDots,
-            color: const Color.fromARGB(255, 41, 41, 41),
+            color: Constants.darkSecondryColor,
           ),
         ],
       ),

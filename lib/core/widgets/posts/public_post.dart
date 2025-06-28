@@ -22,6 +22,7 @@ class PublicPost extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
+      fit: StackFit.loose,
       children: [
         Container(
           width: double.infinity,
@@ -82,7 +83,7 @@ class PublicPost extends StatelessWidget {
                     ),
                   ],
                 ),
-                // SizedBox(height: 200),
+                SizedBox(height: 200),
                 Divider(color: Constants.deviderColor, thickness: 1),
                 Row(
                   children: [
