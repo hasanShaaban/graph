@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
@@ -86,7 +85,7 @@ class ProfileViewBody extends StatelessWidget {
                 PublicPost(lang: lang, width: width, height: height),
                 SizedBox(height: 25),
                 Divider(thickness: 1, color: Constants.deviderColor),
-                GoUpButton(scrollController: scrollController, lang: lang,),
+                GoUpButton(scrollController: scrollController, lang: lang),
               ],
             ),
           ),
@@ -95,4 +94,3 @@ class ProfileViewBody extends StatelessWidget {
     );
   }
 }
-

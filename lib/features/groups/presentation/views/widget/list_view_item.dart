@@ -1,11 +1,12 @@
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
+import 'package:graph/core/widgets/tech_tool_container.dart';
 
 class ListViewItem extends StatelessWidget {
-  const ListViewItem({super.key});
+  const ListViewItem({super.key, required this.height, required this.width});
+  final double height, width;
 
   @override
   Widget build(BuildContext context) {
@@ -13,43 +14,51 @@ class ListViewItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         children: [
-      
           Container(
-            width: 70,
-            height: 70,
+            width: width * 65 / 412,
+            height: width * 65 / 412,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Constants.secondryColor, width: 2),
+              border: Border.all(color: Constants.primaryColor, width: 2),
             ),
             child: CircleAvatar(
               radius: 30,
               backgroundColor: Colors.grey,
-              backgroundImage: NetworkImage(
-                'https://plus.unsplash.com/premium_photo-1663054688278-ebf09d654d33?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdpcmwlMjBmYWNlfGVufDB8fDB8fHww',
-              ),
+              backgroundImage: AssetImage(Assets.imagesProfileImage),
             ),
           ),
 
-          SizedBox(width: 6),
+          SizedBox(width: 5),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Ahmad Ali',
-                style: AppTextStyle.cairoRegular18.copyWith(height: 1.3),
+                style: AppTextStyle.cairoSemiBold18.copyWith(height: 0.8),
               ),
               Text(
                 '4th Year - Software Engineering',
-                style: AppTextStyle.cairoRegular14.copyWith(height: 1.3),
+                style: AppTextStyle.cairoRegular14.copyWith(
+                  color: Constants.darkSecondryColor,
+                  height: 1,
+                ),
               ),
               Text(
                 'mobile developer + UI-UX',
-                style: AppTextStyle.cairoRegular14,
+                style: AppTextStyle.cairoRegular14.copyWith(
+                  color: Constants.darkSecondryColor,
+                  height: 1.3,
+                ),
               ),
             ],
           ),
           Spacer(),
-          Icon(FontAwesomeIcons.flutter),
+          TechToolContainer(
+            width: 40,
+            height: 40,
+            color: Constants.lightSecondryColor,
+            icon: Assets.imagesFlutter,
+          ),
         ],
       ),
     );

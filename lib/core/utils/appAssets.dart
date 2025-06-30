@@ -190,6 +190,10 @@ class Assets {
   /// assets/icons/star_rate.svg
   static const String iconsStarRate = "assets/icons/star_rate.svg";
 
+  /// Assets for iconsStarRateBoder
+  /// assets/icons/star_rate_boder.svg
+  static const String iconsStarRateBoder = "assets/icons/star_rate_boder.svg";
+
   /// Assets for iconsTerminal
   /// assets/icons/terminal.svg
   static const String iconsTerminal = "assets/icons/terminal.svg";

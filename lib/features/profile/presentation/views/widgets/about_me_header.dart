@@ -21,13 +21,23 @@ class AboutMeHeader extends StatelessWidget {
             color: Constants.darkSecondryColor,
           ),
         ),
-        TextButton(
-          onPressed: () {},
-          child: Row(
-            children: [
-              Text(lang.editProfile, style: AppTextStyle.cairoRegular14),
-              SvgPicture.asset(Assets.iconsUserPen),
-            ],
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            splashColor: Constants.primaryColor.withOpacity(0.4),
+            onTap: () {},
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  lang.editProfile,
+                  style: AppTextStyle.cairoRegular14.copyWith(
+                    color: Constants.primaryColor,
+                  ),
+                ),
+                SvgPicture.asset(Assets.iconsUserPen),
+              ],
+            ),
           ),
         ),
       ],

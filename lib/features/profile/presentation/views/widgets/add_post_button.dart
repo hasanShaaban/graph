@@ -25,7 +25,7 @@ class AddPostButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(Assets.iconsAdd),
+            SvgPicture.asset(Assets.iconsAdd, width: 16,),
             SizedBox(width: 5),
             Text(lang.addPost, style: AppTextStyle.cairoRegular14.copyWith(color: Constants.lightPrimaryColor),),
           ],

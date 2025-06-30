@@ -20,11 +20,12 @@ class GroupProfileListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height * 140 / 890,
+      height: height * 130 / 890 - 16,
       width: width,
       child: ListView.builder(
         itemCount: 6,
         scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
         itemBuilder:
             (context, index) => Padding(
               padding: EdgeInsets.only(

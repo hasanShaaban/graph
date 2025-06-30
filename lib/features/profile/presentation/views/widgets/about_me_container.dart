@@ -40,13 +40,26 @@ class AboutMeContainer extends StatelessWidget {
               Assets.iconsGraduationCap,
               '4th year - ${lang.softwareEng}',
             ),
+            SizedBox(height: 5),
             infoRow(Assets.iconsCakeBirthday, 'january-1-1999'),
+            SizedBox(height: 5),
             infoRow(Assets.iconsTerminal, lang.techTools),
-            TechToolsListView(lang: lang, width: double.infinity, iconSize: 48, listPadding: 10, borderRadius: 14,),
+            TechToolsListView(
+              lang: lang,
+              width: double.infinity,
+              iconSize: 48,
+              listPadding: 10,
+              borderRadius: 14,
+            ),
+            SizedBox(height: 5),
             infoRow(Assets.iconsLink, lang.socialLinks),
             SocilaLinksListView(lang: lang),
+            SizedBox(height: 5),
             infoRow(Assets.iconsCv, lang.mySV),
-            TextButton(onPressed: () {}, child: Text(lang.tapToPreviewTheDocument)) 
+            TextButton(
+              onPressed: () {},
+              child: Text(lang.tapToPreviewTheDocument),
+            ),
           ],
         ),
       ),
@@ -59,5 +72,3 @@ class AboutMeContainer extends StatelessWidget {
     );
   }
 }
-
-

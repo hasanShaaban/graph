@@ -65,24 +65,27 @@ class FollowersAndFollowingButton extends StatelessWidget {
   final void Function() onTap;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: AppTextStyle.cairoRegular14.copyWith(
-              color: Constants.darkSecondryColor,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Row(
+          children: [
+            Text(
+              title,
+              style: AppTextStyle.cairoRegular14.copyWith(
+                color: Constants.darkSecondryColor,
+              ),
             ),
-          ),
-          SizedBox(width: 5),
-          Text(
-            count,
-            style: AppTextStyle.cairoSemiBold18.copyWith(
-              color: Constants.secondryColor,
+            SizedBox(width: 5),
+            Text(
+              count,
+              style: AppTextStyle.cairoSemiBold18.copyWith(
+                color: Constants.secondryColor,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
