@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/constants.dart';
+import 'package:graph/features/groups/presentation/views/group_management_view.dart';
 
 class GroupManagementButton extends StatelessWidget {
   const GroupManagementButton({
@@ -16,15 +17,17 @@ class GroupManagementButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width * 40/412,
-      height: height * 40/915,
+      width: width * 40 / 412,
+      height: height * 40 / 915,
       decoration: BoxDecoration(
         color: Constants.lightSecondryColor,
         borderRadius: BorderRadius.circular(9),
       ),
       child: IconButton(
         splashRadius: 20,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(GroupManagementView.name);
+        },
         icon: SvgPicture.asset(Assets.iconsLeadManagement),
       ),
     );

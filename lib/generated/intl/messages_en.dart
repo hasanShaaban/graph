@@ -22,9 +22,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "Save": MessageLookupByLibrary.simpleMessage("Save"),
     "aboutMe": MessageLookupByLibrary.simpleMessage("About me"),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+    "addMember": MessageLookupByLibrary.simpleMessage("Add member"),
     "addPost": MessageLookupByLibrary.simpleMessage("Add post"),
+    "advertiseAVacancy": MessageLookupByLibrary.simpleMessage(
+      "Advertise a vacancy",
+    ),
     "ai": MessageLookupByLibrary.simpleMessage("Artificial Intelligence"),
     "almostThere": MessageLookupByLibrary.simpleMessage("Almost there."),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
@@ -52,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile "),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "enterYourRole": MessageLookupByLibrary.simpleMessage("Enter your role"),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "fewDetails": MessageLookupByLibrary.simpleMessage("Just a few details!"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
@@ -65,8 +71,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "getToKnowYou": MessageLookupByLibrary.simpleMessage(
       "Let’s Get to Know You",
     ),
+    "groupAdmin": MessageLookupByLibrary.simpleMessage("Group Admin"),
+    "groupMember": MessageLookupByLibrary.simpleMessage("Group Member"),
+    "groupMembers": MessageLookupByLibrary.simpleMessage("Group Members"),
+    "groupsManagement": MessageLookupByLibrary.simpleMessage(
+      "Groups Management",
+    ),
     "howUsingApp": MessageLookupByLibrary.simpleMessage(
       "How will you be using the app?",
+    ),
+    "ifGroupIsNotCompleted": MessageLookupByLibrary.simpleMessage(
+      "if your group is not completed, you can advertise a vacancy",
     ),
     "info": MessageLookupByLibrary.simpleMessage("Info"),
     "lang": MessageLookupByLibrary.simpleMessage("en"),
@@ -101,6 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Profile pictures help others recognize you.",
     ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "role": MessageLookupByLibrary.simpleMessage("Role"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
     "selectRole": MessageLookupByLibrary.simpleMessage("Select your role"),
@@ -131,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "thisFieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
+    "tools": MessageLookupByLibrary.simpleMessage("Tools"),
     "uploadPicture": MessageLookupByLibrary.simpleMessage(
       "Upload Your Picture",
     ),

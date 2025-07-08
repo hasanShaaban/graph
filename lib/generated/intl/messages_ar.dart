@@ -22,9 +22,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "Save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "aboutMe": MessageLookupByLibrary.simpleMessage("معلوماتي"),
     "activities": MessageLookupByLibrary.simpleMessage("النشاطات"),
+    "addMember": MessageLookupByLibrary.simpleMessage("اضافة عضو"),
     "addPost": MessageLookupByLibrary.simpleMessage("اضافة منشور"),
+    "advertiseAVacancy": MessageLookupByLibrary.simpleMessage(
+      "الاعلان عن شاغر",
+    ),
     "ai": MessageLookupByLibrary.simpleMessage("الذكاء الاصطناعي"),
     "almostThere": MessageLookupByLibrary.simpleMessage("اقتربنا."),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
@@ -50,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "editProfile": MessageLookupByLibrary.simpleMessage("تعديل ملفي الشخصي"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "enterYourRole": MessageLookupByLibrary.simpleMessage("ادخل اختصاصك"),
     "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "fewDetails": MessageLookupByLibrary.simpleMessage("بقيت بعض التفاصيل!"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
@@ -59,7 +65,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "followers": MessageLookupByLibrary.simpleMessage("المتابعون"),
     "following": MessageLookupByLibrary.simpleMessage("من تتابع"),
     "getToKnowYou": MessageLookupByLibrary.simpleMessage("دعنا نتعرف عليك"),
+    "groupAdmin": MessageLookupByLibrary.simpleMessage("مدير المجموعة"),
+    "groupMember": MessageLookupByLibrary.simpleMessage("عضو المجموعة"),
+    "groupMembers": MessageLookupByLibrary.simpleMessage("اعضاء المجموعة"),
+    "groupsManagement": MessageLookupByLibrary.simpleMessage("ادارة المجموعات"),
     "howUsingApp": MessageLookupByLibrary.simpleMessage("كيف ستستخدم التطبيق؟"),
+    "ifGroupIsNotCompleted": MessageLookupByLibrary.simpleMessage(
+      "اذا كان المجموعة غير مكتملة يمكنك الاعلان عن وجود شاغر",
+    ),
     "info": MessageLookupByLibrary.simpleMessage("معلوات"),
     "lang": MessageLookupByLibrary.simpleMessage("ar"),
     "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
@@ -91,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تساعد الصور الآخرين على التعرف عليك.",
     ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "role": MessageLookupByLibrary.simpleMessage("دور"),
     "search": MessageLookupByLibrary.simpleMessage("ابحث"),
     "seeAll": MessageLookupByLibrary.simpleMessage("اظهار الكل"),
     "selectRole": MessageLookupByLibrary.simpleMessage("اختر دورك"),
@@ -115,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "thisFieldRequired": MessageLookupByLibrary.simpleMessage(
       "هذا الحقل مطلوب",
     ),
+    "tools": MessageLookupByLibrary.simpleMessage("ادوات"),
     "uploadPicture": MessageLookupByLibrary.simpleMessage("ارفع صورتك الشخصية"),
     "viewProfile": MessageLookupByLibrary.simpleMessage("زيارة"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),

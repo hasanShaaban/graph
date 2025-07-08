@@ -73,5 +73,16 @@
   "viewProfile":"زيارة",
   "follow":"متابعة",
   "message":"مراسلة",
-  "tapToReturntoTheTop":"انقر للعودة الى الاعلى"
+  "tapToReturntoTheTop":"انقر للعودة الى الاعلى",
+  "groupsManagement":"ادارة المجموعات",
+  "groupMember":"عضو المجموعة",
+  "groupMembers":"اعضاء المجموعة",
+  "groupAdmin":"مدير المجموعة",
+  "role":"دور",
+  "tools":"ادوات",
+  "addMember":"اضافة عضو",
+  "Save":"حفظ",
+  "ifGroupIsNotCompleted":"اذا كان المجموعة غير مكتملة يمكنك الاعلان عن وجود شاغر",
+  "advertiseAVacancy":"الاعلان عن شاغر",
+    "enterYourRole":"ادخل اختصاصك"
 }

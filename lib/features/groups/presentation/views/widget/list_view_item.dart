@@ -3,6 +3,7 @@ import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/tech_tool_container.dart';
+import 'package:graph/features/groups/presentation/views/widget/personal_info_column.dart';
 
 class ListViewItem extends StatelessWidget {
   const ListViewItem({super.key, required this.height, required this.width});
@@ -32,17 +33,7 @@ class ListViewItem extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Ahmad Ali',
-                style: AppTextStyle.cairoSemiBold18.copyWith(height: 0.8),
-              ),
-              Text(
-                '4th Year - Software Engineering',
-                style: AppTextStyle.cairoRegular14.copyWith(
-                  color: Constants.darkSecondryColor,
-                  height: 1,
-                ),
-              ),
+              PesronalInfoColumn(),
               Text(
                 'mobile developer + UI-UX',
                 style: AppTextStyle.cairoRegular14.copyWith(
@@ -64,3 +55,4 @@ class ListViewItem extends StatelessWidget {
     );
   }
 }
+

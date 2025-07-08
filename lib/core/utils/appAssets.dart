@@ -170,6 +170,10 @@ class Assets {
   /// assets/icons/react_love.svg
   static const String iconsReactLove = "assets/icons/react_love.svg";
 
+  /// Assets for iconsRemove
+  /// assets/icons/remove.svg
+  static const String iconsRemove = "assets/icons/remove.svg";
+
   /// Assets for iconsSearch
   /// assets/icons/search.svg
   static const String iconsSearch = "assets/icons/search.svg";
@@ -197,6 +201,10 @@ class Assets {
   /// Assets for iconsTerminal
   /// assets/icons/terminal.svg
   static const String iconsTerminal = "assets/icons/terminal.svg";
+
+  /// Assets for iconsTrash
+  /// assets/icons/trash.svg
+  static const String iconsTrash = "assets/icons/trash.svg";
 
   /// Assets for iconsUserAdd
   /// assets/icons/user-add.svg

@@ -623,6 +623,91 @@ class S {
       args: [],
     );
   }
+
+  /// `Groups Management`
+  String get groupsManagement {
+    return Intl.message(
+      'Groups Management',
+      name: 'groupsManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Group Member`
+  String get groupMember {
+    return Intl.message(
+      'Group Member',
+      name: 'groupMember',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Group Members`
+  String get groupMembers {
+    return Intl.message(
+      'Group Members',
+      name: 'groupMembers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Group Admin`
+  String get groupAdmin {
+    return Intl.message('Group Admin', name: 'groupAdmin', desc: '', args: []);
+  }
+
+  /// `Role`
+  String get role {
+    return Intl.message('Role', name: 'role', desc: '', args: []);
+  }
+
+  /// `Tools`
+  String get tools {
+    return Intl.message('Tools', name: 'tools', desc: '', args: []);
+  }
+
+  /// `Add member`
+  String get addMember {
+    return Intl.message('Add member', name: 'addMember', desc: '', args: []);
+  }
+
+  /// `Save`
+  String get Save {
+    return Intl.message('Save', name: 'Save', desc: '', args: []);
+  }
+
+  /// `if your group is not completed, you can advertise a vacancy`
+  String get ifGroupIsNotCompleted {
+    return Intl.message(
+      'if your group is not completed, you can advertise a vacancy',
+      name: 'ifGroupIsNotCompleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advertise a vacancy`
+  String get advertiseAVacancy {
+    return Intl.message(
+      'Advertise a vacancy',
+      name: 'advertiseAVacancy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your role`
+  String get enterYourRole {
+    return Intl.message(
+      'Enter your role',
+      name: 'enterYourRole',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

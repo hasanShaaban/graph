@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
+import 'package:graph/features/groups/presentation/views/group_management_view.dart';
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
 
@@ -62,10 +63,16 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         builder: (context) => const SignupProfilePictureSection(),
       );
     case FollowView.name:
-    final args = settings.arguments as Map<String, dynamic>;
-      return MaterialPageRoute(builder: (context) => FollowView(type: args['type'],));
+      final args = settings.arguments as Map<String, dynamic>;
+      return MaterialPageRoute(
+        builder: (context) => FollowView(type: args['type']),
+      );
     case MyGroupView.name:
       return MaterialPageRoute(builder: (context) => const MyGroupView());
+    case GroupManagementView.name:
+      return MaterialPageRoute(
+        builder: (context) => const GroupManagementView(),
+      );
     case ProfileView.name:
       return MaterialPageRoute(builder: (context) => const ProfileView());
 

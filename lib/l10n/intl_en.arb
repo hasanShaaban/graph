@@ -73,6 +73,18 @@
   "viewProfile":"View Profile",
   "follow":"Follow",
   "message":"Message",
-  "tapToReturntoTheTop":"Tap to return to the top"
+  "tapToReturntoTheTop":"Tap to return to the top",
+  "groupsManagement":"Groups Management",
+  "groupMember":"Group Member",
+  "groupMembers":"Group Members",
+  "groupAdmin":"Group Admin",
+  "role":"Role",
+  "tools":"Tools",
+  "addMember":"Add member",
+  "Save":"Save",
+  "ifGroupIsNotCompleted":"if your group is not completed, you can advertise a vacancy",
+  "advertiseAVacancy":"Advertise a vacancy",
+  "enterYourRole":"Enter your role"
+
 
 }
