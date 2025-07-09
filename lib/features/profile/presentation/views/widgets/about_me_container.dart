@@ -1,3 +1,4 @@
+import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
@@ -57,7 +58,9 @@ class AboutMeContainer extends StatelessWidget {
             SizedBox(height: 5),
             infoRow(Assets.iconsCv, lang.mySV),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, CVPDF.name);
+              },
               child: Text(lang.tapToPreviewTheDocument),
             ),
           ],
@@ -69,6 +72,47 @@ class AboutMeContainer extends StatelessWidget {
   Row infoRow(String icon, String data) {
     return Row(
       children: [SvgPicture.asset(icon), SizedBox(width: 10), Text(data)],
+    );
+  }
+}
+
+class CVPDF extends StatefulWidget {
+  const CVPDF({super.key});
+  static const name = 'CVPDF';
+  @override
+  State<CVPDF> createState() => _CVPDFState();
+}
+
+class _CVPDFState extends State<CVPDF> {
+  bool _isLoading = true;
+  late PDFDocument document;
+  @override
+  void initState() {
+    super.initState();
+    loadDocument();
+  }
+
+  loadDocument() async {
+    document = await PDFDocument.fromAsset('assets/temp/13769.pdf');
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child:
+            _isLoading
+                ? CircularProgressIndicator()
+                : PDFViewer(
+                  document: document,
+                  lazyLoad: false,
+                  zoomSteps: 1,
+                  numberPickerConfirmWidget: const Text("Confirm"),
+                ),
+      ),
     );
   }
 }

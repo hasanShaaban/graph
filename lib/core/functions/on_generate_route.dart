@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
 import 'package:graph/features/groups/presentation/views/group_management_view.dart';
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
+import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import 'package:graph/features/profile/presentation/views/widgets/about_me_container.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
@@ -75,7 +77,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case ProfileView.name:
       return MaterialPageRoute(builder: (context) => const ProfileView());
-
+    case CVPDF.name:
+      return MaterialPageRoute(builder: (context) => const CVPDF());
+    case EditProfileView.name:
+      return MaterialPageRoute(builder: (context) => const EditProfileView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

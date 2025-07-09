@@ -33,6 +33,7 @@ dependencies:
   dartz: ^0.10.1
   dio: ^5.8.0+1
   dots_indicator: ^4.0.1
+  easy_pdf_viewer: ^1.0.8
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
@@ -70,6 +71,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/temp/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
