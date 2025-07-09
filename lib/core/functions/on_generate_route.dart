@@ -4,7 +4,7 @@ import 'package:graph/features/groups/presentation/views/group_management_view.d
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
 import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
-import 'package:graph/features/profile/presentation/views/widgets/about_me_container.dart';
+import 'package:graph/features/profile/presentation/views/widgets/cvpdf.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';

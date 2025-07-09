@@ -6,11 +6,13 @@ class ProfileImage extends StatelessWidget {
     super.key,
     required this.width,
     required this.height, required this.imageWidth, required this.imageHeight, required this.borderThick,
+    this.borderColor = Constants.lightPrimaryColor,
   });
 
 
   final double width, imageWidth;
   final double height, imageHeight, borderThick;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ProfileImage extends StatelessWidget {
       width: width * imageWidth / 412,
       height: width * imageWidth / 412,
       decoration: BoxDecoration(
-        border: Border.all(color: Constants.lightPrimaryColor, width: borderThick),
+        border: Border.all(color: borderColor!, width: borderThick),
         shape: BoxShape.circle,
         image: DecorationImage(image: AssetImage(Assets.imagesProfileImage), fit: BoxFit.contain),
       ),

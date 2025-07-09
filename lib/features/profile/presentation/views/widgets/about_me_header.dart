@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
+import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:graph/generated/l10n.dart';
 
 class AboutMeHeader extends StatelessWidget {
@@ -25,7 +26,9 @@ class AboutMeHeader extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             splashColor: Constants.primaryColor.withOpacity(0.4),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, EditProfileView.name);
+            },
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
