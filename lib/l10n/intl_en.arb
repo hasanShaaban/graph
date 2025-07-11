@@ -59,9 +59,12 @@
   "teamRate": "Team Rate",
   "lang":"en",
   "thisFieldRequired": "This field is required",
-  
 "groupsManagement":"Groups management",
 "pleasePickGender": "Please, pick your gender!",
 "pleaseSelectRole":"Plese, Select Your role!",
-"pleaseSelectSpacialization": "Please, Select your specialization!"
+"pleaseSelectSpacialization": "Please, Select your specialization!",
+"fourDigitsCode": "we have sent you a four_digits verification code to your email :",
+"codeVerification": "check your email inbox and inter the code :",
+"addFinalTouches" : "Add the final touches",
+"findYouFriends": "Let’s find you some frineds"
 }

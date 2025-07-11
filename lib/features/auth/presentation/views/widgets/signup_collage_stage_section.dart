@@ -16,7 +16,7 @@ import 'custom_text.dart';
 import 'spacialization_section.dart';
 
 class SignupCollageStageSection extends StatefulWidget {
-  SignupCollageStageSection({super.key});
+  const SignupCollageStageSection({super.key});
   static const name = 'collageStage';
 
   @override
@@ -67,7 +67,7 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                   children: [
                     CustomText(text: lang.collageStage),
                     Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Text(
                         lang.customizeFeatures,
                         style: AppTextStyle.cairoRegular14.copyWith(
@@ -88,7 +88,6 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                           setState(() {
                             selectVal = value;
                             selectedYearId = studyYear!.indexOf(value) + 1;
-                         
                           });
                         },
                         width: 300,
@@ -113,7 +112,6 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                                   SnackBar(content: Text(lang.selectYear)),
                                 );
                               } else {
-                             
                                 Navigator.pushReplacementNamed(
                                   context,
                                   SignupProfilePictureSection.name,

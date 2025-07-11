@@ -6,7 +6,8 @@ class GroupManagementDropDown extends StatefulWidget {
   const GroupManagementDropDown({super.key});
 
   @override
-  State<GroupManagementDropDown> createState() => _GroupManagementDropDownState();
+  State<GroupManagementDropDown> createState() =>
+      _GroupManagementDropDownState();
 }
 
 class _GroupManagementDropDownState extends State<GroupManagementDropDown> {
@@ -29,7 +30,7 @@ class _GroupManagementDropDownState extends State<GroupManagementDropDown> {
               selectedYear = val;
             });
           },
-          width: 120,
+          width: MediaQuery.of(context).size.width * 120 / 412,
           height: 36,
           iconPadding: 10,
         ),
@@ -43,11 +44,10 @@ class _GroupManagementDropDownState extends State<GroupManagementDropDown> {
               selectedSubject = val;
             });
           },
-          width: 120,
+          width: MediaQuery.of(context).size.width * 120 / 412,
           height: 36,
           iconPadding: 10,
         ),
-       
       ],
     );
   }

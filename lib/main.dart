@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:graph/features/groups/presentation/views/groups_management_view.dart';
+import 'package:graph/features/setting/presentation/views/settings_view.dart';
+import 'features/auth/presentation/views/widgets/signup_final_touches_sec.dart';
+import 'features/auth/presentation/views/widgets/signup_verification_section.dart';
+import 'features/splash/presentation/views/splash_view.dart';
 import 'bloc_providers.dart';
 import 'core/services/providers/user_info_provider.dart';
-import 'features/splash/presentation/views/splash_view.dart';
 import 'core/services/providers/local_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -59,8 +63,8 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerateRoute,
-        initialRoute: SplashView.name,
-        // initialRoute: GroupsManagementView.name,
+      //  initialRoute: SplashView.name,
+         initialRoute: GroupsManagementView.name,
       ),
     );
   }

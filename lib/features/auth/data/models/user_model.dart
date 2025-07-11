@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import '../../domain/Entity/user_entity.dart';
 
 class UserModel extends UserEntity {

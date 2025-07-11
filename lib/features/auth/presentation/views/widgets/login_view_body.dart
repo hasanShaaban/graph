@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../data/models/signup_data_model.dart';
+import '../../manager/cubit/login_cubit.dart';
+import '../../../../follow/presentation/views/followers_view.dart';
 import '../../../../../generated/l10n.dart';
-
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../sign_up_view.dart';
@@ -20,6 +23,22 @@ class LoginViewBody extends StatefulWidget {
 class _LoginViewBodyState extends State<LoginViewBody> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late SignupDataModel signupData;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args == null || args is! SignupDataModel) {
+      signupData = SignupDataModel(email: '', password: '');
+    } else {
+      signupData = args;
+    }
+  }
+
+  String email = '';
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
     final lang = S.of(context);
@@ -38,24 +57,56 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
               SizedBox(height: 60),
               CustomTextField(
+                onSaved: (value) => email = value!.trim(),
                 hintText: lang.email,
                 prefixIcon: Assets.iconsEnvelope,
                 textInputType: TextInputType.emailAddress,
               ),
               SizedBox(height: 25),
-              CustomPasswordField(),
+              CustomPasswordField(onSaved: (value) => password = value!.trim()),
               SizedBox(height: 25),
               RemeberMeSection(),
               SizedBox(height: 20),
-              AuthButton(
-                title: lang.login,
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
+              BlocConsumer<LoginCubit, LoginState>(
+                listener: (context, state) {
+                  if (state is LoginSuccess) {
+                    final token = state.response['token'];
+                    final message = state.response['message'];
+                
+                    Navigator.pushReplacementNamed(
+                      context,
+                      FollowersView.name,
+                      arguments: signupData,
+                    );
+                  } else if (state is LoginFailuer) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text(state.errorMessage),
+                      ),
+                    );
                   }
+                },
+                builder: (context, state) {
+                  // if (state is LoginLoading) {
+                  //   return Center(child: CircularProgressIndicator());
+                  // }
+                  return AuthButton(
+                    title: lang.login,
+                    isLoading: state is LoginLoading,
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+
+                        final cubit = context.read<LoginCubit>();
+
+                        cubit.login(email: email, password: password);
+                      } else {
+                        autovalidateMode = AutovalidateMode.always;
+                        setState(() {});
+                      }
+                    },
+                  );
                 },
               ),
               SizedBox(height: 25),

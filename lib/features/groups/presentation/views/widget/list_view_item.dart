@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 
@@ -14,21 +15,7 @@ class ListViewItem extends StatelessWidget {
       child: Row(
         children: [
       
-          Container(
-            width: 70,
-            height: 70,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Constants.secondryColor, width: 2),
-            ),
-            child: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.grey,
-              backgroundImage: NetworkImage(
-                'https://plus.unsplash.com/premium_photo-1663054688278-ebf09d654d33?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdpcmwlMjBmYWNlfGVufDB8fDB8fHww',
-              ),
-            ),
-          ),
+          CustomCircleContainer(),
 
           SizedBox(width: 6),
           Column(
@@ -51,6 +38,31 @@ class ListViewItem extends StatelessWidget {
           Spacer(),
           Icon(FontAwesomeIcons.flutter),
         ],
+      ),
+    );
+  }
+}
+
+class CustomCircleContainer extends StatelessWidget {
+  const CustomCircleContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 70,
+      height: 70,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: Constants.secondryColor, width: 2),
+      ),
+      child: CircleAvatar(
+        radius: 30,
+        backgroundColor: Colors.grey,
+        backgroundImage: NetworkImage(
+          'https://plus.unsplash.com/premium_photo-1663054688278-ebf09d654d33?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdpcmwlMjBmYWNlfGVufDB8fDB8fHww',
+        ),
       ),
     );
   }

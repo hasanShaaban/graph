@@ -209,5 +209,8 @@ class Assets {
   /// Assets for imagesOnboarding3
   /// assets/images/onboarding3.json
   static const String imagesOnboarding3 = "assets/images/onboarding3.json";
+
+
+  
 }
 

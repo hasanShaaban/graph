@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addFinalTouches": MessageLookupByLibrary.simpleMessage(
+      "ضع اللمسات الاخيرة ",
+    ),
     "ai": MessageLookupByLibrary.simpleMessage("الذكاء الاصطناعي"),
     "almostThere": MessageLookupByLibrary.simpleMessage("اقتربنا."),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
@@ -29,6 +32,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "begin": MessageLookupByLibrary.simpleMessage("بدء"),
     "birthday": MessageLookupByLibrary.simpleMessage("ما هو تاريخ ميلادك؟"),
+    "codeVerification": MessageLookupByLibrary.simpleMessage(
+      "تحقق من صندوق بريدك الإلكتروني وأدخل رمز التحقق",
+    ),
     "collageStage": MessageLookupByLibrary.simpleMessage(
       "دعنا نتعرف على مرحلتك الجامعية.",
     ),
@@ -48,10 +54,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "fewDetails": MessageLookupByLibrary.simpleMessage("بقيت بعض التفاصيل!"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
+    "findYouFriends": MessageLookupByLibrary.simpleMessage(
+      "دعنا نجد لك بعض الاصدقاء",
+    ),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
     "follower": MessageLookupByLibrary.simpleMessage("متابع"),
     "followers": MessageLookupByLibrary.simpleMessage("المتابعون"),
     "following": MessageLookupByLibrary.simpleMessage("من تتابع"),
+    "fourDigitsCode": MessageLookupByLibrary.simpleMessage(
+      ": لقد أرسلنا رمز التحقق المكون من أربعة أرقام إلى بريدك الإلكتروني",
+    ),
     "getToKnowYou": MessageLookupByLibrary.simpleMessage("دعنا نتعرف عليك"),
     "groupsManagement": MessageLookupByLibrary.simpleMessage("ادارة الفرق"),
     "howUsingApp": MessageLookupByLibrary.simpleMessage("كيف ستستخدم التطبيق؟"),

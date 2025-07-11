@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'following_view.dart';
+import 'package:shimmer/shimmer.dart';
 
+import '../../../../generated/l10n.dart';
+import 'following_view.dart';
+import 'widgets/custom_app_bar.dart';
 import 'widgets/custom_search_text_feild.dart';
 import 'widgets/follow_list_view_item.dart';
 import 'widgets/follow_number_section.dart';
-import '../../../../generated/l10n.dart';
-import 'package:shimmer/shimmer.dart';
-
-import 'widgets/custom_app_bar.dart';
 
 class FollowersView extends StatefulWidget {
   const FollowersView({super.key});

@@ -1,28 +1,17 @@
-
-
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/services/providers/user_info_provider.dart';
+import 'signup_verification_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../../data/models/user_model.dart';
 import '../../manager/signup_cubit/signup_cubit.dart';
 import 'auth_app_bar.dart';
-import '../../../../../generated/intl/messages_ar.dart';
-import 'package:provider/provider.dart';
-import '../../../../follow/presentation/views/followers_view.dart';
 import '../../../../../generated/l10n.dart';
-
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-
 import 'custom_text.dart';
 import 'next_button.dart';
-import 'signup_path_section.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 
@@ -43,7 +32,15 @@ class _SignupProfilePictureSectionState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    signupData = ModalRoute.of(context)!.settings.arguments as SignupDataModel;
+    final args = ModalRoute.of(context)?.settings.arguments;
+
+    if (args != null && args is SignupDataModel) {
+      signupData = args;
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pop(context); // لتجنب كسر التطبيق عند Hot Restart
+      });
+    }
   }
 
   @override
@@ -67,7 +64,7 @@ class _SignupProfilePictureSectionState
                 children: [
                   CustomText(text: lang.uploadPicture),
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.center,
                     child: Text(
                       lang.pictureHelp,
                       style: AppTextStyle.cairoRegular14.copyWith(
@@ -86,7 +83,11 @@ class _SignupProfilePictureSectionState
                           children: [
                             Container(
                               width: 220,
+                              // MediaQuery.of(context).size.width *
+                              // (220 / 412),
                               height: 220,
+                              // MediaQuery.of(context).size.height *
+                              // (220 / 892),
                               decoration: BoxDecoration(shape: BoxShape.circle),
                               child: ClipOval(
                                 child: Image.file(
@@ -178,29 +179,32 @@ class _SignupProfilePictureSectionState
               if (state is SignupSuccess) {
                 final token = state.response['token'];
                 final message = state.response['message'];
-                Navigator.pushNamed(context, FollowersView.name);
+                Navigator.pushNamed(
+                  context,
+                  SignupVerificationSection.name,
+                  arguments: signupData,
+                );
               } else if (state is SignupFailuer) {
-               
                 ScaffoldMessenger.of(
                   context,
                 ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
               }
             },
             builder: (context, state) {
-              if (state is SignupLoading) {
-                return Center(child: CircularProgressIndicator());
-              }
+              // if (state is SignupLoading) {
+              //   return Center(child: CircularProgressIndicator());
+              // }
               return NextButton(
                 title: lang.submit,
-
+                isLoading: state is SignupLoading,
                 onPressed: () {
-                  String? imageBase64;
-                  if (selectedImage != null) {
-                    final bytes = selectedImage!.readAsBytes();
-                    imageBase64 = base64Encode(bytes as List<int>);
-                  } else {
-                    imageBase64 = ''; // أو "" حسب الحاجة
-                  }
+                  // String? imageBase64;
+                  // if (selectedImage != null) {
+                  //   final bytes = selectedImage!.readAsBytes();
+                  //   imageBase64 = base64Encode(bytes as List<int>);
+                  // } else {
+                  //   imageBase64 = ''; // أو "" حسب الحاجة
+                  // }
                   print('email: ${signupData.email}');
                   print('birthDate: ${signupData.birthDate}');
                   print('password: ${signupData.password}');
@@ -215,15 +219,13 @@ class _SignupProfilePictureSectionState
                     lastName: signupData.lastName!,
                     email: signupData.email,
                     passWord: signupData.password,
-                    confirmPassword: signupData.confirmPassword,
+                    confirmPassword: signupData.confirmPassword!,
                     dateOfBirht: signupData.birthDate!,
                     gender: signupData.gender!,
                     studyYear: int.tryParse(signupData.studyYear!) ?? 0,
                     spacialization:
                         int.tryParse(signupData.specialization ?? '') ?? 0,
                   );
-
-            
 
                   final cubit = context.read<SignupCubit>();
 

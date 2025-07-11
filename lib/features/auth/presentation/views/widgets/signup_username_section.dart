@@ -1,15 +1,14 @@
 
 
 import 'package:flutter/material.dart';
+
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/signup_data_model.dart';
-import 'package:provider/provider.dart';
 import 'auth_app_bar.dart';
 import 'custom_text.dart';
-import 'user_name_text_field.dart';
-import '../../../../../core/services/providers/user_info_provider.dart';
-import '../../../../../generated/l10n.dart';
 import 'next_button.dart';
 import 'signup_birthday_gender.dart';
+import 'user_name_text_field.dart';
 
 class SignupUsernameSection extends StatefulWidget {
   const SignupUsernameSection({super.key});

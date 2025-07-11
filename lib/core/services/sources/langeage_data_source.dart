@@ -1,5 +1,5 @@
-import '../local_data_base/local_data_base_service.dart';
 import '../../utils/hive_boxes.dart';
+import '../local_data_base/local_data_base_service.dart';
 
 class LangeageDataSource {
   final LocalDataBaseService localDataBaseService;

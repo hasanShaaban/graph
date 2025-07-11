@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_find_friends.dart';
+import 'package:graph/features/setting/presentation/views/settings_view.dart';
+import '../../features/auth/presentation/views/widgets/signup_final_touches_sec.dart';
+import '../../features/auth/presentation/views/widgets/signup_verification_section.dart';
 import '../../features/groups/presentation/views/groups_management_view.dart';
 import '../../features/groups/presentation/views/my_group_view.dart';
 
@@ -69,6 +73,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         builder: (context) => const SignupProfilePictureSection(),
         settings: settings,
       );
+    case SignupVerificationSection.name:
+      return MaterialPageRoute(
+        builder: (context) => const SignupVerificationSection(),
+        settings: settings,
+      );
     case FollowersView.name:
       return MaterialPageRoute(builder: (context) => const FollowersView());
     case FollowingView.name:
@@ -76,10 +85,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case MyGroupView.name:
       return MaterialPageRoute(builder: (context) => const MyGroupView());
     case GroupsManagementView.name:
-      return MaterialPageRoute(
-        builder: (context) => const GroupsManagementView(),
-      );
+      return MaterialPageRoute(builder: (context) => GroupsManagementView());
+    case SignupFinalTouchesSec.name:
+      return MaterialPageRoute(builder: (context) => SignupFinalTouchesSec());
+    case SignupFindFriends.name:
+      return MaterialPageRoute(builder: (context) => SignupFindFriends());
 
+    case SettingsView.name:
+      return MaterialPageRoute(builder: (context) => SettingsView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addFinalTouches": MessageLookupByLibrary.simpleMessage(
+      "Add the final touches",
+    ),
     "ai": MessageLookupByLibrary.simpleMessage("Artificial Intelligence"),
     "almostThere": MessageLookupByLibrary.simpleMessage("Almost there."),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
@@ -29,6 +32,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "begin": MessageLookupByLibrary.simpleMessage("Begin"),
     "birthday": MessageLookupByLibrary.simpleMessage("When\'s your birthday?"),
+    "codeVerification": MessageLookupByLibrary.simpleMessage(
+      "check your email inbox and inter the code :",
+    ),
     "collageStage": MessageLookupByLibrary.simpleMessage(
       "Let\'s get acquainted with your collage stage.",
     ),
@@ -52,10 +58,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
+    "findYouFriends": MessageLookupByLibrary.simpleMessage(
+      "Let’s find you some frineds",
+    ),
     "firstName": MessageLookupByLibrary.simpleMessage("First name"),
     "follower": MessageLookupByLibrary.simpleMessage("Follower"),
     "followers": MessageLookupByLibrary.simpleMessage("Followers"),
     "following": MessageLookupByLibrary.simpleMessage("following"),
+    "fourDigitsCode": MessageLookupByLibrary.simpleMessage(
+      "we have sent you a four_digits verification code to your email :",
+    ),
     "getToKnowYou": MessageLookupByLibrary.simpleMessage(
       "Let’s Get to Know You",
     ),

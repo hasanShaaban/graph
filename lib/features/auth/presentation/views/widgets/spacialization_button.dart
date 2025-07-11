@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/services/providers/user_info_provider.dart';
-import '../../../data/models/signup_data_model.dart';
-import 'package:provider/provider.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';

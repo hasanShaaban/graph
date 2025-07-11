@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -555,6 +554,46 @@ class S {
     return Intl.message(
       'Please, Select your specialization!',
       name: 'pleaseSelectSpacialization',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `we have sent you a four_digits verification code to your email :`
+  String get fourDigitsCode {
+    return Intl.message(
+      'we have sent you a four_digits verification code to your email :',
+      name: 'fourDigitsCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `check your email inbox and inter the code :`
+  String get codeVerification {
+    return Intl.message(
+      'check your email inbox and inter the code :',
+      name: 'codeVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add the final touches`
+  String get addFinalTouches {
+    return Intl.message(
+      'Add the final touches',
+      name: 'addFinalTouches',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let’s find you some frineds`
+  String get findYouFriends {
+    return Intl.message(
+      'Let’s find you some frineds',
+      name: 'findYouFriends',
       desc: '',
       args: [],
     );

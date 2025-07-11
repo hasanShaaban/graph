@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/signup_data_model.dart';
+
 import '../../../../../generated/l10n.dart';
 import 'custom_text.dart';
 import 'gender_button.dart';
@@ -9,7 +9,7 @@ class BirthdayGenderBody extends StatefulWidget {
  
   final FormFieldSetter<String> onBirthDateSaved;
   final FormFieldSetter<String> onGenderSaved;
-  BirthdayGenderBody({
+  const BirthdayGenderBody({
     super.key,
 
     required this.onBirthDateSaved,

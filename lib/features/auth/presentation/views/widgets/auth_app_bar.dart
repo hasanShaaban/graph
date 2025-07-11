@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 
 class AuthAppBar extends StatelessWidget {
-  const AuthAppBar({
+  AuthAppBar({
     super.key,
     required this.text1,
     required this.text2,
     required this.onPressed,
+    this.height,
   });
   final String text1;
   final String text2;
+  double? height;
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * 230 / 890,
+      height: height ?? MediaQuery.of(context).size.height * (230 / 890),
       padding: EdgeInsets.only(left: 22, right: 22, top: 22),
       decoration: BoxDecoration(
         gradient: LinearGradient(

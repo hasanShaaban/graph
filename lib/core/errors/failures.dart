@@ -19,10 +19,14 @@ class ServerFailure extends Failures {
         return ServerFailure('Receive timeout with ApiSever');
       case DioExceptionType.badCertificate:
         return ServerFailure.fromResponse(
-            dioError.response!.statusCode!, dioError.response!.data);
+          dioError.response!.statusCode!,
+          dioError.response!.data,
+        );
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioError.response!.statusCode!, dioError.response!.data);
+          dioError.response!.statusCode!,
+          dioError.response!.data,
+        );
       case DioExceptionType.cancel:
         return ServerFailure('Request to ApiSever was caceld');
       case DioExceptionType.connectionError:
@@ -32,11 +36,23 @@ class ServerFailure extends Failures {
           return ServerFailure('No Internet Connection');
         }
         return ServerFailure('Unexpected Error, Please try later!');
- 
     }
   }
 
   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
+    if (response is Map) {
+      if (response.containsKey('message')) {
+        return ServerFailure(response['message'].toString());
+      }
+      if (response.containsKey('error')) {
+        return ServerFailure(response['error'].toString());
+      }
+      for (var value in response.values) {
+        if (value is List && value.isNotEmpty) {
+          return ServerFailure(value.first.toString());
+        }
+      }
+    }
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailure(response['message']);
     } else if (statusCode == 400) {

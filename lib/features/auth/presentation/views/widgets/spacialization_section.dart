@@ -10,7 +10,7 @@ import 'spacialization_button.dart';
 class SpacializationSection extends StatefulWidget {
   final SignupDataModel signupData;
 
-  SpacializationSection({super.key, required this.signupData});
+  const SpacializationSection({super.key, required this.signupData});
 
   @override
   State<SpacializationSection> createState() => _SpacializationSectionState();

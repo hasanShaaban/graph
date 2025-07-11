@@ -1,7 +1,7 @@
 class SignupDataModel {
   final String email;
   final String password;
-  final String confirmPassword;
+  final String? confirmPassword;
 
   final String? firstName;
   final String? lastName;
@@ -16,7 +16,7 @@ class SignupDataModel {
   SignupDataModel({
     required this.email,
     required this.password,
-    required this.confirmPassword,
+     this.confirmPassword,
     this.firstName,
     this.lastName,
     this.birthDate,

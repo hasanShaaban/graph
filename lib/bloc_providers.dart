@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'features/auth/presentation/manager/cubit/login_cubit.dart';
 import 'core/services/api_service.dart';
 import 'features/auth/data/repos/auth_repo_impl.dart';
 import 'features/auth/domain/repos/auth_repo.dart';
@@ -11,4 +12,5 @@ ApiService apiService = ApiService(Dio());
 final AuthRepo authRepo = AuthRepoImpl(apiService);
 List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => SignupCubit(authRepo)),
+  BlocProvider(create: (context) => LoginCubit(authRepo)),
 ];

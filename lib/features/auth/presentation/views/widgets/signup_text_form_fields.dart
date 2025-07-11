@@ -4,15 +4,13 @@ import '../../../../../core/utils/appAssets.dart';
 import 'custom_text_field.dart';
 
 class SignupTextFormFields extends StatefulWidget {
-  // final TextEditingController emailController;
-  // final TextEditingController passwordController;
-  // final TextEditingController confirmPasswordController;
+
 
   final FormFieldSetter<String> onEmailSaved;
   final FormFieldSetter<String> onPasswordSaved;
   final FormFieldSetter<String> onConfirmPasswordSaved;
 
-  SignupTextFormFields({
+  const SignupTextFormFields({
     super.key,
     required this.onEmailSaved,
     required this.onPasswordSaved,

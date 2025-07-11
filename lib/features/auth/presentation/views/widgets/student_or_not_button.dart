@@ -23,6 +23,7 @@ class StudentOrNotButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final lang = S.of(context);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         GestureDetector(
           onTap: onSelectStudent,

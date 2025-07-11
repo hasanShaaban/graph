@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 
 import '../../../data/models/user_model.dart';
-import '../../../data/repos/auth_repo_impl.dart';
 import '../../../domain/repos/auth_repo.dart';
 import 'package:meta/meta.dart';
 
