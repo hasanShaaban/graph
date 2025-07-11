@@ -8,7 +8,7 @@ import 'package:graph/features/auth/presentation/views/widgets/tech_tools_icon_a
 import 'package:graph/features/groups/presentation/views/widget/groups_managment_body.dart';
 
 import 'package:graph/features/groups/presentation/views/widget/list_view_item.dart';
-import '../../../follow/presentation/views/widgets/custom_app_bar.dart';
+
 
 import '../../../../generated/l10n.dart';
 
@@ -21,7 +21,7 @@ class GroupsManagementView extends StatelessWidget {
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(text1: lang.groupsManagement, onPressed: () {}),
+       // appBar: CustomAppBar(text1: lang.groupsManagement, onPressed: () {}),
         body: GroupsManagementBody(),
       ),
     );

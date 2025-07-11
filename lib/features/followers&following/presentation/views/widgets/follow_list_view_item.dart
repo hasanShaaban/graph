@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-<<<<<<< HEAD:lib/features/follow/presentation/views/widgets/follow_list_view_item.dart
-import 'package:graph/features/follow/presentation/views/widgets/custom_user_list_view.dart';
 
-=======
+
+
+
 import 'package:graph/core/utils/constants.dart';
->>>>>>> 87138231c48297d998c94191550669d2437d0aaf:lib/features/followers&following/presentation/views/widgets/follow_list_view_item.dart
+
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 
@@ -19,10 +19,9 @@ class FollowListViewItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-<<<<<<< HEAD:lib/features/follow/presentation/views/widgets/follow_list_view_item.dart
-          CustomUserListView(),
 
-=======
+// <<<<<<< HEAD:lib/features/follow/presentation/views/widgets/follow_list_view_item.dart
+//           CustomUserListView(),
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.grey,
@@ -45,7 +44,7 @@ class FollowListViewItem extends StatelessWidget {
               ),
             ],
           ),
->>>>>>> 87138231c48297d998c94191550669d2437d0aaf:lib/features/followers&following/presentation/views/widgets/follow_list_view_item.dart
+
           Spacer(),
           SvgPicture.asset(
             Assets.iconsDots,

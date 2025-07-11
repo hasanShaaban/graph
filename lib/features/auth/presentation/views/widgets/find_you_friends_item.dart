@@ -4,16 +4,19 @@ import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/follow/presentation/views/widgets/custom_user_list_view.dart';
+
+import 'package:graph/features/followers&following/presentation/views/widgets/follow_search_text_field.dart';
+import 'package:graph/generated/l10n.dart';
 
 class FindYouFriendsItem extends StatelessWidget {
   const FindYouFriendsItem({super.key});
 
   @override
   Widget build(BuildContext context) {
+        var lang = S.of(context);
     return Row(
       children: [
-        Expanded(child: CustomUserListView()),
+        Expanded(child: FollowSearchTextField(lang: lang,)),
         GestureDetector(
           onTap: () {},
           child: Container(

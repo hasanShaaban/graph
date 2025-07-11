@@ -12,7 +12,6 @@ import 'package:graph/features/setting/presentation/views/settings_view.dart';
 import '../../features/auth/presentation/views/widgets/signup_final_touches_sec.dart';
 import '../../features/auth/presentation/views/widgets/signup_verification_section.dart';
 import '../../features/groups/presentation/views/groups_management_view.dart';
-import '../../features/groups/presentation/views/my_group_view.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
@@ -85,11 +84,18 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         settings: settings,
       );
     case FollowView.name:
-      final args = settings.arguments as Map<String, dynamic>;
-      return MaterialPageRoute(
-        builder: (context) => FollowView(type: args['type']),
-      );
-   
+      final args = settings.arguments;
+      if (args == null || args is! Map<String, dynamic>) {
+        return MaterialPageRoute(
+          builder: (context) => FollowView(type: 'defaultType'),
+        );
+      } else {
+        final Map<String, dynamic> arguments = args;
+        return MaterialPageRoute(
+          builder: (context) => FollowView(type: arguments['type']),
+        );
+      }
+
     case FollowersView.name:
       return MaterialPageRoute(builder: (context) => const FollowersView());
     case FollowingView.name:

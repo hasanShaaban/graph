@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graph/features/auth/presentation/views/widgets/find_you_friends_app_bar.dart';
 import 'package:graph/features/auth/presentation/views/widgets/find_you_friends_list_view.dart';
-import 'package:graph/features/follow/presentation/views/widgets/custom_search_text_feild.dart';
 import 'package:graph/features/follow/presentation/views/widgets/follow_number_section.dart';
+import 'package:graph/features/followers&following/presentation/views/widgets/follow_search_text_field.dart';
 import 'package:graph/generated/l10n.dart';
 
 class SignupFindFriends extends StatelessWidget {
@@ -20,7 +20,7 @@ class SignupFindFriends extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
               child: Column(
                 children: [
-                  CustomSearchTextField(),
+                  FollowSearchTextField(lang: lang,),
                   FollowNumberSection(text: lang.following),
                 ],
               ),

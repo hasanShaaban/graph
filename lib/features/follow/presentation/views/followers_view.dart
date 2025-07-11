@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/followers&following/presentation/views/widgets/follow_list_view_item.dart';
+import 'package:graph/features/followers&following/presentation/views/widgets/follow_search_text_field.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../generated/l10n.dart';
 import 'following_view.dart';
-import 'widgets/custom_app_bar.dart';
-import 'widgets/custom_search_text_feild.dart';
-import 'widgets/follow_list_view_item.dart';
+
 import 'widgets/follow_number_section.dart';
 
 class FollowersView extends StatefulWidget {
@@ -34,17 +34,17 @@ class _FollowersViewState extends State<FollowersView> {
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
-          text1: lang.followers,
-          onPressed: () {
-            Navigator.pushNamed(context, FollowingView.name);
-          },
-        ),
+        // appBar: CustomAppBar(
+        //   text1: lang.followers,
+        //   onPressed: () {
+        //     Navigator.pushNamed(context, FollowingView.name);
+        //   },
+        // ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
-              CustomSearchTextField(),
+              FollowSearchTextField(lang: lang,),
               FollowNumberSection(text: lang.follower),
 
               Expanded(child: isLoaded ? BuildListView() : getShimmerLoading()),

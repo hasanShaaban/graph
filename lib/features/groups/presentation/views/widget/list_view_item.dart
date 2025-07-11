@@ -32,9 +32,8 @@ class ListViewItem extends StatelessWidget {
               backgroundImage: AssetImage(Assets.imagesProfileImage),
             ),
           ),
-      
-          CustomCircleContainer(),
 
+          //CustomCircleContainer(),
           SizedBox(width: 5),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,11 +61,8 @@ class ListViewItem extends StatelessWidget {
   }
 }
 
-
 class CustomCircleContainer extends StatelessWidget {
-  const CustomCircleContainer({
-    super.key,
-  });
+  const CustomCircleContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
