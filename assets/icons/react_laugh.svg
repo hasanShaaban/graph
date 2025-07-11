@@ -1,0 +1,22 @@
+<svg id="Component_11_2" data-name="Component 11 – 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="0.808" x2="0.5" y2="0.478" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#26e3f9"/>
+      <stop offset="1" stop-color="#cdf9fe"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" y1="1.309" x2="0.5" y2="-0.045" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff2e2e"/>
+      <stop offset="1" stop-color="#6b1b1b"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="0.122" y1="0.18" x2="0.863" y2="0.811" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffda60"/>
+      <stop offset="1" stop-color="#ff9334"/>
+    </linearGradient>
+  </defs>
+  <path id="Path_441" data-name="Path 441" d="M12,0A12,12,0,1,1,0,12,12,12,0,0,1,12,0Z" transform="translate(0 0)" fill="url(#linear-gradient)"/>
+  <circle id="Ellipse_132" data-name="Ellipse 132" cx="4" cy="4" r="4" transform="translate(4 5)" fill="#39393a"/>
+  <circle id="Ellipse_133" data-name="Ellipse 133" cx="4" cy="4" r="4" transform="translate(12 5)" fill="#39393a"/>
+  <path id="grin-tears" d="M20.688,16.432C19.93,15.674,19.4,12.4,19.4,12.4s3.277.533,4.035,1.291a1.933,1.933,0,0,1,.358.512,12,12,0,1,0-23.58,0,1.933,1.933,0,0,1,.358-.512c.758-.758,4.06-1.316,4.06-1.316-.274,1.064-.649,5.837-3.655,4.361,4.1,9.632,17.959,9.627,22.054,0A1.935,1.935,0,0,1,20.688,16.432ZM16,7c1.768,0,3,2.108,3,4H17c0-1.054-.68-2-1-2s-1,.946-1,2H13C13,9.108,14.232,7,16,7ZM8,7c1.768,0,3,2.108,3,4H9c0-1.054-.679-2-1-2s-1,.946-1,2H5C5,9.108,6.232,7,8,7Zm4,12c-3.336,0-5.392-2.72-6.007-5a21.841,21.841,0,0,0,6,1A21.923,21.923,0,0,0,18,14C17.385,16.28,15.336,19,12,19Z" transform="translate(-0.008 0)" fill="#ffda60"/>
+  <rect id="Rectangle_234" data-name="Rectangle 234" width="14" height="6" transform="translate(5 13)" fill="url(#linear-gradient-2)"/>
+  <path id="grin-tears-2" data-name="grin-tears" d="M20.688,16.432C19.93,15.674,19.4,12.4,19.4,12.4s3.277.533,4.035,1.291a1.933,1.933,0,0,1,.358.512,12,12,0,1,0-23.58,0,1.933,1.933,0,0,1,.358-.512c.758-.758,4.06-1.316,4.06-1.316-.274,1.064-.649,5.837-3.655,4.361,4.1,9.632,17.959,9.627,22.054,0A1.935,1.935,0,0,1,20.688,16.432ZM16,7c1.768,0,3,2.108,3,4H17c0-1.054-.68-2-1-2s-1,.946-1,2H13C13,9.108,14.232,7,16,7ZM8,7c1.768,0,3,2.108,3,4H9c0-1.054-.679-2-1-2s-1,.946-1,2H5C5,9.108,6.232,7,8,7Zm4,12c-3.336,0-5.392-2.72-6.007-5a21.841,21.841,0,0,0,6,1A21.923,21.923,0,0,0,18,14C17.385,16.28,15.336,19,12,19Z" transform="translate(-0.008 0)" fill="url(#linear-gradient-3)"/>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_99" data-name="Rectangle 99" width="32" height="32" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_50" data-name="Mask Group 50" clip-path="url(#clip-path)">
+    <g id="icons8-figma" transform="translate(5.333 0)">
+      <path id="Path_335" data-name="Path 335" d="M22.952,13.81h-6.1a5.333,5.333,0,0,1-5.333-5.333h0a5.333,5.333,0,0,1,5.333-5.333h6.1Z" transform="translate(-11.524 -3.143)" fill="#e64a19"/>
+      <path id="Path_336" data-name="Path 336" d="M22.19,28.476H16.857a5.333,5.333,0,0,1-5.333-5.333h0a5.333,5.333,0,0,1,5.333-5.333H22.19Z" transform="translate(-11.524 -7.143)" fill="#7c4dff"/>
+      <path id="Path_337" data-name="Path 337" d="M16.857,43.143h0a5.333,5.333,0,0,1-5.333-5.333h0a5.333,5.333,0,0,1,5.333-5.333H22.19V37.81A5.333,5.333,0,0,1,16.857,43.143Z" transform="translate(-11.524 -11.143)" fill="#66bb6a"/>
+      <path id="Path_338" data-name="Path 338" d="M31.524,13.81H26.19V3.143h5.333a5.333,5.333,0,0,1,5.333,5.333h0A5.333,5.333,0,0,1,31.524,13.81Z" transform="translate(-15.524 -3.143)" fill="#ff7043"/>
+      <circle id="Ellipse_63" data-name="Ellipse 63" cx="5.333" cy="5.333" r="5.333" transform="translate(10.667 10.667)" fill="#29b6f6"/>
+    </g>
+  </g>
+</svg>

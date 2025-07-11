@@ -1,12 +1,17 @@
-
 import 'package:flutter/material.dart';
+import 'package:graph/core/utils/appAssets.dart';
+import 'package:graph/core/utils/app_text_style.dart';
+import 'package:graph/core/utils/constants.dart';
+import 'package:graph/core/widgets/tech_tool_container.dart';
+import 'package:graph/features/groups/presentation/views/widget/personal_info_column.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 
 class ListViewItem extends StatelessWidget {
-  const ListViewItem({super.key});
+  const ListViewItem({super.key, required this.height, required this.width});
+  final double height, width;
 
   @override
   Widget build(BuildContext context) {
@@ -14,34 +19,49 @@ class ListViewItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         children: [
+          Container(
+            width: width * 65 / 412,
+            height: width * 65 / 412,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Constants.primaryColor, width: 2),
+            ),
+            child: CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.grey,
+              backgroundImage: AssetImage(Assets.imagesProfileImage),
+            ),
+          ),
       
           CustomCircleContainer(),
 
-          SizedBox(width: 6),
+          SizedBox(width: 5),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Ahmad Ali',
-                style: AppTextStyle.cairoRegular18.copyWith(height: 1.3),
-              ),
-              Text(
-                '4th Year - Software Engineering',
-                style: AppTextStyle.cairoRegular14.copyWith(height: 1.3),
-              ),
+              PesronalInfoColumn(),
               Text(
                 'mobile developer + UI-UX',
-                style: AppTextStyle.cairoRegular14,
+                style: AppTextStyle.cairoRegular14.copyWith(
+                  color: Constants.darkSecondryColor,
+                  height: 1.3,
+                ),
               ),
             ],
           ),
           Spacer(),
-          Icon(FontAwesomeIcons.flutter),
+          TechToolContainer(
+            width: 40,
+            height: 40,
+            color: Constants.lightSecondryColor,
+            icon: Assets.imagesFlutter,
+          ),
         ],
       ),
     );
   }
 }
+
 
 class CustomCircleContainer extends StatelessWidget {
   const CustomCircleContainer({

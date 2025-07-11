@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/groups/presentation/views/widget/my_group_view_body.dart';
+
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/utils/appAssets.dart';
@@ -14,28 +16,8 @@ class MyGroupView extends StatelessWidget {
   static const name = 'myGroups';
   @override
   Widget build(BuildContext context) {
-    final lang = S.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(text1: lang.myGroups, onPressed: () {}),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                GroupPageDropDownSec(),
-                SizedBox(height: 28),
-                SvgPicture.asset(Assets.iconsStarRate),
-                SizedBox(height: 5),
-                ...List.generate(3, (index) => ListViewItem()),
-                Divider(thickness: 1, color: Constants.darkPrimaryColor),
-                RateRow(),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+    return SafeArea(child: Scaffold(body: MyGroupViewBody()));
   }
 }
+
+

@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/follow/presentation/views/followers_view.dart';
+import 'package:graph/features/follow/presentation/views/following_view.dart';
+import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
+import 'package:graph/features/groups/presentation/views/group_management_view.dart';
+import 'package:graph/features/groups/presentation/views/my_group_view.dart';
+import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
+import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import 'package:graph/features/profile/presentation/views/widgets/cvpdf.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_find_friends.dart';
 import 'package:graph/features/setting/presentation/views/settings_view.dart';
 import '../../features/auth/presentation/views/widgets/signup_final_touches_sec.dart';
@@ -14,8 +22,6 @@ import '../../features/auth/presentation/views/widgets/signup_path_section.dart'
 import '../../features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_role_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_username_section.dart';
-import '../../features/follow/presentation/views/followers_view.dart';
-import '../../features/follow/presentation/views/following_view.dart';
 import '../../features/onboarding/presentation/views/on_boarding_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
@@ -78,12 +84,28 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         builder: (context) => const SignupVerificationSection(),
         settings: settings,
       );
+    case FollowView.name:
+      final args = settings.arguments as Map<String, dynamic>;
+      return MaterialPageRoute(
+        builder: (context) => FollowView(type: args['type']),
+      );
+   
     case FollowersView.name:
       return MaterialPageRoute(builder: (context) => const FollowersView());
     case FollowingView.name:
       return MaterialPageRoute(builder: (context) => const FollowingView());
     case MyGroupView.name:
       return MaterialPageRoute(builder: (context) => const MyGroupView());
+    case GroupManagementView.name:
+      return MaterialPageRoute(
+        builder: (context) => const GroupManagementView(),
+      );
+    case ProfileView.name:
+      return MaterialPageRoute(builder: (context) => const ProfileView());
+    case CVPDF.name:
+      return MaterialPageRoute(builder: (context) => const CVPDF());
+    case EditProfileView.name:
+      return MaterialPageRoute(builder: (context) => const EditProfileView());
     case GroupsManagementView.name:
       return MaterialPageRoute(builder: (context) => GroupsManagementView());
     case SignupFinalTouchesSec.name:

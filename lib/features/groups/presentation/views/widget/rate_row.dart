@@ -15,6 +15,7 @@ class RateRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
+        
         Text('${lang.teamRate}: 25', style: AppTextStyle.cairoRegular18),
         SizedBox(width: 6),
         SvgPicture.asset(Assets.iconsStarRate),
