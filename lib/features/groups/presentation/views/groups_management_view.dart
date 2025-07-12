@@ -9,7 +9,6 @@ import 'package:graph/features/groups/presentation/views/widget/groups_managment
 
 import 'package:graph/features/groups/presentation/views/widget/list_view_item.dart';
 
-
 import '../../../../generated/l10n.dart';
 
 class GroupsManagementView extends StatelessWidget {
@@ -21,7 +20,7 @@ class GroupsManagementView extends StatelessWidget {
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
-       // appBar: CustomAppBar(text1: lang.groupsManagement, onPressed: () {}),
+        // appBar: CustomAppBar(text1: lang.groupsManagement, onPressed: () {}),
         body: GroupsManagementBody(),
       ),
     );
@@ -62,7 +61,7 @@ class _GroupsManagementContainerState extends State<GroupsManagementContainer> {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(17),
-            color: Constants.lightSecondryColor,
+            color: Constants2.lightSecondaryColor(context),
           ),
           child: Padding(
             padding: const EdgeInsets.all(14),
@@ -126,7 +125,7 @@ class _GroupsManagementContainerState extends State<GroupsManagementContainer> {
                                 height: 35,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(13),
-                                  color: Constants.primaryColor,
+                                  color: Constants2.primaryColor(context),
                                 ),
                                 child: Center(child: Text(icons[index])),
                               ),
@@ -173,7 +172,7 @@ class _GroupsManagementContainerState extends State<GroupsManagementContainer> {
                             },
                             child: SvgPicture.asset(
                               Assets.iconsAdd,
-                              color: Constants.darkSecondryColor,
+                              color: Constants2.darkSecondaryColor(context),
                               fit: BoxFit.none,
                             ),
                           ),
@@ -201,7 +200,7 @@ class _GroupsManagementContainerState extends State<GroupsManagementContainer> {
                                 height: 48,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(14),
-                                  color: Constants.deviderColor,
+                                  color: Constants2.dividerColor(context),
                                 ),
                                 child: SvgPicture.asset(
                                   icons2[index],

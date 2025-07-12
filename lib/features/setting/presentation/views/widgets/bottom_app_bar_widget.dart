@@ -23,7 +23,10 @@ class BottomAppBarWidget extends StatelessWidget {
           children: [
             SizedBox(width: 20),
             GestureDetector(
-              child: SvgPicture.asset(Assets.iconsHome, color: Constants.darkPrimaryColor,),
+              child: SvgPicture.asset(
+                Assets.iconsHome,
+                color: Constants2.darkPrimaryColor(context),
+              ),
             ),
 
             GestureDetector(
@@ -52,20 +55,20 @@ class BottomAppBarWidget extends StatelessWidget {
                 height: 34,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(17),
-                  color: Constants.lightSecondryColor,
+                  color: Constants2.lightSecondaryColor(context),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SvgPicture.asset(
                       Assets.iconsSetting,
-                      color: Constants.primaryColor,
+                      color: Constants2.primaryColor(context),
                     ),
                     SizedBox(width: 10),
                     Text(
                       lang.settings,
                       style: AppTextStyle.cairoSemiBold16.copyWith(
-                        color: Constants.primaryColor,
+                        color: Constants2.primaryColor(context),
                       ),
                     ),
                   ],
@@ -75,7 +78,7 @@ class BottomAppBarWidget extends StatelessWidget {
             GestureDetector(
               child: SvgPicture.asset(
                 Assets.iconsSearch,
-                color: Constants.darkPrimaryColor,
+                color: Constants2.darkPrimaryColor(context),
               ),
             ),
             SizedBox(width: 80),

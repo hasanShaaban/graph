@@ -15,7 +15,10 @@ class ProfileAppBar extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
-          colors: [Constants.primaryColor, Constants.thirdColor],
+          colors: [
+            Constants2.primaryColor(context),
+            Constants2.thirdColor(context),
+          ],
         ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(30),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
@@ -16,7 +15,7 @@ class VacancyButton extends StatelessWidget {
           height: 42,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
-            color: Constants.lightSecondryColor,
+            color: Constants2.lightSecondaryColor(context),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.2),
@@ -29,7 +28,7 @@ class VacancyButton extends StatelessWidget {
             child: Text(
               'advertise a vacancy',
               style: AppTextStyle.cairoRegular14.copyWith(
-                color: Constants.primaryColor,
+                color: Constants2.primaryColor(context),
               ),
             ),
           ),

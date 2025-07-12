@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
@@ -43,7 +42,7 @@ class _GroupMemberRoleState extends State<GroupMemberRole> {
         Text(
           widget.lang.role,
           style: AppTextStyle.cairoRegular16.copyWith(
-            color: Constants.darkSecondryColor,
+            color: Constants2.darkSecondaryColor(context),
           ),
         ),
         Spacer(),
@@ -86,7 +85,9 @@ class _GroupMemberRoleState extends State<GroupMemberRole> {
                               child: Container(
                                 padding: EdgeInsets.all(2),
                                 decoration: BoxDecoration(
-                                  color: Constants.lightSecondryColor,
+                                  color: Constants2.lightSecondaryColor(
+                                    context,
+                                  ),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: SvgPicture.asset(Assets.iconsRemove),

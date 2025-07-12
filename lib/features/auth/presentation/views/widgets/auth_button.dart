@@ -21,7 +21,7 @@ class AuthButton extends StatelessWidget {
     return TextButton(
       style: TextButton.styleFrom(
         minimumSize: Size(double.infinity, 60),
-        backgroundColor: Constants.primaryColor,
+        backgroundColor: Constants2.primaryColor(context),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       ),
       onPressed: isLoading ? null : onPressed,
@@ -38,13 +38,13 @@ class AuthButton extends StatelessWidget {
                   Text(
                     title,
                     style: AppTextStyle.cairoBold22.copyWith(
-                      color: Constants.lightPrimaryColor,
+                      color: Constants2.lightPrimaryColor(context),
                     ),
                   ),
                   const SizedBox(width: 5),
                   SvgPicture.asset(
                     Assets.iconsArrowRightToBracket,
-                    color: Constants.lightPrimaryColor,
+                    color: Constants2.lightPrimaryColor(context),
                   ),
                 ],
               ),

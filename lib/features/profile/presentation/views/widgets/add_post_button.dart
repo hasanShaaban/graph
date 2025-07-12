@@ -16,7 +16,7 @@ class AddPostButton extends StatelessWidget {
     return Expanded(
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: Constants.primaryColor,
+          backgroundColor: Constants2.primaryColor(context),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -32,7 +32,7 @@ class AddPostButton extends StatelessWidget {
             Text(
               lang.addPost,
               style: AppTextStyle.cairoRegular14.copyWith(
-                color: Constants.lightPrimaryColor,
+                color: Constants2.lightPrimaryColor(context),
               ),
             ),
           ],

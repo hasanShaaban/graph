@@ -18,8 +18,7 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody> {
-  final LangeageDataSource langeageDataSource =
-      getIt<LangeageDataSource>();
+  final LangeageDataSource langeageDataSource = getIt<LangeageDataSource>();
 
   bool opacityEffect = false;
   bool? isFirstTime;
@@ -50,7 +49,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   void _onLanguageSelected(String languageCode) async {
-    await Provider.of<LocalProvider>(context, listen: false).setLocal(languageCode);
+    await Provider.of<LocalProvider>(
+      context,
+      listen: false,
+    ).setLocal(languageCode);
     if (context.mounted) {
       Navigator.pushReplacementNamed(
         context,
@@ -75,7 +77,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
               Text(
                 'Choose your language:',
                 style: AppTextStyle.cairoBold22.copyWith(
-                  color: Constants.darkPrimaryColor,
+                  color: Constants2.darkPrimaryColor(context),
                 ),
               ),
               const SizedBox(height: 10),

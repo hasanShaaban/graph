@@ -13,7 +13,8 @@ class CustomTextField extends StatefulWidget {
     required this.textInputType,
     this.onSaved,
     TextEditingController? controller,
-    this.validator,  this.onChanged,
+    this.validator,
+    this.onChanged,
   });
   final String hintText;
   final String prefixIcon;
@@ -48,9 +49,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
             }
             return null;
           },
- 
+
       style: AppTextStyle.cairoRegular18.copyWith(
-        color: Constants.darkPrimaryColor,
+        color: Constants2.darkPrimaryColor(context),
       ),
       keyboardType: widget.textInputType,
       decoration: InputDecoration(
@@ -58,7 +59,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         enabledBorder: buildBorder(),
         focusedBorder: buildFocusedBorder(),
         filled: true,
-        fillColor: Constants.lightSecondryColor,
+        fillColor: Constants2.lightSecondaryColor(context),
 
         prefixIcon: Padding(
           padding: const EdgeInsets.all(20),
@@ -67,8 +68,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             width: 26,
             color:
                 isFoused
-                    ? Constants.darkPrimaryColor
-                    : Constants.darkSecondryColor,
+                    ? Constants2.darkPrimaryColor(context)
+                    : Constants2.darkSecondaryColor(context),
           ),
         ),
         hintText: widget.hintText,
@@ -87,7 +88,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
   OutlineInputBorder buildFocusedBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(15),
-      borderSide: const BorderSide(width: 2, color: Constants.darkPrimaryColor),
+      borderSide: BorderSide(
+        width: 2,
+        color: Constants2.darkPrimaryColor(context),
+      ),
     );
   }
 }

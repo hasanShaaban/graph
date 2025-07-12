@@ -18,17 +18,17 @@ class FollowSearchTextField extends StatelessWidget {
         child: TextField(
           decoration: InputDecoration(
             filled: true,
-      
+
             hintText: lang.search,
             hintStyle: AppTextStyle.cairoRegular18.copyWith(
-              color: Constants.darkSecondryColor,
+              color: Constants2.darkSecondaryColor(context),
             ),
             contentPadding: EdgeInsets.only(top: 10),
-            fillColor: Constants.lightSecondryColor,
-      
+            fillColor: Constants2.lightSecondaryColor(context),
+
             border: buildBorder(),
             enabledBorder: buildBorder(),
-            focusedBorder: buildFocusedBorder(),
+            focusedBorder: buildFocusedBorder(context),
             prefixIcon: Padding(
               padding: const EdgeInsets.all(11),
               child: SvgPicture.asset(Assets.iconsSearch),
@@ -42,18 +42,16 @@ class FollowSearchTextField extends StatelessWidget {
   OutlineInputBorder buildBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(11),
-      borderSide: const BorderSide(
-        color: Colors.transparent,
-      ),
+      borderSide: const BorderSide(color: Colors.transparent),
     );
   }
 
-  OutlineInputBorder buildFocusedBorder() {
+  OutlineInputBorder buildFocusedBorder(BuildContext context) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(11),
-      borderSide: const BorderSide(
+      borderSide:  BorderSide(
         width: 2,
-        color: Constants.darkSecondryColor,
+        color: Constants2.darkSecondaryColor(context),
       ),
     );
   }

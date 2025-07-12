@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 
@@ -42,7 +41,7 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
               checked
                   ? Icon(
                     Icons.check,
-                    color: Constants.lightPrimaryColor,
+                    color: Constants2.lightPrimaryColor(context),
                     size: 20,
                   )
                   : SizedBox(),
@@ -50,7 +49,12 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
           ),
         ),
         SizedBox(width: 5),
-        Text(lang.rememberMe, style: AppTextStyle.cairoRegular18.copyWith(color: Constants.secondryColor))
+        Text(
+          lang.rememberMe,
+          style: AppTextStyle.cairoRegular18.copyWith(
+            color: Constants.secondryColor,
+          ),
+        ),
       ],
     );
   }

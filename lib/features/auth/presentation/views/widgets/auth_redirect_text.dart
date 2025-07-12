@@ -21,7 +21,7 @@ class AuthRedirectText extends StatelessWidget {
         Text(
           staitcText,
           style: AppTextStyle.cairoRegular14.copyWith(
-            color: Constants.darkSecondryColor,
+            color: Constants2.darkSecondaryColor(context),
           ),
         ),
         GestureDetector(

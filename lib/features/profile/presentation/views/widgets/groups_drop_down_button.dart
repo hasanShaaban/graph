@@ -39,7 +39,7 @@ class _GroupsDropDownButtonState extends State<GroupsDropDownButton> {
       width: _width,
       padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: Constants.primaryColor,
+        color: Constants2.primaryColor(context),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -94,7 +94,7 @@ class _GroupsDropDownButtonState extends State<GroupsDropDownButton> {
               ),
             );
           }).toList(),
-      color: Constants.lightSecondryColor,
+      color: Constants2.lightSecondaryColor(context),
     );
 
     if (result != null && result != selected) {

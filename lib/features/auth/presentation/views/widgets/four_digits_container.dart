@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/constants.dart';
 
@@ -15,8 +12,7 @@ class FourDigitsContainer extends StatelessWidget {
 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Constants.lightSecondryColor,
-    
+        color: Constants2.lightSecondaryColor(context),
       ),
       child: TextField(
         keyboardType: TextInputType.number,

@@ -4,11 +4,17 @@ import 'package:graph/core/utils/constants.dart';
 import 'package:graph/generated/l10n.dart';
 
 class RoleTextField extends StatelessWidget {
-  const RoleTextField({super.key, required this.width, required this.lang, required this.onSubmitted, required this.controller});
+  const RoleTextField({
+    super.key,
+    required this.width,
+    required this.lang,
+    required this.onSubmitted,
+    required this.controller,
+  });
 
   final double width;
   final S lang;
-  final Function(String) onSubmitted; 
+  final Function(String) onSubmitted;
   final TextEditingController controller;
 
   @override
@@ -22,7 +28,7 @@ class RoleTextField extends StatelessWidget {
           controller: controller,
           onSubmitted: onSubmitted,
           style: AppTextStyle.cairoRegular16.copyWith(
-            color: Constants.lightPrimaryColor,
+            color: Constants2.lightPrimaryColor(context),
           ),
           textAlign: TextAlign.center,
           scrollPadding: EdgeInsets.symmetric(horizontal: 10),
@@ -30,10 +36,10 @@ class RoleTextField extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(horizontal: 10),
 
             filled: true,
-            fillColor: Constants.primaryColor,
+            fillColor: Constants2.primaryColor(context),
             hintText: lang.enterYourRole,
             hintStyle: AppTextStyle.cairoRegular16.copyWith(
-              color: Constants.lightPrimaryColor,
+              color: Constants2.lightPrimaryColor(context),
             ),
             enabledBorder: buildBorder(),
             focusedBorder: buildBorder(),

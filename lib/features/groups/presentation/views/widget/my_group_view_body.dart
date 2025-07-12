@@ -42,7 +42,10 @@ class MyGroupViewBody extends StatelessWidget {
                 3,
                 (index) => ListViewItem(height: height, width: width),
               ),
-              Divider(thickness: 1, color: Constants.darkPrimaryColor),
+              Divider(
+                thickness: 1,
+                color: Constants2.darkPrimaryColor(context),
+              ),
               RateRow(),
             ],
           ),

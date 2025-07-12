@@ -29,7 +29,9 @@ class AnimatedContainerWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
 
         color:
-            whatSelect ? Constants.primaryColor : Constants.lightSecondryColor,
+            whatSelect
+                ? Constants2.primaryColor(context)
+                : Constants2.lightSecondaryColor(context),
         boxShadow:
             whatSelect
                 ? [
@@ -37,7 +39,7 @@ class AnimatedContainerWidget extends StatelessWidget {
                     color: Colors.black.withOpacity(0.9),
                     offset: Offset(8, 9),
                     blurRadius: 15,
-                  )
+                  ),
                 ]
                 : [],
       ),
@@ -46,7 +48,10 @@ class AnimatedContainerWidget extends StatelessWidget {
         children: [
           SvgPicture.asset(
             icon,
-            color: whatSelect ? Constants.lightSecondryColor : Colors.black,
+            color:
+                whatSelect
+                    ? Constants2.lightSecondaryColor(context)
+                    : Colors.black,
           ),
 
           SizedBox(width: 4),
@@ -55,7 +60,7 @@ class AnimatedContainerWidget extends StatelessWidget {
             style:
                 whatSelect
                     ? AppTextStyle.cairoRegular20.copyWith(
-                      color: Constants.lightPrimaryColor,
+                      color: Constants2.lightPrimaryColor(context),
                     )
                     : AppTextStyle.cairoRegular20,
           ),

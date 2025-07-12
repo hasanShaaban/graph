@@ -11,9 +11,9 @@ class MajorAndYearDropdownButtonsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomDropDownButton(height: height,),
+        CustomDropDownButton(height: height),
         SizedBox(width: 10),
-        CustomDropDownButton(height: height,),
+        CustomDropDownButton(height: height),
       ],
     );
   }
@@ -35,12 +35,12 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        height: widget.height * 40/915,
+        height: widget.height * 40 / 915,
 
         padding: EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9),
-          color: Constants.primaryColor,
+          color: Constants2.primaryColor(context),
         ),
         child: Row(
           children: [
@@ -99,7 +99,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
               ),
             );
           }).toList(),
-      color: Constants.lightSecondryColor,
+      color: Constants2.lightSecondaryColor(context),
     );
     if (result != null && result != selected) {
       setState(() {

@@ -5,7 +5,6 @@ import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/tech_tool_container.dart';
 import 'package:graph/features/groups/presentation/views/widget/personal_info_column.dart';
 
-
 class ListViewItem extends StatelessWidget {
   const ListViewItem({super.key, required this.height, required this.width});
   final double height, width;
@@ -21,7 +20,10 @@ class ListViewItem extends StatelessWidget {
             height: width * 65 / 412,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Constants.primaryColor, width: 2),
+              border: Border.all(
+                color: Constants2.primaryColor(context),
+                width: 2,
+              ),
             ),
             child: CircleAvatar(
               radius: 30,
@@ -39,7 +41,7 @@ class ListViewItem extends StatelessWidget {
               Text(
                 'mobile developer + UI-UX',
                 style: AppTextStyle.cairoRegular14.copyWith(
-                  color: Constants.darkSecondryColor,
+                  color: Constants2.darkSecondaryColor(context),
                   height: 1.3,
                 ),
               ),
@@ -49,7 +51,7 @@ class ListViewItem extends StatelessWidget {
           TechToolContainer(
             width: 40,
             height: 40,
-            color: Constants.lightSecondryColor,
+            color: Constants2.lightSecondaryColor(context),
             icon: Assets.imagesFlutter,
           ),
         ],

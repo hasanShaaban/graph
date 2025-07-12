@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
@@ -28,7 +27,7 @@ class GroupVacancySection extends StatelessWidget {
               lang.ifGroupIsNotCompleted,
 
               style: AppTextStyle.cairoRegular14.copyWith(
-                color: Constants.darkSecondryColor,
+                color: Constants2.darkSecondaryColor(context),
                 height: 1.3,
               ),
             ),
@@ -39,7 +38,7 @@ class GroupVacancySection extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(14),
               ),
-              backgroundColor: Constants.lightSecondryColor,
+              backgroundColor: Constants2.lightSecondaryColor(context),
             ),
             onPressed: () {},
             child: Row(
@@ -48,7 +47,7 @@ class GroupVacancySection extends StatelessWidget {
                 Text(
                   lang.advertiseAVacancy,
                   style: AppTextStyle.cairoRegular14.copyWith(
-                    color: Constants.primaryColor,
+                    color: Constants2.primaryColor(context),
                   ),
                 ),
               ],

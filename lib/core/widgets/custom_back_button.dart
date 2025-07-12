@@ -25,7 +25,7 @@ class CustomBackButton extends StatelessWidget {
               lang.lang == 'en'
                   ? Assets.iconsArrowLeft
                   : Assets.iconsArrowRight,
-              color: color ?? Constants.lightPrimaryColor,
+              color: color ?? Constants2.lightPrimaryColor(context),
               width: 14,
             ),
           ),

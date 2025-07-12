@@ -49,7 +49,7 @@ class GroupManagementViewBody extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 10),
-                Divider(thickness: 1, color: Constants.deviderColor),
+                Divider(thickness: 1, color: Constants2.dividerColor(context)),
                 SizedBox(height: 10),
                 GroupVacancySection(width: width, lang: lang),
               ],
@@ -60,4 +60,3 @@ class GroupManagementViewBody extends StatelessWidget {
     );
   }
 }
-

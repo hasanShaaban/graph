@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:graph/core/functions/show_tools_bottom_sheet.dart';
 import 'package:graph/core/utils/appAssets.dart';
@@ -32,12 +31,16 @@ class _GroupMemberToolsState extends State<GroupMemberTools> {
         Text(
           widget.lang.tools,
           style: AppTextStyle.cairoRegular16.copyWith(
-            color: Constants.darkSecondryColor,
+            color: Constants2.darkSecondaryColor(context),
           ),
         ),
         Spacer(),
         chosenTools.isNotEmpty
-            ? GroupMemberToolsListView(lang: widget.lang, chosenTools: chosenTools, width: widget.width)
+            ? GroupMemberToolsListView(
+              lang: widget.lang,
+              chosenTools: chosenTools,
+              width: widget.width,
+            )
             : SizedBox(),
         AddButton(
           onTap: () async {
@@ -94,4 +97,3 @@ class _GroupMemberToolsState extends State<GroupMemberTools> {
     Assets.imagesJs,
   ];
 }
-

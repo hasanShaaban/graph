@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../core/utils/appAssets.dart';
@@ -42,7 +41,10 @@ class FinalTouchesTopSection extends StatelessWidget {
                   height: 180,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: Constants.primaryColor, width: 5),
+                    border: Border.all(
+                      color: Constants2.primaryColor(context),
+                      width: 5,
+                    ),
                   ),
                   child: CircleAvatar(
                     radius: 30,
@@ -62,7 +64,7 @@ class FinalTouchesTopSection extends StatelessWidget {
                     height: 30,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Constants.primaryColor,
+                      color: Constants2.primaryColor(context),
                     ),
                     child: SvgPicture.asset(
                       Assets.iconsPenCircle,

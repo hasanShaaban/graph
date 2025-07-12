@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
@@ -86,7 +85,7 @@ class _SignupVerificationSectionState extends State<SignupVerificationSection> {
                 Text(
                   'check your email inbox and inter the code :',
                   style: AppTextStyle.cairoRegular18.copyWith(
-                    color: Constants.primaryColor,
+                    color: Constants2.primaryColor(context),
                   ),
                 ),
                 SizedBox(height: 50),

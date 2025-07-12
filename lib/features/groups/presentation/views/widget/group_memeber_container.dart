@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/profile_image.dart';
@@ -25,7 +24,7 @@ class GroupMemberContainer extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Constants.lightSecondryColor,
+        color: Constants2.lightSecondaryColor(context),
         borderRadius: BorderRadius.circular(17),
       ),
       padding: EdgeInsets.all(10),

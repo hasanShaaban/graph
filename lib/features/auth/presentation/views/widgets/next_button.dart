@@ -23,7 +23,7 @@ class NextButton extends StatelessWidget {
     return TextButton(
       style: TextButton.styleFrom(
         minimumSize: Size(double.infinity, height ?? 60),
-        backgroundColor: Constants.primaryColor,
+        backgroundColor: Constants2.primaryColor(context),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       ),
       onPressed: isLoading ? null : onPressed,
@@ -42,10 +42,10 @@ class NextButton extends StatelessWidget {
                     style:
                         height != null
                             ? AppTextStyle.cairoRegular12.copyWith(
-                              color: Constants.lightPrimaryColor,
+                              color: Constants2.lightPrimaryColor(context),
                             )
                             : AppTextStyle.cairoBold22.copyWith(
-                              color: Constants.lightPrimaryColor,
+                              color: Constants2.lightPrimaryColor(context),
                             ),
                   ),
                 ],

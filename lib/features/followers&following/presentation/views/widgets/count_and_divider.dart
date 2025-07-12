@@ -4,10 +4,7 @@ import 'package:graph/core/utils/constants.dart';
 import 'package:graph/generated/l10n.dart';
 
 class CountAndDivider extends StatelessWidget {
-  const CountAndDivider({
-    super.key,
-    required this.lang, required this.type,
-  });
+  const CountAndDivider({super.key, required this.lang, required this.type});
 
   final S lang;
   final String type;
@@ -16,14 +13,16 @@ class CountAndDivider extends StatelessWidget {
     return Row(
       children: [
         Text(
-          type == lang.followers ?
-          'You have 245 ${lang.followers}' :'you are following 245 accounts',
-          style: AppTextStyle.cairoSemiBold20
-              .copyWith(color: Constants.darkPrimaryColor),
+          type == lang.followers
+              ? 'You have 245 ${lang.followers}'
+              : 'you are following 245 accounts',
+          style: AppTextStyle.cairoSemiBold20.copyWith(
+            color: Constants2.darkPrimaryColor(context),
+          ),
         ),
         Expanded(
           child: Divider(
-            color: Constants.deviderColor,
+            color: Constants2.dividerColor(context),
             indent: 4,
             thickness: 1,
           ),

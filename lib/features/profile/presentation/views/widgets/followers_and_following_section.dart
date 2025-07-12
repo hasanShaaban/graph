@@ -20,7 +20,7 @@ class FollowersAndFollowingSection extends StatelessWidget {
       height: 40,
       width: width * 272 / 412 - 24,
       decoration: BoxDecoration(
-        color: Constants.lightSecondryColor,
+        color: Constants2.lightSecondaryColor(context),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -30,11 +30,15 @@ class FollowersAndFollowingSection extends StatelessWidget {
             title: lang.followers,
             count: '322',
             onTap: () {
-              Navigator.pushNamed(context, FollowView.name, arguments: {'type': lang.followers});
+              Navigator.pushNamed(
+                context,
+                FollowView.name,
+                arguments: {'type': lang.followers},
+              );
             },
           ),
           VerticalDivider(
-            color: Constants.deviderColor,
+            color: Constants2.dividerColor(context),
             width: 1,
             thickness: 1.5,
             indent: 7,
@@ -44,7 +48,11 @@ class FollowersAndFollowingSection extends StatelessWidget {
             title: lang.following,
             count: '412',
             onTap: () {
-              Navigator.pushNamed(context, FollowView.name, arguments: {'type': lang.following});
+              Navigator.pushNamed(
+                context,
+                FollowView.name,
+                arguments: {'type': lang.following},
+              );
             },
           ),
         ],
@@ -74,7 +82,7 @@ class FollowersAndFollowingButton extends StatelessWidget {
             Text(
               title,
               style: AppTextStyle.cairoRegular14.copyWith(
-                color: Constants.darkSecondryColor,
+                color: Constants2.darkSecondaryColor(context),
               ),
             ),
             SizedBox(width: 5),

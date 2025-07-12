@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:graph/core/services/providers/theme_provider.dart';
 import 'package:graph/features/setting/presentation/views/settings_view.dart';
 import 'package:graph/features/splash/presentation/views/splash_view.dart';
 import 'bloc_providers.dart';
@@ -24,6 +25,7 @@ void main() async {
           create: (context) => LocalProvider()..loadLocale(),
         ),
         ChangeNotifierProvider(create: (context) => UserInfoProvider()),
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ],
       child: MyApp(),
     ),
@@ -40,10 +42,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LocalProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MultiBlocProvider(
       providers: providers,
       child: MaterialApp(
-     
         localizationsDelegates: [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -53,17 +55,21 @@ class MyApp extends StatelessWidget {
 
         supportedLocales: S.delegate.supportedLocales,
         locale: languageProvider.locale,
-        
+
+        themeMode: themeProvider.themeMode,
+        darkTheme: ThemeData.dark(),
         theme: ThemeData(
           useMaterial3: false,
-          scaffoldBackgroundColor: Constants.lightPrimaryColor,
-          colorScheme: ColorScheme.fromSeed(seedColor: Constants.primaryColor),
+          scaffoldBackgroundColor: Constants2.lightPrimaryColor(context),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Constants2.primaryColor(context),
+          ),
           fontFamily: 'Cairo',
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerateRoute,
-          initialRoute: SplashView.name,
-       // initialRoute: SettingsView.name,
+        initialRoute: SplashView.name,
+        // initialRoute: SettingsView.name,
       ),
     );
   }

@@ -18,7 +18,7 @@ class PesronalInfoColumn extends StatelessWidget {
         Text(
           '4th Year - Software Engineering',
           style: AppTextStyle.cairoRegular14.copyWith(
-            color: Constants.darkSecondryColor,
+            color: Constants2.darkSecondaryColor(context),
             height: 1,
           ),
         ),

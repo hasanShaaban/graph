@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/constants.dart';
 
 class TechToolsGridView extends StatelessWidget {
-  const TechToolsGridView({super.key,  required this.items, required this.itemBuilder});
+  const TechToolsGridView({
+    super.key,
+    required this.items,
+    required this.itemBuilder,
+  });
 
-//  final List<String> icons;
-final List<String> items;
+  //  final List<String> icons;
+  final List<String> items;
   final Widget Function(String item, int index) itemBuilder;
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ final List<String> items;
           },
           child: Card(
             margin: EdgeInsets.all(15),
-            color: Constants.deviderColor,
+            color: Constants2.dividerColor(context),
 
             // child: SvgPicture.asset(
             //   fit: BoxFit.none,
@@ -32,7 +36,7 @@ final List<String> items;
             //   padding: const EdgeInsets.all(8.0),
             //   child: Text(icons[index]),
             // ),
-            child:   itemBuilder(items[index], index),
+            child: itemBuilder(items[index], index),
           ),
         );
       }),

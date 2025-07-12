@@ -34,7 +34,7 @@ class EditProfileViewBody extends StatelessWidget {
                 imageWidth: 170,
                 imageHeight: 170,
                 borderThick: 5,
-                borderColor: Constants.primaryColor,
+                borderColor: Constants2.primaryColor(context),
               ),
             ),
           ],

@@ -5,7 +5,14 @@ import 'package:graph/core/widgets/tech_tool_container.dart';
 import 'package:graph/generated/l10n.dart';
 
 class TechToolsListView extends StatelessWidget {
-  const TechToolsListView({super.key, required this.lang, required this.width, required this.iconSize, required this.listPadding, required this.borderRadius});
+  const TechToolsListView({
+    super.key,
+    required this.lang,
+    required this.width,
+    required this.iconSize,
+    required this.listPadding,
+    required this.borderRadius,
+  });
   final S lang;
   final double width, iconSize, listPadding, borderRadius;
   @override
@@ -23,8 +30,13 @@ class TechToolsListView extends StatelessWidget {
               right: lang.lang == 'en' ? listPadding : 0,
               left: lang.lang == 'ar' ? listPadding : 0,
             ),
-            
-            child: TechToolContainer(width: iconSize, height: iconSize, color: Constants.lightPrimaryColor, icon: tools[index]),
+
+            child: TechToolContainer(
+              width: iconSize,
+              height: iconSize,
+              color: Constants2.lightPrimaryColor(context),
+              icon: tools[index],
+            ),
           );
         },
       ),

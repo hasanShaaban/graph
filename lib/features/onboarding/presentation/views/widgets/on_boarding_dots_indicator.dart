@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/constants.dart';
 
 class OnBoardingDotsIndecator extends StatelessWidget {
-  const OnBoardingDotsIndecator({
-    super.key,
-    required int currentPage,
-  }) : _currentPage = currentPage;
+  const OnBoardingDotsIndecator({super.key, required int currentPage})
+    : _currentPage = currentPage;
 
   final int _currentPage;
 
@@ -17,12 +15,13 @@ class OnBoardingDotsIndecator extends StatelessWidget {
       dotsCount: 3,
       position: _currentPage.toDouble(),
       decorator: DotsDecorator(
-        color: Constants.primaryColor,
-        activeColor: Constants.primaryColor,
+        color: Constants2.primaryColor(context),
+        activeColor: Constants2.primaryColor(context),
         size: const Size.square(10.0),
         activeSize: const Size(25.0, 10.0),
         activeShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0)),
+          borderRadius: BorderRadius.circular(5.0),
+        ),
       ),
     );
   }

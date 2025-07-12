@@ -68,7 +68,7 @@ class _SignupProfilePictureSectionState
                     child: Text(
                       lang.pictureHelp,
                       style: AppTextStyle.cairoRegular14.copyWith(
-                        color: Constants.darkSecondryColor,
+                        color: Constants2.darkSecondaryColor(context),
                       ),
                     ),
                   ),
@@ -113,7 +113,9 @@ class _SignupProfilePictureSectionState
                                   height: 40,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Constants.darkSecondryColor,
+                                    color: Constants2.darkSecondaryColor(
+                                      context,
+                                    ),
                                   ),
                                   child: Icon(
                                     Icons.close,
@@ -139,7 +141,7 @@ class _SignupProfilePictureSectionState
                               height: 220,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Constants.lightSecondryColor,
+                                color: Constants2.lightSecondaryColor(context),
                               ),
                             ),
 
@@ -159,7 +161,7 @@ class _SignupProfilePictureSectionState
                               height: 220,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Constants.lightSecondryColor,
+                                color: Constants2.lightSecondaryColor(context),
                               ),
                             ),
 

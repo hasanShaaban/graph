@@ -27,7 +27,7 @@ class PublicPost extends StatelessWidget {
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Constants.lightSecondryColor,
+            color: Constants2.lightSecondaryColor(context),
             borderRadius: BorderRadius.circular(6),
           ),
           child: Padding(
@@ -53,7 +53,7 @@ class PublicPost extends StatelessWidget {
                             Text(
                               'Hasan Shaaban',
                               style: AppTextStyle.cairoSemiBold18.copyWith(
-                                color: Constants.darkPrimaryColor,
+                                color: Constants2.darkPrimaryColor(context),
                                 height: 1.1,
                               ),
                             ),
@@ -61,7 +61,7 @@ class PublicPost extends StatelessWidget {
                             SvgPicture.asset(
                               Assets.iconsEarthAfrica,
                               width: 12,
-                              color: Constants.darkSecondryColor,
+                              color: Constants2.darkSecondaryColor(context),
                             ),
                           ],
                         ),
@@ -70,7 +70,7 @@ class PublicPost extends StatelessWidget {
                             'MMM d, yyyy – h:mm a',
                           ).format(DateTime.parse("2024-06-20T12:30:00")),
                           style: AppTextStyle.cairoRegular12.copyWith(
-                            color: Constants.darkSecondryColor,
+                            color: Constants2.darkSecondaryColor(context),
                             height: 0.9,
                           ),
                         ),
@@ -79,12 +79,12 @@ class PublicPost extends StatelessWidget {
                     Spacer(),
                     SvgPicture.asset(
                       Assets.iconsDots,
-                      color: Constants.darkSecondryColor,
+                      color: Constants2.darkSecondaryColor(context),
                     ),
                   ],
                 ),
                 SizedBox(height: 200),
-                Divider(color: Constants.deviderColor, thickness: 1),
+                Divider(color: Constants2.dividerColor(context), thickness: 1),
                 Row(
                   children: [
                     PostActivities(icon: Assets.iconsCommentDots, count: '234'),

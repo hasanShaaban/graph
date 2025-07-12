@@ -55,7 +55,7 @@ class ProfileViewBody extends StatelessWidget {
                 Text(
                   'Hasan shaaban',
                   style: AppTextStyle.cairoSemiBold24.copyWith(
-                    color: Constants.darkPrimaryColor,
+                    color: Constants2.darkPrimaryColor(context),
                   ),
                 ),
                 //Bio
@@ -63,7 +63,7 @@ class ProfileViewBody extends StatelessWidget {
                   'Software engineering student exploring web dev, cloud, and AI. Code, coffee, and creativity.',
                   style: AppTextStyle.cairoSemiBold16.copyWith(
                     height: 1.2,
-                    color: Constants.darkSecondryColor,
+                    color: Constants2.darkSecondaryColor(context),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -75,16 +75,16 @@ class ProfileViewBody extends StatelessWidget {
                   ],
                 ),
 
-                Divider(thickness: 1, color: Constants.deviderColor),
+                Divider(thickness: 1, color: Constants2.dividerColor(context)),
                 AboutMeContainer(width: width, height: height, lang: lang),
-                Divider(thickness: 1, color: Constants.deviderColor),
+                Divider(thickness: 1, color: Constants2.dividerColor(context)),
                 GroupSection(lang: lang, height: height, width: width),
-                Divider(thickness: 1, color: Constants.deviderColor),
+                Divider(thickness: 1, color: Constants2.dividerColor(context)),
                 SizedBox(height: 5),
                 Text(lang.activities, style: AppTextStyle.cairoSemiBold14),
                 PublicPost(lang: lang, width: width, height: height),
                 SizedBox(height: 25),
-                Divider(thickness: 1, color: Constants.deviderColor),
+                Divider(thickness: 1, color: Constants2.dividerColor(context)),
                 GoUpButton(scrollController: scrollController, lang: lang),
               ],
             ),

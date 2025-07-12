@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
@@ -26,7 +25,7 @@ class AboutMeContainer extends StatelessWidget {
     return Container(
       width: width,
       decoration: BoxDecoration(
-        color: Constants.lightSecondryColor,
+        color: Constants2.lightSecondaryColor(context),
         borderRadius: BorderRadius.circular(6),
       ),
       child: Padding(
@@ -36,7 +35,11 @@ class AboutMeContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AboutMeHeader(lang: lang),
-            Divider(thickness: 1, color: Constants.deviderColor, height: 0),
+            Divider(
+              thickness: 1,
+              color: Constants2.dividerColor(context),
+              height: 0,
+            ),
             SizedBox(height: 10),
             infoRow(
               Assets.iconsGraduationCap,

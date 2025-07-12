@@ -19,13 +19,13 @@ class AboutMeHeader extends StatelessWidget {
         Text(
           lang.aboutMe,
           style: AppTextStyle.cairoRegular14.copyWith(
-            color: Constants.darkSecondryColor,
+            color: Constants2.darkSecondaryColor(context),
           ),
         ),
         Material(
           color: Colors.transparent,
           child: InkWell(
-            splashColor: Constants.primaryColor.withOpacity(0.4),
+            splashColor: Constants2.primaryColor(context).withOpacity(0.4),
             onTap: () {
               Navigator.pushNamed(context, EditProfileView.name);
             },
@@ -35,7 +35,7 @@ class AboutMeHeader extends StatelessWidget {
                 Text(
                   lang.editProfile,
                   style: AppTextStyle.cairoRegular14.copyWith(
-                    color: Constants.primaryColor,
+                    color: Constants2.primaryColor(context),
                   ),
                 ),
                 SvgPicture.asset(Assets.iconsUserPen),

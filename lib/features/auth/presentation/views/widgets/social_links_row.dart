@@ -19,7 +19,7 @@ class SocialLinksRow extends StatelessWidget {
               height: 24,
               child: TextField(
                 decoration: InputDecoration(
-                  fillColor: Constants.lightSecondryColor,
+                  fillColor: Constants2.lightSecondaryColor(context),
                   filled: true,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5),

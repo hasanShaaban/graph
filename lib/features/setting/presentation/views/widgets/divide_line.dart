@@ -1,4 +1,3 @@
-
 import 'package:flutter/widgets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
@@ -14,7 +13,10 @@ class DividLine extends StatelessWidget {
         Text(text, style: AppTextStyle.cairoRegular12),
 
         Expanded(
-          child: Container(height: 1, color: Constants.darkPrimaryColor),
+          child: Container(
+            height: 1,
+            color: Constants2.darkPrimaryColor(context),
+          ),
         ),
       ],
     );

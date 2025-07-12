@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-
-
-
 import 'package:graph/core/utils/constants.dart';
 
 import '../../../../../core/utils/appAssets.dart';
@@ -19,9 +16,8 @@ class FollowListViewItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-// <<<<<<< HEAD:lib/features/follow/presentation/views/widgets/follow_list_view_item.dart
-//           CustomUserListView(),
+          // <<<<<<< HEAD:lib/features/follow/presentation/views/widgets/follow_list_view_item.dart
+          //           CustomUserListView(),
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.grey,
@@ -39,7 +35,7 @@ class FollowListViewItem extends StatelessWidget {
               Text(
                 'Teacher',
                 style: AppTextStyle.cairoRegular14.copyWith(
-                  color: Constants.darkSecondryColor,
+                  color: Constants2.darkSecondaryColor(context),
                 ),
               ),
             ],
@@ -48,7 +44,7 @@ class FollowListViewItem extends StatelessWidget {
           Spacer(),
           SvgPicture.asset(
             Assets.iconsDots,
-            color: Constants.darkSecondryColor,
+            color: Constants2.darkSecondaryColor(context),
           ),
         ],
       ),

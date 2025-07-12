@@ -13,11 +13,11 @@ class TechToolsIconAdd extends StatelessWidget {
       height: 48,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
-        color: Constants.deviderColor,
+        color: Constants2.dividerColor(context),
       ),
       child: SvgPicture.asset(
         Assets.iconsAdd,
-        color: Constants.darkSecondryColor,
+        color: Constants2.darkSecondaryColor(context),
         fit: BoxFit.none,
       ),
     );

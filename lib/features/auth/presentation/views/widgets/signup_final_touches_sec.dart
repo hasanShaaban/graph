@@ -95,7 +95,7 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                                   height: 48,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(14),
-                                    color: Constants.deviderColor,
+                                    color: Constants2.dividerColor(context),
                                   ),
                                   child: SvgPicture.asset(
                                     icons[index],

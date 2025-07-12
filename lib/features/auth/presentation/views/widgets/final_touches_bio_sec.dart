@@ -15,7 +15,7 @@ class FinalTouchesBioSec extends StatelessWidget {
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(15),
             ),
-            fillColor: Constants.lightSecondryColor,
+            fillColor: Constants2.lightSecondaryColor(context),
             filled: true,
           ),
         ),

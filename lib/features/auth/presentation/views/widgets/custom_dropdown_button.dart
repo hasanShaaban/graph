@@ -15,7 +15,7 @@ class customDropDownButton extends StatelessWidget {
     required this.width,
     required this.height,
     required this.border,
-    required this.iconPadding, 
+    required this.iconPadding,
   });
   final List<String>? list;
   final String text;
@@ -32,7 +32,7 @@ class customDropDownButton extends StatelessWidget {
       //   width: 300,
       // height: 55,
       decoration: BoxDecoration(
-        color: Constants.primaryColor,
+        color: Constants2.primaryColor(context),
         borderRadius: BorderRadius.circular(border),
       ),
       child: DropdownButtonHideUnderline(
@@ -48,7 +48,7 @@ class customDropDownButton extends StatelessWidget {
               text,
 
               style: AppTextStyle.cairoRegular18.copyWith(
-                color: Constants.lightPrimaryColor,
+                color: Constants2.lightPrimaryColor(context),
               ),
             ),
           ),

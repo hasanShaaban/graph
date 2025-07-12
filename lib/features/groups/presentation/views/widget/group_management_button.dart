@@ -20,7 +20,7 @@ class GroupManagementButton extends StatelessWidget {
       width: width * 40 / 412,
       height: height * 40 / 915,
       decoration: BoxDecoration(
-        color: Constants.lightSecondryColor,
+        color: Constants2.lightSecondaryColor(context),
         borderRadius: BorderRadius.circular(9),
       ),
       child: IconButton(

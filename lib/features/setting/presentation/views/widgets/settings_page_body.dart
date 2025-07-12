@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/services/providers/local_provider.dart';
+import 'package:graph/core/services/providers/theme_provider.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
@@ -23,7 +24,10 @@ class SettingsPageBody extends StatelessWidget {
         children: [
           Row(
             children: [
-              CustomBackButton(lang: lang, color: Constants.darkPrimaryColor),
+              CustomBackButton(
+                lang: lang,
+                color: Constants2.darkPrimaryColor(context),
+              ),
               // GestureDetector(
               //   onTap: () {
               //     Navigator.pop(context);
@@ -62,19 +66,25 @@ class SettingsPageBody extends StatelessWidget {
               SettingsRow(
                 text: lang.darkMode,
                 icon: Assets.iconsMoon,
-                onPressed: () {},
+                onPressed: () {
+                  // لو بدك الزر ككل يشتغل للضغط ع SettingsRow
+                  final themeProvider = Provider.of<ThemeProvider>(
+                    context,
+                    listen: false,
+                  );
+                  themeProvider.toggleTheme(!themeProvider.isDarkMode);
+                },
               ),
-              Container(
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(6),
-                  border: Border.all(
-                    color: Constants.darkSecondryColor,
-                    width: 3,
-                  ),
-                ),
+              Consumer<ThemeProvider>(
+                builder: (context, themeProvider, _) {
+                  return Switch(
+                    value: themeProvider.isDarkMode,
+                    onChanged: (bool value) {
+                      themeProvider.toggleTheme(value);
+                    },
+                    activeColor: Constants2.primaryColor(context),
+                  );
+                },
               ),
             ],
           ),

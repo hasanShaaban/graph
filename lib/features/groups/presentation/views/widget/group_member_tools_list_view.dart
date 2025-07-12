@@ -7,10 +7,11 @@ class GroupMemberToolsListView extends StatelessWidget {
   const GroupMemberToolsListView({
     super.key,
     required this.lang,
-    required this.chosenTools, required this.width,
+    required this.chosenTools,
+    required this.width,
   });
 
-final S lang;
+  final S lang;
   final List<String> chosenTools;
   final double width;
 
@@ -31,7 +32,7 @@ final S lang;
             child: TechToolContainer(
               width: 40,
               height: 40,
-              color: Constants.lightPrimaryColor,
+              color: Constants2.lightPrimaryColor(context),
               icon: chosenTools[index],
             ),
           );

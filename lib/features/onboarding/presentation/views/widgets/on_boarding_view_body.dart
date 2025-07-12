@@ -98,7 +98,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             child: TextButton(
               style: TextButton.styleFrom(
                 minimumSize: Size(double.infinity, 60),
-                backgroundColor: Constants.primaryColor,
+                backgroundColor: Constants2.primaryColor(context),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
@@ -107,7 +107,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               child: Text(
                 lang.begin,
                 style: AppTextStyle.cairoBold22.copyWith(
-                  color: Constants.lightPrimaryColor,
+                  color: Constants2.lightPrimaryColor(context),
                 ),
               ),
             ),

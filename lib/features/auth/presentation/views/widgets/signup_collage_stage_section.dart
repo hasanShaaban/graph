@@ -69,7 +69,7 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                       child: Text(
                         lang.customizeFeatures,
                         style: AppTextStyle.cairoRegular14.copyWith(
-                          color: Constants.darkSecondryColor,
+                          color: Constants2.darkSecondaryColor(context),
                         ),
                       ),
                     ),

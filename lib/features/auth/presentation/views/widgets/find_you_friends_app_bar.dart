@@ -1,12 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 
 class FindYouFriendsAppBar extends StatelessWidget {
-  const FindYouFriendsAppBar({
-    super.key,
-  });
+  const FindYouFriendsAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +19,16 @@ class FindYouFriendsAppBar extends StatelessWidget {
         gradient: LinearGradient(
           end: Alignment.topRight,
           begin: Alignment.bottomLeft,
-          colors: [Constants.primaryColor, Constants.thirdColor],
+          colors: [
+            Constants2.primaryColor(context),
+            Constants2.thirdColor(context),
+          ],
         ),
       ),
       child: Text(
         "Let's find you some friends ",
         style: AppTextStyle.cairoBold34.copyWith(
-          color: Constants.lightPrimaryColor,
+          color: Constants2.lightPrimaryColor(context),
         ),
       ),
     );

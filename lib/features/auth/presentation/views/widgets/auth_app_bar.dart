@@ -27,7 +27,10 @@ class AuthAppBar extends StatelessWidget {
         gradient: LinearGradient(
           end: Alignment.topRight,
           begin: Alignment.bottomLeft,
-          colors: [Constants.primaryColor, Constants.thirdColor],
+          colors: [
+            Constants2.primaryColor(context),
+            Constants2.thirdColor(context),
+          ],
         ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(52),
@@ -44,7 +47,7 @@ class AuthAppBar extends StatelessWidget {
               onTap: onPressed,
               child: SvgPicture.asset(
                 Assets.iconsArrowLeft,
-                color: Constants.lightPrimaryColor,
+                color: Constants2.lightPrimaryColor(context),
               ),
             ),
           ),
@@ -52,7 +55,7 @@ class AuthAppBar extends StatelessWidget {
           Text(
             text1,
             style: AppTextStyle.cairoBold34.copyWith(
-              color: Constants.lightPrimaryColor,
+              color: Constants2.lightPrimaryColor(context),
               height: 1.5,
             ),
           ),
@@ -61,7 +64,7 @@ class AuthAppBar extends StatelessWidget {
             text2,
             style: AppTextStyle.cairoRegular24.copyWith(
               height: 1,
-              color: Constants.lightPrimaryColor,
+              color: Constants2.lightPrimaryColor(context),
             ),
           ),
         ],

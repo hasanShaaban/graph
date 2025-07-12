@@ -36,8 +36,7 @@ class GroupProfileListView extends StatelessWidget {
                 onLongPress: () {
                   showDialog(
                     context: context,
-                    builder:
-                        (context) => GroupMemberInfo(lang: lang),
+                    builder: (context) => GroupMemberInfo(lang: lang),
                   );
                 },
                 child: SizedBox(
@@ -46,11 +45,9 @@ class GroupProfileListView extends StatelessWidget {
                   child: Column(
                     children: [
                       CircleAvatar(
-                        backgroundColor: Constants.primaryColor,
+                        backgroundColor: Constants2.primaryColor(context),
                         radius: 65 / 2,
-                        backgroundImage: AssetImage(
-                          Assets.imagesProfileImage,
-                        ),
+                        backgroundImage: AssetImage(Assets.imagesProfileImage),
                       ),
                       SizedBox(height: 5),
                       SizedBox(
@@ -59,12 +56,11 @@ class GroupProfileListView extends StatelessWidget {
                         child: Text(
                           'Hasan Shaaban',
                           textAlign: TextAlign.center,
-                          style: AppTextStyle.cairoRegular14
-                              .copyWith(
-                                height: 0.9,
-                                overflow: TextOverflow.fade,
-                                color: Constants.primaryColor,
-                              ),
+                          style: AppTextStyle.cairoRegular14.copyWith(
+                            height: 0.9,
+                            overflow: TextOverflow.fade,
+                            color: Constants2.primaryColor(context),
+                          ),
                         ),
                       ),
                     ],
@@ -76,4 +72,3 @@ class GroupProfileListView extends StatelessWidget {
     );
   }
 }
-

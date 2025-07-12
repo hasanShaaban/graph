@@ -22,9 +22,11 @@ class GroupManagementCutomButton extends StatelessWidget {
         height: height * 40 / 915,
         child: TextButton(
           style: TextButton.styleFrom(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+            ),
             padding: EdgeInsets.zero,
-            backgroundColor: Constants.primaryColor,
+            backgroundColor: Constants2.primaryColor(context),
           ),
           onPressed: onPressed,
           child: Row(
@@ -35,7 +37,7 @@ class GroupManagementCutomButton extends StatelessWidget {
               Text(
                 title,
                 style: AppTextStyle.cairoSemiBold18.copyWith(
-                  color: Constants.lightPrimaryColor,
+                  color: Constants2.lightPrimaryColor(context),
                 ),
               ),
             ],

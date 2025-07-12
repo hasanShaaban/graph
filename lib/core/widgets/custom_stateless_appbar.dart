@@ -5,7 +5,11 @@ import 'package:graph/core/widgets/custom_back_button.dart';
 import 'package:graph/generated/l10n.dart';
 
 class CustomStatelessAppbar extends StatelessWidget {
-  const CustomStatelessAppbar({super.key, required this.lang, required this.title});
+  const CustomStatelessAppbar({
+    super.key,
+    required this.lang,
+    required this.title,
+  });
   final S lang;
   final String title;
   @override
@@ -16,7 +20,10 @@ class CustomStatelessAppbar extends StatelessWidget {
       height: 80,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Constants.primaryColor, Constants.thirdColor],
+          colors: [
+            Constants2.primaryColor(context),
+            Constants2.thirdColor(context),
+          ],
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
         ),
@@ -32,7 +39,7 @@ class CustomStatelessAppbar extends StatelessWidget {
           Text(
             title,
             style: AppTextStyle.cairoSemiBold24.copyWith(
-              color: Constants.lightPrimaryColor,
+              color: Constants2.lightPrimaryColor(context),
             ),
           ),
         ],
@@ -40,5 +47,3 @@ class CustomStatelessAppbar extends StatelessWidget {
     );
   }
 }
-
-

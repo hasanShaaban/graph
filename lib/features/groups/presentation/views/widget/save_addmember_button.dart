@@ -23,7 +23,7 @@ class SaveAddmemberButton extends StatelessWidget {
           height: 42,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
-            color: Constants.primaryColor,
+            color: Constants2.primaryColor(context),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +33,7 @@ class SaveAddmemberButton extends StatelessWidget {
               Text(
                 text,
                 style: AppTextStyle.cairoSemiBold18.copyWith(
-                  color: Constants.lightPrimaryColor,
+                  color: Constants2.lightPrimaryColor(context),
                 ),
               ),
             ],

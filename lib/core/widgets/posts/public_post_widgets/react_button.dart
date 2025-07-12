@@ -129,10 +129,12 @@ class _ReactButtonState extends State<ReactButton>
                   animation: reactController,
                   builder: (_, __) {
                     return Positioned(
-                      bottom: dy * reactAnimation.value ,
-                      left: dx * reactAnimation.value + widget.width * 138 / 412 / 2 + 15,
+                      bottom: dy * reactAnimation.value,
+                      left:
+                          dx * reactAnimation.value +
+                          widget.width * 138 / 412 / 2 +
+                          15,
                       child: Align(
-
                         alignment: Alignment.center,
                         child: GestureDetector(
                           behavior: HitTestBehavior.opaque,
@@ -180,8 +182,8 @@ class _ReactButtonState extends State<ReactButton>
                   decoration: BoxDecoration(
                     color:
                         isPressed
-                            ? Constants.deviderColor
-                            : Constants.lightSecondryColor,
+                            ? Constants2.dividerColor(context)
+                            : Constants2.lightSecondaryColor(context),
                     borderRadius: BorderRadius.circular(buttonSize),
                   ),
                   child: Center(

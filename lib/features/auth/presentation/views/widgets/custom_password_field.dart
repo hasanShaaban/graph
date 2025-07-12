@@ -36,7 +36,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
         return null;
       },
       style: AppTextStyle.cairoRegular20.copyWith(
-        color: Constants.darkPrimaryColor,
+        color: Constants2.darkPrimaryColor(context),
       ),
       keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
@@ -44,7 +44,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
         enabledBorder: buildBorder(),
         focusedBorder: buildFocusedBorder(),
         filled: true,
-        fillColor: Constants.lightSecondryColor,
+        fillColor: Constants2.lightSecondaryColor(context),
         suffixIcon: GestureDetector(
           onTap: () {
             setState(() {
@@ -66,8 +66,8 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
             width: 26,
             color:
                 isFoused
-                    ? Constants.darkPrimaryColor
-                    : Constants.darkSecondryColor,
+                    ? Constants2.darkPrimaryColor(context)
+                    : Constants2.darkSecondaryColor(context),
           ),
         ),
         hintText: lang.password,
@@ -86,7 +86,10 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   OutlineInputBorder buildFocusedBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(15),
-      borderSide: const BorderSide(width: 2, color: Constants.darkPrimaryColor),
+      borderSide: BorderSide(
+        width: 2,
+        color: Constants2.darkPrimaryColor(context),
+      ),
     );
   }
 }

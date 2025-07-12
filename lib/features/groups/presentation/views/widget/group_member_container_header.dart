@@ -6,10 +6,7 @@ import 'package:graph/core/utils/constants.dart';
 import 'package:graph/generated/l10n.dart';
 
 class GroupMemberContainerHeader extends StatelessWidget {
-  const GroupMemberContainerHeader({
-    super.key,
-    required this.lang,
-  });
+  const GroupMemberContainerHeader({super.key, required this.lang});
 
   final S lang;
 
@@ -20,7 +17,7 @@ class GroupMemberContainerHeader extends StatelessWidget {
         Text(
           lang.groupAdmin,
           style: AppTextStyle.cairoRegular14.copyWith(
-            color: Constants.darkSecondryColor,
+            color: Constants2.darkSecondaryColor(context),
             height: 1,
           ),
         ),

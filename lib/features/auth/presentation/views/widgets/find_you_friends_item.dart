@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
@@ -13,10 +12,10 @@ class FindYouFriendsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        var lang = S.of(context);
+    var lang = S.of(context);
     return Row(
       children: [
-        Expanded(child: FollowSearchTextField(lang: lang,)),
+        Expanded(child: FollowSearchTextField(lang: lang)),
         GestureDetector(
           onTap: () {},
           child: Container(
@@ -24,19 +23,19 @@ class FindYouFriendsItem extends StatelessWidget {
             height: 32,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: Constants.deviderColor,
+              color: Constants2.dividerColor(context),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SvgPicture.asset(
                   Assets.iconsUserAdd,
-                  color: Constants.primaryColor,
+                  color: Constants2.primaryColor(context),
                 ),
                 Text(
                   'follow',
                   style: AppTextStyle.cairoRegular16.copyWith(
-                    color: Constants.primaryColor,
+                    color: Constants2.primaryColor(context),
                   ),
                 ),
               ],

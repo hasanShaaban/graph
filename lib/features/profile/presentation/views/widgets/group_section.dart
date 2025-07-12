@@ -27,7 +27,7 @@ class GroupSection extends StatelessWidget {
             Text(
               lang.currentGroup,
               style: AppTextStyle.cairoSemiBold14.copyWith(
-                color: Constants.darkPrimaryColor,
+                color: Constants2.darkPrimaryColor(context),
               ),
             ),
             Spacer(),

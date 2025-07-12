@@ -9,7 +9,8 @@ class UserNameTextField extends StatelessWidget {
     required this.text,
     this.controller,
     required this.width,
-    this.textInputType, this.onSaved,
+    this.textInputType,
+    this.onSaved,
   });
   final String text;
   final TextEditingController? controller;
@@ -33,18 +34,23 @@ class UserNameTextField extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           filled: true,
-          fillColor: Constants.lightSecondryColor,
-    
+          fillColor: Constants2.lightSecondaryColor(context),
+
           hintText: text,
-          hintStyle: AppTextStyle.cairoBold18.copyWith(color: Constants.darkSecondryColor),
-    
+          hintStyle: AppTextStyle.cairoBold18.copyWith(
+            color: Constants2.darkSecondaryColor(context),
+          ),
+
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: BorderSide.none,
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: Constants.primaryColor, width: 2),
+            borderSide: BorderSide(
+              color: Constants2.primaryColor(context),
+              width: 2,
+            ),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
