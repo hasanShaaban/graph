@@ -94,6 +94,14 @@
   "fourDigitsCode": ": لقد أرسلنا رمز التحقق المكون من أربعة أرقام إلى بريدك الإلكتروني",
   "codeVerification" : "تحقق من صندوق بريدك الإلكتروني وأدخل رمز التحقق",
   "addFinalTouches": "ضع اللمسات الاخيرة ",
-  "findYouFriends": "دعنا نجد لك بعض الاصدقاء"
+  "findYouFriends": "دعنا نجد لك بعض الاصدقاء",
+  "settings":"الاعدادات",
+  "managementAndPrivacy":"الادارة والخصوصية",
+  "changeNameAndPassowrd": "تغيير الاسم وكلمة المرور",
+  "changeEmail":"تغيير الايميل",
+  "postsManagement":"ادارة المنشورات",
+  "darkMode":"الوضع المظلم",
+  "changeLanguage":"تغيير اللغة",
+  "logout":"تسجيل خروج"
 
 }

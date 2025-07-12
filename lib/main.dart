@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
-import 'package:graph/features/groups/presentation/views/groups_management_view.dart';
-import 'package:graph/features/groups/presentation/views/my_group_view.dart';
-import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import 'package:graph/features/setting/presentation/views/settings_view.dart';
-import 'features/auth/presentation/views/widgets/signup_final_touches_sec.dart';
-import 'features/auth/presentation/views/widgets/signup_verification_section.dart';
-import 'features/splash/presentation/views/splash_view.dart';
+import 'package:graph/features/splash/presentation/views/splash_view.dart';
 import 'bloc_providers.dart';
 import 'core/services/providers/user_info_provider.dart';
 import 'core/services/providers/local_provider.dart';
@@ -49,6 +43,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: providers,
       child: MaterialApp(
+     
         localizationsDelegates: [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -58,6 +53,7 @@ class MyApp extends StatelessWidget {
 
         supportedLocales: S.delegate.supportedLocales,
         locale: languageProvider.locale,
+        
         theme: ThemeData(
           useMaterial3: false,
           scaffoldBackgroundColor: Constants.lightPrimaryColor,
@@ -66,8 +62,8 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerateRoute,
-        //  initialRoute: SplashView.name,
-        initialRoute: MyGroupView.name,
+          initialRoute: SplashView.name,
+       // initialRoute: SettingsView.name,
       ),
     );
   }

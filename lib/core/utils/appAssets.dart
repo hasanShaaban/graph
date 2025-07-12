@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-  
+
   /// Assets for iconsAdd
   /// assets/icons/add.svg
   static const String iconsAdd = "assets/icons/add.svg";
@@ -20,7 +20,8 @@ class Assets {
 
   /// Assets for iconsArrowRightToBracket
   /// assets/icons/arrow-right-to-bracket.svg
-  static const String iconsArrowRightToBracket = "assets/icons/arrow-right-to-bracket.svg";
+  static const String iconsArrowRightToBracket =
+      "assets/icons/arrow-right-to-bracket.svg";
 
   /// Assets for iconsBookmark
   /// assets/icons/bookmark.svg
@@ -140,7 +141,8 @@ class Assets {
 
   /// Assets for iconsNotifecationBell
   /// assets/icons/notifecation_bell.svg
-  static const String iconsNotifecationBell = "assets/icons/notifecation_bell.svg";
+  static const String iconsNotifecationBell =
+      "assets/icons/notifecation_bell.svg";
 
   /// Assets for iconsPassword
   /// assets/icons/password.svg
@@ -212,7 +214,8 @@ class Assets {
 
   /// Assets for iconsUserForbiddenAlt
   /// assets/icons/user-forbidden-alt.svg
-  static const String iconsUserForbiddenAlt = "assets/icons/user-forbidden-alt.svg";
+  static const String iconsUserForbiddenAlt =
+      "assets/icons/user-forbidden-alt.svg";
 
   /// Assets for iconsUserGraduate
   /// assets/icons/user-graduate.svg
@@ -226,13 +229,54 @@ class Assets {
   /// assets/icons/user-tie-hair.svg
   static const String iconsUserTieHair = "assets/icons/user-tie-hair.svg";
 
+  /// Assets for changeLanguage
+  /// assets/icons/changeLanguage.svg
+  static const String iconsChangeLanguage = "assets/icons/changeLanguage.svg";
+
+  /// Assets for exit
+  /// assets/icons/exit.svg
+  static const String iconsExit = "assets/icons/exit.svg";
+
+  /// Assets for home
+  /// assets/icons/home.svg
+  static const String iconsHome = "assets/icons/home.svg";
+
+  /// Assets for moon
+  /// assets/icons/moon.svg
+  static const String iconsMoon = "assets/icons/moon.svg";
+
+  /// Assets for notesMedical
+  /// assets/icons/notes-medical.svg
+  static const String iconsNotesMedical = "assets/icons/notes-medical.svg";
+
+  /// Assets for passwordEmail
+  /// assets/icons/password-email.svg
+  static const String iconsPasswordEmail = "assets/icons/password-email.svg";
+
+  /// Assets for settingsWindow
+  /// assets/icons/settings-window.svg
+  static const String iconsSettingsWidow = "assets/icons/settings-window.svg";
+
+  /// Assets for setting
+  /// assets/icons/settings.svg
+  static const String iconsSetting = "assets/icons/settings.svg";
+
+  /// Assets for key
+  /// assets/icons/key.svg
+  static const String iconsKey = "assets/icons/key.svg";
+
+  /// Assets for userGear
+  /// assets/icons/user-gear.svg
+  static const String iconsUserGear = "assets/icons/user-gear.svg";
+
   /// Assets for imagesBoyProfile
   /// assets/images/boy_profile.json
   static const String imagesBoyProfile = "assets/images/boy_profile.json";
 
   /// Assets for imagesCreateNewAccount
   /// assets/images/create_new_account.json
-  static const String imagesCreateNewAccount = "assets/images/create_new_account.json";
+  static const String imagesCreateNewAccount =
+      "assets/images/create_new_account.json";
 
   /// Assets for imagesDart
   /// assets/images/dart.svg
@@ -288,6 +332,6 @@ class Assets {
 
   /// Assets for imagesVisualStudioCode
   /// assets/images/visual-studio-code.svg
-  static const String imagesVisualStudioCode = "assets/images/visual-studio-code.svg";
+  static const String imagesVisualStudioCode =
+      "assets/images/visual-studio-code.svg";
 }
-

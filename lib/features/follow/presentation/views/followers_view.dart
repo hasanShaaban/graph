@@ -4,7 +4,6 @@ import 'package:graph/features/followers&following/presentation/views/widgets/fo
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../generated/l10n.dart';
-import 'following_view.dart';
 
 import 'widgets/follow_number_section.dart';
 

@@ -40,6 +40,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "begin": MessageLookupByLibrary.simpleMessage("Begin"),
     "birthday": MessageLookupByLibrary.simpleMessage("When\'s your birthday?"),
+    "changeEmail": MessageLookupByLibrary.simpleMessage("Change email"),
+    "changeLanguage": MessageLookupByLibrary.simpleMessage("Change language"),
+    "changeNameAndPassowrd": MessageLookupByLibrary.simpleMessage(
+      "Change name and password",
+    ),
     "codeVerification": MessageLookupByLibrary.simpleMessage(
       "check your email inbox and inter the code :",
     ),
@@ -58,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "customizeProfile": MessageLookupByLibrary.simpleMessage(
       "Let\'s customize your profile",
     ),
+    "darkMode": MessageLookupByLibrary.simpleMessage("Dark mode"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -100,7 +106,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
     "login": MessageLookupByLibrary.simpleMessage("Login!"),
     "loginTitle": MessageLookupByLibrary.simpleMessage("Login to your account"),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
+    "managementAndPrivacy": MessageLookupByLibrary.simpleMessage(
+      "management & privacy",
+    ),
     "message": MessageLookupByLibrary.simpleMessage("Message"),
     "myGroups": MessageLookupByLibrary.simpleMessage("MY Groups"),
     "mySV": MessageLookupByLibrary.simpleMessage("My SV"),
@@ -136,6 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseSelectSpacialization": MessageLookupByLibrary.simpleMessage(
       "Please, Select your specialization!",
     ),
+    "postsManagement": MessageLookupByLibrary.simpleMessage("Posts management"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "role": MessageLookupByLibrary.simpleMessage("Role"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
@@ -144,6 +155,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectYear": MessageLookupByLibrary.simpleMessage(
       "Select your study year",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "socialLinks": MessageLookupByLibrary.simpleMessage("Social links"),

@@ -1,15 +1,13 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 
 class SettingsRow extends StatelessWidget {
-  const SettingsRow({super.key, required this.text, required this.icon});
+  const SettingsRow({super.key, required this.text, required this.icon, required this.onPressed});
   final String text;
   final String icon;
-
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,7 +16,7 @@ class SettingsRow extends StatelessWidget {
         children: [
           SvgPicture.asset(icon),
           TextButton(
-            onPressed: () {},
+            onPressed: onPressed,
             child: Text(
               text,
               style: AppTextStyle.cairoSemiBold18.copyWith(

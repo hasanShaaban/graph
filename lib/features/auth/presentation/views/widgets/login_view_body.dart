@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../manager/cubit/login_cubit.dart';
 import '../../../../follow/presentation/views/followers_view.dart';
@@ -72,10 +73,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   if (state is LoginSuccess) {
                     final token = state.response['token'];
                     final message = state.response['message'];
-                
+
                     Navigator.pushReplacementNamed(
                       context,
-                      FollowersView.name,
+                      ProfileView.name,
                       arguments: signupData,
                     );
                   } else if (state is LoginFailuer) {

@@ -132,7 +132,7 @@ class _GroupsManagementContainerState extends State<GroupsManagementContainer> {
                               ),
                             ),
                           );
-                        }).toList(),
+                        }),
 
                         Padding(
                           padding: const EdgeInsets.all(5),
@@ -210,7 +210,7 @@ class _GroupsManagementContainerState extends State<GroupsManagementContainer> {
                               ),
                             ),
                           );
-                        }).toList(),
+                        }),
 
                         Padding(
                           padding: const EdgeInsets.all(5),

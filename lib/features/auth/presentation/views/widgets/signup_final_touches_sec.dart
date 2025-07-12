@@ -104,7 +104,7 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                                 ),
                               ),
                             );
-                          }).toList(),
+                          }),
 
                           Padding(
                             padding: const EdgeInsets.all(5),

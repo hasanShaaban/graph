@@ -778,6 +778,71 @@ class S {
       args: [],
     );
   }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+  }
+
+  /// `management & privacy`
+  String get managementAndPrivacy {
+    return Intl.message(
+      'management & privacy',
+      name: 'managementAndPrivacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change name and password`
+  String get changeNameAndPassowrd {
+    return Intl.message(
+      'Change name and password',
+      name: 'changeNameAndPassowrd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change email`
+  String get changeEmail {
+    return Intl.message(
+      'Change email',
+      name: 'changeEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Posts management`
+  String get postsManagement {
+    return Intl.message(
+      'Posts management',
+      name: 'postsManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark mode`
+  String get darkMode {
+    return Intl.message('Dark mode', name: 'darkMode', desc: '', args: []);
+  }
+
+  /// `Change language`
+  String get changeLanguage {
+    return Intl.message(
+      'Change language',
+      name: 'changeLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

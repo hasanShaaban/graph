@@ -27,7 +27,7 @@ class FinalTouchesTopSection extends StatelessWidget {
           },
         ),
 
-        Container(
+        SizedBox(
           height: 300,
           width: double.infinity,
           child: Stack(

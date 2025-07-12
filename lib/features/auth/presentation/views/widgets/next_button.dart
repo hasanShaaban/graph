@@ -6,7 +6,7 @@ import '../../../../../core/utils/constants.dart';
 
 // this button will be used in the authentication screens
 class NextButton extends StatelessWidget {
-  NextButton({
+  const NextButton({
     super.key,
     this.title,
     required this.onPressed,

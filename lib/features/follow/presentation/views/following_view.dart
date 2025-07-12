@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graph/features/followers&following/presentation/views/widgets/follow_list_view_item.dart';
 import 'package:graph/features/followers&following/presentation/views/widgets/follow_search_text_field.dart';
-import '../../../groups/presentation/views/my_group_view.dart';
 import '../../../../generated/l10n.dart';
 
 import 'widgets/follow_number_section.dart';

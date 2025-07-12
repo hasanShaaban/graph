@@ -7,7 +7,6 @@ import '../../../../../core/services/sources/langeage_data_source.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import '../../../../auth/presentation/views/login_view.dart';
 import '../../../../onboarding/presentation/views/on_boarding_view.dart';
 import 'package:provider/provider.dart';
 

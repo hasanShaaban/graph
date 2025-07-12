@@ -94,5 +94,13 @@
 "fourDigitsCode": "we have sent you a four_digits verification code to your email :",
 "codeVerification": "check your email inbox and inter the code :",
 "addFinalTouches" : "Add the final touches",
-"findYouFriends": "Let’s find you some frineds"
+"findYouFriends": "Let’s find you some frineds",
+"settings": "Settings",
+ "managementAndPrivacy":"management & privacy",
+  "changeNameAndPassowrd": "Change name and password",
+  "changeEmail":"Change email",
+  "postsManagement":"Posts management",
+  "darkMode":"Dark mode",
+  "changeLanguage":"Change language",
+  "logout":"Logout"
 }

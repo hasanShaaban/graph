@@ -1,34 +1,69 @@
-
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:graph/core/services/providers/local_provider.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
+import 'package:graph/core/widgets/custom_back_button.dart';
 import 'package:graph/features/setting/presentation/views/widgets/divide_line.dart';
 import 'package:graph/features/setting/presentation/views/widgets/settings_row.dart';
+import 'package:graph/generated/l10n.dart';
+import 'package:provider/provider.dart';
 
 class SettingsPageBody extends StatelessWidget {
   const SettingsPageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var lang = S.of(context);
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
         children: [
-          SettingsRow(text: 'Settings', icon: Assets.iconsArrowLeft),
-          DividLine(text: 'management & privacy'),
-          SettingsRow(
-            text: 'Change name and password',
-            icon: Assets.iconsDeleteUser,
+          Row(
+            children: [
+              CustomBackButton(lang: lang, color: Constants.darkPrimaryColor),
+              // GestureDetector(
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //   },
+              //   child: SvgPicture.asset(Assets.iconsArrowLeft),
+              // ),
+              Text(lang.settings, style: AppTextStyle.cairoSemiBold24),
+            ],
           ),
-          SettingsRow(text: 'Edit profile', icon: Assets.iconsUserGraduate),
-          SettingsRow(text: 'Change email', icon: Assets.iconsUserGraduate),
-          SettingsRow(text: 'Posts management', icon: Assets.iconsUserGraduate),
-          DividLine(text: 'setting'),
+
+          DividLine(text: lang.managementAndPrivacy),
+          SettingsRow(
+            text: lang.changeNameAndPassowrd,
+            icon: Assets.iconsKey,
+            onPressed: () {},
+          ),
+          SettingsRow(
+            text: lang.editProfile,
+            icon: Assets.iconsUserGear,
+            onPressed: () {},
+          ),
+          SettingsRow(
+            text: lang.changeEmail,
+            icon: Assets.iconsPasswordEmail,
+            onPressed: () {},
+          ),
+          SettingsRow(
+            text: lang.postsManagement,
+            icon: Assets.iconsSettingsWidow,
+            onPressed: () {},
+          ),
+          DividLine(text: lang.settings),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SettingsRow(text: 'Dark mode', icon: Assets.iconsUserGraduate),
+              SettingsRow(
+                text: lang.darkMode,
+                icon: Assets.iconsMoon,
+                onPressed: () {},
+              ),
               Container(
                 width: 20,
                 height: 20,
@@ -47,13 +82,38 @@ class SettingsPageBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SettingsRow(
-                text: 'Change language',
-                icon: Assets.iconsUserGraduate,
+                text: lang.changeLanguage,
+                icon: Assets.iconsChangeLanguage,
+                onPressed: () {
+                  final localProvider = Provider.of<LocalProvider>(
+                    context,
+                    listen: false,
+                  );
+                  final currentLang = localProvider.locale.languageCode;
+                  if (currentLang == 'en') {
+                    localProvider.setLocal('ar');
+                  } else {
+                    localProvider.setLocal('en');
+                  }
+                },
               ),
-              Text('Eng', style: AppTextStyle.cairoRegular16),
+              Consumer<LocalProvider>(
+                builder: (context, provider, _) {
+                  final isEnglish = provider.locale.languageCode == 'en';
+                  return Text(
+                    isEnglish ? 'Eng' : 'عربي',
+                    style: AppTextStyle.cairoRegular16,
+                  );
+                },
+              ),
             ],
           ),
-          SettingsRow(text: 'Log out', icon: Assets.iconsUserGraduate),
+          SettingsRow(
+            text: lang.logout,
+            icon: Assets.iconsExit,
+            onPressed: () {},
+          ),
+          //BottomAppBar(shape: CircularNotchedRectangle(),),
         ],
       ),
     );

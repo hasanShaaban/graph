@@ -40,6 +40,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "begin": MessageLookupByLibrary.simpleMessage("بدء"),
     "birthday": MessageLookupByLibrary.simpleMessage("ما هو تاريخ ميلادك؟"),
+    "changeEmail": MessageLookupByLibrary.simpleMessage("تغيير الايميل"),
+    "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
+    "changeNameAndPassowrd": MessageLookupByLibrary.simpleMessage(
+      "تغيير الاسم وكلمة المرور",
+    ),
     "codeVerification": MessageLookupByLibrary.simpleMessage(
       "تحقق من صندوق بريدك الإلكتروني وأدخل رمز التحقق",
     ),
@@ -58,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "customizeProfile": MessageLookupByLibrary.simpleMessage(
       "لنخصص ملفك الشخصي",
     ),
+    "darkMode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "editProfile": MessageLookupByLibrary.simpleMessage("تعديل ملفي الشخصي"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -92,7 +98,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTitle": MessageLookupByLibrary.simpleMessage(
       "تسجيل الدخول إلى حسابك",
     ),
+    "logout": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
+    "managementAndPrivacy": MessageLookupByLibrary.simpleMessage(
+      "الادارة والخصوصية",
+    ),
     "message": MessageLookupByLibrary.simpleMessage("مراسلة"),
     "myGroups": MessageLookupByLibrary.simpleMessage("فريقي"),
     "mySV": MessageLookupByLibrary.simpleMessage("سيرتي الذاتية"),
@@ -124,12 +134,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseSelectSpacialization": MessageLookupByLibrary.simpleMessage(
       " يرجى اختيار اختصاصك",
     ),
+    "postsManagement": MessageLookupByLibrary.simpleMessage("ادارة المنشورات"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "role": MessageLookupByLibrary.simpleMessage("دور"),
     "search": MessageLookupByLibrary.simpleMessage("ابحث"),
     "seeAll": MessageLookupByLibrary.simpleMessage("اظهار الكل"),
     "selectRole": MessageLookupByLibrary.simpleMessage("اختر دورك"),
     "selectYear": MessageLookupByLibrary.simpleMessage("اختر سنتك الدراسية"),
+    "settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
     "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "socialLinks": MessageLookupByLibrary.simpleMessage("روابط التواصل"),
