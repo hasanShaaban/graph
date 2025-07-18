@@ -853,6 +853,16 @@ class S {
       args: [],
     );
   }
+
+  /// `please enter birth date`
+  String get pleaseEnterBirthDate {
+    return Intl.message(
+      'please enter birth date',
+      name: 'pleaseEnterBirthDate',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

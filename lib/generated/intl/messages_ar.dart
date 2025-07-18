@@ -125,6 +125,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pictureHelp": MessageLookupByLibrary.simpleMessage(
       "تساعد الصور الآخرين على التعرف عليك.",
     ),
+    "pleaseEnterBirthDate": MessageLookupByLibrary.simpleMessage(
+      "الرجاء اختيار تاريخ الميلاد",
+    ),
     "pleasePickGender": MessageLookupByLibrary.simpleMessage(
       "يرجى اختيار الجنس",
     ),

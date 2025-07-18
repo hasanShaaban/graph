@@ -103,6 +103,7 @@
   "darkMode":"الوضع المظلم",
   "changeLanguage":"تغيير اللغة",
   "logout":"تسجيل خروج",
-  "selectYourSpacialization":" اختر اختصاصك"
+  "selectYourSpacialization":" اختر اختصاصك",
+  "pleaseEnterBirthDate": "الرجاء اختيار تاريخ الميلاد"
 
 }

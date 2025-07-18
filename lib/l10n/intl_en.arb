@@ -103,5 +103,6 @@
   "darkMode":"Dark mode",
   "changeLanguage":"Change language",
   "logout":"Logout",
-  "selectYourSpacialization": "Select your specialization"
+  "selectYourSpacialization": "Select your specialization",
+  "pleaseEnterBirthDate": "please enter birth date"
 }
