@@ -843,6 +843,16 @@ class S {
   String get logout {
     return Intl.message('Logout', name: 'logout', desc: '', args: []);
   }
+
+  /// `Select your specialization`
+  String get selectYourSpacialization {
+    return Intl.message(
+      'Select your specialization',
+      name: 'selectYourSpacialization',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/features/auth/presentation/views/widgets/name_and_birth_date_info.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_find_friends.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -49,18 +50,8 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 FinalTouchesTopSection(lang: lang),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Saly Karim', style: AppTextStyle.cairoBold22),
-                    Icon(Icons.safety_check),
-                  ],
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text('January-23-2005'),
-                ),
+                NameAndBirthDateInfo(),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(

@@ -73,7 +73,7 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 15),                  
                     Material(
                       child: customDropDownButton(
                         list: studyYear,
@@ -131,3 +131,45 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
     );
   }
 }
+
+// class SelectStudyYear extends StatefulWidget {
+//   const SelectStudyYear({super.key});
+
+//   @override
+//   State<SelectStudyYear> createState() => _SelectStudyYearState();
+// }
+
+// class _SelectStudyYearState extends State<SelectStudyYear> {
+//   final List<String>? studyYear = [
+//     'first',
+//     'second',
+//     'third',
+//     'fourth',
+//     'fifth',
+//   ];
+
+//   String? selectVal;
+//   int? selectedYearId;
+//   late SignupDataModel signupData;
+//   @override
+//   Widget build(BuildContext context) {
+//     var lang = S.of(context);
+//     return Material(
+//       child: customDropDownButton(
+//         list: studyYear,
+//         text: selectVal == null ? lang.selectYear : "$selectVal year",
+
+//         onChanged: (value) {
+//           setState(() {
+//             selectVal = value;
+//             selectedYearId = studyYear!.indexOf(value) + 1;
+//           });
+//         },
+//         width: 300,
+//         height: 55,
+//         border: 15,
+//         iconPadding: 70,
+//       ),
+//     );
+//   }
+// }  

@@ -141,6 +141,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "seeAll": MessageLookupByLibrary.simpleMessage("اظهار الكل"),
     "selectRole": MessageLookupByLibrary.simpleMessage("اختر دورك"),
     "selectYear": MessageLookupByLibrary.simpleMessage("اختر سنتك الدراسية"),
+    "selectYourSpacialization": MessageLookupByLibrary.simpleMessage(
+      " اختر اختصاصك",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
     "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),

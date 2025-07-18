@@ -7,6 +7,7 @@ import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/custom_back_button.dart';
+import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:graph/features/setting/presentation/views/widgets/divide_line.dart';
 import 'package:graph/features/setting/presentation/views/widgets/settings_row.dart';
 import 'package:graph/generated/l10n.dart';
@@ -47,7 +48,9 @@ class SettingsPageBody extends StatelessWidget {
           SettingsRow(
             text: lang.editProfile,
             icon: Assets.iconsUserGear,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, EditProfileView.name);
+            },
           ),
           SettingsRow(
             text: lang.changeEmail,

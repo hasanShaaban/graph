@@ -155,6 +155,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectYear": MessageLookupByLibrary.simpleMessage(
       "Select your study year",
     ),
+    "selectYourSpacialization": MessageLookupByLibrary.simpleMessage(
+      "Select your specialization",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),

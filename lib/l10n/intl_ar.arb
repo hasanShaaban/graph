@@ -102,6 +102,7 @@
   "postsManagement":"ادارة المنشورات",
   "darkMode":"الوضع المظلم",
   "changeLanguage":"تغيير اللغة",
-  "logout":"تسجيل خروج"
+  "logout":"تسجيل خروج",
+  "selectYourSpacialization":" اختر اختصاصك"
 
 }

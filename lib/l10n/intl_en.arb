@@ -102,5 +102,6 @@
   "postsManagement":"Posts management",
   "darkMode":"Dark mode",
   "changeLanguage":"Change language",
-  "logout":"Logout"
+  "logout":"Logout",
+  "selectYourSpacialization": "Select your specialization"
 }
