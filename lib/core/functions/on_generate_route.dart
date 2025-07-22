@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/follow/presentation/views/followers_view.dart';
-import 'package:graph/features/follow/presentation/views/following_view.dart';
+
 import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
 import 'package:graph/features/groups/presentation/views/group_management_view.dart';
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
+import 'package:graph/features/home/presentation/views/main_page.dart';
 import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import 'package:graph/features/profile/presentation/views/widgets/cvpdf.dart';
@@ -96,10 +96,6 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         );
       }
 
-    case FollowersView.name:
-      return MaterialPageRoute(builder: (context) => const FollowersView());
-    case FollowingView.name:
-      return MaterialPageRoute(builder: (context) => const FollowingView());
     case MyGroupView.name:
       return MaterialPageRoute(builder: (context) => const MyGroupView());
     case GroupManagementView.name:
@@ -121,6 +117,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case SettingsView.name:
       return MaterialPageRoute(builder: (context) => SettingsView());
+    case MainPage.name:
+      return MaterialPageRoute(builder: (context) => MainPage());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

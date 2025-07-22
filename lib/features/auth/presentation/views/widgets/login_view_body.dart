@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../manager/cubit/login_cubit.dart';
-import '../../../../follow/presentation/views/followers_view.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
