@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
 import 'package:graph/features/groups/presentation/views/group_management_view.dart';
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
-import 'package:graph/features/home/presentation/views/main_page.dart';
+import 'package:graph/features/main/presentation/views/main_page.dart';
 import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import 'package:graph/features/profile/presentation/views/widgets/cvpdf.dart';

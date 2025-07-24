@@ -59,7 +59,7 @@ class SettingsPageBody extends StatelessWidget {
           ),
           SettingsRow(
             text: lang.postsManagement,
-            icon: Assets.iconsSettingsWidow,
+            icon: Assets.iconsSettingsWindow,
             onPressed: () {},
           ),
           DividLine(text: lang.settings),
