@@ -12,46 +12,45 @@ class Constants {
 }
 
 class Constants2 {
-  // ✅ اللون الأساسي
   static Color primaryColor(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
-          ? const Color(0xFF444444) // اللون بالوضع الداكن
-          : const Color(0xFF007571); // اللون بالوضع الفاتح
+          ? Constants.primaryColor
+          : Constants.primaryColor;
 
-  // ✅ اللون الثانوي
+
   static Color secondaryColor(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
-          ? const Color(0xFF888888)
-          : const Color(0xFF2B61B2);
+          ? Constants.secondryColor
+          : Constants.secondryColor;
 
-  // ✅ اللون الخلفي
+
   static Color lightPrimaryColor(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
-          ? const Color(0xFF121212)
-          : const Color(0xFFF2F5F7);
+          ? Constants.darkPrimaryColor
+          : Constants.lightPrimaryColor;
 
   static Color lightSecondaryColor(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
-          ? const Color(0xFF1E1E1E)
-          : const Color(0xFFE6EBEE);
+          ? Constants.darkSecondryColor
+          : Constants.lightSecondryColor;
 
   static Color darkPrimaryColor(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
-          ? const Color(0xFFEFEFEF)
-          : const Color(0xFF39393A);
+          ? Constants.lightPrimaryColor
+          : Constants.darkPrimaryColor;
 
   static Color darkSecondaryColor(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
-          ? const Color(0xFFDDDDDD)
-          : const Color(0xFF858585);
+          ? Constants.lightSecondryColor
+          : Constants.darkSecondryColor;
 
   static Color dividerColor(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
-          ? const Color(0xFF555555)
-          : const Color(0xFFCCCCCC);
+          ? Constants.deviderColor
+          : Constants.deviderColor;
 
   static Color thirdColor(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
-          ? const Color(0xFF44665B)
-          : const Color(0xFFC0EFE0);
+          ? Constants.thirdColor
+          : Constants.thirdColor;
 }

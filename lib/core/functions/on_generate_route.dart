@@ -8,7 +8,6 @@ import 'package:graph/features/profile/presentation/views/edit_profile_view.dart
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import 'package:graph/features/profile/presentation/views/widgets/cvpdf.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_find_friends.dart';
-import 'package:graph/features/setting/presentation/views/settings_view.dart';
 import '../../features/auth/presentation/views/widgets/signup_final_touches_sec.dart';
 import '../../features/auth/presentation/views/widgets/signup_verification_section.dart';
 import '../../features/groups/presentation/views/groups_management_view.dart';
@@ -115,8 +114,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case SignupFindFriends.name:
       return MaterialPageRoute(builder: (context) => SignupFindFriends());
 
-    case SettingsView.name:
-      return MaterialPageRoute(builder: (context) => SettingsView());
+
     case MainPage.name:
       return MaterialPageRoute(builder: (context) => MainPage());
     default:

@@ -1,45 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:graph/core/services/get_it_service.dart';
 import 'package:graph/core/services/providers/local_provider.dart';
 import 'package:graph/core/services/providers/theme_provider.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/custom_back_button.dart';
+import 'package:graph/features/main/data/local_data_source/settings_local_data_source.dart';
 import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
-import 'package:graph/features/setting/presentation/views/widgets/divide_line.dart';
-import 'package:graph/features/setting/presentation/views/widgets/settings_row.dart';
+import 'package:graph/features/main/presentation/views/widgets/settings/divide_line.dart';
+import 'package:graph/features/main/presentation/views/widgets/settings/settings_row.dart';
 import 'package:graph/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
-class SettingsPageBody extends StatelessWidget {
+class SettingsPageBody extends StatefulWidget {
   const SettingsPageBody({super.key});
 
+  @override
+  State<SettingsPageBody> createState() => _SettingsPageBodyState();
+}
+
+class _SettingsPageBodyState extends State<SettingsPageBody> {
+  final SettingsLocalDataSource settingsLocalDataSource =
+      getIt<SettingsLocalDataSource>();
   @override
   Widget build(BuildContext context) {
     var lang = S.of(context);
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              CustomBackButton(
-                lang: lang,
-                color: Constants2.darkPrimaryColor(context),
-              ),
-              // GestureDetector(
-              //   onTap: () {
-              //     Navigator.pop(context);
-              //   },
-              //   child: SvgPicture.asset(Assets.iconsArrowLeft),
-              // ),
-              Text(lang.settings, style: AppTextStyle.cairoSemiBold24),
-            ],
-          ),
-
+          Text(lang.settings, style: AppTextStyle.cairoSemiBold24),
+          SizedBox(height: 8),
           DividLine(text: lang.managementAndPrivacy),
+          SizedBox(height: 8),
           SettingsRow(
             text: lang.changeNameAndPassowrd,
             icon: Assets.iconsKey,
@@ -70,20 +64,22 @@ class SettingsPageBody extends StatelessWidget {
                 text: lang.darkMode,
                 icon: Assets.iconsMoon,
                 onPressed: () {
-                  // لو بدك الزر ككل يشتغل للضغط ع SettingsRow
                   final themeProvider = Provider.of<ThemeProvider>(
                     context,
                     listen: false,
                   );
-                  themeProvider.toggleTheme(!themeProvider.isDarkMode);
+                  themeProvider.toggleTheme(
+                    themeProvider.themeMode == ThemeMode.dark,
+                  );
                 },
               ),
               Consumer<ThemeProvider>(
                 builder: (context, themeProvider, _) {
                   return Switch(
-                    value: themeProvider.isDarkMode,
+                    value: themeProvider.themeMode == ThemeMode.dark,
                     onChanged: (bool value) {
                       themeProvider.toggleTheme(value);
+                      settingsLocalDataSource.setDarkMode(value);
                     },
                     activeColor: Constants2.primaryColor(context),
                   );
@@ -126,7 +122,6 @@ class SettingsPageBody extends StatelessWidget {
             icon: Assets.iconsExit,
             onPressed: () {},
           ),
-          //BottomAppBar(shape: CircularNotchedRectangle(),),
         ],
       ),
     );

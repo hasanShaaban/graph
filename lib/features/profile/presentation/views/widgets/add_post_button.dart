@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/setting/presentation/views/settings_view.dart';
+
 import 'package:graph/generated/l10n.dart';
 
 class AddPostButton extends StatelessWidget {
@@ -22,7 +22,6 @@ class AddPostButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Navigator.pushNamed(context, SettingsView.name);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

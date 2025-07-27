@@ -6,6 +6,7 @@ import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/features/main/presentation/views/widgets/home/home_page_app_bar.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/public_page.dart';
 import 'package:graph/generated/l10n.dart';
 
 class HomePageBody extends StatefulWidget {
@@ -25,6 +26,7 @@ class HomePageBody extends StatefulWidget {
 class _HomePageBodyState extends State<HomePageBody>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  int _currentIndex = 0;
 
   final tabs = [
     {'icon': Assets.iconsEarthEuropa, 'label': 'Public'},
@@ -38,8 +40,10 @@ class _HomePageBodyState extends State<HomePageBody>
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController.addListener(() {
-      if (!_tabController.indexIsChanging) {
-        setState(() {});
+      if (_tabController.index != _currentIndex && mounted) {
+        setState(() {
+          _currentIndex = _tabController.index;
+        });
       }
     });
   }
@@ -59,61 +63,69 @@ class _HomePageBodyState extends State<HomePageBody>
             SliverPersistentHeader(
               pinned: true,
               delegate: _SliverTabBarDelegate(
-                SizedBox(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(tabs.length, (index) {
-                      final isSelected = _tabController.index == index;
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            log(
-                              '$isSelected, index = $index, controller endex = ${_tabController.index}',
-                            );
-                            _tabController.animateTo(index);
-                          });
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: List.generate(tabs.length, (index) {
+                    final isSelected = _currentIndex == index;
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _currentIndex = index;
+                        });
+                        log(
+                          '$isSelected, index = $index, controller endex = ${_tabController.index}',
+                        );
+                        _tabController.animateTo(index);
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SvgPicture.asset(tabs[index]['icon']!),
+                                const SizedBox(width: 5),
                                 if (isSelected)
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 8),
+                                  AnimatedScale(
+                                    duration: Duration(milliseconds: 200),
+                                    scale: isSelected ? 1 : 0,
                                     child: Text(
                                       tabs[index]['label']!,
                                       style: AppTextStyle.cairoSemiBold20
                                           .copyWith(
+                                            height: 1,
                                             color: Constants.lightPrimaryColor,
                                           ),
                                     ),
                                   ),
                               ],
                             ),
-                            AnimatedContainer(
-                              duration: Duration(milliseconds: 200),
-                              height: 3,
-                              width: isSelected ? 75 : 0,
-                              decoration: BoxDecoration(
-                                color: Constants.lightPrimaryColor,
-                                borderRadius: BorderRadius.circular(2),
-                              ),
+                          ),
+                          AnimatedContainer(
+                            curve: Curves.fastOutSlowIn,
+                            duration: Duration(milliseconds: 200),
+                            height: 3,
+                            width: isSelected ? 70 : 0,
+                            decoration: BoxDecoration(
+                              color: Constants.lightPrimaryColor,
+                              borderRadius: BorderRadius.circular(2),
                             ),
-                          ],
-                        ),
-                      );
-                    }),
-                  ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
                 ),
               ),
             ),
           ],
       body: TabBarView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: _tabController,
         children: [
-          Center(child: Text('Public Posts')),
+          PublicPage(),
           Center(child: Text('Groups Posts')),
           Center(child: Text('Jobs')),
           Center(child: Text('Ads')),
@@ -144,5 +156,7 @@ class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(covariant _SliverTabBarDelegate oldDelegate) => false;
+  bool shouldRebuild(covariant _SliverTabBarDelegate oldDelegate) {
+    return oldDelegate.child != child;
+  }
 }

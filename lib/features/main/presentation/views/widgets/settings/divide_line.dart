@@ -11,7 +11,7 @@ class DividLine extends StatelessWidget {
     return Row(
       children: [
         Text(text, style: AppTextStyle.cairoRegular12),
-
+        SizedBox(width: 3),
         Expanded(
           child: Container(
             height: 1,

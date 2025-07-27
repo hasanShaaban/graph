@@ -6,5 +6,6 @@ class HiveBoxes {
 
   // keys
   static const langauge = 'langauge';
+  static const theme = 'theme';
   static const onBoardingSeen = 'onBoardingSeen';
 }

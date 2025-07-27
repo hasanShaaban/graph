@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graph/features/main/presentation/views/widgets/home/home_page_body.dart';
 import 'package:graph/features/main/presentation/views/widgets/main_floating_action_button.dart';
 import 'package:graph/features/main/presentation/views/widgets/main_navigation_bar.dart';
-import 'package:graph/features/setting/presentation/views/widgets/settings_page_body.dart';
+import 'package:graph/features/main/presentation/views/widgets/settings/settings_page_body.dart';
 import 'package:graph/generated/l10n.dart';
 
 

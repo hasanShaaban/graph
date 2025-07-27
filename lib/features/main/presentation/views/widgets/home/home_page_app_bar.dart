@@ -3,13 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/constants.dart';
+import 'package:graph/features/profile/presentation/views/profile_view.dart';
 
 class HomePageAppBar extends StatelessWidget {
-  const HomePageAppBar({
-    super.key,
-    required this.height,
-    required this.width,
-  });
+  const HomePageAppBar({super.key, required this.height, required this.width});
 
   final double height;
   final double width;
@@ -25,19 +22,28 @@ class HomePageAppBar extends StatelessWidget {
       backgroundColor: Constants.lightPrimaryColor,
       title: Padding(
         padding: EdgeInsets.only(top: 10),
-        child: SvgPicture.asset(
-          Assets.iconsMainLogo,
-          width: width * 105 / 412,
-        ),
+        child: SvgPicture.asset(Assets.iconsMainLogo, width: width * 105 / 412),
       ),
       actions: [
-        SvgPicture.asset(Assets.iconsCircleUser, color: Constants.primaryColor),
-        SizedBox(width: 20),
-        SvgPicture.asset(Assets.iconsChat),
-        SizedBox(width: 20),
-        
+        Padding(
+          padding: const EdgeInsets.only(right: 20, top: 10),
+          child: Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ProfileView.name);
+                },
+                icon: SvgPicture.asset(
+                  Assets.iconsCircleUser,
+                  color: Constants.primaryColor,
+                ),
+              ),
+              SizedBox(width: 20),
+              SvgPicture.asset(Assets.iconsChat),
+            ],
+          ),
+        ),
       ],
     );
   }
 }
-
