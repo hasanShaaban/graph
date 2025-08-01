@@ -4,6 +4,7 @@ import 'package:graph/features/followers&following/presentation/views/follow_vie
 import 'package:graph/features/groups/presentation/views/group_management_view.dart';
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
 import 'package:graph/features/main/presentation/views/main_page.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/post_details_view.dart';
 import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import 'package:graph/features/profile/presentation/views/widgets/cvpdf.dart';
@@ -117,6 +118,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case MainPage.name:
       return MaterialPageRoute(builder: (context) => MainPage());
+    case PostDetailsView.name:
+      return MaterialPageRoute(builder: (context) => PostDetailsView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

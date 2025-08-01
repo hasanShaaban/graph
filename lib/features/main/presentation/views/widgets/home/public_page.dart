@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graph/core/widgets/posts/public_post.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/post_details_view.dart';
 import 'package:graph/generated/l10n.dart';
 
 class PublicPage extends StatelessWidget {
@@ -14,9 +15,18 @@ class PublicPage extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       itemBuilder:
           (context, index) => Padding(
-
-            padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20, top: 5),
-            child: PublicPost(lang: lang, width: width, height: height),
+            padding: const EdgeInsets.only(
+              bottom: 20,
+              left: 20,
+              right: 20,
+              top: 5,
+            ),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, PostDetailsView.name);
+              },
+              child: PublicPost(lang: lang, width: width, height: height),
+            ),
           ),
       itemCount: 20,
     );

@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "collageStage": MessageLookupByLibrary.simpleMessage(
       "Let\'s get acquainted with your collage stage.",
     ),
+    "comments": MessageLookupByLibrary.simpleMessage("Comments"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm password"),
     "createNewAccount": MessageLookupByLibrary.simpleMessage(
       "Create new account",
@@ -150,6 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please, Select your specialization!",
     ),
     "postsManagement": MessageLookupByLibrary.simpleMessage("Posts management"),
+    "reacts": MessageLookupByLibrary.simpleMessage("Reacts"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "role": MessageLookupByLibrary.simpleMessage("Role"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),

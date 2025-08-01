@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "collageStage": MessageLookupByLibrary.simpleMessage(
       "دعنا نتعرف على مرحلتك الجامعية.",
     ),
+    "comments": MessageLookupByLibrary.simpleMessage("التعليقات"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -138,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
       " يرجى اختيار اختصاصك",
     ),
     "postsManagement": MessageLookupByLibrary.simpleMessage("ادارة المنشورات"),
+    "reacts": MessageLookupByLibrary.simpleMessage("التفاعلات"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "role": MessageLookupByLibrary.simpleMessage("دور"),
     "search": MessageLookupByLibrary.simpleMessage("ابحث"),
