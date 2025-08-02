@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:graph/core/functions/show_tools_bottom_sheet.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/custom_back_button.dart';
-import 'package:graph/core/widgets/profile_image.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_dropdown_button.dart';
 import 'package:graph/features/auth/presentation/views/widgets/custom_text_cairo16_semi_bold.dart';
 import 'package:graph/features/auth/presentation/views/widgets/cv_row.dart';
 import 'package:graph/features/auth/presentation/views/widgets/final_touches_bio_sec.dart';
@@ -16,8 +12,6 @@ import 'package:graph/features/groups/presentation/views/widget/add_button.dart'
 import 'package:graph/features/groups/presentation/views/widget/group_member_tools_list_view.dart';
 import 'package:graph/features/profile/presentation/views/widgets/custom_drop_down.dart';
 import 'package:graph/features/profile/presentation/views/widgets/edit_profile_header.dart';
-
-import 'package:graph/features/profile/presentation/views/widgets/profile_app_bar.dart';
 
 import 'package:graph/generated/l10n.dart';
 

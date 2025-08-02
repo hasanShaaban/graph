@@ -15,7 +15,12 @@ class PostDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: PostDetailsViewBody()));
+    return SafeArea(
+      child: Scaffold(
+        body: PostDetailsViewBody(),
+        backgroundColor: Constants2.lightPrimaryColor(context),
+      ),
+    );
   }
 }
 
@@ -78,7 +83,7 @@ class PostDetailsViewBody extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: 15,)
+                      SizedBox(height: 15),
                     ],
                   ),
                 ),

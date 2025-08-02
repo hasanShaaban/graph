@@ -54,9 +54,11 @@ class MyApp extends StatelessWidget {
         locale: languageProvider.locale,
 
         themeMode: themeProvider.themeMode,
-        darkTheme: ThemeData.dark(),
+        darkTheme: ThemeData.dark(useMaterial3: false),
+        
         theme: ThemeData(
           useMaterial3: false,
+          
           scaffoldBackgroundColor: Constants2.lightPrimaryColor(context),
           colorScheme: ColorScheme.fromSeed(
             seedColor: Constants2.primaryColor(context),

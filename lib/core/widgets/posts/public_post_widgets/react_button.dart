@@ -110,6 +110,7 @@ class _ReactButtonState extends State<ReactButton>
                   builder: (_, __) {
                     return CustomPaint(
                       painter: AnimatedHalfCirclePainter(
+                        context: context,
                         progress: arcAnimation.value,
                         screenWidth: widget.width,
                       ),
@@ -190,7 +191,14 @@ class _ReactButtonState extends State<ReactButton>
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SvgPicture.asset(icon, width: 24),
+                        SvgPicture.asset(
+                          icon,
+                          width: 24,
+                          color:
+                              icon == Assets.iconsHeart
+                                  ? Constants2.darkPrimaryColor(context)
+                                  : null,
+                        ),
                         SizedBox(height: 3),
                         Text(
                           '2.3k',
@@ -219,7 +227,9 @@ class _ReactButtonState extends State<ReactButton>
 class AnimatedHalfCirclePainter extends CustomPainter {
   final double progress; // 0.0 to 1.0
   final double screenWidth;
+  final BuildContext context;
   AnimatedHalfCirclePainter({
+    required this.context,
     required this.screenWidth,
     required this.progress,
   });
@@ -228,7 +238,7 @@ class AnimatedHalfCirclePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint =
         Paint()
-          ..color = Constants.lightPrimaryColor
+          ..color = Constants2.lightPrimaryColor(context)
           ..style = PaintingStyle.stroke
           ..strokeWidth = screenWidth * 138 / 412 - screenWidth * 60 / 412;
 
