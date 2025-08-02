@@ -103,5 +103,7 @@
   "selectYourSpacialization": " اختر اختصاصك",
   "pleaseEnterBirthDate": "الرجاء اختيار تاريخ الميلاد",
   "comments" : "التعليقات",
-  "reacts" : "التفاعلات"
+  "reacts" : "التفاعلات",
+  "reply":"الردود",
+  "addComment":"أضف تعليق"
 }

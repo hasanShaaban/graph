@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Save": MessageLookupByLibrary.simpleMessage("Save"),
     "aboutMe": MessageLookupByLibrary.simpleMessage("About me"),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+    "addComment": MessageLookupByLibrary.simpleMessage("Add comment"),
     "addFinalTouches": MessageLookupByLibrary.simpleMessage(
       "Add the final touches",
     ),
@@ -153,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "postsManagement": MessageLookupByLibrary.simpleMessage("Posts management"),
     "reacts": MessageLookupByLibrary.simpleMessage("Reacts"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "reply": MessageLookupByLibrary.simpleMessage("Reply"),
     "role": MessageLookupByLibrary.simpleMessage("Role"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "seeAll": MessageLookupByLibrary.simpleMessage("See all"),

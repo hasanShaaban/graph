@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "aboutMe": MessageLookupByLibrary.simpleMessage("معلوماتي"),
     "activities": MessageLookupByLibrary.simpleMessage("النشاطات"),
+    "addComment": MessageLookupByLibrary.simpleMessage("أضف تعليق"),
     "addFinalTouches": MessageLookupByLibrary.simpleMessage(
       "ضع اللمسات الاخيرة ",
     ),
@@ -141,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "postsManagement": MessageLookupByLibrary.simpleMessage("ادارة المنشورات"),
     "reacts": MessageLookupByLibrary.simpleMessage("التفاعلات"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "reply": MessageLookupByLibrary.simpleMessage("الردود"),
     "role": MessageLookupByLibrary.simpleMessage("دور"),
     "search": MessageLookupByLibrary.simpleMessage("ابحث"),
     "seeAll": MessageLookupByLibrary.simpleMessage("اظهار الكل"),

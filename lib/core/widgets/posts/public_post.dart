@@ -63,4 +63,3 @@ class PublicPost extends StatelessWidget {
     );
   }
 }
-

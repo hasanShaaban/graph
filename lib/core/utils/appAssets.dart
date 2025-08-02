@@ -174,6 +174,10 @@ class Assets {
   /// assets/icons/notifecation_bell.svg
   static const String iconsNotifecationBell = "assets/icons/notifecation_bell.svg";
 
+  /// Assets for iconsPaperPlane
+  /// assets/icons/paper-plane.svg
+  static const String iconsPaperPlane = "assets/icons/paper-plane.svg";
+
   /// Assets for iconsPassword
   /// assets/icons/password.svg
   static const String iconsPassword = "assets/icons/password.svg";
@@ -209,6 +213,10 @@ class Assets {
   /// Assets for iconsRemove
   /// assets/icons/remove.svg
   static const String iconsRemove = "assets/icons/remove.svg";
+
+  /// Assets for iconsReply
+  /// assets/icons/reply.svg
+  static const String iconsReply = "assets/icons/reply.svg";
 
   /// Assets for iconsSearch
   /// assets/icons/search.svg

@@ -873,6 +873,16 @@ class S {
   String get reacts {
     return Intl.message('Reacts', name: 'reacts', desc: '', args: []);
   }
+
+  /// `Reply`
+  String get reply {
+    return Intl.message('Reply', name: 'reply', desc: '', args: []);
+  }
+
+  /// `Add comment`
+  String get addComment {
+    return Intl.message('Add comment', name: 'addComment', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

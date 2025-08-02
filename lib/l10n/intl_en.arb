@@ -103,5 +103,7 @@
   "selectYourSpacialization": "Select your specialization",
   "pleaseEnterBirthDate": "please enter birth date",
   "comments" : "Comments",
-  "reacts" : "Reacts"
+  "reacts" : "Reacts",
+  "reply":"Reply",
+  "addComment":"Add comment"
 }
