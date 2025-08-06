@@ -3,9 +3,10 @@ import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/posts/public_post_widgets/post_activities.dart';
 import 'package:graph/core/widgets/posts/public_post_widgets/post_header.dart';
+import 'package:graph/core/widgets/posts/public_post_widgets/public_post_conent.dart';
 import 'package:graph/core/widgets/posts/public_post_widgets/react_button.dart';
+import 'package:graph/features/post_details/presentation/view/post_details_view.dart';
 import 'package:graph/generated/l10n.dart';
-
 
 class PublicPost extends StatelessWidget {
   const PublicPost({
@@ -16,6 +17,7 @@ class PublicPost extends StatelessWidget {
   });
   final S lang;
   final double width, height;
+  static bool enableNavigation = true;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -35,20 +37,24 @@ class PublicPost extends StatelessWidget {
                 // This row includes the profile image, the user name, and the
                 // post's actions including save button.
                 PostHeader(width: width, height: height),
-                //TODO: Add post content
-                SizedBox(height: 200),
-                Divider(
-                  color: Constants2.dividerColor(context),
-                  thickness: 1,
-                ),
+                PublicPostContent(),
+                Divider(color: Constants2.dividerColor(context), thickness: 1),
                 // This row includes the post's comments and shares. It
                 // also includes a spacer to align the share button to the
                 // right of the row.
                 Row(
                   children: [
-                    PostActivities(
-                      icon: Assets.iconsCommentDots,
-                      count: '234',
+                    GestureDetector(
+                      onTap: () {
+                        if(enableNavigation){
+                          enableNavigation = false;
+                          Navigator.pushNamed(context, PostDetailsView.name);
+                        }
+                      },
+                      child: PostActivities(
+                        icon: Assets.iconsCommentDots,
+                        count: '234',
+                      ),
                     ),
                     Spacer(),
                     PostActivities(icon: Assets.iconsShare, count: '234'),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graph/core/widgets/posts/public_post.dart';
-import 'package:graph/features/post_details/presentation/view/post_details_view.dart';
 import 'package:graph/generated/l10n.dart';
 
 class PublicPage extends StatelessWidget {
@@ -21,12 +20,7 @@ class PublicPage extends StatelessWidget {
               right: 20,
               top: 5,
             ),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, PostDetailsView.name);
-              },
-              child: PublicPost(lang: lang, width: width, height: height),
-            ),
+            child: PublicPost(lang: lang, width: width, height: height),
           ),
       itemCount: 20,
     );

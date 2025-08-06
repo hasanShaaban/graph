@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/widgets/posts/public_post_widgets/image_viewer.dart';
 
 import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
 import 'package:graph/features/groups/presentation/views/group_management_view.dart';
@@ -109,17 +110,28 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case EditProfileView.name:
       return MaterialPageRoute(builder: (context) => const EditProfileView());
     case GroupsManagementView.name:
-      return MaterialPageRoute(builder: (context) => GroupsManagementView());
+      return MaterialPageRoute(
+        builder: (context) => const GroupsManagementView(),
+      );
     case SignupFinalTouchesSec.name:
-      return MaterialPageRoute(builder: (context) => SignupFinalTouchesSec());
+      return MaterialPageRoute(
+        builder: (context) => const SignupFinalTouchesSec(),
+      );
     case SignupFindFriends.name:
-      return MaterialPageRoute(builder: (context) => SignupFindFriends());
-
-
+      return MaterialPageRoute(builder: (context) => const SignupFindFriends());
     case MainPage.name:
-      return MaterialPageRoute(builder: (context) => MainPage());
+      return MaterialPageRoute(builder: (context) => const MainPage());
     case PostDetailsView.name:
-      return MaterialPageRoute(builder: (context) => PostDetailsView());
+      return MaterialPageRoute(builder: (context) => const PostDetailsView());
+    case ImageViewer.name:
+      final args = settings.arguments as Map<String, dynamic>;
+      return MaterialPageRoute(
+        builder:
+            (context) => ImageViewer(
+              imageUrls: args['imageUrls'],
+              initialIndex: args['initialIndex'],
+            ),
+      );
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
