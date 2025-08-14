@@ -83,11 +83,13 @@ class ProfileViewBody extends StatelessWidget {
                 Divider(thickness: 1, color: Constants2.dividerColor(context)),
                 SizedBox(height: 5),
                 Text(lang.activities, style: AppTextStyle.cairoSemiBold14),
-                GestureDetector(
+                PublicPost(
+                  lang: lang,
+                  width: width,
+                  height: height,
                   onTap: () {
                     Navigator.pushNamed(context, PostDetailsView.name);
                   },
-                  child: PublicPost(lang: lang, width: width, height: height),
                 ),
                 SizedBox(height: 25),
                 Divider(thickness: 1, color: Constants2.dividerColor(context)),

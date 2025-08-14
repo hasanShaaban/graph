@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/ads_page.dart';
 import 'package:graph/features/main/presentation/views/widgets/home/groups_page.dart';
 import 'package:graph/features/main/presentation/views/widgets/home/home_page_app_bar.dart';
 import 'package:graph/features/main/presentation/views/widgets/home/public_page.dart';
@@ -129,7 +130,7 @@ class _HomePageBodyState extends State<HomePageBody>
           PublicPage(),
           GroupsPage(),
           Center(child: Text('Jobs')),
-          Center(child: Text('Ads')),
+          AdsPage(),
         ],
       ),
     );

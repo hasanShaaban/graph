@@ -7,10 +7,11 @@ import 'package:graph/core/utils/app_text_style.dart';
 import 'dart:developer' as dev;
 
 class ReactButton extends StatefulWidget {
-  const ReactButton({super.key, required this.height, required this.width});
+  const ReactButton({super.key, required this.height, required this.width, required this.buttonColor, required this.circleColor});
 
   final double height;
   final double width;
+  final Color buttonColor, circleColor;
 
   @override
   State<ReactButton> createState() => _ReactButtonState();
@@ -110,6 +111,7 @@ class _ReactButtonState extends State<ReactButton>
                   builder: (_, __) {
                     return CustomPaint(
                       painter: AnimatedHalfCirclePainter(
+                        color: widget.circleColor,
                         context: context,
                         progress: arcAnimation.value,
                         screenWidth: widget.width,
@@ -184,7 +186,7 @@ class _ReactButtonState extends State<ReactButton>
                     color:
                         isPressed
                             ? Constants2.dividerColor(context)
-                            : Constants2.lightSecondaryColor(context),
+                            : widget.buttonColor,
                     borderRadius: BorderRadius.circular(buttonSize),
                   ),
                   child: Center(
@@ -228,7 +230,9 @@ class AnimatedHalfCirclePainter extends CustomPainter {
   final double progress; // 0.0 to 1.0
   final double screenWidth;
   final BuildContext context;
-  AnimatedHalfCirclePainter({
+  final Color color;
+  AnimatedHalfCirclePainter( {
+    required this.color,
     required this.context,
     required this.screenWidth,
     required this.progress,
@@ -238,7 +242,7 @@ class AnimatedHalfCirclePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint =
         Paint()
-          ..color = Constants2.lightPrimaryColor(context)
+          ..color = color
           ..style = PaintingStyle.stroke
           ..strokeWidth = screenWidth * 138 / 412 - screenWidth * 60 / 412;
 

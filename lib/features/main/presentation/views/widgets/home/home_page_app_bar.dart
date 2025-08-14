@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/constants.dart';
@@ -19,7 +18,7 @@ class HomePageAppBar extends StatelessWidget {
       snap: true,
       titleSpacing: 20,
       collapsedHeight: height * 80 / 915,
-      backgroundColor: Constants.lightPrimaryColor,
+      backgroundColor: Constants2.lightPrimaryColor(context),
       title: Padding(
         padding: EdgeInsets.only(top: 10),
         child: SvgPicture.asset(Assets.iconsMainLogo, width: width * 105 / 412),

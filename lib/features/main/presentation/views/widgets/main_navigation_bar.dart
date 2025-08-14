@@ -24,16 +24,16 @@ class MainNavigationBar extends StatelessWidget {
       currentIndex: selected,
       elevation: 20,
       hasNotch: true,
-      backgroundColor: Constants.lightPrimaryColor,
+      backgroundColor: Constants2.lightPrimaryColor(context),
       fabLocation: StylishBarFabLocation.end,
       items: [
-        bottomTabBuilder(icon: Assets.iconsHome, title: 'Home'),
-        bottomTabBuilder(
+        bottomTabBuilder(context,icon: Assets.iconsHome, title: 'Home'),
+        bottomTabBuilder(context,
           icon: Assets.iconsNotifecationBell,
           title: 'Notifications',
         ),
-        bottomTabBuilder(icon: Assets.iconsSettings, title: 'Settings'),
-        bottomTabBuilder(icon: Assets.iconsSearch, title: 'Search'),
+        bottomTabBuilder(context,icon: Assets.iconsSettings, title: 'Settings'),
+        bottomTabBuilder(context,icon: Assets.iconsSearch, title: 'Search'),
       ],
       option: BubbleBarOptions(
         iconSize: 20,
@@ -47,10 +47,10 @@ class MainNavigationBar extends StatelessWidget {
   }
 }
 
-BottomBarItem bottomTabBuilder({required String icon, required String title}) {
+BottomBarItem bottomTabBuilder(BuildContext context,{required String icon, required String title}) {
   return BottomBarItem(
-    backgroundColor: Constants.lightSecondryColor,
-    icon: SvgPicture.asset(icon, color: Constants.darkSecondryColor),
+    backgroundColor: Constants2.lightSecondaryColor(context),
+    icon: SvgPicture.asset(icon, color: Constants2.darkSecondaryColor(context)),
     selectedIcon: SvgPicture.asset(icon, color: Constants.primaryColor),
     selectedColor: Constants.primaryColor,
     unSelectedColor: Constants.darkSecondryColor,

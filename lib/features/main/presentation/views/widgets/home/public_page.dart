@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graph/core/widgets/posts/public_post.dart';
+import 'package:graph/features/post_details/presentation/view/post_details_view.dart';
 import 'package:graph/generated/l10n.dart';
 
 class PublicPage extends StatelessWidget {
@@ -18,9 +19,16 @@ class PublicPage extends StatelessWidget {
               bottom: 20,
               left: 20,
               right: 20,
-              top: 5,
+              top: 10,
             ),
-            child: PublicPost(lang: lang, width: width, height: height),
+            child: PublicPost(
+              lang: lang,
+              width: width,
+              height: height,
+              onTap: () {
+                Navigator.pushNamed(context, PostDetailsView.name);
+              },
+            ),
           ),
       itemCount: 20,
     );

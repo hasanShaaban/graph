@@ -5,7 +5,6 @@ import 'package:graph/core/widgets/posts/public_post_widgets/post_activities.dar
 import 'package:graph/core/widgets/posts/public_post_widgets/post_header.dart';
 import 'package:graph/core/widgets/posts/public_post_widgets/public_post_conent.dart';
 import 'package:graph/core/widgets/posts/public_post_widgets/react_button.dart';
-import 'package:graph/features/post_details/presentation/view/post_details_view.dart';
 import 'package:graph/generated/l10n.dart';
 
 class PublicPost extends StatelessWidget {
@@ -14,10 +13,11 @@ class PublicPost extends StatelessWidget {
     required this.lang,
     required this.width,
     required this.height,
+    this.onTap,
   });
   final S lang;
   final double width, height;
-  static bool enableNavigation = true;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -45,12 +45,7 @@ class PublicPost extends StatelessWidget {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () {
-                        if(enableNavigation){
-                          enableNavigation = false;
-                          Navigator.pushNamed(context, PostDetailsView.name);
-                        }
-                      },
+                      onTap: onTap,
                       child: PostActivities(
                         icon: Assets.iconsCommentDots,
                         count: '234',
@@ -64,7 +59,12 @@ class PublicPost extends StatelessWidget {
             ),
           ),
         ),
-        ReactButton(height: height, width: width),
+        ReactButton(
+          height: height,
+          width: width,
+          buttonColor: Constants2.lightSecondaryColor(context),
+          circleColor: Constants2.lightPrimaryColor(context),
+        ),
       ],
     );
   }
