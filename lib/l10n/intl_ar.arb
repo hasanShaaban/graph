@@ -105,5 +105,8 @@
   "comments" : "التعليقات",
   "reacts" : "التفاعلات",
   "reply":"الردود",
-  "addComment":"أضف تعليق"
+  "addComment":"أضف تعليق",
+  "join":"انضمام",
+  "project":"المشروع"
+  
 }

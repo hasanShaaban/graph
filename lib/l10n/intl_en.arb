@@ -105,5 +105,7 @@
   "comments" : "Comments",
   "reacts" : "Reacts",
   "reply":"Reply",
-  "addComment":"Add comment"
+  "addComment":"Add comment",
+  "join":"Join",
+  "project":"Project"
 }

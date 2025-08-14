@@ -883,6 +883,16 @@ class S {
   String get addComment {
     return Intl.message('Add comment', name: 'addComment', desc: '', args: []);
   }
+
+  /// `Join`
+  String get join {
+    return Intl.message('Join', name: 'join', desc: '', args: []);
+  }
+
+  /// `Project`
+  String get project {
+    return Intl.message('Project', name: 'project', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
