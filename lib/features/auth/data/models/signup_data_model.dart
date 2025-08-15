@@ -1,7 +1,5 @@
 class SignupDataModel {
-  final String email;
-  final String password;
-  final String? confirmPassword;
+
 
   final String? firstName;
   final String? lastName;
@@ -14,9 +12,7 @@ class SignupDataModel {
   final bool? isStudent;
 
   SignupDataModel({
-    required this.email,
-    required this.password,
-     this.confirmPassword,
+ 
     this.firstName,
     this.lastName,
     this.birthDate,
@@ -40,9 +36,7 @@ class SignupDataModel {
     bool? isStudent,
   }) {
     return SignupDataModel(
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
+ 
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       birthDate: birthDate ?? this.birthDate,

@@ -269,6 +269,28 @@ class Assets {
   /// assets/icons/user-gear.svg
   static const String iconsUserGear = "assets/icons/user-gear.svg";
 
+  /// Assets for lock
+  /// assets/icons/lock.svg
+  static const String iconsLock = "assets/icons/lock.svg";
+
+  ///Assets for users
+  ///assets/icons/users.svg
+  static const String iconsUsers = "assets/icons/users.svg";
+
+  ///Assets for users
+  ///assets/icons/add-image.svg
+  static const String iconsAddImage = "assets/icons/add-image.svg";
+
+    ///Assets for users
+  ///assets/icons/user-tag.svg
+  static const String iconsAddTag = "assets/icons/user-tag.svg";
+
+
+  ///Assets for users
+  ///assets/icons/users.svg
+  static const String iconsMention = "assets/icons/users.svg";
+
+
   /// Assets for imagesBoyProfile
   /// assets/images/boy_profile.json
   static const String imagesBoyProfile = "assets/images/boy_profile.json";

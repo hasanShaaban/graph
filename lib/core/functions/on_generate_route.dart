@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_company_name_section.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_company_picture_sec.dart';
 import 'package:graph/features/follow/presentation/views/followers_view.dart';
 import 'package:graph/features/follow/presentation/views/following_view.dart';
 import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
@@ -6,6 +8,7 @@ import 'package:graph/features/groups/presentation/views/group_management_view.d
 import 'package:graph/features/groups/presentation/views/my_group_view.dart';
 import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import 'package:graph/features/profile/presentation/views/widgets/creat_post_page.dart';
 import 'package:graph/features/profile/presentation/views/widgets/cvpdf.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_find_friends.dart';
 import 'package:graph/features/setting/presentation/views/settings_view.dart';
@@ -55,14 +58,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         settings: settings,
       );
 
-    case SignupPathSection.name:
-      return MaterialPageRoute(
-        builder:
-            (context) => SignupPathSection(
-              //onNext: (bool isStrudent) {}
-            ),
-        settings: settings,
-      );
+    // case SignupPathSection.name:
+    //   return MaterialPageRoute(
+    //     builder:
+    //         (context) => SignupPathSection(
+    //           //onNext: (bool isStrudent) {}
+    //         ),
+      //   settings: settings,
+      // );
     case SignupRoleSection.name:
       return MaterialPageRoute(
         builder: (context) => SignupRoleSection(),
@@ -118,6 +121,18 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => SignupFinalTouchesSec());
     case SignupFindFriends.name:
       return MaterialPageRoute(builder: (context) => SignupFindFriends());
+    case CreatPostPage.name:
+      return MaterialPageRoute(builder: (context) => CreatPostPage());
+
+    case SignupCompanyNameSection.name:
+      return MaterialPageRoute(
+        builder: (context) => SignupCompanyNameSection(),
+      );
+    case SignupCompanyPictureSec.name:
+      return MaterialPageRoute(
+        builder: (context) => SignupCompanyPictureSec(),
+        settings: settings,
+      );
 
     case SettingsView.name:
       return MaterialPageRoute(builder: (context) => SettingsView());

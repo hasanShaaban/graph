@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:graph/core/services/providers/theme_provider.dart';
-import 'package:graph/features/setting/presentation/views/settings_view.dart';
-import 'package:graph/features/splash/presentation/views/splash_view.dart';
+import 'package:graph/features/auth/presentation/views/sign_up_view.dart';
 import 'bloc_providers.dart';
 import 'core/services/providers/user_info_provider.dart';
 import 'core/services/providers/local_provider.dart';
@@ -17,6 +16,7 @@ import 'generated/l10n.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  await Hive.openBox('authBox');
   setupGetit();
   runApp(
     MultiProvider(
@@ -68,8 +68,9 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerateRoute,
-        initialRoute: SplashView.name,
-        // initialRoute: SettingsView.name,
+        //initialRoute: SplashView.name,
+       // initialRoute: ProfileView.name,
+         initialRoute: SignUpView.name,
       ),
     );
   }

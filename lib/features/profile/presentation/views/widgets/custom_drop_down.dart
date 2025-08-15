@@ -1,23 +1,24 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:graph/features/auth/presentation/views/widgets/custom_dropdown_button.dart';
 
 class CustomDropDown extends StatelessWidget {
   const CustomDropDown({
     super.key,
-    required this.list,
-    required this.text,
-    required this.onChanged,
+    this.list,
+    required this.text, required this.onChanged,
+
   });
-  final List<String> list;
+  final List<String>? list;
+
+ 
   final String text;
   final void Function(dynamic) onChanged;
   @override
   Widget build(BuildContext context) {
     return Material(
       child: customDropDownButton(
-        list: list,
+        list: list ,
+       
         text: text,
         onChanged: onChanged,
         width: 300,

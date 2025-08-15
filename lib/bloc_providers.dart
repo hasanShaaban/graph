@@ -1,16 +1,35 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'features/auth/presentation/manager/cubit/login_cubit.dart';
+import 'package:graph/features/auth/presentation/manager/company_cubit/company_cubit.dart';
+import 'package:graph/features/auth/presentation/manager/credintials_cubit/credintials_cubit.dart';
+import 'package:graph/features/auth/presentation/manager/role_cubit/role_cubit.dart';
+import 'features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'core/services/api_service.dart';
 import 'features/auth/data/repos/auth_repo_impl.dart';
 import 'features/auth/domain/repos/auth_repo.dart';
 import 'features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:provider/single_child_widget.dart';
 
-ApiService apiService = ApiService(Dio());
+ApiService apiService = ApiService(
+  Dio(
+    // BaseOptions(
+    //   baseUrl: 'http://192.168.115.28:8000/api/',
+    //   connectTimeout: const Duration(seconds: 5 * 6000),
+    //   receiveTimeout: const Duration(seconds: 5 * 6000),
+    //   sendTimeout: const Duration(seconds: 5 * 6000),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json',
+    //   },
+    // ),
+  ),
+);
 
 final AuthRepo authRepo = AuthRepoImpl(apiService);
 List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => SignupCubit(authRepo)),
   BlocProvider(create: (context) => LoginCubit(authRepo)),
+  BlocProvider(create: (context) => CredintialsCubit(authRepo)),
+  BlocProvider(create: (context) => RoleCubit(authRepo)),
+  BlocProvider(create: (context) => CompanyCubit(authRepo)),
 ];

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_collage_stage_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import 'auth_app_bar.dart';
 import '../../../../../generated/l10n.dart';
@@ -20,14 +21,14 @@ class _SignupBirthdayGenderState extends State<SignupBirthdayGender> {
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
-@override
-void didChangeDependencies() {
-  super.didChangeDependencies();
-  signupData = ModalRoute.of(context)!.settings.arguments as SignupDataModel;
-}
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    signupData = ModalRoute.of(context)!.settings.arguments as SignupDataModel;
+  }
+
   @override
   Widget build(BuildContext context) {
-  
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
@@ -49,17 +50,18 @@ void didChangeDependencies() {
                 BirthdayGenderBody(
                   onBirthDateSaved: (String? newValue) {
                     setState(() {
-                      
-                    signupData = signupData.copyWith(birthDate: newValue!.trim());
+                      signupData = signupData.copyWith(
+                        birthDate: newValue!.trim(),
+                      );
                     });
                   },
                   onGenderSaved: (String? newValue) {
                     setState(() {
-                       signupData = signupData.copyWith(gender: newValue!.trim());
+                      signupData = signupData.copyWith(
+                        gender: newValue!.trim(),
+                      );
                     });
-                   
                   },
-                 
                 ),
               ],
             ),
@@ -70,11 +72,11 @@ void didChangeDependencies() {
           child: NextButton(
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                formKey.currentState!.save(); 
+                formKey.currentState!.save();
 
                 Navigator.pushNamed(
                   context,
-                  SignupPathSection.name,
+                  SignupCollageStageSection.name,
                   arguments: signupData,
                 );
               } else {
@@ -82,16 +84,10 @@ void didChangeDependencies() {
                   autovalidateMode = AutovalidateMode.always;
                 });
               }
-       
             },
           ),
         ),
       ),
-
     );
   }
 }
-
-
-
-

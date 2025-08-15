@@ -31,13 +31,13 @@ class _SignupVerificationSectionState extends State<SignupVerificationSection> {
       assert(() {
         print("⚠️ No arguments passed, using fake data for design preview");
         signupData = SignupDataModel(
-          email: 'dev@example.com',
+        //  email: 'dev@example.com',
           firstName: 'John',
           lastName: 'Doe',
           gender: 'Male',
           birthDate: '2000-01-01',
-          password: '123456',
-          confirmPassword: '123456',
+          // password: '123456',
+          // confirmPassword: '123456',
           studyYear: '3',
         );
         return true;
@@ -75,12 +75,12 @@ class _SignupVerificationSectionState extends State<SignupVerificationSection> {
                   style: AppTextStyle.cairoBold34.copyWith(height: 1),
                 ),
 
-                Text(
-                  signupData!.email,
-                  style: AppTextStyle.cairoRegular18.copyWith(
-                    color: Constants.secondryColor,
-                  ),
-                ),
+                // Text(
+                //   signupData!.email,
+                //   style: AppTextStyle.cairoRegular18.copyWith(
+                //     color: Constants.secondryColor,
+                //   ),
+                // ),
                 SizedBox(height: 50),
                 Text(
                   'check your email inbox and inter the code :',

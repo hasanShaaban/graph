@@ -104,6 +104,18 @@
   "changeLanguage":"تغيير اللغة",
   "logout":"تسجيل خروج",
   "selectYourSpacialization":" اختر اختصاصك",
-  "pleaseEnterBirthDate": "الرجاء اختيار تاريخ الميلاد"
+  "pleaseEnterBirthDate": "الرجاء اختيار تاريخ الميلاد",
+  "companyName": "اسم الشركة",
+  "createPost": "انشاء منشور",
+  "post": "نشر",
+  "description": "وصف",
+  "title": "العنوان",
+  "project": "المشروع",
+  "mention": "اشارة لشخص",
+  "addTags": "اضافة تاغ",
+  "addImages": "اضافة صور",
+  "mentionAndShareWithFriends":"اذكر وشارك هذاالمنشور مع الاصدقاء",
+  "addSomeTags": "اضف بعض التاغات",
+  "addGroup": "اضف فريق"
 
 }

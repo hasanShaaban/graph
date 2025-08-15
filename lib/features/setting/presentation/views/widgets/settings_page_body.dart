@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/services/providers/local_provider.dart';
 import 'package:graph/core/services/providers/theme_provider.dart';
 import 'package:graph/core/utils/appAssets.dart';

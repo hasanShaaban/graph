@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:graph/features/auth/presentation/views/widgets/circular_profile_picture.dart';
-import '../../../../../core/utils/appAssets.dart';
-import '../../../../../core/utils/constants.dart';
 import 'auth_app_bar.dart';
 import '../../../../../generated/l10n.dart';
 

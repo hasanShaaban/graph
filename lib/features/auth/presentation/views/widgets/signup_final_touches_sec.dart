@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/features/auth/presentation/views/widgets/name_and_birth_date_info.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_find_friends.dart';
 import '../../../../../core/utils/appAssets.dart';
-import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 import 'custom_text_cairo16_semi_bold.dart';
 import 'cv_row.dart';
@@ -153,7 +151,7 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                       SizedBox(height: 20),
                       NextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, SignupFindFriends.name);
+                          // Navigator.pushNamed(context, SignupFindFriends.name);
                         },
                         title: 'Save',
                       ),

@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/core/services/local_data_base/hive_data_base_service.dart';
+import 'package:hive/hive.dart';
 import 'signup_verification_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../../data/models/user_model.dart';
@@ -27,6 +29,8 @@ class SignupProfilePictureSection extends StatefulWidget {
 class _SignupProfilePictureSectionState
     extends State<SignupProfilePictureSection> {
   File? selectedImage;
+  File? imageToSend;
+
   late SignupDataModel signupData;
 
   @override
@@ -177,10 +181,10 @@ class _SignupProfilePictureSectionState
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 70),
           child: BlocConsumer<SignupCubit, SignupState>(
-            listener: (context, state) {
+            listener: (context, state) async {
               if (state is SignupSuccess) {
-                final token = state.response['token'];
-                final message = state.response['message'];
+                var box = await Hive.openBox('authBox');
+                String? token = box.get('token');
                 Navigator.pushNamed(
                   context,
                   SignupVerificationSection.name,
@@ -193,40 +197,46 @@ class _SignupProfilePictureSectionState
               }
             },
             builder: (context, state) {
-              // if (state is SignupLoading) {
-              //   return Center(child: CircularProgressIndicator());
-              // }
               return NextButton(
                 title: lang.submit,
                 isLoading: state is SignupLoading,
-                onPressed: () {
-                  // String? imageBase64;
-                  // if (selectedImage != null) {
-                  //   final bytes = selectedImage!.readAsBytes();
-                  //   imageBase64 = base64Encode(bytes as List<int>);
-                  // } else {
-                  //   imageBase64 = ''; // أو "" حسب الحاجة
-                  // }
-                  print('email: ${signupData.email}');
+                onPressed: () async {
                   print('birthDate: ${signupData.birthDate}');
-                  print('password: ${signupData.password}');
-                  print('confirmPassword: ${signupData.confirmPassword}');
+
                   print('firstname: ${signupData.firstName}');
                   print('lastname: ${signupData.lastName}');
                   print('gender: ${signupData.gender}');
                   print('study year: ${signupData.studyYear}');
 
+                  // if (selectedImage != null) {
+                  //   imageToSend = selectedImage!;
+                  // } else {
+                  //   imageToSend = await apiService.getAssetAsFile(
+                  //     gender == 'Male'
+                  //         ? 'assets/images/boy_profile.json'
+                  //         : 'assets/images/girl_profile.json',
+                  //   );
+                  // }
+                  // if (selectedImage != null) {
+                  //   imageToSend = selectedImage!;
+                  // }
+
                   final userModel = UserModel(
                     firstName: signupData.firstName!,
                     lastName: signupData.lastName!,
-                    email: signupData.email,
-                    passWord: signupData.password,
-                    confirmPassword: signupData.confirmPassword!,
+
                     dateOfBirht: signupData.birthDate!,
                     gender: signupData.gender!,
                     studyYear: int.tryParse(signupData.studyYear!) ?? 0,
                     spacialization:
                         int.tryParse(signupData.specialization ?? '') ?? 0,
+
+                    image: selectedImage,
+                    // selectedImage != null
+                    //     ? selectedImage!.path
+                    //     : (signupData.gender == 'Male'
+                    //         ? 'assets/images/boy_profile.json'
+                    //         : 'assets/images/girl_profile.json'),
                   );
 
                   final cubit = context.read<SignupCubit>();

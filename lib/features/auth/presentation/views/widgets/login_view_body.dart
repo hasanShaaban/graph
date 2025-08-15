@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import '../../../data/models/signup_data_model.dart';
-import '../../manager/cubit/login_cubit.dart';
-import '../../../../follow/presentation/views/followers_view.dart';
+import '../../manager/login_cubit/login_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -31,7 +30,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     super.didChangeDependencies();
     final args = ModalRoute.of(context)?.settings.arguments;
     if (args == null || args is! SignupDataModel) {
-      signupData = SignupDataModel(email: '', password: '');
+      signupData = SignupDataModel();
     } else {
       signupData = args;
     }
@@ -66,7 +65,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               SizedBox(height: 25),
               CustomPasswordField(onSaved: (value) => password = value!.trim()),
               SizedBox(height: 25),
-              RemeberMeSection(),
+              RemeberMeSection(text: lang.rememberMe, onChanged: (bool value) {  }, checked: false,),
               SizedBox(height: 20),
               BlocConsumer<LoginCubit, LoginState>(
                 listener: (context, state) {
