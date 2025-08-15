@@ -4,17 +4,16 @@ import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 
-class RemeberMeSection extends StatefulWidget {
-  RemeberMeSection({super.key, this.text});
+class SelectPersonsToMention extends StatelessWidget {
+  const SelectPersonsToMention({
+    super.key,
+    this.text,
+    required this.onChanged,
+    required this.checked,
+  });
   final String? text;
-
-  @override
-  State<RemeberMeSection> createState() => _RemeberMeSectionState();
-}
-
-class _RemeberMeSectionState extends State<RemeberMeSection> {
-  bool checked = false;
-
+  final bool checked;
+  final ValueChanged<bool> onChanged;
   @override
   Widget build(BuildContext context) {
     final lang = S.of(context);
@@ -24,9 +23,7 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
       children: [
         GestureDetector(
           onTap: () {
-            setState(() {
-              checked = !checked;
-            });
+            onChanged(!checked);
           },
           child: Stack(
             children: [
@@ -52,7 +49,7 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
         ),
         SizedBox(width: 5),
         Text(
-          widget.text ?? '',
+          text ?? '',
 
           style: AppTextStyle.cairoRegular18.copyWith(
             color: Constants.secondryColor,

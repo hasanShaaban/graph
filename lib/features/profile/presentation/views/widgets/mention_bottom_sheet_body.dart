@@ -4,6 +4,7 @@ import 'package:graph/features/auth/presentation/views/widgets/remeber_me_sectio
 import 'package:graph/features/followers&following/presentation/views/widgets/custom_user_list_view.dart';
 import 'package:graph/features/followers&following/presentation/views/widgets/follow_search_text_field.dart';
 import 'package:graph/features/profile/data/models/person_model.dart';
+import 'package:graph/features/profile/presentation/views/widgets/select_persons_to_mention.dart';
 import 'package:graph/generated/l10n.dart';
 
 class MentionBottomSheetBody extends StatefulWidget {
@@ -68,11 +69,13 @@ class _MentionBottomSheetBodyState extends State<MentionBottomSheetBody> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomUserListView(),
+                        SelectPersonsToMention(  checked: isChecked,
+                           onChanged: (bool checked) => _toggle(person),)
                     
-                        RemeberMeSection(
-                          checked: isChecked,
-                           onChanged: (bool checked) => _toggle(person),
-                        ),
+                        // RemeberMeSection(
+                        //   checked: isChecked,
+                        //    onChanged: (bool checked) => _toggle(person),
+                        // ),
                       ],
                     ),
                   ),

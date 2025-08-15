@@ -85,8 +85,7 @@ class _SignupEmailPasswordSectionState
               ),
               const SizedBox(height: 29),
               RemeberMeSection(
-                onChanged: (bool value) {},
-                checked: false,
+   
                 text: lang.rememberMe,
               ),
               const SizedBox(height: 24),

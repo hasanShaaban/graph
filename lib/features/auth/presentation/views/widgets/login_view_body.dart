@@ -65,7 +65,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               SizedBox(height: 25),
               CustomPasswordField(onSaved: (value) => password = value!.trim()),
               SizedBox(height: 25),
-              RemeberMeSection(text: lang.rememberMe, onChanged: (bool value) {  }, checked: false,),
+              RemeberMeSection(text: lang.rememberMe),
               SizedBox(height: 20),
               BlocConsumer<LoginCubit, LoginState>(
                 listener: (context, state) {

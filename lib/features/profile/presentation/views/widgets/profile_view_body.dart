@@ -71,28 +71,28 @@ class ProfileViewBody extends StatelessWidget {
                 ],
               ),
 
-                Divider(thickness: 1, color: Constants2.dividerColor(context)),
-                AboutMeContainer(width: width, height: height, lang: lang),
-                Divider(thickness: 1, color: Constants2.dividerColor(context)),
-                GroupSection(lang: lang, height: height, width: width),
-                Divider(thickness: 1, color: Constants2.dividerColor(context)),
-                SizedBox(height: 5),
-                Text(lang.activities, style: AppTextStyle.cairoSemiBold14),
-                PublicPost(
-                  lang: lang,
-                  width: width,
-                  height: height,
-                  onTap: () {
-                    Navigator.pushNamed(context, PostDetailsView.name);
-                  },
-                ),
-                SizedBox(height: 25),
-                Divider(thickness: 1, color: Constants2.dividerColor(context)),
-                GoUpButton(scrollController: scrollController, lang: lang),
-              ],
-            ),
+              Divider(thickness: 1, color: Constants2.dividerColor(context)),
+              AboutMeContainer(width: width, height: height, lang: lang),
+              Divider(thickness: 1, color: Constants2.dividerColor(context)),
+              GroupSection(lang: lang, height: height, width: width),
+              Divider(thickness: 1, color: Constants2.dividerColor(context)),
+              SizedBox(height: 5),
+              Text(lang.activities, style: AppTextStyle.cairoSemiBold14),
+              PublicPost(
+                lang: lang,
+                width: width,
+                height: height,
+                onTap: () {
+                  Navigator.pushNamed(context, PostDetailsView.name);
+                },
+              ),
+              SizedBox(height: 25),
+              Divider(thickness: 1, color: Constants2.dividerColor(context)),
+              GoUpButton(scrollController: scrollController, lang: lang),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
+    );
   }
 }

@@ -854,16 +854,6 @@ class S {
     );
   }
 
-  /// `please enter birth date`
-  String get pleaseEnterBirthDate {
-    return Intl.message(
-      'please enter birth date',
-      name: 'pleaseEnterBirthDate',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Comments`
   String get comments {
     return Intl.message('Comments', name: 'comments', desc: '', args: []);
@@ -889,9 +879,14 @@ class S {
     return Intl.message('Join', name: 'join', desc: '', args: []);
   }
 
-  /// `Project`
-  String get project {
-    return Intl.message('Project', name: 'project', desc: '', args: []);
+  /// `please enter birth date`
+  String get pleaseEnterBirthDate {
+    return Intl.message(
+      'please enter birth date',
+      name: 'pleaseEnterBirthDate',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `company name`

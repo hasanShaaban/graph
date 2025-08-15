@@ -165,7 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "post": MessageLookupByLibrary.simpleMessage("Post"),
     "postsManagement": MessageLookupByLibrary.simpleMessage("Posts management"),
-    "project": MessageLookupByLibrary.simpleMessage("Project"),
+    "project": MessageLookupByLibrary.simpleMessage("project"),
     "reacts": MessageLookupByLibrary.simpleMessage("Reacts"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "reply": MessageLookupByLibrary.simpleMessage("Reply"),

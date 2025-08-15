@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_company_name_section.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_company_picture_sec.dart';
-import 'package:graph/features/follow/presentation/views/followers_view.dart';
-import 'package:graph/features/follow/presentation/views/following_view.dart';
+
 import 'package:graph/core/widgets/posts/public_post_widgets/image_viewer.dart';
 
 import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
@@ -23,7 +22,6 @@ import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
 import '../../features/auth/presentation/views/widgets/signup_birthday_gender.dart';
 import '../../features/auth/presentation/views/widgets/signup_collage_stage_section.dart';
-import '../../features/auth/presentation/views/widgets/signup_path_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_role_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_username_section.dart';

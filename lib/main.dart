@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:graph/core/services/providers/theme_provider.dart';
 import 'package:graph/features/auth/presentation/views/sign_up_view.dart';
-import 'package:graph/features/splash/presentation/views/splash_view.dart';
+import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import 'bloc_providers.dart';
 import 'core/services/providers/user_info_provider.dart';
 import 'core/services/providers/local_provider.dart';
@@ -70,8 +70,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerateRoute,
         //initialRoute: SplashView.name,
-       // initialRoute: ProfileView.name,
-         initialRoute: SignUpView.name,
+        initialRoute: ProfileView.name,
+         //initialRoute: SignUpView.name,
       ),
     );
   }
