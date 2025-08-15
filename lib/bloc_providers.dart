@@ -33,3 +33,4 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => RoleCubit(authRepo)),
   BlocProvider(create: (context) => CompanyCubit(authRepo)),
 ];
+

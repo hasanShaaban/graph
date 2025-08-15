@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/app_text_style.dart';
+import 'package:graph/core/utils/constants.dart';
 
 class PostActivities extends StatelessWidget {
   const PostActivities({super.key, required this.icon, required this.count});
@@ -12,7 +13,7 @@ class PostActivities extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        SvgPicture.asset(icon),
+        SvgPicture.asset(icon, color: Constants2.darkPrimaryColor(context)),
         SizedBox(width: 5),
         Text(count, style: AppTextStyle.cairoRegular12.copyWith(height: 1)),
       ],

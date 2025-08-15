@@ -3,36 +3,46 @@ import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
+import 'package:graph/generated/l10n.dart';
 
 class MajorAndYearDropdownButtonsSection extends StatelessWidget {
   const MajorAndYearDropdownButtonsSection({super.key, required this.height});
   final double height;
   @override
   Widget build(BuildContext context) {
+    var lang = S.of(context);
     return Row(
       children: [
-        CustomDropDownButton(height: height),
+        CustomDropDownButton(height: height, text: lang.year, list: projects),
         SizedBox(width: 10),
-        CustomDropDownButton(height: height),
+        CustomDropDownButton(height: height, text: lang.subject, list: years),
       ],
     );
   }
 }
 
 class CustomDropDownButton extends StatefulWidget {
-  const CustomDropDownButton({super.key, required this.height});
+  const CustomDropDownButton({
+    super.key,
+    required this.height,
+    required this.text,
+    required this.list,
+  });
+  final String text;
   final double height;
+  final List<String> list;
 
   @override
   State<CustomDropDownButton> createState() => _CustomDropDownButtonState();
 }
 
 class _CustomDropDownButtonState extends State<CustomDropDownButton> {
-  String selected = projects[1];
+  String? selected;
   final GlobalKey _key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
+    selected ??= widget.text;
     return Expanded(
       child: Container(
         height: widget.height * 40 / 915,
@@ -46,13 +56,13 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
           children: [
             Expanded(
               child: GestureDetector(
-                onTap: () => _showMenu(context),
+                onTap: () => _showMenu(context, widget.list),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
                       child: Text(
-                        selected,
+                        selected!,
                         key: _key,
                         style: AppTextStyle.cairoRegular12.copyWith(
                           color: Colors.white,
@@ -62,6 +72,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
                         softWrap: false,
                       ),
                     ),
+                    SizedBox(width: 5),
                     SvgPicture.asset(Assets.iconsDrobeDownArrow, width: 12),
                   ],
                 ),
@@ -73,7 +84,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
     );
   }
 
-  void _showMenu(BuildContext context) async {
+  void _showMenu(BuildContext context, List<String> list) async {
     final RenderBox box = context.findRenderObject() as RenderBox;
     final Offset position = box.localToGlobal(Offset.zero);
 
@@ -88,7 +99,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
         0,
       ),
       items:
-          projects.map((e) {
+          list.map((e) {
             return PopupMenuItem<String>(
               value: e,
               child: Text(
@@ -118,3 +129,6 @@ List<String> projects = [
   'project 3',
   'data base 3',
 ];
+
+List<String> years = ['first', 'second', 'third', 'fourth', 'fifth'];
+

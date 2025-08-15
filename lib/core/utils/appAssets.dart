@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
+  
   /// Assets for iconsAdd
   /// assets/icons/add.svg
   static const String iconsAdd = "assets/icons/add.svg";
@@ -20,8 +20,7 @@ class Assets {
 
   /// Assets for iconsArrowRightToBracket
   /// assets/icons/arrow-right-to-bracket.svg
-  static const String iconsArrowRightToBracket =
-      "assets/icons/arrow-right-to-bracket.svg";
+  static const String iconsArrowRightToBracket = "assets/icons/arrow-right-to-bracket.svg";
 
   /// Assets for iconsBookmark
   /// assets/icons/bookmark.svg
@@ -30,6 +29,14 @@ class Assets {
   /// Assets for iconsCakeBirthday
   /// assets/icons/cake-birthday.svg
   static const String iconsCakeBirthday = "assets/icons/cake-birthday.svg";
+
+  /// Assets for iconsChangeLanguage
+  /// assets/icons/changeLanguage.svg
+  static const String iconsChangeLanguage = "assets/icons/changeLanguage.svg";
+
+  /// Assets for iconsChat
+  /// assets/icons/chat.svg
+  static const String iconsChat = "assets/icons/chat.svg";
 
   /// Assets for iconsCircleUser
   /// assets/icons/circle-user.svg
@@ -87,6 +94,10 @@ class Assets {
   /// assets/icons/envelope.svg
   static const String iconsEnvelope = "assets/icons/envelope.svg";
 
+  /// Assets for iconsExit
+  /// assets/icons/exit.svg
+  static const String iconsExit = "assets/icons/exit.svg";
+
   /// Assets for iconsEye
   /// assets/icons/eye.svg
   static const String iconsEye = "assets/icons/eye.svg";
@@ -111,6 +122,10 @@ class Assets {
   /// assets/icons/heart.svg
   static const String iconsHeart = "assets/icons/heart.svg";
 
+  /// Assets for iconsHome
+  /// assets/icons/home.svg
+  static const String iconsHome = "assets/icons/home.svg";
+
   /// Assets for iconsInfo
   /// assets/icons/info.svg
   static const String iconsInfo = "assets/icons/info.svg";
@@ -118,6 +133,10 @@ class Assets {
   /// Assets for iconsInstagram
   /// assets/icons/instagram.svg
   static const String iconsInstagram = "assets/icons/instagram.svg";
+
+  /// Assets for iconsKey
+  /// assets/icons/key.svg
+  static const String iconsKey = "assets/icons/key.svg";
 
   /// Assets for iconsLeadManagement
   /// assets/icons/lead-management.svg
@@ -131,6 +150,10 @@ class Assets {
   /// assets/icons/linkedin.svg
   static const String iconsLinkedin = "assets/icons/linkedin.svg";
 
+  /// Assets for iconsMainLogo
+  /// assets/icons/main-logo.svg
+  static const String iconsMainLogo = "assets/icons/main-logo.svg";
+
   /// Assets for iconsMessages
   /// assets/icons/messages.svg
   static const String iconsMessages = "assets/icons/messages.svg";
@@ -139,14 +162,29 @@ class Assets {
   /// assets/icons/microchip-ai.svg
   static const String iconsMicrochipAi = "assets/icons/microchip-ai.svg";
 
+  /// Assets for iconsMoon
+  /// assets/icons/moon.svg
+  static const String iconsMoon = "assets/icons/moon.svg";
+
+  /// Assets for iconsNotesMedical
+  /// assets/icons/notes-medical.svg
+  static const String iconsNotesMedical = "assets/icons/notes-medical.svg";
+
   /// Assets for iconsNotifecationBell
   /// assets/icons/notifecation_bell.svg
-  static const String iconsNotifecationBell =
-      "assets/icons/notifecation_bell.svg";
+  static const String iconsNotifecationBell = "assets/icons/notifecation_bell.svg";
+
+  /// Assets for iconsPaperPlane
+  /// assets/icons/paper-plane.svg
+  static const String iconsPaperPlane = "assets/icons/paper-plane.svg";
 
   /// Assets for iconsPassword
   /// assets/icons/password.svg
   static const String iconsPassword = "assets/icons/password.svg";
+
+  /// Assets for iconsPasswordEmail
+  /// assets/icons/password-email.svg
+  static const String iconsPasswordEmail = "assets/icons/password-email.svg";
 
   /// Assets for iconsPenCircle
   /// assets/icons/pen-circle.svg
@@ -176,9 +214,21 @@ class Assets {
   /// assets/icons/remove.svg
   static const String iconsRemove = "assets/icons/remove.svg";
 
+  /// Assets for iconsReply
+  /// assets/icons/reply.svg
+  static const String iconsReply = "assets/icons/reply.svg";
+
   /// Assets for iconsSearch
   /// assets/icons/search.svg
   static const String iconsSearch = "assets/icons/search.svg";
+
+  /// Assets for iconsSettings
+  /// assets/icons/settings.svg
+  static const String iconsSettings = "assets/icons/settings.svg";
+
+  /// Assets for iconsSettingsWindow
+  /// assets/icons/settings-window.svg
+  static const String iconsSettingsWindow = "assets/icons/settings-window.svg";
 
   /// Assets for iconsShare
   /// assets/icons/share.svg
@@ -214,8 +264,11 @@ class Assets {
 
   /// Assets for iconsUserForbiddenAlt
   /// assets/icons/user-forbidden-alt.svg
-  static const String iconsUserForbiddenAlt =
-      "assets/icons/user-forbidden-alt.svg";
+  static const String iconsUserForbiddenAlt = "assets/icons/user-forbidden-alt.svg";
+
+  /// Assets for iconsUserGear
+  /// assets/icons/user-gear.svg
+  static const String iconsUserGear = "assets/icons/user-gear.svg";
 
   /// Assets for iconsUserGraduate
   /// assets/icons/user-graduate.svg
@@ -229,29 +282,29 @@ class Assets {
   /// assets/icons/user-tie-hair.svg
   static const String iconsUserTieHair = "assets/icons/user-tie-hair.svg";
 
-  /// Assets for changeLanguage
-  /// assets/icons/changeLanguage.svg
-  static const String iconsChangeLanguage = "assets/icons/changeLanguage.svg";
+  // /// Assets for changeLanguage
+  // /// assets/icons/changeLanguage.svg
+  // static const String iconsChangeLanguage = "assets/icons/changeLanguage.svg";
 
-  /// Assets for exit
-  /// assets/icons/exit.svg
-  static const String iconsExit = "assets/icons/exit.svg";
+  // /// Assets for exit
+  // /// assets/icons/exit.svg
+  // static const String iconsExit = "assets/icons/exit.svg";
 
-  /// Assets for home
-  /// assets/icons/home.svg
-  static const String iconsHome = "assets/icons/home.svg";
+  // /// Assets for home
+  // /// assets/icons/home.svg
+  // static const String iconsHome = "assets/icons/home.svg";
 
-  /// Assets for moon
-  /// assets/icons/moon.svg
-  static const String iconsMoon = "assets/icons/moon.svg";
+  // /// Assets for moon
+  // /// assets/icons/moon.svg
+  // static const String iconsMoon = "assets/icons/moon.svg";
 
-  /// Assets for notesMedical
-  /// assets/icons/notes-medical.svg
-  static const String iconsNotesMedical = "assets/icons/notes-medical.svg";
+  // /// Assets for notesMedical
+  // /// assets/icons/notes-medical.svg
+  // static const String iconsNotesMedical = "assets/icons/notes-medical.svg";
 
-  /// Assets for passwordEmail
-  /// assets/icons/password-email.svg
-  static const String iconsPasswordEmail = "assets/icons/password-email.svg";
+  // /// Assets for passwordEmail
+  // /// assets/icons/password-email.svg
+  // static const String iconsPasswordEmail = "assets/icons/password-email.svg";
 
   /// Assets for settingsWindow
   /// assets/icons/settings-window.svg
@@ -261,13 +314,13 @@ class Assets {
   /// assets/icons/settings.svg
   static const String iconsSetting = "assets/icons/settings.svg";
 
-  /// Assets for key
-  /// assets/icons/key.svg
-  static const String iconsKey = "assets/icons/key.svg";
+  // /// Assets for key
+  // /// assets/icons/key.svg
+  // static const String iconsKey = "assets/icons/key.svg";
 
-  /// Assets for userGear
-  /// assets/icons/user-gear.svg
-  static const String iconsUserGear = "assets/icons/user-gear.svg";
+  // /// Assets for userGear
+  // /// assets/icons/user-gear.svg
+  // static const String iconsUserGear = "assets/icons/user-gear.svg";
 
   /// Assets for lock
   /// assets/icons/lock.svg
@@ -297,8 +350,7 @@ class Assets {
 
   /// Assets for imagesCreateNewAccount
   /// assets/images/create_new_account.json
-  static const String imagesCreateNewAccount =
-      "assets/images/create_new_account.json";
+  static const String imagesCreateNewAccount = "assets/images/create_new_account.json";
 
   /// Assets for imagesDart
   /// assets/images/dart.svg
@@ -354,6 +406,6 @@ class Assets {
 
   /// Assets for imagesVisualStudioCode
   /// assets/images/visual-studio-code.svg
-  static const String imagesVisualStudioCode =
-      "assets/images/visual-studio-code.svg";
+  static const String imagesVisualStudioCode = "assets/images/visual-studio-code.svg";
 }
+

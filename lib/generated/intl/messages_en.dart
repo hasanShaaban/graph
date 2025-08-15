@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Save": MessageLookupByLibrary.simpleMessage("Save"),
     "aboutMe": MessageLookupByLibrary.simpleMessage("About me"),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+    "addComment": MessageLookupByLibrary.simpleMessage("Add comment"),
     "addFinalTouches": MessageLookupByLibrary.simpleMessage(
       "Add the final touches",
     ),
@@ -55,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "collageStage": MessageLookupByLibrary.simpleMessage(
       "Let\'s get acquainted with your collage stage.",
     ),
+    "comments": MessageLookupByLibrary.simpleMessage("Comments"),
     "companyName": MessageLookupByLibrary.simpleMessage("company name"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm password"),
     "createNewAccount": MessageLookupByLibrary.simpleMessage(
@@ -109,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "if your group is not completed, you can advertise a vacancy",
     ),
     "info": MessageLookupByLibrary.simpleMessage("Info"),
+    "join": MessageLookupByLibrary.simpleMessage("Join"),
     "lang": MessageLookupByLibrary.simpleMessage("en"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
     "login": MessageLookupByLibrary.simpleMessage("Login!"),
@@ -162,8 +165,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "post": MessageLookupByLibrary.simpleMessage("Post"),
     "postsManagement": MessageLookupByLibrary.simpleMessage("Posts management"),
-    "project": MessageLookupByLibrary.simpleMessage("project"),
+    "project": MessageLookupByLibrary.simpleMessage("Project"),
+    "reacts": MessageLookupByLibrary.simpleMessage("Reacts"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "reply": MessageLookupByLibrary.simpleMessage("Reply"),
     "role": MessageLookupByLibrary.simpleMessage("Role"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "seeAll": MessageLookupByLibrary.simpleMessage("See all"),

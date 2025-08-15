@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "aboutMe": MessageLookupByLibrary.simpleMessage("معلوماتي"),
     "activities": MessageLookupByLibrary.simpleMessage("النشاطات"),
+    "addComment": MessageLookupByLibrary.simpleMessage("أضف تعليق"),
     "addFinalTouches": MessageLookupByLibrary.simpleMessage(
       "ضع اللمسات الاخيرة ",
     ),
@@ -55,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "collageStage": MessageLookupByLibrary.simpleMessage(
       "دعنا نتعرف على مرحلتك الجامعية.",
     ),
+    "comments": MessageLookupByLibrary.simpleMessage("التعليقات"),
     "companyName": MessageLookupByLibrary.simpleMessage("اسم الشركة"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
@@ -99,6 +101,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "اذا كان المجموعة غير مكتملة يمكنك الاعلان عن وجود شاغر",
     ),
     "info": MessageLookupByLibrary.simpleMessage("معلوات"),
+    "join": MessageLookupByLibrary.simpleMessage("انضمام"),
     "lang": MessageLookupByLibrary.simpleMessage("ar"),
     "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول!"),
@@ -151,7 +154,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "post": MessageLookupByLibrary.simpleMessage("نشر"),
     "postsManagement": MessageLookupByLibrary.simpleMessage("ادارة المنشورات"),
     "project": MessageLookupByLibrary.simpleMessage("المشروع"),
+    "reacts": MessageLookupByLibrary.simpleMessage("التفاعلات"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "reply": MessageLookupByLibrary.simpleMessage("الردود"),
     "role": MessageLookupByLibrary.simpleMessage("دور"),
     "search": MessageLookupByLibrary.simpleMessage("ابحث"),
     "seeAll": MessageLookupByLibrary.simpleMessage("اظهار الكل"),

@@ -5,10 +5,10 @@ import 'package:graph/core/utils/constants.dart';
 import 'package:graph/generated/l10n.dart';
 
 class CustomBackButton extends StatelessWidget {
-  CustomBackButton({super.key, required this.lang, this.color});
+  const CustomBackButton({super.key, required this.lang, this.color});
 
   final S lang;
-  Color? color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,9 @@ class CustomBackButton extends StatelessWidget {
       color: Colors.transparent,
 
       child: InkWell(
-        onTap: () => Navigator.pop(context),
+        onTap: () {
+           Navigator.pop(context);
+        },
         child: SizedBox(
           height: 24,
           width: 24,

@@ -864,6 +864,36 @@ class S {
     );
   }
 
+  /// `Comments`
+  String get comments {
+    return Intl.message('Comments', name: 'comments', desc: '', args: []);
+  }
+
+  /// `Reacts`
+  String get reacts {
+    return Intl.message('Reacts', name: 'reacts', desc: '', args: []);
+  }
+
+  /// `Reply`
+  String get reply {
+    return Intl.message('Reply', name: 'reply', desc: '', args: []);
+  }
+
+  /// `Add comment`
+  String get addComment {
+    return Intl.message('Add comment', name: 'addComment', desc: '', args: []);
+  }
+
+  /// `Join`
+  String get join {
+    return Intl.message('Join', name: 'join', desc: '', args: []);
+  }
+
+  /// `Project`
+  String get project {
+    return Intl.message('Project', name: 'project', desc: '', args: []);
+  }
+
   /// `company name`
   String get companyName {
     return Intl.message(

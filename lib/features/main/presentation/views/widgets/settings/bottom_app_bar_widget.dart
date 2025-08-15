@@ -61,7 +61,7 @@ class BottomAppBarWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SvgPicture.asset(
-                      Assets.iconsSetting,
+                      Assets.iconsSettings,
                       color: Constants2.primaryColor(context),
                     ),
                     SizedBox(width: 10),

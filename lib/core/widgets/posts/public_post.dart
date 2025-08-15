@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/posts/public_post_widgets/post_activities.dart';
+import 'package:graph/core/widgets/posts/public_post_widgets/post_header.dart';
+import 'package:graph/core/widgets/posts/public_post_widgets/public_post_conent.dart';
 import 'package:graph/core/widgets/posts/public_post_widgets/react_button.dart';
-import 'package:graph/core/widgets/profile_image.dart';
 import 'package:graph/generated/l10n.dart';
-import 'package:intl/intl.dart';
 
 class PublicPost extends StatelessWidget {
   const PublicPost({
@@ -15,9 +13,11 @@ class PublicPost extends StatelessWidget {
     required this.lang,
     required this.width,
     required this.height,
+    this.onTap,
   });
   final S lang;
   final double width, height;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -34,60 +34,23 @@ class PublicPost extends StatelessWidget {
             padding: const EdgeInsets.all(13),
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ProfileImage(
-                      width: width,
-                      height: height,
-                      imageWidth: 55,
-                      imageHeight: 55,
-                      borderThick: 1,
-                    ),
-                    SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Hasan Shaaban',
-                              style: AppTextStyle.cairoSemiBold18.copyWith(
-                                color: Constants2.darkPrimaryColor(context),
-                                height: 1.1,
-                              ),
-                            ),
-                            SizedBox(width: 7),
-                            SvgPicture.asset(
-                              Assets.iconsEarthAfrica,
-                              width: 12,
-                              color: Constants2.darkSecondaryColor(context),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          DateFormat(
-                            'MMM d, yyyy – h:mm a',
-                          ).format(DateTime.parse("2024-06-20T12:30:00")),
-                          style: AppTextStyle.cairoRegular12.copyWith(
-                            color: Constants2.darkSecondaryColor(context),
-                            height: 0.9,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                    SvgPicture.asset(
-                      Assets.iconsDots,
-                      color: Constants2.darkSecondaryColor(context),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 200),
+                // This row includes the profile image, the user name, and the
+                // post's actions including save button.
+                PostHeader(width: width, height: height),
+                PublicPostContent(),
                 Divider(color: Constants2.dividerColor(context), thickness: 1),
+                // This row includes the post's comments and shares. It
+                // also includes a spacer to align the share button to the
+                // right of the row.
                 Row(
                   children: [
-                    PostActivities(icon: Assets.iconsCommentDots, count: '234'),
+                    GestureDetector(
+                      onTap: onTap,
+                      child: PostActivities(
+                        icon: Assets.iconsCommentDots,
+                        count: '234',
+                      ),
+                    ),
                     Spacer(),
                     PostActivities(icon: Assets.iconsShare, count: '234'),
                   ],
@@ -96,7 +59,12 @@ class PublicPost extends StatelessWidget {
             ),
           ),
         ),
-        ReactButton(height: height, width: width),
+        ReactButton(
+          height: height,
+          width: width,
+          buttonColor: Constants2.lightSecondaryColor(context),
+          circleColor: Constants2.lightPrimaryColor(context),
+        ),
       ],
     );
   }

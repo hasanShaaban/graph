@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#007571"/>
+      <stop offset="1" stop-color="#61ffcd"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" y1="0" x2="0.5" y2="1" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#004e4c"/>
+      <stop offset="0.498" stop-color="#2ea883"/>
+      <stop offset="1" stop-color="#004e4c"/>
+    </linearGradient>
+  </defs>
+  <g id="icons8-chat" transform="translate(-2.999 -5)">
+    <path id="Path_432" data-name="Path 432" d="M13,7.461v13.65a2.462,2.462,0,0,0,2.461,2.461H33.4a2.462,2.462,0,0,0,2.461-2.461V7.461A2.462,2.462,0,0,0,33.4,5H15.46A2.461,2.461,0,0,0,13,7.461Z" transform="translate(-2.857)" fill-rule="evenodd" fill="url(#linear-gradient)"/>
+    <path id="Path_433" data-name="Path 433" d="M3,36.5V16.461A2.462,2.462,0,0,1,5.46,14h4.685L25.856,26.14v3.971A2.462,2.462,0,0,1,23.4,32.572H9.515L4.836,37.249A1.071,1.071,0,0,1,3,36.5Z" transform="translate(0 -2.572)" fill-rule="evenodd" fill="url(#linear-gradient-2)"/>
+    <path id="Path_434" data-name="Path 434" d="M13,23.682V14H26.253a2.462,2.462,0,0,1,2.461,2.461v9.683H15.46A2.461,2.461,0,0,1,13,23.682Z" transform="translate(-2.857 -2.571)" fill-rule="evenodd" fill="url(#linear-gradient-3)"/>
+  </g>
+</svg>
