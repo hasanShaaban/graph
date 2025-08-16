@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/posts/ads_post_widgets/ads_post_header.dart';
+import 'package:graph/core/widgets/posts/expandable_text.dart';
 import 'package:graph/core/widgets/posts/public_post_widgets/react_button.dart';
 
 class AdsPost extends StatelessWidget {
@@ -20,12 +20,9 @@ class AdsPost extends StatelessWidget {
             children: [
               AdsPostHeader(width: width, height: height),
               SizedBox(height: 10),
-              Text(
+              ExpandableText(
                 'Notice: Algorithm Course Project Interviews This is to inform all students that interviews for the Algorithm course projects will be conducted next Sunday. All students are required to be prepared to present and discuss their project work with the course instructors. Further details regarding the schedule and venue will be announced soon.',
-                style: AppTextStyle.cairoSemiBold16.copyWith(
-                  height: 1.3,
-                  color: Constants2.darkPrimaryColor(context),
-                ),
+                trimLines: 3,
               ),
               SizedBox(height: 25),
               Divider(

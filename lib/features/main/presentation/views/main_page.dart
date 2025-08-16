@@ -34,7 +34,7 @@ class _MainPageState extends State<MainPage> {
       child: Scaffold(
         backgroundColor: Constants2.lightPrimaryColor(context),
         extendBody: true,
-        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButtonLocation: lang.lang == 'en' ? FloatingActionButtonLocation.endDocked : FloatingActionButtonLocation.startDocked,
         floatingActionButton: MainFloatingActionButton(width: width),
         body: PageView(
           onPageChanged: (value) {

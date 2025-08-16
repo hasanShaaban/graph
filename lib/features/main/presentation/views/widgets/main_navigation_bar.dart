@@ -33,7 +33,7 @@ class MainNavigationBar extends StatelessWidget {
           title: 'Notifications',
         ),
         bottomTabBuilder(context,icon: Assets.iconsSettings, title: 'Settings'),
-        bottomTabBuilder(context,icon: Assets.iconsSearch, title: 'Search'),
+        bottomTabBuilder(context,icon: Assets.iconsCalendarClock, title: 'Search'),
       ],
       option: BubbleBarOptions(
         iconSize: 20,

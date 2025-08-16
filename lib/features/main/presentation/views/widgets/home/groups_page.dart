@@ -13,7 +13,13 @@ class GroupsPage extends StatelessWidget {
       child: Column(
         children: [
           MajorAndYearDropdownButtonsSection(height: height),
-          GroupPost(),
+          Expanded(
+            child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: 10,
+              itemBuilder: (context, index) => GroupPost(),
+            ),
+          ),
         ],
       ),
     );

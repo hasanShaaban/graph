@@ -30,6 +30,10 @@ class Assets {
   /// assets/icons/cake-birthday.svg
   static const String iconsCakeBirthday = "assets/icons/cake-birthday.svg";
 
+  /// Assets for iconsCalendarClock
+  /// assets/icons/calendar-clock.svg
+  static const String iconsCalendarClock = "assets/icons/calendar-clock.svg";
+
   /// Assets for iconsChangeLanguage
   /// assets/icons/changeLanguage.svg
   static const String iconsChangeLanguage = "assets/icons/changeLanguage.svg";

@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import 'package:graph/generated/l10n.dart';
 
 class HomePageAppBar extends StatelessWidget {
   const HomePageAppBar({super.key, required this.height, required this.width});
@@ -12,6 +13,7 @@ class HomePageAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = S.of(context);
     return SliverAppBar(
       elevation: 0,
       floating: true,
@@ -25,20 +27,27 @@ class HomePageAppBar extends StatelessWidget {
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 20, top: 10),
+          padding: EdgeInsets.only(
+            right: lang.lang == 'en' ? 20 : 0,
+            left: lang.lang == 'ar' ? 20 : 0,
+            top: 10,
+          ),
           child: Row(
             children: [
+              SvgPicture.asset(Assets.iconsSearch,color: Constants2.darkPrimaryColor(context),),
+              SizedBox(width: 10),
               IconButton(
                 onPressed: () {
                   Navigator.pushNamed(context, ProfileView.name);
                 },
-                icon: SvgPicture.asset(
-                  Assets.iconsCircleUser,
-                  color: Constants.primaryColor,
+                icon: CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage(Assets.imagesProfileImage),
                 ),
               ),
-              SizedBox(width: 20),
+              SizedBox(width: 10),
               SvgPicture.asset(Assets.iconsChat),
+              
             ],
           ),
         ),
