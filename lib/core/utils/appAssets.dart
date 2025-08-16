@@ -343,6 +343,15 @@ class Assets {
   ///assets/icons/users.svg
   static const String iconsMention = "assets/icons/users.svg";
 
+    ///Assets for remove mentioned person
+  ///assets/icons/Ellipse .svg
+  static const String iconsRemoveMention = "assets/icons/Ellipse .svg";
+
+
+   ///Assets for remove mentioned person
+  ///assets/icons/cross.svg
+  static const String iconsCross = "assets/icons/cross.svg";
+
 
   /// Assets for imagesBoyProfile
   /// assets/images/boy_profile.json

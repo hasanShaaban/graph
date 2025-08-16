@@ -43,7 +43,7 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          // صف عرض الأشخاص المختارين مع زر الإغلاق
+        
           if (widget.selectedPersons.isNotEmpty) ...[
             Wrap(
               spacing: 8,
@@ -57,6 +57,8 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
                             horizontal: 12,
                             vertical: 6,
                           ),
+                          width: MediaQuery.of(context).size.width * 104 / 412,
+                          height: 35,
                           decoration: BoxDecoration(
                             color: Constants.lightSecondryColor,
                             borderRadius: BorderRadius.circular(18),
@@ -65,10 +67,21 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
                           child: Text(person.name),
                         ),
                         Positioned(
-                          right: 10,
+                          right: 0,
                           child: GestureDetector(
                             onTap: () => widget.onRemovePerson(person),
-                            child: SvgPicture.asset(Assets.iconsRemove),
+                            child: Stack(
+                              children: [
+                                SvgPicture.asset(Assets.iconsRemoveMention),
+                                Positioned(
+                                  right: -1,
+                                  left: -1,
+                                  top: 5,
+
+                                  child: SvgPicture.asset(Assets.iconsCross),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],

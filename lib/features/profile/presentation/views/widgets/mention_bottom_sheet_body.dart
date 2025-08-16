@@ -71,11 +71,7 @@ class _MentionBottomSheetBodyState extends State<MentionBottomSheetBody> {
                         CustomUserListView(),
                         SelectPersonsToMention(  checked: isChecked,
                            onChanged: (bool checked) => _toggle(person),)
-                    
-                        // RemeberMeSection(
-                        //   checked: isChecked,
-                        //    onChanged: (bool checked) => _toggle(person),
-                        // ),
+
                       ],
                     ),
                   ),
