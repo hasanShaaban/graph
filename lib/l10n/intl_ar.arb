@@ -95,18 +95,32 @@
   "settings": "الاعدادات",
   "managementAndPrivacy": "الادارة والخصوصية",
   "changeNameAndPassowrd": "تغيير الاسم وكلمة المرور",
-  "changeEmail": "تغيير الايميل",
-  "postsManagement": "ادارة المنشورات",
-  "darkMode": "الوضع المظلم",
-  "changeLanguage": "تغيير اللغة",
-  "logout": "تسجيل خروج",
-  "selectYourSpacialization": " اختر اختصاصك",
-  "pleaseEnterBirthDate": "الرجاء اختيار تاريخ الميلاد",
+
   "comments" : "التعليقات",
   "reacts" : "التفاعلات",
   "reply":"الردود",
   "addComment":"أضف تعليق",
   "join":"انضمام",
-  "project":"المشروع"
+
   
+  "changeEmail":"تغيير الايميل",
+  "postsManagement":"ادارة المنشورات",
+  "darkMode":"الوضع المظلم",
+  "changeLanguage":"تغيير اللغة",
+  "logout":"تسجيل خروج",
+  "selectYourSpacialization":" اختر اختصاصك",
+  "pleaseEnterBirthDate": "الرجاء اختيار تاريخ الميلاد",
+  "companyName": "اسم الشركة",
+  "createPost": "انشاء منشور",
+  "post": "نشر",
+  "description": "وصف",
+  "title": "العنوان",
+  "project": "المشروع",
+  "mention": "اشارة لشخص",
+  "addTags": "اضافة تاغ",
+  "addImages": "اضافة صور",
+  "mentionAndShareWithFriends":"اذكر وشارك هذاالمنشور مع الاصدقاء",
+  "addSomeTags": "اضف بعض التاغات",
+  "addGroup": "اضف فريق"
+
 }

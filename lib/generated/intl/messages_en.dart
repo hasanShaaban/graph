@@ -29,8 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "addFinalTouches": MessageLookupByLibrary.simpleMessage(
       "Add the final touches",
     ),
+    "addGroup": MessageLookupByLibrary.simpleMessage("add group"),
+    "addImages": MessageLookupByLibrary.simpleMessage("Add images"),
     "addMember": MessageLookupByLibrary.simpleMessage("Add member"),
     "addPost": MessageLookupByLibrary.simpleMessage("Add post"),
+    "addSomeTags": MessageLookupByLibrary.simpleMessage("add some tags"),
+    "addTags": MessageLookupByLibrary.simpleMessage("Add tags"),
     "advertiseAVacancy": MessageLookupByLibrary.simpleMessage(
       "Advertise a vacancy",
     ),
@@ -53,11 +57,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Let\'s get acquainted with your collage stage.",
     ),
     "comments": MessageLookupByLibrary.simpleMessage("Comments"),
+    "companyName": MessageLookupByLibrary.simpleMessage("company name"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm password"),
     "createNewAccount": MessageLookupByLibrary.simpleMessage(
       "Create new account",
     ),
     "createOne": MessageLookupByLibrary.simpleMessage("Create one"),
+    "createPost": MessageLookupByLibrary.simpleMessage("Create post"),
     "currentGroup": MessageLookupByLibrary.simpleMessage("Current group:"),
     "customizeFeatures": MessageLookupByLibrary.simpleMessage(
       "That will help us customize your feature later",
@@ -66,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Let\'s customize your profile",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+    "description": MessageLookupByLibrary.simpleMessage("Description"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -114,6 +121,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "managementAndPrivacy": MessageLookupByLibrary.simpleMessage(
       "management & privacy",
     ),
+    "mention": MessageLookupByLibrary.simpleMessage("Mention"),
+    "mentionAndShareWithFriends": MessageLookupByLibrary.simpleMessage(
+      "Mention and share this post with your friends",
+    ),
     "message": MessageLookupByLibrary.simpleMessage("Message"),
     "myGroups": MessageLookupByLibrary.simpleMessage("MY Groups"),
     "mySV": MessageLookupByLibrary.simpleMessage("My SV"),
@@ -152,8 +163,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseSelectSpacialization": MessageLookupByLibrary.simpleMessage(
       "Please, Select your specialization!",
     ),
+    "post": MessageLookupByLibrary.simpleMessage("Post"),
     "postsManagement": MessageLookupByLibrary.simpleMessage("Posts management"),
-    "project": MessageLookupByLibrary.simpleMessage("Project"),
+    "project": MessageLookupByLibrary.simpleMessage("project"),
     "reacts": MessageLookupByLibrary.simpleMessage("Reacts"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "reply": MessageLookupByLibrary.simpleMessage("Reply"),
@@ -192,6 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "thisFieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
+    "title": MessageLookupByLibrary.simpleMessage("title"),
     "tools": MessageLookupByLibrary.simpleMessage("Tools"),
     "uploadPicture": MessageLookupByLibrary.simpleMessage(
       "Upload Your Picture",

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/core/services/local_data_base/hive_data_base_service.dart';
+import 'package:graph/features/auth/presentation/manager/role_cubit/role_cubit.dart';
+import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_company_name_section.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_username_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import 'auth_app_bar.dart';
 import '../../../../../generated/l10n.dart';
 
-import 'next_button.dart';
-import 'signup_profile_picture_section.dart';
 import 'custom_dropdown_button.dart';
 import 'custom_text.dart';
 
@@ -18,12 +22,7 @@ class SignupRoleSection extends StatefulWidget {
 
 class _SignupRoleSectionState extends State<SignupRoleSection> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final List<String> role = [
-    'teacher',
-    'doctor',
-    'commercial account',
-    'normal user account',
-  ];
+  final List<String> role = ['student', 'company'];
   String? selectedRole;
   int? roleId;
   late SignupDataModel signupData;
@@ -31,7 +30,7 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    signupData = ModalRoute.of(context)!.settings.arguments as SignupDataModel;
+    signupData = SignupDataModel();
   }
 
   @override
@@ -80,26 +79,72 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
             ],
           ),
         ),
+
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
-          child: NextButton(
-            onPressed: () {
-              if (selectedRole == null || selectedRole!.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    backgroundColor: Colors.redAccent,
-                    content: Text(lang.pleaseSelectRole),
-                  ),
-                );
-              } else {
-                signupData = signupData.copyWith(specialization: selectedRole!);
-
-                Navigator.pushNamed(
+          child: BlocConsumer<RoleCubit, RoleState>(
+            listener: (context, state) async {
+              if (state is RoleSuccess) {
+                if (selectedRole == 'student') {
+                  print(selectedRole);
+                  Navigator.pushNamed(
+                    context,
+                    SignupUsernameSection.name,
+                    arguments: signupData.copyWith(role: selectedRole),
+                  );
+                  print(selectedRole);
+                } else if (selectedRole == 'company') {
+                  print(selectedRole);
+                  Navigator.pushNamed(
+                    context,
+                    SignupCompanyNameSection.name,
+                    arguments: signupData.copyWith(role: selectedRole),
+                  );
+                  print(selectedRole);
+                }
+              } else if (state is RoleFailuer) {
+                ScaffoldMessenger.of(
                   context,
-                  SignupProfilePictureSection.name,
-                  arguments: signupData,
-                );
+                ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
               }
+            },
+            builder: (context, state) {
+              return NextButton(
+                title: lang.next,
+                isLoading: state is RoleLoading,
+                onPressed: () {
+                  if (selectedRole == null || selectedRole!.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.redAccent,
+                        content: Text(lang.pleaseSelectRole),
+                      ),
+                    );
+                  } else {
+                    final cubit = context.read<RoleCubit>();
+                    cubit.setRole(role: selectedRole!);
+                  }
+                },
+
+                // onPressed: () {
+                //   if (selectedRole == null || selectedRole!.isEmpty) {
+                //     ScaffoldMessenger.of(context).showSnackBar(
+                //       SnackBar(
+                //         backgroundColor: Colors.redAccent,
+                //         content: Text(lang.pleaseSelectRole),
+                //       ),
+                //     );
+                //   } else {
+                //     signupData = signupData.copyWith(role: selectedRole!);
+
+                //     Navigator.pushNamed(
+                //       context,
+                //       SignupUsernameSection.name,
+                //       arguments: signupData,
+                //     );
+                //   }
+                // },
+              );
             },
           ),
         ),

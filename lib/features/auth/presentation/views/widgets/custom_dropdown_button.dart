@@ -16,8 +16,10 @@ class customDropDownButton extends StatelessWidget {
     required this.height,
     required this.border,
     required this.iconPadding,
+
   });
   final List<String>? list;
+
   final String text;
   final ValueChanged onChanged;
   final double width;
@@ -29,8 +31,7 @@ class customDropDownButton extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      //   width: 300,
-      // height: 55,
+ 
       decoration: BoxDecoration(
         color: Constants2.primaryColor(context),
         borderRadius: BorderRadius.circular(border),
@@ -40,8 +41,9 @@ class customDropDownButton extends StatelessWidget {
           isExpanded: true,
           items:
               list!.map((String items) {
-                return DropdownMenuItem(value: items, child: Text(items));
-              }).toList(),
+                    return DropdownMenuItem(value: items, child: Text(items));
+                  }).toList(),
+                
           onChanged: onChanged,
           hint: Center(
             child: Text(

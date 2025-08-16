@@ -854,16 +854,6 @@ class S {
     );
   }
 
-  /// `please enter birth date`
-  String get pleaseEnterBirthDate {
-    return Intl.message(
-      'please enter birth date',
-      name: 'pleaseEnterBirthDate',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Comments`
   String get comments {
     return Intl.message('Comments', name: 'comments', desc: '', args: []);
@@ -889,9 +879,89 @@ class S {
     return Intl.message('Join', name: 'join', desc: '', args: []);
   }
 
-  /// `Project`
+  /// `please enter birth date`
+  String get pleaseEnterBirthDate {
+    return Intl.message(
+      'please enter birth date',
+      name: 'pleaseEnterBirthDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `company name`
+  String get companyName {
+    return Intl.message(
+      'company name',
+      name: 'companyName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create post`
+  String get createPost {
+    return Intl.message('Create post', name: 'createPost', desc: '', args: []);
+  }
+
+  /// `Post`
+  String get post {
+    return Intl.message('Post', name: 'post', desc: '', args: []);
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message('Description', name: 'description', desc: '', args: []);
+  }
+
+  /// `title`
+  String get title {
+    return Intl.message('title', name: 'title', desc: '', args: []);
+  }
+
+  /// `project`
   String get project {
-    return Intl.message('Project', name: 'project', desc: '', args: []);
+    return Intl.message('project', name: 'project', desc: '', args: []);
+  }
+
+  /// `Mention`
+  String get mention {
+    return Intl.message('Mention', name: 'mention', desc: '', args: []);
+  }
+
+  /// `Add tags`
+  String get addTags {
+    return Intl.message('Add tags', name: 'addTags', desc: '', args: []);
+  }
+
+  /// `Add images`
+  String get addImages {
+    return Intl.message('Add images', name: 'addImages', desc: '', args: []);
+  }
+
+  /// `Mention and share this post with your friends`
+  String get mentionAndShareWithFriends {
+    return Intl.message(
+      'Mention and share this post with your friends',
+      name: 'mentionAndShareWithFriends',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `add some tags`
+  String get addSomeTags {
+    return Intl.message(
+      'add some tags',
+      name: 'addSomeTags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `add group`
+  String get addGroup {
+    return Intl.message('add group', name: 'addGroup', desc: '', args: []);
   }
 }
 

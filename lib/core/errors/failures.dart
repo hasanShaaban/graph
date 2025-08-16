@@ -1,3 +1,76 @@
+// import 'package:dio/dio.dart';
+
+// abstract class Failures {
+//   final String errMessage;
+
+//   const Failures(this.errMessage);
+// }
+
+// class ServerFailure extends Failures {
+//   ServerFailure(super.errMessage);
+
+//   factory ServerFailure.fromDioError(DioException dioError) {
+//     switch (dioError.type) {
+//       case DioExceptionType.connectionTimeout:
+//         return ServerFailure('Connection timeout with ApiSever');
+//       case DioExceptionType.sendTimeout:
+//         return ServerFailure('Send timeout with ApiSever');
+//       case DioExceptionType.receiveTimeout:
+//         return ServerFailure('Receive timeout with ApiSever');
+//       // case DioExceptionType.badCertificate:
+//       //   return ServerFailure.fromResponse(
+//       //     dioError.response!.statusCode!,
+//       //     dioError.response!.data,
+//       //   );
+//       // case DioExceptionType.badResponse:
+//       //   return ServerFailure.fromResponse(
+//       //     dioError.response!.statusCode!,
+//       //     dioError.response!.data,
+//       //   );
+//       case DioExceptionType.badCertificate:
+//       case DioExceptionType.badResponse:
+//         final statusCode = dioError.response?.statusCode ?? 0;
+//         final data = dioError.response?.data ?? {};
+//         return ServerFailure.fromResponse(statusCode, data);
+
+//       case DioExceptionType.cancel:
+//         return ServerFailure('Request to ApiSever was caceld');
+//       case DioExceptionType.connectionError:
+//         return ServerFailure('There is no internet');
+//       case DioExceptionType.unknown:
+//         if (dioError.message?.contains('SocketException') ?? false) {
+//           return ServerFailure('No Internet Connection');
+//         }
+//         return ServerFailure('Unexpected Error, Please try later!');
+//     }
+//   }
+
+//   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
+//     if (response is Map) {
+//       if (response.containsKey('message')) {
+//         return ServerFailure(response['message'].toString());
+//       }
+//       if (response.containsKey('error')) {
+//         return ServerFailure(response['error'].toString());
+//       }
+//       for (var value in response.values) {
+//         if (value is List && value.isNotEmpty) {
+//           return ServerFailure(value.first.toString());
+//         }
+//       }
+//     }
+//     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
+//       return ServerFailure(response['message']);
+//     } else if (statusCode == 400) {
+//       return ServerFailure('Your request not found, please try later');
+//     } else if (statusCode == 500) {
+//       return ServerFailure('Internal Server error, Please try later');
+//     } else {
+//       return ServerFailure('Opps There was an Error, Please try again');
+//     }
+//   }
+// }
+
 import 'package:dio/dio.dart';
 
 abstract class Failures {
@@ -12,27 +85,23 @@ class ServerFailure extends Failures {
   factory ServerFailure.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.connectionTimeout:
-        return ServerFailure('Connection timeout with ApiSever');
+        return ServerFailure('Connection timeout with ApiServer');
       case DioExceptionType.sendTimeout:
-        return ServerFailure('Send timeout with ApiSever');
+        return ServerFailure('Send timeout with ApiServer');
       case DioExceptionType.receiveTimeout:
-        return ServerFailure('Receive timeout with ApiSever');
+        return ServerFailure('Receive timeout with ApiServer');
       case DioExceptionType.badCertificate:
-        return ServerFailure.fromResponse(
-          dioError.response!.statusCode!,
-          dioError.response!.data,
-        );
       case DioExceptionType.badResponse:
-        return ServerFailure.fromResponse(
-          dioError.response!.statusCode!,
-          dioError.response!.data,
-        );
+        final statusCode = dioError.response?.statusCode ?? 0;
+        final data = dioError.response?.data ?? {};
+        return ServerFailure.fromResponse(statusCode, data);
       case DioExceptionType.cancel:
-        return ServerFailure('Request to ApiSever was caceld');
+        return ServerFailure('Request to ApiServer was canceled');
       case DioExceptionType.connectionError:
         return ServerFailure('There is no internet');
       case DioExceptionType.unknown:
-        if (dioError.message!.contains('SocketException')) {
+        if (dioError.message != null &&
+            dioError.message!.contains('SocketException')) {
           return ServerFailure('No Internet Connection');
         }
         return ServerFailure('Unexpected Error, Please try later!');
@@ -53,14 +122,17 @@ class ServerFailure extends Failures {
         }
       }
     }
+
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['message']);
-    } else if (statusCode == 400) {
+      return ServerFailure(
+        response['message']?.toString() ?? 'Your request was not successful',
+      );
+    } else if (statusCode == 404) {
       return ServerFailure('Your request not found, please try later');
     } else if (statusCode == 500) {
       return ServerFailure('Internal Server error, Please try later');
     } else {
-      return ServerFailure('Opps There was an Error, Please try again');
+      return ServerFailure('Oops! There was an Error, Please try again');
     }
   }
 }

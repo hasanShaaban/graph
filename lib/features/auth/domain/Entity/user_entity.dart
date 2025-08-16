@@ -1,29 +1,31 @@
+import 'dart:io';
+
 class UserEntity {
-  final String firstName;
-  final String lastName;
-  final String email;
-  final String passWord;
-  final String confirmPassword;
-  final String dateOfBirht;
-  final String gender;
+  String? firstName;
+   String? lastName;
+ String? email;
+  String? passWord;
+   String? confirmPassword;
+   String? dateOfBirht;
+ String? gender;
   // final String studentOrNOt;
   // final String role;
-  final int studyYear;
-  final int spacialization;
-  //final String image;
+ int? studyYear;
+  int? spacialization;
+  File? image;
 
   UserEntity({
-    required this.firstName,
-    required this.lastName,
-    required this.email,
-    required this.passWord,
-    required this.confirmPassword,
-    required this.dateOfBirht,
-    required this.gender,
+this.firstName,
+    this.lastName,
+     this.email,
+ this.passWord,
+     this.confirmPassword,
+     this.dateOfBirht,
+     this.gender,
    // required this.studentOrNOt,
    // required this.role,
-    required this.studyYear,
-    required this.spacialization,
-    //required this.image,
+     this.studyYear,
+     this.spacialization,
+     this.image,
   });
 }

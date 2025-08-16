@@ -5,7 +5,8 @@ import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 
 class RemeberMeSection extends StatefulWidget {
-  const RemeberMeSection({super.key});
+  RemeberMeSection({super.key, this.text});
+  final String? text;
 
   @override
   State<RemeberMeSection> createState() => _RemeberMeSectionState();
@@ -13,6 +14,7 @@ class RemeberMeSection extends StatefulWidget {
 
 class _RemeberMeSectionState extends State<RemeberMeSection> {
   bool checked = false;
+
   @override
   Widget build(BuildContext context) {
     final lang = S.of(context);
@@ -50,7 +52,8 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
         ),
         SizedBox(width: 5),
         Text(
-          lang.rememberMe,
+          widget.text ?? '',
+
           style: AppTextStyle.cairoRegular18.copyWith(
             color: Constants.secondryColor,
           ),

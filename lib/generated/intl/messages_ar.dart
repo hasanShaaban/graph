@@ -29,8 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "addFinalTouches": MessageLookupByLibrary.simpleMessage(
       "ضع اللمسات الاخيرة ",
     ),
+    "addGroup": MessageLookupByLibrary.simpleMessage("اضف فريق"),
+    "addImages": MessageLookupByLibrary.simpleMessage("اضافة صور"),
     "addMember": MessageLookupByLibrary.simpleMessage("اضافة عضو"),
     "addPost": MessageLookupByLibrary.simpleMessage("اضافة منشور"),
+    "addSomeTags": MessageLookupByLibrary.simpleMessage("اضف بعض التاغات"),
+    "addTags": MessageLookupByLibrary.simpleMessage("اضافة تاغ"),
     "advertiseAVacancy": MessageLookupByLibrary.simpleMessage(
       "الاعلان عن شاغر",
     ),
@@ -53,11 +57,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "دعنا نتعرف على مرحلتك الجامعية.",
     ),
     "comments": MessageLookupByLibrary.simpleMessage("التعليقات"),
+    "companyName": MessageLookupByLibrary.simpleMessage("اسم الشركة"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
     "createNewAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب جديد"),
     "createOne": MessageLookupByLibrary.simpleMessage("أنشئ واحدًا!"),
+    "createPost": MessageLookupByLibrary.simpleMessage("انشاء منشور"),
     "currentGroup": MessageLookupByLibrary.simpleMessage("الفريق الحالي:"),
     "customizeFeatures": MessageLookupByLibrary.simpleMessage(
       "سيساعدنا ذلك في تخصيص ميزاتك لاحقًا",
@@ -66,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "لنخصص ملفك الشخصي",
     ),
     "darkMode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
+    "description": MessageLookupByLibrary.simpleMessage("وصف"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "editProfile": MessageLookupByLibrary.simpleMessage("تعديل ملفي الشخصي"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -106,6 +113,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "managementAndPrivacy": MessageLookupByLibrary.simpleMessage(
       "الادارة والخصوصية",
     ),
+    "mention": MessageLookupByLibrary.simpleMessage("اشارة لشخص"),
+    "mentionAndShareWithFriends": MessageLookupByLibrary.simpleMessage(
+      "اذكر وشارك هذاالمنشور مع الاصدقاء",
+    ),
     "message": MessageLookupByLibrary.simpleMessage("مراسلة"),
     "myGroups": MessageLookupByLibrary.simpleMessage("فريقي"),
     "mySV": MessageLookupByLibrary.simpleMessage("سيرتي الذاتية"),
@@ -140,6 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseSelectSpacialization": MessageLookupByLibrary.simpleMessage(
       " يرجى اختيار اختصاصك",
     ),
+    "post": MessageLookupByLibrary.simpleMessage("نشر"),
     "postsManagement": MessageLookupByLibrary.simpleMessage("ادارة المنشورات"),
     "project": MessageLookupByLibrary.simpleMessage("المشروع"),
     "reacts": MessageLookupByLibrary.simpleMessage("التفاعلات"),
@@ -174,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "thisFieldRequired": MessageLookupByLibrary.simpleMessage(
       "هذا الحقل مطلوب",
     ),
+    "title": MessageLookupByLibrary.simpleMessage("العنوان"),
     "tools": MessageLookupByLibrary.simpleMessage("ادوات"),
     "uploadPicture": MessageLookupByLibrary.simpleMessage("ارفع صورتك الشخصية"),
     "viewProfile": MessageLookupByLibrary.simpleMessage("زيارة"),

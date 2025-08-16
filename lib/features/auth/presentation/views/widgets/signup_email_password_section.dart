@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/core/services/local_data_base/hive_data_base_service.dart';
+import 'package:graph/features/auth/data/models/credintials_model.dart';
+import 'package:graph/features/auth/presentation/manager/credintials_cubit/credintials_cubit.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_role_section.dart';
 import '../../../data/models/signup_data_model.dart';
 
 import '../../../../../generated/l10n.dart';
 import 'auth_button.dart';
 import 'signup_text_form_fields.dart';
-import 'signup_username_section.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import 'auth_redirect_text.dart';
@@ -28,7 +32,6 @@ class _SignupEmailPasswordSectionState
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
-
   late SignupDataModel signupData;
 
   @override
@@ -36,13 +39,7 @@ class _SignupEmailPasswordSectionState
     super.didChangeDependencies();
     final args = ModalRoute.of(context)?.settings.arguments;
     if (args == null || args is! SignupDataModel) {
-
-      signupData = SignupDataModel(
-        email: '',
-        password: '',
-        confirmPassword: '',
-      );
-     
+      signupData = SignupDataModel();
     } else {
       signupData = args;
     }
@@ -85,36 +82,56 @@ class _SignupEmailPasswordSectionState
                   print('confirmPass saved: $newValue');
                   confirmPassword = newValue!.trim();
                 },
-
-                ),
+              ),
               const SizedBox(height: 29),
-              const RemeberMeSection(),
+              RemeberMeSection(
+   
+                text: lang.rememberMe,
+              ),
               const SizedBox(height: 24),
 
-              AuthButton(
-                title: lang.signUp,
-
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    print(
-                      'Email: $email, Password: $password, Confirm: $confirmPassword',
+              BlocConsumer<CredintialsCubit, CredintialsState>(
+                listener: (context, state) async {
+                  if (state is CredintialsSuccess) {
+                    final token = state.response['message']['token'];
+                    final message = state.response['message'];
+                    await HiveDataBaseService().addData(
+                      boxName: 'authBox',
+                      key: 'token',
+                      value: token,
                     );
-                    final signupData = SignupDataModel(
-                      email: email,
-                      password: password,
-                      confirmPassword: confirmPassword,
-                    );
-                    Navigator.pushNamed(
+                    Navigator.pushNamed(context, SignupRoleSection.name);
+                  } else if (state is CredintialsFailuer) {
+                    ScaffoldMessenger.of(
                       context,
-                      SignupUsernameSection.name,
-                      arguments: signupData,
-                    );
-                  } else {
-                    setState(() {
-                      autovalidateMode = AutovalidateMode.always;
-                    });
+                    ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
                   }
+                },
+                builder: (context, state) {
+                  return AuthButton(
+                    title: lang.signUp,
+                    isLoading: state is CredintialsLoading,
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                        print(
+                          'Email: $email, Password: $password, Confirm: $confirmPassword',
+                        );
+                        final credintials = CredintialsModel(
+                          email: email,
+                          passWord: password,
+                          confirmPassword: confirmPassword,
+                        );
+                        final cubit = context.read<CredintialsCubit>();
+
+                        cubit.credintials(credintialsModel: credintials);
+                      } else {
+                        setState(() {
+                          autovalidateMode = AutovalidateMode.always;
+                        });
+                      }
+                    },
+                  );
                 },
               ),
               const SizedBox(height: 25),

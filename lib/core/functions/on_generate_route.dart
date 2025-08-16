@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_company_name_section.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_company_picture_sec.dart';
+
 import 'package:graph/core/widgets/posts/public_post_widgets/image_viewer.dart';
 
 import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
@@ -8,6 +11,7 @@ import 'package:graph/features/main/presentation/views/main_page.dart';
 import 'package:graph/features/post_details/presentation/view/post_details_view.dart';
 import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import 'package:graph/features/profile/presentation/views/widgets/creat_post_page.dart';
 import 'package:graph/features/profile/presentation/views/widgets/cvpdf.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_find_friends.dart';
 import '../../features/auth/presentation/views/widgets/signup_final_touches_sec.dart';
@@ -18,7 +22,6 @@ import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
 import '../../features/auth/presentation/views/widgets/signup_birthday_gender.dart';
 import '../../features/auth/presentation/views/widgets/signup_collage_stage_section.dart';
-import '../../features/auth/presentation/views/widgets/signup_path_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_profile_picture_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_role_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_username_section.dart';
@@ -56,14 +59,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         settings: settings,
       );
 
-    case SignupPathSection.name:
-      return MaterialPageRoute(
-        builder:
-            (context) => SignupPathSection(
-              //onNext: (bool isStrudent) {}
-            ),
-        settings: settings,
-      );
+    // case SignupPathSection.name:
+    //   return MaterialPageRoute(
+    //     builder:
+    //         (context) => SignupPathSection(
+    //           //onNext: (bool isStrudent) {}
+    //         ),
+      //   settings: settings,
+      // );
     case SignupRoleSection.name:
       return MaterialPageRoute(
         builder: (context) => SignupRoleSection(),
@@ -132,6 +135,21 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
               initialIndex: args['initialIndex'],
             ),
       );
+    case CreatPostPage.name:
+      return MaterialPageRoute(builder: (context) => CreatPostPage());
+
+    case SignupCompanyNameSection.name:
+      return MaterialPageRoute(
+        builder: (context) => SignupCompanyNameSection(),
+      );
+    case SignupCompanyPictureSec.name:
+      return MaterialPageRoute(
+        builder: (context) => SignupCompanyPictureSec(),
+        settings: settings,
+      );
+
+    // case SettingsView.name:
+    //   return MaterialPageRoute(builder: (context) => SettingsView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

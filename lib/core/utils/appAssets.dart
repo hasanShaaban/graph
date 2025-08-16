@@ -286,6 +286,77 @@ class Assets {
   /// assets/icons/user-tie-hair.svg
   static const String iconsUserTieHair = "assets/icons/user-tie-hair.svg";
 
+  // /// Assets for changeLanguage
+  // /// assets/icons/changeLanguage.svg
+  // static const String iconsChangeLanguage = "assets/icons/changeLanguage.svg";
+
+  // /// Assets for exit
+  // /// assets/icons/exit.svg
+  // static const String iconsExit = "assets/icons/exit.svg";
+
+  // /// Assets for home
+  // /// assets/icons/home.svg
+  // static const String iconsHome = "assets/icons/home.svg";
+
+  // /// Assets for moon
+  // /// assets/icons/moon.svg
+  // static const String iconsMoon = "assets/icons/moon.svg";
+
+  // /// Assets for notesMedical
+  // /// assets/icons/notes-medical.svg
+  // static const String iconsNotesMedical = "assets/icons/notes-medical.svg";
+
+  // /// Assets for passwordEmail
+  // /// assets/icons/password-email.svg
+  // static const String iconsPasswordEmail = "assets/icons/password-email.svg";
+
+  /// Assets for settingsWindow
+  /// assets/icons/settings-window.svg
+  static const String iconsSettingsWidow = "assets/icons/settings-window.svg";
+
+  /// Assets for setting
+  /// assets/icons/settings.svg
+  static const String iconsSetting = "assets/icons/settings.svg";
+
+  // /// Assets for key
+  // /// assets/icons/key.svg
+  // static const String iconsKey = "assets/icons/key.svg";
+
+  // /// Assets for userGear
+  // /// assets/icons/user-gear.svg
+  // static const String iconsUserGear = "assets/icons/user-gear.svg";
+
+  /// Assets for lock
+  /// assets/icons/lock.svg
+  static const String iconsLock = "assets/icons/lock.svg";
+
+  ///Assets for users
+  ///assets/icons/users.svg
+  static const String iconsUsers = "assets/icons/users.svg";
+
+  ///Assets for users
+  ///assets/icons/add-image.svg
+  static const String iconsAddImage = "assets/icons/add-image.svg";
+
+    ///Assets for users
+  ///assets/icons/user-tag.svg
+  static const String iconsAddTag = "assets/icons/user-tag.svg";
+
+
+  ///Assets for users
+  ///assets/icons/users.svg
+  static const String iconsMention = "assets/icons/users.svg";
+
+    ///Assets for remove mentioned person
+  ///assets/icons/Ellipse .svg
+  static const String iconsRemoveMention = "assets/icons/Ellipse .svg";
+
+
+   ///Assets for remove mentioned person
+  ///assets/icons/cross.svg
+  static const String iconsCross = "assets/icons/cross.svg";
+
+
   /// Assets for imagesBoyProfile
   /// assets/images/boy_profile.json
   static const String imagesBoyProfile = "assets/images/boy_profile.json";

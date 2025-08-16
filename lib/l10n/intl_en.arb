@@ -101,11 +101,25 @@
   "changeLanguage": "Change language",
   "logout": "Logout",
   "selectYourSpacialization": "Select your specialization",
-  "pleaseEnterBirthDate": "please enter birth date",
+
   "comments" : "Comments",
   "reacts" : "Reacts",
   "reply":"Reply",
   "addComment":"Add comment",
   "join":"Join",
-  "project":"Project"
+
+  "pleaseEnterBirthDate": "please enter birth date",
+  "companyName": "company name",
+  "createPost": "Create post",
+  "post": "Post",
+  "description": "Description",
+  "title": "title",
+  "project": "project",
+  "mention": "Mention",
+  "addTags": "Add tags",
+  "addImages": "Add images",
+  "mentionAndShareWithFriends": "Mention and share this post with your friends",
+  "addSomeTags": "add some tags",
+  "addGroup": "add group"
+  
 }

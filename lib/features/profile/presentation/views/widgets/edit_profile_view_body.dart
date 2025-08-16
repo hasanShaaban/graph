@@ -47,23 +47,27 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              children: [
-                EditProfileHeader(height: height, lang: lang, width: width),
-              ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            children: [
+              EditProfileHeader(height: height, lang: lang, width: width),
+            ],
+          ),
+          SizedBox(height: 130),
+          NameAndBirthDateInfo(),
+          SizedBox(height: 36),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [FinalTouchesBioSec(), SizedBox(height: 13), Divider()],
             ),
-            SizedBox(height: 130),
-            NameAndBirthDateInfo(),
-            SizedBox(height: 36),
-            FinalTouchesBioSec(),
-            SizedBox(height: 13),
-            Divider(),
-            Column(
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomTextCairo16SemiBold(text: 'Study level:'),
@@ -133,8 +137,8 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 NextButton(onPressed: () {}, title: lang.Save),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
