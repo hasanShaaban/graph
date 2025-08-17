@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/services.dart' show rootBundle;
+// ignore: depend_on_referenced_packages
 import 'package:path_provider/path_provider.dart';
 
 import 'package:dio/dio.dart';
@@ -20,7 +21,7 @@ class ApiService {
   }) async {
     var response = await _dio.get('$_baseURL$endPoints', queryParameters: data);
     log('$_baseURL$endPoints');
-    print(response.data);
+    log(response.data);
     return response.data;
   }
 

@@ -134,15 +134,15 @@ class AuthRepoImpl implements AuthRepo {
         ),
       );
 
-      print('Response from login: $response');
-
+      log('Response from login: $response');
+      
       return right(response);
     } catch (e) {
       if (e is DioException) {
-        print('Dio exception: ${e.response?.data}');
+        log('Dio exception: ${e.response?.data}');
         return left(ServerFailure.fromDioError(e));
       }
-      print('Unexpected error: $e');
+      log('Unexpected error: $e');
       return left(ServerFailure(e.toString()));
     }
   }

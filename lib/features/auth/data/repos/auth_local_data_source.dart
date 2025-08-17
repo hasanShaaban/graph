@@ -21,4 +21,19 @@ class AuthLocalDataSource {
     );
     return rejestered ?? false;
   }
+
+  Future<void> setToken(String token) async {
+    await localDataBaseService.addData(
+      boxName: HiveBoxes.userBox,
+      key: HiveBoxes.token,
+      value: token,
+    );
+  }
+
+  Future<String?> getToken() async {
+    return await localDataBaseService.getData(
+      boxName: HiveBoxes.userBox,
+      key: HiveBoxes.token,
+    );
+  }
 }
