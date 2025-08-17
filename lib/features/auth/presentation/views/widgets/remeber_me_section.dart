@@ -54,13 +54,13 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
           ),
         ),
         SizedBox(width: 5),
-        Text(
-          widget.text,
+      //   Text(
+      //  text,
 
-          style: AppTextStyle.cairoRegular18.copyWith(
-            color: Constants.secondryColor,
-          ),
-        ),
+      //     style: AppTextStyle.cairoRegular18.copyWith(
+      //       color: Constants.secondryColor,
+      //     ),
+      //   ),
       ],
     );
   }

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'core/services/providers/theme_provider.dart';
 import 'features/auth/presentation/views/sign_up_view.dart';
-import 'package:graph/core/services/providers/theme_provider.dart';
 import 'package:graph/features/splash/presentation/views/splash_view.dart';
 import 'bloc_providers.dart';
 import 'core/services/providers/user_info_provider.dart';
@@ -73,7 +72,7 @@ class MyApp extends StatelessWidget {
         //initialRoute: SplashView.name,
         // initialRoute: ProfileView.name,
         initialRoute: SignUpView.name,
-        initialRoute: SplashView.name,
+      //  initialRoute: SplashView.name,
         // initialRoute: ProfileView.name,
          //initialRoute: SignUpView.name,
       ),
