@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/widgets/custom_drop_down_map.dart';
-import 'package:graph/core/widgets/custom_stateless_appbar.dart';
-import 'package:graph/core/widgets/profile_image.dart';
-import 'package:graph/features/profile/presentation/views/widgets/creat_post_bottom_buttons.dart';
-import 'package:graph/features/profile/presentation/views/widgets/post_button.dart';
-import 'package:graph/features/profile/presentation/views/widgets/post_privacy_section.dart';
-import 'package:graph/features/profile/presentation/views/widgets/project_post_body_sec.dart';
-import 'package:graph/features/profile/presentation/views/widgets/public_post_body_sec.dart';
-import 'package:graph/generated/l10n.dart';
-import 'package:graph/features/profile/data/models/person_model.dart';
+import '../../../../core/utils/appAssets.dart';
+import '../../../../core/utils/app_text_style.dart';
+import '../../../../core/widgets/custom_drop_down_map.dart';
+import '../../../../core/widgets/custom_stateless_appbar.dart';
+import '../../../../core/widgets/profile_image.dart';
+import 'widgets/creat_post_bottom_buttons.dart';
+import 'widgets/post_button.dart';
+import 'widgets/post_privacy_section.dart';
+import 'widgets/project_post_body_sec.dart';
+import 'widgets/public_post_body_sec.dart';
+import '../../../../generated/l10n.dart';
+import '../../../profile/data/models/person_model.dart';
 
 class CreatPostPage extends StatefulWidget {
   const CreatPostPage({super.key});

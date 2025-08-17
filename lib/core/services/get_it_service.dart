@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:graph/features/main/data/local_data_source/settings_local_data_source.dart';
+import '../../features/main/data/local_data_source/settings_local_data_source.dart';
 
 import '../../features/onboarding/data/repos/on_boarding_local_data_source.dart';
 import 'local_data_base/hive_data_base_service.dart';

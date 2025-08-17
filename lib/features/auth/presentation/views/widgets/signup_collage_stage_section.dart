@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/signup_data_model.dart';
-import 'auth_app_bar.dart';
-import '../../../../../generated/l10n.dart';
 
-import 'next_button.dart';
-
-import 'signup_profile_picture_section.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../data/models/signup_data_model.dart';
+import 'auth_app_bar.dart';
 import 'custom_dropdown_button.dart';
 import 'custom_text.dart';
-
+import 'next_button.dart';
+import 'signup_profile_picture_section.dart';
 import 'spacialization_section.dart';
 
 class SignupCollageStageSection extends StatefulWidget {

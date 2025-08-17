@@ -1,9 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/core/services/local_data_base/hive_data_base_service.dart';
+import 'signup_final_touches_sec.dart';
 import 'package:hive/hive.dart';
-import 'signup_verification_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../../data/models/user_model.dart';
 import '../../manager/signup_cubit/signup_cubit.dart';
@@ -187,7 +186,8 @@ class _SignupProfilePictureSectionState
                 String? token = box.get('token');
                 Navigator.pushNamed(
                   context,
-                  SignupVerificationSection.name,
+                  // SignupVerificationSection.name,
+                  SignupFinalTouchesSec.name,
                   arguments: signupData,
                 );
               } else if (state is SignupFailuer) {
@@ -208,19 +208,6 @@ class _SignupProfilePictureSectionState
                   print('gender: ${signupData.gender}');
                   print('study year: ${signupData.studyYear}');
 
-                  // if (selectedImage != null) {
-                  //   imageToSend = selectedImage!;
-                  // } else {
-                  //   imageToSend = await apiService.getAssetAsFile(
-                  //     gender == 'Male'
-                  //         ? 'assets/images/boy_profile.json'
-                  //         : 'assets/images/girl_profile.json',
-                  //   );
-                  // }
-                  // if (selectedImage != null) {
-                  //   imageToSend = selectedImage!;
-                  // }
-
                   final userModel = UserModel(
                     firstName: signupData.firstName!,
                     lastName: signupData.lastName!,
@@ -232,11 +219,6 @@ class _SignupProfilePictureSectionState
                         int.tryParse(signupData.specialization ?? '') ?? 0,
 
                     image: selectedImage,
-                    // selectedImage != null
-                    //     ? selectedImage!.path
-                    //     : (signupData.gender == 'Male'
-                    //         ? 'assets/images/boy_profile.json'
-                    //         : 'assets/images/girl_profile.json'),
                   );
 
                   final cubit = context.read<SignupCubit>();

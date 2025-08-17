@@ -24,7 +24,7 @@ class ApiService {
     return response.data;
   }
 
-  Future<dynamic> post({
+  Future<dynamic> post( {
     required String endPoint,
     var data,
     Options? options,
@@ -52,7 +52,40 @@ class ApiService {
     if (response.data is Map<String, dynamic>) {
       return response.data;
     } else if (response.data is String) {
-      return {'message': response.data}; // نغلفها بـ Map
+      return {'message': response.data};
+    } else {
+      return {'error': 'Unexpected response type'};
+    }
+  }
+
+  Future<dynamic> put({
+    required String endPoint,
+    var data,
+    Options? options,
+  }) async {
+    final token = Hive.box('authBox').get('token');
+
+    final headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      ...?options?.headers,
+    };
+    if (token != null) {
+      headers['Authorization'] = 'Bearer $token';
+    }
+    final mergedOptions = Options(headers: headers);
+    var response = await _dio.put(
+      '$_baseURL$endPoint',
+      data: data,
+      options: mergedOptions,
+    );
+    print(response.data);
+
+    //return response.data;
+    if (response.data is List<dynamic>) {
+      return response.data;
+    } else if (response.data is String) {
+      return {'message': response.data};
     } else {
       return {'error': 'Unexpected response type'};
     }

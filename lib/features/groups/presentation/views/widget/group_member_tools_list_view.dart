@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/tech_tool_container.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../../core/widgets/tech_tool_container.dart';
+import '../../../../../generated/l10n.dart';
 
 class GroupMemberToolsListView extends StatelessWidget {
   const GroupMemberToolsListView({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/constants.dart';
 
 class RemoveButton extends StatelessWidget {
   const RemoveButton({super.key, required this.width});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/groups/presentation/views/widget/my_group_view_body.dart';
+import 'widget/my_group_view_body.dart';
 
 
 class MyGroupView extends StatelessWidget {

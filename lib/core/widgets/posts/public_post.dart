@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/posts/public_post_widgets/post_activities.dart';
-import 'package:graph/core/widgets/posts/public_post_widgets/post_header.dart';
-import 'package:graph/core/widgets/posts/public_post_widgets/public_post_conent.dart';
-import 'package:graph/core/widgets/posts/public_post_widgets/react_button.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../utils/appAssets.dart';
+import '../../utils/constants.dart';
+import 'public_post_widgets/post_activities.dart';
+import 'public_post_widgets/post_header.dart';
+import 'public_post_widgets/public_post_conent.dart';
+import 'public_post_widgets/react_button.dart';
+import '../../../generated/l10n.dart';
 
 class PublicPost extends StatelessWidget {
   const PublicPost({

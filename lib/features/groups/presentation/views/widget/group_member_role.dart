@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/groups/presentation/views/widget/add_button.dart';
-import 'package:graph/features/groups/presentation/views/widget/role_text_field.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
+import 'add_button.dart';
+import 'role_text_field.dart';
+import '../../../../../generated/l10n.dart';
 
 class GroupMemberRole extends StatefulWidget {
   const GroupMemberRole({

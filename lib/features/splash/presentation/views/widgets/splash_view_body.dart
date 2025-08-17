@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:graph/features/main/presentation/views/main_page.dart';
+import '../../../../main/presentation/views/main_page.dart';
 import '../../../../../core/services/get_it_service.dart';
 import '../../../../../core/services/providers/local_provider.dart';
 import '../../../../../core/services/sources/langeage_data_source.dart';

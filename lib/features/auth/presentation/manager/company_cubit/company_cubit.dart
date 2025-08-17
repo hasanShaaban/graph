@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
-import 'package:graph/features/auth/data/models/company_model.dart';
-import 'package:graph/features/auth/domain/repos/auth_repo.dart';
+import '../../../data/models/company_model.dart';
+import '../../../domain/repos/auth_repo.dart';
 
 
 part 'company_state.dart';

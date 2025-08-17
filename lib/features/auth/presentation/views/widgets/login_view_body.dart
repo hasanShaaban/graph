@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../manager/login_cubit/login_cubit.dart';
 import '../../../../../generated/l10n.dart';

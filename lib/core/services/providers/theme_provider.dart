@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/hive_boxes.dart';
+import '../../utils/hive_boxes.dart';
 import 'package:hive/hive.dart';
 
 class ThemeProvider extends ChangeNotifier {

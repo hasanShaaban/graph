@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import '../../../../../../core/utils/appAssets.dart';
+import '../../../../../../core/utils/constants.dart';
+import '../../../../../profile/presentation/views/profile_view.dart';
 
 class HomePageAppBar extends StatelessWidget {
   const HomePageAppBar({super.key, required this.height, required this.width});

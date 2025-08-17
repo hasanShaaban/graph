@@ -2,9 +2,9 @@ import 'package:comment_tree/data/comment.dart';
 import 'package:comment_tree/widgets/comment_tree_widget.dart';
 import 'package:comment_tree/widgets/tree_theme_data.dart';
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/post_details/presentation/view/widgets/comment_content.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/constants.dart';
+import 'comment_content.dart';
+import '../../../../../generated/l10n.dart';
 
 class CommentRootAndChildrens extends StatelessWidget {
   const CommentRootAndChildrens({

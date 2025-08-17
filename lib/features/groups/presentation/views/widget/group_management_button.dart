@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/groups/presentation/views/group_management_view.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/constants.dart';
+import '../group_management_view.dart';
 
 class GroupManagementButton extends StatelessWidget {
   const GroupManagementButton({

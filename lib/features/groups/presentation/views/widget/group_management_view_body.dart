@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/custom_stateless_appbar.dart';
-import 'package:graph/core/widgets/major_and_year_dropdown_buttons_section.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_management_custom_button.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_memeber_container.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_vacancy_section.dart';
-import 'package:graph/features/groups/presentation/views/widget/remove_button.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../../core/widgets/custom_stateless_appbar.dart';
+import '../../../../../core/widgets/major_and_year_dropdown_buttons_section.dart';
+import 'group_management_custom_button.dart';
+import 'group_memeber_container.dart';
+import 'group_vacancy_section.dart';
+import 'remove_button.dart';
+import '../../../../../generated/l10n.dart';
 
 class GroupManagementViewBody extends StatelessWidget {
   const GroupManagementViewBody({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/widgets/posts/public_post_widgets/image_viewer.dart';
+import 'image_viewer.dart';
 
 class ImagesCustomLayout extends StatelessWidget {
   final List<String> imageUrls;

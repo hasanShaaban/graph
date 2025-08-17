@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/core/services/providers/local_provider.dart';
-import 'package:graph/core/services/providers/theme_provider.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/main/data/local_data_source/settings_local_data_source.dart';
-import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
-import 'package:graph/features/main/presentation/views/widgets/settings/divide_line.dart';
-import 'package:graph/features/main/presentation/views/widgets/settings/settings_row.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../../core/services/get_it_service.dart';
+import '../../../../../../core/services/providers/local_provider.dart';
+import '../../../../../../core/services/providers/theme_provider.dart';
+import '../../../../../../core/utils/appAssets.dart';
+import '../../../../../../core/utils/app_text_style.dart';
+import '../../../../../../core/utils/constants.dart';
+import '../../../../data/local_data_source/settings_local_data_source.dart';
+import '../../../../../profile/presentation/views/edit_profile_view.dart';
+import 'divide_line.dart';
+import 'settings_row.dart';
+import '../../../../../../generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPageBody extends StatefulWidget {

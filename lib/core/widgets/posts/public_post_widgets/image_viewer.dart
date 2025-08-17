@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/custom_back_button.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../utils/constants.dart';
+import '../../custom_back_button.dart';
+import '../../../../generated/l10n.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 

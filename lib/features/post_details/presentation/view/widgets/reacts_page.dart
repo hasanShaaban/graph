@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/app_text_style.dart';
+import '../../../../../core/utils/app_text_style.dart';
 
 class ReactsPage extends StatelessWidget {
   const ReactsPage({

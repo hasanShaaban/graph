@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../../../generated/l10n.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../generated/l10n.dart';
 
 class RemeberMeSection extends StatefulWidget {
-  RemeberMeSection({super.key, this.text});
+  const RemeberMeSection({super.key, this.text});
   final String? text;
 
   @override
