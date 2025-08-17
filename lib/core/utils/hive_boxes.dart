@@ -9,4 +9,5 @@ class HiveBoxes {
   static const langauge = 'langauge';
   static const theme = 'theme';
   static const onBoardingSeen = 'onBoardingSeen';
+  static const rejestered = 'rejestered';
 }

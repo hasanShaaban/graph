@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/services/get_it_service.dart';
+import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 
 class RemeberMeSection extends StatefulWidget {
-  RemeberMeSection({super.key, this.text});
-  final String? text;
+  const RemeberMeSection({super.key, required this.text});
+  final String text;
 
   @override
   State<RemeberMeSection> createState() => _RemeberMeSectionState();
 }
 
 class _RemeberMeSectionState extends State<RemeberMeSection> {
+  final AuthLocalDataSource authLocalDataSource = getIt<AuthLocalDataSource>();
   bool checked = false;
 
   @override
@@ -24,6 +27,7 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
           onTap: () {
             setState(() {
               checked = !checked;
+              authLocalDataSource.setRejestered(checked);
             });
           },
           child: Stack(
@@ -50,7 +54,7 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
         ),
         SizedBox(width: 5),
         Text(
-          widget.text ?? '',
+          widget.text,
 
           style: AppTextStyle.cairoRegular18.copyWith(
             color: Constants.secondryColor,
