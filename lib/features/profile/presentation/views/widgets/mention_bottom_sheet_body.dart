@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/features/auth/presentation/views/widgets/remeber_me_section.dart';
 import 'package:graph/features/followers&following/presentation/views/widgets/custom_user_list_view.dart';
 import 'package:graph/features/followers&following/presentation/views/widgets/follow_search_text_field.dart';
 import 'package:graph/features/profile/data/models/person_model.dart';

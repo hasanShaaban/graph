@@ -9,15 +9,13 @@ import 'package:graph/features/groups/presentation/views/widget/groups_managment
 
 import 'package:graph/features/groups/presentation/views/widget/list_view_item.dart';
 
-import '../../../../generated/l10n.dart';
-
 class GroupsManagementView extends StatelessWidget {
   const GroupsManagementView({super.key});
   static const name = 'groupsManagement';
 
   @override
   Widget build(BuildContext context) {
-    final lang = S.of(context);
+    // final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
         // appBar: CustomAppBar(text1: lang.groupsManagement, onPressed: () {}),

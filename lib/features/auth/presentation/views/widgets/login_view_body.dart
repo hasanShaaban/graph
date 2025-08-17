@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import 'package:graph/features/main/presentation/views/main_page.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../manager/login_cubit/login_cubit.dart';
 import '../../../../../generated/l10n.dart';
@@ -70,12 +70,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               BlocConsumer<LoginCubit, LoginState>(
                 listener: (context, state) {
                   if (state is LoginSuccess) {
-                    final token = state.response['token'];
-                    final message = state.response['message'];
+
 
                     Navigator.pushReplacementNamed(
                       context,
-                      ProfileView.name,
+                      MainPage.name,
                       arguments: signupData,
                     );
                   } else if (state is LoginFailuer) {

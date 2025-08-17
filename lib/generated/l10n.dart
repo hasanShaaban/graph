@@ -963,6 +963,56 @@ class S {
   String get addGroup {
     return Intl.message('add group', name: 'addGroup', desc: '', args: []);
   }
+
+  /// `Home`
+  String get home {
+    return Intl.message('Home', name: 'home', desc: '', args: []);
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get peinding {
+    return Intl.message('Pending', name: 'peinding', desc: '', args: []);
+  }
+
+  /// `Groups`
+  String get groups {
+    return Intl.message('Groups', name: 'groups', desc: '', args: []);
+  }
+
+  /// `Public`
+  String get public {
+    return Intl.message('Public', name: 'public', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
+  }
+
+  /// `Jobs`
+  String get jobs {
+    return Intl.message('Jobs', name: 'jobs', desc: '', args: []);
+  }
+
+  /// `Ads`
+  String get ads {
+    return Intl.message('Ads', name: 'ads', desc: '', args: []);
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message('Apply', name: 'apply', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

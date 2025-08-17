@@ -1,8 +1,7 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/core/services/local_data_base/hive_data_base_service.dart';
-import 'package:hive/hive.dart';
 import 'signup_verification_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../../data/models/user_model.dart';
@@ -183,8 +182,6 @@ class _SignupProfilePictureSectionState
           child: BlocConsumer<SignupCubit, SignupState>(
             listener: (context, state) async {
               if (state is SignupSuccess) {
-                var box = await Hive.openBox('authBox');
-                String? token = box.get('token');
                 Navigator.pushNamed(
                   context,
                   SignupVerificationSection.name,
@@ -201,12 +198,12 @@ class _SignupProfilePictureSectionState
                 title: lang.submit,
                 isLoading: state is SignupLoading,
                 onPressed: () async {
-                  print('birthDate: ${signupData.birthDate}');
+                  log('birthDate: ${signupData.birthDate}');
 
-                  print('firstname: ${signupData.firstName}');
-                  print('lastname: ${signupData.lastName}');
-                  print('gender: ${signupData.gender}');
-                  print('study year: ${signupData.studyYear}');
+                  log('firstname: ${signupData.firstName}');
+                  log('lastname: ${signupData.lastName}');
+                  log('gender: ${signupData.gender}');
+                  log('study year: ${signupData.studyYear}');
 
                   // if (selectedImage != null) {
                   //   imageToSend = selectedImage!;

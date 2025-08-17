@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../../generated/l10n.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
@@ -17,7 +16,6 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
 
   @override
   Widget build(BuildContext context) {
-    final lang = S.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/core/services/local_data_base/hive_data_base_service.dart';
 import 'package:graph/features/auth/presentation/manager/role_cubit/role_cubit.dart';
 import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
 import 'package:graph/features/auth/presentation/views/widgets/signup_company_name_section.dart';

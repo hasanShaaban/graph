@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addPost": MessageLookupByLibrary.simpleMessage("اضافة منشور"),
     "addSomeTags": MessageLookupByLibrary.simpleMessage("اضف بعض التاغات"),
     "addTags": MessageLookupByLibrary.simpleMessage("اضافة تاغ"),
+    "ads": MessageLookupByLibrary.simpleMessage("الاعلانات"),
     "advertiseAVacancy": MessageLookupByLibrary.simpleMessage(
       "الاعلان عن شاغر",
     ),
@@ -43,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟",
     ),
+    "apply": MessageLookupByLibrary.simpleMessage("تقدم"),
     "begin": MessageLookupByLibrary.simpleMessage("بدء"),
     "birthday": MessageLookupByLibrary.simpleMessage("ما هو تاريخ ميلادك؟"),
     "changeEmail": MessageLookupByLibrary.simpleMessage("تغيير الايميل"),
@@ -95,12 +97,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "groupAdmin": MessageLookupByLibrary.simpleMessage("مدير المجموعة"),
     "groupMember": MessageLookupByLibrary.simpleMessage("عضو المجموعة"),
     "groupMembers": MessageLookupByLibrary.simpleMessage("اعضاء المجموعة"),
+    "groups": MessageLookupByLibrary.simpleMessage("المجموعات"),
     "groupsManagement": MessageLookupByLibrary.simpleMessage("ادارة المجموعات"),
+    "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "howUsingApp": MessageLookupByLibrary.simpleMessage("كيف ستستخدم التطبيق؟"),
     "ifGroupIsNotCompleted": MessageLookupByLibrary.simpleMessage(
       "اذا كان المجموعة غير مكتملة يمكنك الاعلان عن وجود شاغر",
     ),
     "info": MessageLookupByLibrary.simpleMessage("معلوات"),
+    "jobs": MessageLookupByLibrary.simpleMessage("الوظائف"),
     "join": MessageLookupByLibrary.simpleMessage("انضمام"),
     "lang": MessageLookupByLibrary.simpleMessage("ar"),
     "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
@@ -123,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networks": MessageLookupByLibrary.simpleMessage("الشبكات ونظم التشغيل"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
     "nonStudentAccount": MessageLookupByLibrary.simpleMessage("حساب غير طالب"),
+    "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "onboarding1": MessageLookupByLibrary.simpleMessage(
       "مع Graph، أنت دائمًا جزء من مجتمع ITE.",
     ),
@@ -134,6 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "peinding": MessageLookupByLibrary.simpleMessage("المعلقة"),
     "pickGender": MessageLookupByLibrary.simpleMessage("اختر جنسك:"),
     "pickSpecialization": MessageLookupByLibrary.simpleMessage("اختر تخصصك"),
     "pictureHelp": MessageLookupByLibrary.simpleMessage(
@@ -153,7 +160,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "post": MessageLookupByLibrary.simpleMessage("نشر"),
     "postsManagement": MessageLookupByLibrary.simpleMessage("ادارة المنشورات"),
+    "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "project": MessageLookupByLibrary.simpleMessage("المشروع"),
+    "public": MessageLookupByLibrary.simpleMessage("العامة"),
     "reacts": MessageLookupByLibrary.simpleMessage("التفاعلات"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "reply": MessageLookupByLibrary.simpleMessage("الردود"),

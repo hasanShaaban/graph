@@ -5,6 +5,7 @@ import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 
+// ignore: must_be_immutable
 class AuthAppBar extends StatelessWidget {
   AuthAppBar({
     super.key,

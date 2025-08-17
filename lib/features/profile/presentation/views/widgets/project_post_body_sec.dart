@@ -25,7 +25,6 @@ class _ProjectPostBodySecState extends State<ProjectPostBodySec> {
   @override
   Widget build(BuildContext context) {
     final lang = S.of(context);
-    double width = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: SizedBox(
         width: double.infinity,

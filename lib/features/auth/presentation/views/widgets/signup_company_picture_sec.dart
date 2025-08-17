@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/core/services/local_data_base/hive_data_base_service.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
@@ -161,8 +160,6 @@ class _SignupCompanyPictureSecState extends State<SignupCompanyPictureSec> {
           child: BlocConsumer<CompanyCubit, CompanyState>(
             listener: (context, state) async {
               if (state is CompanySuccess) {
-                final token = state.response['token'];
-                final message = state.response['message'];
 
                 Navigator.pushNamed(context, SignupVerificationSection.name);
               } else if (state is CompanyFailuer) {

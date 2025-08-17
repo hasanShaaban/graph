@@ -43,9 +43,7 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
 
   @override
   Widget build(BuildContext context) {
-    final updatedSignupData = signupData.copyWith(
-      studyYear: selectedYearId?.toString(),
-    );
+    
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(

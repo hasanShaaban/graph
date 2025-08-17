@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/posts/expandable_text.dart';
+import 'package:graph/core/widgets/expandable_text.dart';
 import 'package:graph/core/widgets/posts/public_post_widgets/images_custom_layout.dart';
 
 class PublicPostContent extends StatelessWidget {
