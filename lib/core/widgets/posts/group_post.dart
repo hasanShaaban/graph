@@ -18,64 +18,16 @@ class GroupPost extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 10),
         GroupPostHeader(width: width, height: height, lang: lang),
         SizedBox(height: 10),
         TextSection(lang: lang),
         SizedBox(height: 10),
-        SizedBox(
-          height: height * 130 / 890 - 16,
-          width: width,
-          child: ListView.builder(
-            itemCount: 6,
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            itemBuilder:
-                (context, index) => Padding(
-                  padding: EdgeInsets.only(
-                    right: lang.lang == 'en' ? 10 : 0,
-                    left: lang.lang == 'ar' ? 10 : 0,
-                  ),
-                  child: GestureDetector(
-                    onLongPress: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => GroupMemberInfo(lang: lang),
-                      );
-                    },
-                    child: SizedBox(
-                      height: height * 130 / 890,
-                      width: 65,
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Constants2.primaryColor(context),
-                            radius: 65 / 2,
-                            backgroundImage: AssetImage(
-                              Assets.imagesProfileImage,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          SizedBox(
-                            height: height * 130 / 890 - 95,
-                            width: 65,
-                            child: Text(
-                              'Hasan Shaaban',
-                              textAlign: TextAlign.center,
-                              style: AppTextStyle.cairoRegular14.copyWith(
-                                height: 0.9,
-                                overflow: TextOverflow.fade,
-                                color: Constants2.primaryColor(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-          ),
-        ),
+        GroupMembersListView(height: height, width: width, lang: lang),
+        SizedBox(height: 5),
+        Divider(height: 1, color: Constants2.dividerColor(context),thickness: 1,)
       ],
     );
   }
 }
+

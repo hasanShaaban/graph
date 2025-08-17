@@ -1,8 +1,10 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'signup_final_touches_sec.dart';
 import 'package:hive/hive.dart';
+import 'signup_verification_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../../data/models/user_model.dart';
 import '../../manager/signup_cubit/signup_cubit.dart';
@@ -182,8 +184,6 @@ class _SignupProfilePictureSectionState
           child: BlocConsumer<SignupCubit, SignupState>(
             listener: (context, state) async {
               if (state is SignupSuccess) {
-                var box = await Hive.openBox('authBox');
-                String? token = box.get('token');
                 Navigator.pushNamed(
                   context,
                   // SignupVerificationSection.name,
@@ -201,7 +201,7 @@ class _SignupProfilePictureSectionState
                 title: lang.submit,
                 isLoading: state is SignupLoading,
                 onPressed: () async {
-                  print('birthDate: ${signupData.birthDate}');
+                  log('birthDate: ${signupData.birthDate}');
 
                   print('firstname: ${signupData.firstName}');
                   print('lastname: ${signupData.lastName}');

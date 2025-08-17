@@ -27,13 +27,13 @@ class MainNavigationBar extends StatelessWidget {
       backgroundColor: Constants2.lightPrimaryColor(context),
       fabLocation: StylishBarFabLocation.end,
       items: [
-        bottomTabBuilder(context,icon: Assets.iconsHome, title: 'Home'),
+        bottomTabBuilder(context,icon: Assets.iconsHome, title: lang.home),
         bottomTabBuilder(context,
           icon: Assets.iconsNotifecationBell,
-          title: 'Notifications',
+          title: lang.notifications,
         ),
-        bottomTabBuilder(context,icon: Assets.iconsSettings, title: 'Settings'),
-        bottomTabBuilder(context,icon: Assets.iconsSearch, title: 'Search'),
+        bottomTabBuilder(context,icon: Assets.iconsSettings, title: lang.settings),
+        bottomTabBuilder(context,icon: Assets.iconsCalendarClock, title: lang.peinding),
       ],
       option: BubbleBarOptions(
         iconSize: 20,

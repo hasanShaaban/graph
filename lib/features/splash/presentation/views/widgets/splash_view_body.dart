@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../main/presentation/views/main_page.dart';
+import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
+import 'package:graph/features/auth/presentation/views/login_view.dart';
+import 'package:graph/features/main/presentation/views/main_page.dart';
+import 'package:graph/features/onboarding/data/repos/on_boarding_local_data_source.dart';
 import '../../../../../core/services/get_it_service.dart';
 import '../../../../../core/services/providers/local_provider.dart';
 import '../../../../../core/services/sources/langeage_data_source.dart';
@@ -19,6 +24,9 @@ class SplashViewBody extends StatefulWidget {
 
 class _SplashViewBodyState extends State<SplashViewBody> {
   final LangeageDataSource langeageDataSource = getIt<LangeageDataSource>();
+  final OnBoardingLocalDataSource onBoardingLocalDataSource =
+      getIt<OnBoardingLocalDataSource>();
+  final AuthLocalDataSource authLocalDataSource = getIt<AuthLocalDataSource>();
 
   bool opacityEffect = false;
   bool? isFirstTime;
@@ -31,6 +39,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   Future<void> _init() async {
     final languageSeen = await langeageDataSource.isLanguageSelected();
+    final onBoardingSeen = await onBoardingLocalDataSource.isOnBoardingSeen();
+    final rejestered = await authLocalDataSource.isRejestered();
     setState(() {
       isFirstTime = !languageSeen;
     });
@@ -39,11 +49,28 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         opacityEffect = true;
       });
     });
-
+    log(
+      'languageSeen: $languageSeen, onBoardingSeen: $onBoardingSeen, rejestered: $rejestered',
+    );
     if (languageSeen) {
       await Future.delayed(const Duration(seconds: 3));
-      if (context.mounted) {
-        Navigator.pushReplacementNamed(context, MainPage.name);
+      if (onBoardingSeen) {
+        if (rejestered) {
+          Navigator.pushReplacementNamed(
+            context,
+            MainPage.name,
+          ); // Assuming this exists
+        } else {
+          Navigator.pushReplacementNamed(
+            context,
+            LoginView.name,
+          ); // Assuming this exists
+        }
+      } else {
+        Navigator.pushReplacementNamed(
+          context,
+          OnBoardingView.name,
+        ); // Assuming this exists
       }
     }
   }

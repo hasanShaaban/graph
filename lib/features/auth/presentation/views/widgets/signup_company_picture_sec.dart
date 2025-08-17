@@ -160,8 +160,6 @@ class _SignupCompanyPictureSecState extends State<SignupCompanyPictureSec> {
           child: BlocConsumer<CompanyCubit, CompanyState>(
             listener: (context, state) async {
               if (state is CompanySuccess) {
-                final token = state.response['token'];
-                final message = state.response['message'];
 
                 Navigator.pushNamed(context, SignupVerificationSection.name);
               } else if (state is CompanyFailuer) {

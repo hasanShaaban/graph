@@ -121,6 +121,15 @@
   "addImages": "اضافة صور",
   "mentionAndShareWithFriends":"اذكر وشارك هذاالمنشور مع الاصدقاء",
   "addSomeTags": "اضف بعض التاغات",
-  "addGroup": "اضف فريق"
+  "addGroup": "اضف فريق",
+  "home":"الرئيسية",
+  "notifications":"الاشعارات",
+  "peinding":"المعلقة",
+  "groups":"المجموعات",
+  "public":"العامة",
+  "profile":"الملف الشخصي",
+  "jobs":"الوظائف",
+  "ads":"الاعلانات",
+  "apply":"تقدم"
 
 }

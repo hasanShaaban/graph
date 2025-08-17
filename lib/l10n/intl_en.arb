@@ -120,6 +120,15 @@
   "addImages": "Add images",
   "mentionAndShareWithFriends": "Mention and share this post with your friends",
   "addSomeTags": "add some tags",
-  "addGroup": "add group"
+  "addGroup": "add group",
+  "home":"Home",
+  "notifications":"Notifications",
+  "peinding":"Pending",
+  "groups":"Groups",
+  "public":"Public",
+  "profile":"Profile",
+  "jobs":"Jobs",
+  "ads":"Ads",
+  "apply":"Apply"
   
 }

@@ -9,7 +9,13 @@ class AdsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AdsPost(),
+        Expanded(
+          child: ListView.builder(
+            physics: BouncingScrollPhysics(),
+            itemCount: 3,
+            itemBuilder: (context, index) => AdsPost(),
+          ),
+        ),
       ],
     );
   }

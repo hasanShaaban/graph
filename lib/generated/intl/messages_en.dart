@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addPost": MessageLookupByLibrary.simpleMessage("Add post"),
     "addSomeTags": MessageLookupByLibrary.simpleMessage("add some tags"),
     "addTags": MessageLookupByLibrary.simpleMessage("Add tags"),
+    "ads": MessageLookupByLibrary.simpleMessage("Ads"),
     "advertiseAVacancy": MessageLookupByLibrary.simpleMessage(
       "Advertise a vacancy",
     ),
@@ -43,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "apply": MessageLookupByLibrary.simpleMessage("Apply"),
     "begin": MessageLookupByLibrary.simpleMessage("Begin"),
     "birthday": MessageLookupByLibrary.simpleMessage("When\'s your birthday?"),
     "changeEmail": MessageLookupByLibrary.simpleMessage("Change email"),
@@ -101,9 +103,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "groupAdmin": MessageLookupByLibrary.simpleMessage("Group Admin"),
     "groupMember": MessageLookupByLibrary.simpleMessage("Group Member"),
     "groupMembers": MessageLookupByLibrary.simpleMessage("Group Members"),
+    "groups": MessageLookupByLibrary.simpleMessage("Groups"),
     "groupsManagement": MessageLookupByLibrary.simpleMessage(
       "Groups Management",
     ),
+    "home": MessageLookupByLibrary.simpleMessage("Home"),
     "howUsingApp": MessageLookupByLibrary.simpleMessage(
       "How will you be using the app?",
     ),
@@ -111,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "if your group is not completed, you can advertise a vacancy",
     ),
     "info": MessageLookupByLibrary.simpleMessage("Info"),
+    "jobs": MessageLookupByLibrary.simpleMessage("Jobs"),
     "join": MessageLookupByLibrary.simpleMessage("Join"),
     "lang": MessageLookupByLibrary.simpleMessage("en"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
@@ -133,6 +138,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "nonStudentAccount": MessageLookupByLibrary.simpleMessage(
       "Non-Student Account",
     ),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "onboarding1": MessageLookupByLibrary.simpleMessage(
       "With Graph, you\'re always part of the ITE circle.",
     ),
@@ -144,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "optional": MessageLookupByLibrary.simpleMessage("optional"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "peinding": MessageLookupByLibrary.simpleMessage("Pending"),
     "pickGender": MessageLookupByLibrary.simpleMessage("Pick your gender:"),
     "pickSpecialization": MessageLookupByLibrary.simpleMessage(
       "Pick your specialization",
@@ -165,7 +172,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "post": MessageLookupByLibrary.simpleMessage("Post"),
     "postsManagement": MessageLookupByLibrary.simpleMessage("Posts management"),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "project": MessageLookupByLibrary.simpleMessage("project"),
+    "public": MessageLookupByLibrary.simpleMessage("Public"),
     "reacts": MessageLookupByLibrary.simpleMessage("Reacts"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "reply": MessageLookupByLibrary.simpleMessage("Reply"),

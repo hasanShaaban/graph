@@ -7,6 +7,7 @@ import 'widgets/settings/settings_page_body.dart';
 import '../../../../generated/l10n.dart';
 
 
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
   static const name = 'mainPage';
@@ -34,7 +35,7 @@ class _MainPageState extends State<MainPage> {
       child: Scaffold(
         backgroundColor: Constants2.lightPrimaryColor(context),
         extendBody: true,
-        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButtonLocation: lang.lang == 'en' ? FloatingActionButtonLocation.endDocked : FloatingActionButtonLocation.startDocked,
         floatingActionButton: MainFloatingActionButton(width: width),
         body: PageView(
           onPageChanged: (value) {
@@ -47,7 +48,7 @@ class _MainPageState extends State<MainPage> {
             HomePageBody(width: width, height: height, lang: lang),
             Center(child: Text('Notifications')),
             SettingsPageBody(),
-            Center(child: Text('Search')),
+            PendingPageBody(lang: lang,)
           ],
         ),
         bottomNavigationBar: MainNavigationBar(

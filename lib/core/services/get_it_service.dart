@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 import '../../features/main/data/local_data_source/settings_local_data_source.dart';
+import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
+import 'package:graph/features/main/data/local_data_source/settings_local_data_source.dart';
 
 import '../../features/onboarding/data/repos/on_boarding_local_data_source.dart';
 import 'local_data_base/hive_data_base_service.dart';
@@ -27,5 +29,10 @@ void setupGetit() {
 
   getIt.registerSingleton<SettingsLocalDataSource>(
     SettingsLocalDataSource(getIt<LocalDataBaseService>()),
+  );
+
+  //auth local data source
+  getIt.registerSingleton<AuthLocalDataSource>(
+    AuthLocalDataSource(getIt<LocalDataBaseService>()),
   );
 }

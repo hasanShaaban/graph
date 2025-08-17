@@ -2,14 +2,15 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../../../core/utils/appAssets.dart';
-import '../../../../../../core/utils/app_text_style.dart';
-import '../../../../../../core/utils/constants.dart';
-import 'ads_page.dart';
-import 'groups_page.dart';
-import 'home_page_app_bar.dart';
-import 'public_page.dart';
-import '../../../../../../generated/l10n.dart';
+import 'package:graph/core/utils/appAssets.dart';
+import 'package:graph/core/utils/app_text_style.dart';
+import 'package:graph/core/utils/constants.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/ads_page.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/groups_page.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/home_page_app_bar.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/job_page.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/public_page.dart';
+import 'package:graph/generated/l10n.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({
@@ -129,7 +130,7 @@ class _HomePageBodyState extends State<HomePageBody>
         children: [
           PublicPage(),
           GroupsPage(),
-          Center(child: Text('Jobs')),
+          JobPage(),
           AdsPage(),
         ],
       ),

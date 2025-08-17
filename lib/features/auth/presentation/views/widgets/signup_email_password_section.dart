@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -75,11 +77,11 @@ class _SignupEmailPasswordSectionState
               SignupTextFormFields(
                 onEmailSaved: (value) => email = value!.trim(),
                 onPasswordSaved: (String? newValue) {
-                  print('pass saved: $newValue');
+                  log('pass saved: $newValue');
                   password = newValue!.trim();
                 },
                 onConfirmPasswordSaved: (String? newValue) {
-                  print('confirmPass saved: $newValue');
+                  log('confirmPass saved: $newValue');
                   confirmPassword = newValue!.trim();
                 },
               ),
@@ -94,7 +96,6 @@ class _SignupEmailPasswordSectionState
                 listener: (context, state) async {
                   if (state is CredintialsSuccess) {
                     final token = state.response['message']['token'];
-                    final message = state.response['message'];
                     await HiveDataBaseService().addData(
                       boxName: 'authBox',
                       key: 'token',
@@ -114,7 +115,7 @@ class _SignupEmailPasswordSectionState
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
-                        print(
+                        log(
                           'Email: $email, Password: $password, Confirm: $confirmPassword',
                         );
                         final credintials = CredintialsModel(
