@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
+import '../../../utils/app_text_style.dart';
+import '../../../utils/constants.dart';
 
 class PostActivities extends StatelessWidget {
   const PostActivities({super.key, required this.icon, required this.count});

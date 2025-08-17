@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/profile_image.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_member_container_header.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_member_role.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_member_tools.dart';
-import 'package:graph/features/groups/presentation/views/widget/personal_info_column.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../../core/widgets/profile_image.dart';
+import 'group_member_container_header.dart';
+import 'group_member_role.dart';
+import 'group_member_tools.dart';
+import 'personal_info_column.dart';
+import '../../../../../generated/l10n.dart';
 
 class GroupMemberContainer extends StatelessWidget {
   const GroupMemberContainer({

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/signup_data_model.dart';
+
 import '../../../../../generated/l10n.dart';
+import '../../../data/models/signup_data_model.dart';
+import 'custom_text.dart';
 import 'next_button.dart';
 import 'signup_profile_picture_section.dart';
-import 'custom_text.dart';
-
 import 'spacialization_button.dart';
 
 class SpacializationSection extends StatefulWidget {

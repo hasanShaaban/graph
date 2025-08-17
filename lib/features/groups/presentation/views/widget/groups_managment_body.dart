@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/features/groups/presentation/views/groups_management_view.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_management_drop_down.dart';
-import 'package:graph/features/groups/presentation/views/widget/save_addmember_button.dart';
-import 'package:graph/features/groups/presentation/views/widget/vacancy_button.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../groups_management_view.dart';
+import 'group_management_drop_down.dart';
+import 'save_addmember_button.dart';
+import 'vacancy_button.dart';
 
 class GroupsManagementBody extends StatelessWidget {
   const GroupsManagementBody({super.key});

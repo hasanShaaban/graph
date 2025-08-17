@@ -4,10 +4,11 @@ import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../generated/l10n.dart';
 
 class RemeberMeSection extends StatefulWidget {
-  const RemeberMeSection({super.key, required this.text});
-  final String text;
+  const RemeberMeSection({super.key, this.text});
+  final String? text;
 
   @override
   State<RemeberMeSection> createState() => _RemeberMeSectionState();
@@ -53,13 +54,13 @@ class _RemeberMeSectionState extends State<RemeberMeSection> {
           ),
         ),
         SizedBox(width: 5),
-        Text(
-          widget.text,
+      //   Text(
+      //  text,
 
-          style: AppTextStyle.cairoRegular18.copyWith(
-            color: Constants.secondryColor,
-          ),
-        ),
+      //     style: AppTextStyle.cairoRegular18.copyWith(
+      //       color: Constants.secondryColor,
+      //     ),
+      //   ),
       ],
     );
   }

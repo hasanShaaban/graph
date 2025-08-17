@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
+import '../../../../../../core/utils/appAssets.dart';
 
 class FloatngActionButtonWidget extends StatelessWidget {
   const FloatngActionButtonWidget({super.key});

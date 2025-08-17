@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/auth/presentation/views/widgets/tech_tools_grid_view.dart';
-import 'package:graph/features/auth/presentation/views/widgets/tech_tools_icon_add.dart';
-import 'package:graph/features/groups/presentation/views/widget/groups_managment_body.dart';
+import '../../../../core/utils/appAssets.dart';
+import '../../../../core/utils/app_text_style.dart';
+import '../../../../core/utils/constants.dart';
+import '../../../auth/presentation/views/widgets/tech_tools_grid_view.dart';
+import '../../../auth/presentation/views/widgets/tech_tools_icon_add.dart';
+import 'widget/groups_managment_body.dart';
 
-import 'package:graph/features/groups/presentation/views/widget/list_view_item.dart';
+import 'widget/list_view_item.dart';
 
 class GroupsManagementView extends StatelessWidget {
   const GroupsManagementView({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/data/models/signup_data_model.dart';
-import 'package:graph/features/auth/presentation/views/widgets/auth_app_bar.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_text.dart';
-import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_company_picture_sec.dart';
-import 'package:graph/features/auth/presentation/views/widgets/user_name_text_field.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../data/models/signup_data_model.dart';
+import 'auth_app_bar.dart';
+import 'custom_text.dart';
+import 'next_button.dart';
+import 'signup_company_picture_sec.dart';
+import 'user_name_text_field.dart';
+import '../../../../../generated/l10n.dart';
 
 class SignupCompanyNameSection extends StatefulWidget {
   const SignupCompanyNameSection({super.key});

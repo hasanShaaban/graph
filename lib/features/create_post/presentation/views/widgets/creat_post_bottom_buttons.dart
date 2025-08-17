@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/profile/data/models/person_model.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../profile/data/models/person_model.dart';
 
-import 'package:graph/features/profile/presentation/views/widgets/bottom_button_container.dart';
-import 'package:graph/features/profile/presentation/views/widgets/custom_bottom_sheet_container.dart';
-import 'package:graph/features/profile/presentation/views/widgets/mention_bottom_sheet_body.dart';
-import 'package:graph/features/profile/presentation/views/widgets/tag_bottom_sheet_body.dart';
-import 'package:graph/generated/l10n.dart';
+import 'bottom_button_container.dart';
+import 'custom_bottom_sheet_container.dart';
+import 'mention_bottom_sheet_body.dart';
+import 'tag_bottom_sheet_body.dart';
+import '../../../../../generated/l10n.dart';
 
 class CreatPostBottomButtons extends StatefulWidget {
   const CreatPostBottomButtons({

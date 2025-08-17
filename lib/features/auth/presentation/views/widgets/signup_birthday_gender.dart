@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_collage_stage_section.dart';
+import 'signup_collage_stage_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import 'auth_app_bar.dart';
 import '../../../../../generated/l10n.dart';

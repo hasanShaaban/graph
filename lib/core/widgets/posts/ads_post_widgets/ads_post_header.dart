@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/profile_image.dart';
+import '../../../utils/appAssets.dart';
+import '../../../utils/app_text_style.dart';
+import '../../../utils/constants.dart';
+import '../../profile_image.dart';
 import 'package:intl/intl.dart';
 class AdsPostHeader extends StatelessWidget {
   const AdsPostHeader({

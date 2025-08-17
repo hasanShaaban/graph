@@ -1,9 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-import '../../../../../generated/l10n.dart';
 
 import '../../../../../core/utils/appAssets.dart';
+import '../../../../../generated/l10n.dart';
 import 'animated_container_widget.dart';
 
 class GenderButton extends StatefulWidget {

@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/app_text_style.dart';
+import '../../../../../core/utils/app_text_style.dart';
 
 class CustomUserListView extends StatelessWidget {
   const CustomUserListView({

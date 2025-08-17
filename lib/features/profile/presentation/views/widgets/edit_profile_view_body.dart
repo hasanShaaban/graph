@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/functions/show_tools_bottom_sheet.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/features/auth/presentation/views/widgets/custom_text_cairo16_semi_bold.dart';
-import 'package:graph/features/auth/presentation/views/widgets/cv_row.dart';
-import 'package:graph/features/auth/presentation/views/widgets/final_touches_bio_sec.dart';
-import 'package:graph/features/auth/presentation/views/widgets/name_and_birth_date_info.dart';
-import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/social_links_row.dart';
-import 'package:graph/features/groups/presentation/views/widget/add_button.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_member_tools_list_view.dart';
-import 'package:graph/features/profile/presentation/views/widgets/custom_drop_down.dart';
-import 'package:graph/features/profile/presentation/views/widgets/edit_profile_header.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/features/auth/presentation/manager/final_touches_cubit/final_touches_cubit.dart';
+import '../../../../../core/functions/show_tools_bottom_sheet.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../auth/presentation/views/widgets/custom_text_cairo16_semi_bold.dart';
+import '../../../../auth/presentation/views/widgets/cv_row.dart';
+import '../../../../auth/presentation/views/widgets/final_touches_bio_sec.dart';
+import '../../../../auth/presentation/views/widgets/name_and_birth_date_info.dart';
+import '../../../../auth/presentation/views/widgets/next_button.dart';
+import '../../../../auth/presentation/views/widgets/social_links_row.dart';
+import '../../../../groups/presentation/views/widget/add_button.dart';
+import '../../../../groups/presentation/views/widget/group_member_tools_list_view.dart';
+import 'custom_drop_down.dart';
+import 'edit_profile_header.dart';
 
-import 'package:graph/generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 
 class EditProfileViewBody extends StatefulWidget {
   const EditProfileViewBody({super.key});
@@ -43,6 +45,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   List<String> chosenTools = [];
   @override
   Widget build(BuildContext context) {
+     final cubit = context.read<FinalTouchesCubit>();
     var lang = S.of(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -61,7 +64,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
-              children: [FinalTouchesBioSec(), SizedBox(height: 13), Divider()],
+              children: [FinalTouchesBioSec(onBioChanged: (String ) {  },), SizedBox(height: 13), Divider()],
             ),
           ),
 
@@ -127,11 +130,11 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                       },
                     ),
                 SizedBox(height: 14),
-                SocialLinksRow(),
-                SocialLinksRow(),
-                SocialLinksRow(),
-                SocialLinksRow(),
-                SizedBox(height: 12),
+                 SocialLinksRow(controller: cubit.facebookController, icon: Assets.iconsFacebook,),
+                      SocialLinksRow(controller: cubit.githubController, icon: Assets.iconsGithub,),
+                      SocialLinksRow(controller: cubit.instagramController, icon: Assets.iconsInstagram,),
+                      SocialLinksRow(controller: cubit.linkedinController, icon: Assets.iconsLinkedin,),
+                    SizedBox(height: 12),
                 CVRow(),
                 SizedBox(height: 40),
                 NextButton(onPressed: () {}, title: lang.Save),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../profile/presentation/views/profile_view.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/features/main/presentation/views/main_page.dart';
 import '../../../data/models/signup_data_model.dart';

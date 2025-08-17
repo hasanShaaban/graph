@@ -1,5 +1,5 @@
-import 'package:graph/features/auth/domain/Entity/user_entity.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_text_form_fields.dart';
+import '../../domain/Entity/user_entity.dart';
+import '../../presentation/views/widgets/signup_text_form_fields.dart';
 
 class CredintialsModel extends UserEntity {
   CredintialsModel({

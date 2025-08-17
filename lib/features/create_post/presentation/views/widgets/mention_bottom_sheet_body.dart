@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/features/followers&following/presentation/views/widgets/custom_user_list_view.dart';
-import 'package:graph/features/followers&following/presentation/views/widgets/follow_search_text_field.dart';
-import 'package:graph/features/profile/data/models/person_model.dart';
-import 'package:graph/features/profile/presentation/views/widgets/select_persons_to_mention.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../followers&following/presentation/views/widgets/custom_user_list_view.dart';
+import '../../../../followers&following/presentation/views/widgets/follow_search_text_field.dart';
+import '../../../../profile/data/models/person_model.dart';
+import 'select_persons_to_mention.dart';
+import '../../../../../generated/l10n.dart';
 
 class MentionBottomSheetBody extends StatefulWidget {
   const MentionBottomSheetBody({

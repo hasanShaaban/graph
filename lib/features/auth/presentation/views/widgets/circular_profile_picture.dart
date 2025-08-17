@@ -1,21 +1,31 @@
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
+import 'package:graph/generated/l10n.dart';
+import 'package:lottie/lottie.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/constants.dart';
 
 class CircularProfilePicture extends StatelessWidget {
   const CircularProfilePicture({
     super.key,
     required this.width,
     required this.height,
+    this.image,
+    required this.onEditTap,
+    required this.gender,
   });
 
   final double width;
   final double height;
+  final File? image;
+  final VoidCallback onEditTap;
+  final String gender;
 
   @override
   Widget build(BuildContext context) {
+    final lang = S.of(context);
     return SizedBox(
       height: 300,
       width: double.infinity,
@@ -23,8 +33,7 @@ class CircularProfilePicture extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Positioned(
-            left:
-                width / 2 - 90, // 90= 180/2 , width/2 to center the widget.
+            left: width / 2 - 90, // 90= 180/2 , width/2 to center the widget.
             top: height * 0.14, // (95 / 924) , //0.14, //(150 / 924),
             child: Container(
               width: 180,
@@ -39,9 +48,24 @@ class CircularProfilePicture extends StatelessWidget {
               child: CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.grey,
-                backgroundImage: NetworkImage(
-                  'https://plus.unsplash.com/premium_photo-1663054688278-ebf09d654d33?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdpcmwlMjBmYWNlfGVufDB8fDB8fHww',
-                ),
+
+                backgroundImage: image != null ? FileImage(image!) : null,
+                child:
+                    image == null
+                        ? ClipOval(
+                          child: Transform.scale(
+                            scale: 2, // 👈 زووم (غيّر الرقم حسب قد ما بدك تكبر)
+                            child: Lottie.asset(
+                              gender == lang.male
+                                  ? Assets.imagesBoyProfile
+                                  : Assets.imagesGirlProfile,
+                              fit: BoxFit.fill,
+                              width: double.infinity,
+                              height: double.infinity,
+                            ),
+                          ),
+                        )
+                        : null,
               ),
             ),
           ),
@@ -49,6 +73,7 @@ class CircularProfilePicture extends StatelessWidget {
             bottom: 0,
             right: width * (134 / 412),
             child: GestureDetector(
+              onTap: onEditTap,
               child: Container(
                 width: 30,
                 height: 30,

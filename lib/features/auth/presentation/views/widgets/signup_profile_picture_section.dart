@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'signup_final_touches_sec.dart';
+import 'package:hive/hive.dart';
 import 'signup_verification_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../../data/models/user_model.dart';
@@ -184,7 +186,8 @@ class _SignupProfilePictureSectionState
               if (state is SignupSuccess) {
                 Navigator.pushNamed(
                   context,
-                  SignupVerificationSection.name,
+                  // SignupVerificationSection.name,
+                  SignupFinalTouchesSec.name,
                   arguments: signupData,
                 );
               } else if (state is SignupFailuer) {
@@ -200,23 +203,10 @@ class _SignupProfilePictureSectionState
                 onPressed: () async {
                   log('birthDate: ${signupData.birthDate}');
 
-                  log('firstname: ${signupData.firstName}');
-                  log('lastname: ${signupData.lastName}');
-                  log('gender: ${signupData.gender}');
-                  log('study year: ${signupData.studyYear}');
-
-                  // if (selectedImage != null) {
-                  //   imageToSend = selectedImage!;
-                  // } else {
-                  //   imageToSend = await apiService.getAssetAsFile(
-                  //     gender == 'Male'
-                  //         ? 'assets/images/boy_profile.json'
-                  //         : 'assets/images/girl_profile.json',
-                  //   );
-                  // }
-                  // if (selectedImage != null) {
-                  //   imageToSend = selectedImage!;
-                  // }
+                  print('firstname: ${signupData.firstName}');
+                  print('lastname: ${signupData.lastName}');
+                  print('gender: ${signupData.gender}');
+                  print('study year: ${signupData.studyYear}');
 
                   final userModel = UserModel(
                     firstName: signupData.firstName!,
@@ -229,11 +219,6 @@ class _SignupProfilePictureSectionState
                         int.tryParse(signupData.specialization ?? '') ?? 0,
 
                     image: selectedImage,
-                    // selectedImage != null
-                    //     ? selectedImage!.path
-                    //     : (signupData.gender == 'Male'
-                    //         ? 'assets/images/boy_profile.json'
-                    //         : 'assets/images/girl_profile.json'),
                   );
 
                   final cubit = context.read<SignupCubit>();

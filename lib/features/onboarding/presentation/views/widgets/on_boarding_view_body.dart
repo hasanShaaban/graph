@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../../generated/l10n.dart';
+
 import '../../../../../core/services/get_it_service.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../auth/presentation/views/login_view.dart';
 import '../../../data/repos/on_boarding_local_data_source.dart';
 import 'on_boarding_dots_indicator.dart';

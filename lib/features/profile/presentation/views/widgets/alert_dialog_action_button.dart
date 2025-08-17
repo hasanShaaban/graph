@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../generated/l10n.dart';
 
 class AlertDialogActionButton extends StatelessWidget {
   const AlertDialogActionButton({

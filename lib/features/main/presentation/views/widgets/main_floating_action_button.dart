@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/constants.dart';
 
 class MainFloatingActionButton extends StatelessWidget {
   const MainFloatingActionButton({

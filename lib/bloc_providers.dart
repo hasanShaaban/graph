@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/features/auth/presentation/manager/company_cubit/company_cubit.dart';
-import 'package:graph/features/auth/presentation/manager/credintials_cubit/credintials_cubit.dart';
-import 'package:graph/features/auth/presentation/manager/role_cubit/role_cubit.dart';
+import 'features/auth/presentation/manager/company_cubit/company_cubit.dart';
+import 'features/auth/presentation/manager/credintials_cubit/credintials_cubit.dart';
+import 'features/auth/presentation/manager/final_touches_cubit/final_touches_cubit.dart';
+import 'features/auth/presentation/manager/role_cubit/role_cubit.dart';
 import 'features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'core/services/api_service.dart';
 import 'features/auth/data/repos/auth_repo_impl.dart';
@@ -32,5 +33,5 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => CredintialsCubit(authRepo)),
   BlocProvider(create: (context) => RoleCubit(authRepo)),
   BlocProvider(create: (context) => CompanyCubit(authRepo)),
+  BlocProvider(create: (context) => FinalTouchesCubit(authRepo)),
 ];
-

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_company_name_section.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_company_picture_sec.dart';
+import '../../features/auth/presentation/views/widgets/signup_company_name_section.dart';
+import '../../features/auth/presentation/views/widgets/signup_company_picture_sec.dart';
 
-import 'package:graph/core/widgets/posts/public_post_widgets/image_viewer.dart';
+import '../widgets/posts/public_post_widgets/image_viewer.dart';
 
-import 'package:graph/features/followers&following/presentation/views/follow_view.dart';
-import 'package:graph/features/groups/presentation/views/group_management_view.dart';
-import 'package:graph/features/groups/presentation/views/my_group_view.dart';
-import 'package:graph/features/main/presentation/views/main_page.dart';
-import 'package:graph/features/post_details/presentation/view/post_details_view.dart';
-import 'package:graph/features/profile/presentation/views/edit_profile_view.dart';
-import 'package:graph/features/profile/presentation/views/profile_view.dart';
-import 'package:graph/features/profile/presentation/views/widgets/creat_post_page.dart';
-import 'package:graph/features/profile/presentation/views/widgets/cvpdf.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_find_friends.dart';
+import '../../features/followers&following/presentation/views/follow_view.dart';
+import '../../features/groups/presentation/views/group_management_view.dart';
+import '../../features/groups/presentation/views/my_group_view.dart';
+import '../../features/main/presentation/views/main_page.dart';
+import '../../features/post_details/presentation/view/post_details_view.dart';
+import '../../features/profile/presentation/views/edit_profile_view.dart';
+import '../../features/profile/presentation/views/profile_view.dart';
+import '../../features/create_post/presentation/views/creat_post_page.dart';
+import '../../features/profile/presentation/views/widgets/cvpdf.dart';
+import '../../features/auth/presentation/views/widgets/signup_find_friends.dart';
 import '../../features/auth/presentation/views/widgets/signup_final_touches_sec.dart';
 import '../../features/auth/presentation/views/widgets/signup_verification_section.dart';
 import '../../features/groups/presentation/views/groups_management_view.dart';
@@ -65,8 +65,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     //         (context) => SignupPathSection(
     //           //onNext: (bool isStrudent) {}
     //         ),
-      //   settings: settings,
-      // );
+    //   settings: settings,
+    // );
     case SignupRoleSection.name:
       return MaterialPageRoute(
         builder: (context) => SignupRoleSection(),
@@ -136,7 +136,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
             ),
       );
     case CreatPostPage.name:
-      return MaterialPageRoute(builder: (context) => CreatPostPage());
+      return MaterialPageRoute(
+        builder: (context) => CreatPostPage(),
+      );
 
     case SignupCompanyNameSection.name:
       return MaterialPageRoute(

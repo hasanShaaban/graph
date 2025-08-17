@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:graph/features/post_details/presentation/view/widgets/bottom_comment_textfield.dart';
-import 'package:graph/features/post_details/presentation/view/widgets/comment_root_and_children.dart';
-import 'package:graph/generated/l10n.dart';
+import 'bottom_comment_textfield.dart';
+import 'comment_root_and_children.dart';
+import '../../../../../generated/l10n.dart';
 
 class CommentsPage extends StatelessWidget {
   const CommentsPage({

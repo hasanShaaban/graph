@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/features/auth/presentation/manager/role_cubit/role_cubit.dart';
-import 'package:graph/features/auth/presentation/views/widgets/next_button.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_company_name_section.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_username_section.dart';
+import '../../manager/role_cubit/role_cubit.dart';
+import 'next_button.dart';
+import 'signup_company_name_section.dart';
+import 'signup_username_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import 'auth_app_bar.dart';
 import '../../../../../generated/l10n.dart';

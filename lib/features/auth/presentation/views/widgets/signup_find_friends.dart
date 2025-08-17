@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/presentation/views/widgets/find_you_friends_app_bar.dart';
-import 'package:graph/features/auth/presentation/views/widgets/find_you_friends_list_view.dart';
-import 'package:graph/features/followers&following/presentation/views/widgets/follow_search_text_field.dart';
-import 'package:graph/generated/l10n.dart';
+import 'find_you_friends_app_bar.dart';
+import 'find_you_friends_list_view.dart';
+import '../../../../followers&following/presentation/views/widgets/follow_search_text_field.dart';
+import '../../../../../generated/l10n.dart';
 
 class SignupFindFriends extends StatelessWidget {
   const SignupFindFriends({super.key});

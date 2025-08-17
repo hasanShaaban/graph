@@ -1,6 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/features/auth/presentation/views/widgets/name_and_birth_date_info.dart';
+import 'package:graph/features/auth/data/models/signup_data_model.dart';
+import '../../manager/final_touches_cubit/final_touches_cubit.dart';
+import 'name_and_birth_date_info.dart';
+import '../../../../profile/presentation/views/profile_view.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
 import 'custom_text_cairo16_semi_bold.dart';
@@ -36,8 +43,46 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
   ];
   List<String> selectedTools = [];
   List<int> selectedItems = [];
+
+  String? bioText;
+  File? imageFile;
+
+ SignupDataModel? signupData;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args != null && args is SignupDataModel) {
+      signupData = args;
+    } else {
+
+      assert(() {
+        print(" No arguments passed, using fake data for design preview");
+        signupData = SignupDataModel(
+   
+          firstName: 'John',
+          lastName: 'Doe',
+          gender: 'Male',
+          birthDate: '2000-01-01',
+    
+          studyYear: '3',
+        );
+        return true;
+      }());
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
+    
+ if (signupData == null) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
+  String? gender = signupData!.gender;
+ final cubit = context.read<FinalTouchesCubit>();
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
@@ -47,7 +92,22 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FinalTouchesTopSection(lang: lang),
+                FinalTouchesTopSection(
+                  lang: lang,
+                  image: imageFile,
+                  onEditTap: () async {
+                    final picker = ImagePicker();
+                    final picked = await picker.pickImage(
+                      source: ImageSource.gallery,
+                    );
+                    if (picked != null) {
+                      setState(() {
+                        imageFile = File(picked.path);
+                      });
+                    }
+                  },
+                  gender: gender!,
+                ),
                 NameAndBirthDateInfo(),
 
                 Padding(
@@ -65,7 +125,11 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                         text2: 'Software Engineering',
                       ),
                       SizedBox(height: 30),
-                      FinalTouchesBioSec(),
+                      FinalTouchesBioSec(
+                        onBioChanged: (value) {
+                          bioText = value;
+                        },
+                      ),
                       SizedBox(height: 13),
                       CustomTextCairo16SemiBold(text: 'Tech Tools'),
                       Wrap(
@@ -142,18 +206,38 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                         ],
                       ),
                       CustomTextCairo16SemiBold(text: 'Social links'),
-                      SocialLinksRow(),
-                      SocialLinksRow(),
-                      SocialLinksRow(),
-                      SocialLinksRow(),
+                     
+                      SocialLinksRow(controller: cubit.facebookController, icon: Assets.iconsFacebook,),
+                      SocialLinksRow(controller: cubit.githubController, icon: Assets.iconsGithub,),
+                      SocialLinksRow(controller: cubit.instagramController, icon: Assets.iconsInstagram,),
+                      SocialLinksRow(controller: cubit.linkedinController, icon: Assets.iconsLinkedin,),
                       SizedBox(height: 20),
                       CVRow(),
                       SizedBox(height: 20),
-                      NextButton(
-                        onPressed: () {
-                          // Navigator.pushNamed(context, SignupFindFriends.name);
+
+                      BlocConsumer<FinalTouchesCubit, FinalTouchesState>(
+                        listener: (context, state) async {
+                          if (state is FinalTouchesSuccess) {
+                            Navigator.pushNamed(context, ProfileView.name);
+                          } else if (state is FinalTouchesFailuer) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(state.errorMessage)),
+                            );
+                          }
                         },
-                        title: 'Save',
+                        builder: (context, state) {
+                          return NextButton(
+                            title: lang.Save,
+                            isLoading: state is FinalTouchesLoading,
+
+                            onPressed: () {
+                              context.read<FinalTouchesCubit>().finalTouches(
+                                bio: bioText,
+                                image: imageFile,
+                              );
+                            },
+                          );
+                        },
                       ),
                     ],
                   ),

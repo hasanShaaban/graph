@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/profile/presentation/views/widgets/group_member_info.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
+import 'group_member_info.dart';
+import '../../../../../generated/l10n.dart';
 
 class GroupProfileListView extends StatelessWidget {
   const GroupProfileListView({

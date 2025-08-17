@@ -1,4 +1,4 @@
-import 'package:graph/features/auth/domain/Entity/user_entity.dart';
+import '../../domain/Entity/user_entity.dart';
 
 class CompanyModel extends UserEntity {
   CompanyModel({

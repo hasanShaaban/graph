@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/generated/l10n.dart';
+import '../utils/appAssets.dart';
+import '../utils/constants.dart';
+import '../../generated/l10n.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({

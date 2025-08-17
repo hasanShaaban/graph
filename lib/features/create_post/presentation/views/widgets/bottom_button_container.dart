@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
 
 class BottomButtonContainer extends StatelessWidget {
   const BottomButtonContainer({

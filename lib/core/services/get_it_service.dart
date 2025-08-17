@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import '../../features/main/data/local_data_source/settings_local_data_source.dart';
 import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 import 'package:graph/features/main/data/local_data_source/settings_local_data_source.dart';
 

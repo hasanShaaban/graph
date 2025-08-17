@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/services/local_data_base/hive_data_base_service.dart';
-import 'package:graph/features/auth/data/models/credintials_model.dart';
-import 'package:graph/features/auth/presentation/manager/credintials_cubit/credintials_cubit.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_role_section.dart';
+import '../../../../../core/services/local_data_base/hive_data_base_service.dart';
+import '../../../data/models/credintials_model.dart';
+import '../../manager/credintials_cubit/credintials_cubit.dart';
+import 'signup_role_section.dart';
 import '../../../data/models/signup_data_model.dart';
 
 import '../../../../../generated/l10n.dart';

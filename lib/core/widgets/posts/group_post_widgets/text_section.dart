@@ -1,4 +1,8 @@
 import 'package:flutter/widgets.dart';
+import '../../../utils/app_text_style.dart';
+import '../../../utils/constants.dart';
+
+import '../../../../generated/l10n.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/expandable_text.dart';

@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/appAssets.dart';
+import '../../../utils/app_text_style.dart';
 import 'dart:developer' as dev;
 
 class ReactButton extends StatefulWidget {

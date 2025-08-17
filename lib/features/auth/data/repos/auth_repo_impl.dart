@@ -1,10 +1,12 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:graph/core/services/local_data_base/hive_data_base_service.dart';
-import 'package:graph/features/auth/data/models/company_model.dart';
-import 'package:graph/features/auth/data/models/credintials_model.dart';
+import 'package:graph/features/auth/data/models/social_links_model.dart';
+import '../../../../core/services/local_data_base/hive_data_base_service.dart';
+import '../models/company_model.dart';
+import '../models/credintials_model.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/services/api_service.dart';
@@ -76,9 +78,6 @@ class AuthRepoImpl implements AuthRepo {
       FormData formData = FormData.fromMap({
         'first_name': userModel.firstName,
         'last_name': userModel.lastName,
-        // 'email': userModel.email,
-        // 'password': userModel.passWord,
-        // 'confirm_password': userModel.confirmPassword,
         'birth_date': userModel.dateOfBirht,
         'gender': userModel.gender,
         'year_id': userModel.studyYear,
@@ -92,7 +91,9 @@ class AuthRepoImpl implements AuthRepo {
       Map<String, dynamic> response = await apiService.post(
         endPoint: 'Register',
         // data: userModel.toJson(),
+      
         data: formData,
+
         options: Options(
           headers: {
             'Authorization': 'Bearer $token',
@@ -210,6 +211,111 @@ class AuthRepoImpl implements AuthRepo {
       );
 
       print('Response from login: $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      print('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  //Update bio
+  @override
+  Future<Either<Failures, List<dynamic>>> bio({required String bio}) async {
+    try {
+      List<dynamic> response = await apiService.put(
+        endPoint: 'student/bio/update',
+
+        data: {"bio": bio},
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+
+      print('Response : $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      print('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  //Update profile image 
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> profileImage({
+    required File image,
+  }) async {
+    try {
+       FormData formData = FormData.fromMap({
+      'profile_image': await MultipartFile.fromFile(
+        image.path,
+        filename: image.path.split('/').last,
+      ),
+    });
+      Map<String, dynamic> response = await apiService.post(
+        endPoint: 'student/prfile-photo/update',
+ 
+     //   data: {"profile_image": image},
+     data: formData,
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+
+      print('Response : $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      print('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  //Add social links
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> addSocialLinks({required List<SocialLinksModel> socialLinksModel})async {
+ try {
+     
+     
+
+       final List<Map<String, dynamic>> links = socialLinksModel.map((link) => {
+      'id': link.id,
+      'name': link.name,
+      'link': link.link,
+    }).toList();
+
+      Map<String, dynamic> response = await apiService.post(
+        endPoint: 'student/social_links/add',
+   
+      
+        data: links, 
+        options: Options(
+          headers: {
+          'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+      print('Response from add social links: $response');
 
       return right(response);
     } catch (e) {

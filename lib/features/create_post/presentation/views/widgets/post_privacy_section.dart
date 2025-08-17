@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/widgets/custom_drop_down_map.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/widgets/custom_drop_down_map.dart';
 
 class PostPrivacySection extends StatefulWidget {
   const PostPrivacySection({super.key});

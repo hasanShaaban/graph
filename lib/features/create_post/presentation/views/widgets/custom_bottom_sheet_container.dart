@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../../generated/l10n.dart';
 
 class CustomBottomSheetContainer extends StatelessWidget {
   const CustomBottomSheetContainer({

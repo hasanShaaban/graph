@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/followers&following/presentation/views/widgets/follow_list_view_item.dart';
+import 'follow_list_view_item.dart';
 
 class FollowListView extends StatelessWidget {
   const FollowListView({super.key});

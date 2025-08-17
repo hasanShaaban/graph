@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/tech_tool_container.dart';
-import 'package:graph/features/groups/presentation/views/widget/personal_info_column.dart';
+import '../../../../../core/utils/appAssets.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../../core/widgets/tech_tool_container.dart';
+import 'personal_info_column.dart';
 
 class ListViewItem extends StatelessWidget {
   const ListViewItem({super.key, required this.height, required this.width});

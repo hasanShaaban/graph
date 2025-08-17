@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/profile/presentation/views/widgets/group_profile_list_view.dart';
-import 'package:graph/features/profile/presentation/views/widgets/groups_drop_down_button.dart';
-import 'package:graph/features/profile/presentation/views/widgets/see_all_groups_button.dart';
-import 'package:graph/generated/l10n.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../core/utils/constants.dart';
+import 'group_profile_list_view.dart';
+import 'groups_drop_down_button.dart';
+import 'see_all_groups_button.dart';
+import '../../../../../generated/l10n.dart';
 
 class GroupSection extends StatelessWidget {
   const GroupSection({
