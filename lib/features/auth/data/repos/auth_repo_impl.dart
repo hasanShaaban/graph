@@ -3,7 +3,9 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:graph/core/services/get_it_service.dart';
 import 'package:graph/features/auth/data/models/social_links_model.dart';
+import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 import '../../../../core/services/local_data_base/hive_data_base_service.dart';
 import '../models/company_model.dart';
 import '../models/credintials_model.dart';
@@ -14,9 +16,11 @@ import '../../domain/repos/auth_repo.dart';
 import '../models/user_model.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  final ApiService apiService;
+  final PublicApiService apiService;
 
   AuthRepoImpl(this.apiService);
+
+  final AuthLocalDataSource authLocalDataSource = getIt<AuthLocalDataSource>();
 
   //Email and password
   @override
@@ -90,8 +94,8 @@ class AuthRepoImpl implements AuthRepo {
       });
       Map<String, dynamic> response = await apiService.post(
         endPoint: 'Register',
+
         // data: userModel.toJson(),
-      
         data: formData,
 
         options: Options(
@@ -134,9 +138,10 @@ class AuthRepoImpl implements AuthRepo {
           },
         ),
       );
-
+      String token = response['token'];
+      authLocalDataSource.setToken(token);
       log('Response from login: $response');
-      
+
       return right(response);
     } catch (e) {
       if (e is DioException) {
@@ -251,24 +256,24 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
-  //Update profile image 
+
+  //Update profile image
   @override
   Future<Either<Failures, Map<String, dynamic>>> profileImage({
     required File image,
   }) async {
     try {
-       FormData formData = FormData.fromMap({
-      'profile_image': await MultipartFile.fromFile(
-        image.path,
-        filename: image.path.split('/').last,
-      ),
-    });
+      FormData formData = FormData.fromMap({
+        'profile_image': await MultipartFile.fromFile(
+          image.path,
+          filename: image.path.split('/').last,
+        ),
+      });
       Map<String, dynamic> response = await apiService.post(
         endPoint: 'student/prfile-photo/update',
- 
-     //   data: {"profile_image": image},
-     data: formData,
+
+        //   data: {"profile_image": image},
+        data: formData,
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -292,25 +297,24 @@ class AuthRepoImpl implements AuthRepo {
 
   //Add social links
   @override
-  Future<Either<Failures, Map<String, dynamic>>> addSocialLinks({required List<SocialLinksModel> socialLinksModel})async {
- try {
-     
-     
-
-       final List<Map<String, dynamic>> links = socialLinksModel.map((link) => {
-      'id': link.id,
-      'name': link.name,
-      'link': link.link,
-    }).toList();
+  Future<Either<Failures, Map<String, dynamic>>> addSocialLinks({
+    required List<SocialLinksModel> socialLinksModel,
+  }) async {
+    try {
+      final List<Map<String, dynamic>> links =
+          socialLinksModel
+              .map(
+                (link) => {'id': link.id, 'name': link.name, 'link': link.link},
+              )
+              .toList();
 
       Map<String, dynamic> response = await apiService.post(
         endPoint: 'student/social_links/add',
-   
-      
-        data: links, 
+
+        data: links,
         options: Options(
           headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
             'Accept': 'application/json',
           },
         ),

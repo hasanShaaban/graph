@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/core/services/get_it_service.dart';
+import 'package:graph/features/profile/data/repos/profile_repo_impl.dart';
+import 'package:graph/features/profile/presentation/manager/bloc/profile_bloc.dart';
 import 'features/auth/presentation/manager/company_cubit/company_cubit.dart';
 import 'features/auth/presentation/manager/credintials_cubit/credintials_cubit.dart';
 import 'features/auth/presentation/manager/final_touches_cubit/final_touches_cubit.dart';
@@ -11,7 +14,7 @@ import 'features/auth/domain/repos/auth_repo.dart';
 import 'features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:provider/single_child_widget.dart';
 
-ApiService apiService = ApiService(
+PublicApiService apiService = PublicApiService(
   Dio(
     // BaseOptions(
     //   baseUrl: 'http://192.168.115.28:8000/api/',
@@ -34,4 +37,5 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => RoleCubit(authRepo)),
   BlocProvider(create: (context) => CompanyCubit(authRepo)),
   BlocProvider(create: (context) => FinalTouchesCubit(authRepo)),
+  BlocProvider(create: (context) => ProfileBloc(getIt<ProfileRepoImpl>()))
 ];

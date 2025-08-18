@@ -6,6 +6,7 @@ import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 import 'package:graph/features/auth/presentation/views/login_view.dart';
 import 'package:graph/features/main/presentation/views/main_page.dart';
 import 'package:graph/features/onboarding/data/repos/on_boarding_local_data_source.dart';
+import 'package:graph/features/profile/presentation/manager/bloc/profile_bloc.dart';
 import '../../../../../core/services/get_it_service.dart';
 import '../../../../../core/services/providers/local_provider.dart';
 import '../../../../../core/services/sources/langeage_data_source.dart';
@@ -34,10 +35,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     super.initState();
-    _init();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _init(context));
   }
 
-  Future<void> _init() async {
+  Future<void> _init(BuildContext context) async {
     final languageSeen = await langeageDataSource.isLanguageSelected();
     final onBoardingSeen = await onBoardingLocalDataSource.isOnBoardingSeen();
     final rejestered = await authLocalDataSource.isRejestered();
@@ -56,6 +57,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       await Future.delayed(const Duration(seconds: 3));
       if (onBoardingSeen) {
         if (rejestered) {
+          context.read<ProfileBloc>().add(GetProfileDataEvent());
           Navigator.pushReplacementNamed(
             context,
             MainPage.name,
