@@ -127,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "mySV": MessageLookupByLibrary.simpleMessage("سيرتي الذاتية"),
     "networks": MessageLookupByLibrary.simpleMessage("الشبكات ونظم التشغيل"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "noBioYet": MessageLookupByLibrary.simpleMessage("لا يوجد نبذة تعرفية بعد"),
     "nonStudentAccount": MessageLookupByLibrary.simpleMessage("حساب غير طالب"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "onboarding1": MessageLookupByLibrary.simpleMessage(

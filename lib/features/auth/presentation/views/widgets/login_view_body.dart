@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../profile/presentation/views/profile_view.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/features/main/presentation/views/main_page.dart';
 import '../../../data/models/signup_data_model.dart';
@@ -83,7 +82,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         message: state.errorMessage,
                         backgroundColor: Constants2.darkSecondaryColor(context),
                         textColor: Constants2.darkPrimaryColor(context),
-                        icon: state.errorMessage == 'There is no internet'? Icons.wifi_off:Icons.error,
+                        icon:
+                            state.errorMessage == 'There is no internet'
+                                ? Icons.wifi_off
+                                : Icons.error,
                       ),
                     );
                   }
@@ -127,7 +129,7 @@ SnackBar customSnackBar({
   required String message,
   required Color backgroundColor,
   required Color textColor,
-  IconData icon = Icons.error
+  IconData icon = Icons.error,
 }) {
   return SnackBar(
     backgroundColor: Colors.transparent,

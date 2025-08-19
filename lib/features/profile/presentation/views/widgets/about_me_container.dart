@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/features/profile/domain/entity/skill_entity.dart';
+import 'package:graph/features/profile/domain/entity/social_link_entity.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
 import 'about_me_header.dart';
@@ -14,11 +16,21 @@ class AboutMeContainer extends StatelessWidget {
     required this.width,
     required this.height,
     required this.lang,
+    required this.year,
+    required this.major,
+    this.skills,
+     this.links, this.cv,
   });
 
   final double width;
   final double height;
   final S lang;
+
+  final String year, major;
+  final List<SkillEntity>? skills;
+  final List<SocialLinkEntity>? links;
+  final String? cv;
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +53,10 @@ class AboutMeContainer extends StatelessWidget {
               height: 0,
             ),
             SizedBox(height: 10),
-            infoRow(
-              Assets.iconsGraduationCap,
-              '4th year - ${lang.softwareEng}',
-            ),
-            SizedBox(height: 5),
+            infoRow(Assets.iconsGraduationCap, '$year - $major'),
+            SizedBox(height: 10),
             infoRow(Assets.iconsCakeBirthday, 'january-1-1999'),
-            SizedBox(height: 5),
+            SizedBox(height: 10),
             infoRow(Assets.iconsTerminal, lang.techTools),
             TechToolsListView(
               lang: lang,
@@ -55,18 +64,20 @@ class AboutMeContainer extends StatelessWidget {
               iconSize: 48,
               listPadding: 10,
               borderRadius: 14,
+              skills: skills,
             ),
-            SizedBox(height: 5),
+            SizedBox(height: 10),
             infoRow(Assets.iconsLink, lang.socialLinks),
             SocilaLinksListView(lang: lang),
-            SizedBox(height: 5),
+            SizedBox(height: 10),
             infoRow(Assets.iconsCv, lang.mySV),
+            cv != null?
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, CVPDF.name);
+                Navigator.pushNamed(context, CVPDF.name, arguments: cv!);
               },
               child: Text(lang.tapToPreviewTheDocument),
-            ),
+            ):Text('no CV loaded yet'),
           ],
         ),
       ),

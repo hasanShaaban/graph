@@ -107,9 +107,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         builder: (context) => const GroupManagementView(),
       );
     case ProfileView.name:
-      return MaterialPageRoute(builder: (context) => const ProfileView());
+      return MaterialPageRoute(builder: (context) => ProfileView());
     case CVPDF.name:
-      return MaterialPageRoute(builder: (context) => const CVPDF());
+    String cv = settings.arguments as String;
+      return MaterialPageRoute(builder: (context) => CVPDF(cv: cv,));
     case EditProfileView.name:
       return MaterialPageRoute(builder: (context) => const EditProfileView());
     case GroupsManagementView.name:

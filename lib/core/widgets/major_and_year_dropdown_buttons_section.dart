@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:graph/core/widgets/custom_drop_down_button.dart';
-import '../utils/appAssets.dart';
-import '../utils/app_text_style.dart';
-import '../utils/constants.dart';
+
 import '../../generated/l10n.dart';
 
 class MajorAndYearDropdownButtonsSection extends StatelessWidget {

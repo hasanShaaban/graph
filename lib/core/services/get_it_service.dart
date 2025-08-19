@@ -50,6 +50,6 @@ void setupGetit() {
 
   //Profile repo
   getIt.registerSingleton<ProfileRepo>(
-    ProfileRepoImpl(getIt<SecureApiService>()),
+    ProfileRepoImpl(getIt<SecureApiService>(), getIt<AuthLocalDataSource>()),
   );
 }

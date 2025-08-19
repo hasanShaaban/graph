@@ -1,15 +1,19 @@
+import 'package:graph/features/profile/domain/entity/skill_entity.dart';
+import 'package:graph/features/profile/domain/entity/social_link_entity.dart';
+
+
 class ProfileEntity {
   final int id;
   final String name;
-  final String year;
-  final String major;
+  final List<String> year;
+  final List<String> major;
   final String? bio;
   final String gender;
   final String? cv;
   final String? image;
-  final Map<String, dynamic>? socialLinks; // flexible
+  final List<SocialLinkEntity>? socialLinks;
   final double? rate;
-  final List<String>? skills;
+  final List<SkillEntity>? skills;
   final int? groupId;
 
   const ProfileEntity({
@@ -17,13 +21,13 @@ class ProfileEntity {
     required this.name,
     required this.year,
     required this.major,
-    this.bio,
+    required this.bio,
     required this.gender,
-    this.cv,
-    this.image,
-    this.socialLinks,
-    this.rate,
-    this.skills,
-    this.groupId,
+    required this.cv,
+    required this.image,
+    required this.socialLinks,
+    required this.rate,
+    required this.skills,
+    required this.groupId,
   });
 }

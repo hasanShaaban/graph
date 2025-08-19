@@ -23,7 +23,7 @@ class TechToolContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: SvgPicture.asset(icon, width: width*0.5,),
+          child: SvgPicture.network(icon, width: width*0.5,),
         ),
       ),
     );

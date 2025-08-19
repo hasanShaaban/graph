@@ -11,4 +11,5 @@ class HiveBoxes {
   static const onBoardingSeen = 'onBoardingSeen';
   static const rejestered = 'rejestered';
   static const token = 'token';
+  static const userID = 'Id';
 }

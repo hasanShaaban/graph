@@ -140,6 +140,7 @@ class AuthRepoImpl implements AuthRepo {
       );
       String token = response['token'];
       authLocalDataSource.setToken(token);
+      authLocalDataSource.setUserId(response['id']);
       log('Response from login: $response');
 
       return right(response);

@@ -115,6 +115,7 @@ class SecureApiService {
   final Dio _dio;
   final AuthLocalDataSource authLocalDataSource;
   SecureApiService(this._dio, this.authLocalDataSource) {
+    
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {

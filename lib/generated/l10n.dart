@@ -1013,6 +1013,11 @@ class S {
   String get apply {
     return Intl.message('Apply', name: 'apply', desc: '', args: []);
   }
+
+  /// `No bio yet`
+  String get noBioYet {
+    return Intl.message('No bio yet', name: 'noBioYet', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

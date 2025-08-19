@@ -3,8 +3,9 @@ import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
 
 class CVPDF extends StatefulWidget {
-  const CVPDF({super.key});
+  const CVPDF({super.key, required this.cv});
   static const name = 'CVPDF';
+  final String cv;
   @override
   State<CVPDF> createState() => _CVPDFState();
 }
@@ -19,7 +20,7 @@ class _CVPDFState extends State<CVPDF> {
   }
 
   loadDocument() async {
-    document = await PDFDocument.fromAsset('assets/temp/13769.pdf');
+    document = await PDFDocument.fromURL('http://127.0.0.1:8000${widget.cv}');
     setState(() {
       _isLoading = false;
     });

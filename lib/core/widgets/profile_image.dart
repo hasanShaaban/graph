@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../utils/appAssets.dart';
 import '../utils/constants.dart';
@@ -14,6 +15,7 @@ class ProfileImage extends StatelessWidget {
     this.borderColor = Constants.lightPrimaryColor,
     this.editable = false,
     this.onTap,
+    this.image = Assets.imagesProfileImage,
   });
 
   final double width, imageWidth;
@@ -21,6 +23,7 @@ class ProfileImage extends StatelessWidget {
   final Color? borderColor;
   final bool? editable;
   final VoidCallback? onTap;
+  final String? image;
   @override
   Widget build(BuildContext context) {
     var lang = S.of(context);
@@ -38,8 +41,11 @@ class ProfileImage extends StatelessWidget {
             border: Border.all(color: borderColor!, width: borderThick),
             shape: BoxShape.circle,
             image: DecorationImage(
-              image: AssetImage(Assets.imagesProfileImage),
-              fit: BoxFit.contain,
+              image:
+                  image != null
+                      ? CachedNetworkImageProvider(image!)
+                      : AssetImage(Assets.imagesProfileImage),
+              fit: BoxFit.cover,
             ),
           ),
         ),
@@ -64,4 +70,3 @@ class ProfileImage extends StatelessWidget {
     );
   }
 }
-

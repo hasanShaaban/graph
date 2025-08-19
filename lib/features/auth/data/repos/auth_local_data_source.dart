@@ -36,4 +36,19 @@ class AuthLocalDataSource {
       key: HiveBoxes.token,
     );
   }
+
+  Future<void> setUserId(int userId) async {
+    await localDataBaseService.addData(
+      boxName: HiveBoxes.userBox,
+      key: HiveBoxes.userID,
+      value: userId,
+    );
+  }
+
+  Future<int> getUserId() async {
+    return await localDataBaseService.getData(
+      boxName: HiveBoxes.userBox,
+      key: HiveBoxes.userID,
+    );
+  }
 }
