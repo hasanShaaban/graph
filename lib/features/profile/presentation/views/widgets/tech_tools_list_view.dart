@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:graph/features/profile/domain/entity/skill_entity.dart';

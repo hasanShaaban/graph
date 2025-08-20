@@ -31,7 +31,6 @@ class ProfileViewBody extends StatelessWidget {
           return ErrorPage(lang: lang, width: width, state: state);
         } else if (state is ProfileSuccess) {
           var profileModel = state.profileEntity;
-          log('SKILLS LENGTH${profileModel.skills!.length.toString()}');
           return SingleChildScrollView(
             controller: scrollController,
             physics: BouncingScrollPhysics(
@@ -80,6 +79,7 @@ class ProfileViewBody extends StatelessWidget {
                         year: profileModel.year[0],
                         major: profileModel.major[0],
                         skills: profileModel.skills,
+                        links: profileModel.socialLinks,
                         cv: profileModel.cv,
                       ),
                       Divider(

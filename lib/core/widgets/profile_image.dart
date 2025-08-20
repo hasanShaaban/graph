@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../utils/appAssets.dart';
 import '../utils/constants.dart';
 import '../../generated/l10n.dart';
@@ -15,7 +16,7 @@ class ProfileImage extends StatelessWidget {
     this.borderColor = Constants.lightPrimaryColor,
     this.editable = false,
     this.onTap,
-    this.image = Assets.imagesProfileImage,
+    this.image = '',
   });
 
   final double width, imageWidth;
@@ -40,14 +41,22 @@ class ProfileImage extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(color: borderColor!, width: borderThick),
             shape: BoxShape.circle,
-            image: DecorationImage(
-              image:
-                  image != null
-                      ? CachedNetworkImageProvider(image!)
-                      : AssetImage(Assets.imagesProfileImage),
-              fit: BoxFit.cover,
-            ),
+            // borderRadius: BorderRadius.circular(stackWidth /2),
+            image:
+                image != null && image! != ''
+                    ? DecorationImage(
+                      image: CachedNetworkImageProvider(image!),
+                      fit: BoxFit.cover,
+                    )
+                    : null,
           ),
+          child:
+              image == null || image == ''
+                  ? SvgPicture.asset(
+                    Assets.iconsProfile,
+                    color: Constants2.darkSecondaryColor(context),
+                  )
+                  : null,
         ),
         if (editable!)
           Positioned(

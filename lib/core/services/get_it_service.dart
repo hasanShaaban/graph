@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graph/core/services/api_service.dart';
+import 'package:graph/features/main/data/repos/main_repo_impl.dart';
+import 'package:graph/features/main/domain/repos/main_repo.dart';
 import 'package:graph/features/profile/data/repos/profile_repo_impl.dart';
 import 'package:graph/features/profile/domain/repos/profile_repo.dart';
 import '../../features/main/data/local_data_source/settings_local_data_source.dart';
@@ -52,4 +54,6 @@ void setupGetit() {
   getIt.registerSingleton<ProfileRepo>(
     ProfileRepoImpl(getIt<SecureApiService>(), getIt<AuthLocalDataSource>()),
   );
+
+  getIt.registerSingleton<MainRepo>(MainRepoImpl(getIt<SecureApiService>()));
 }

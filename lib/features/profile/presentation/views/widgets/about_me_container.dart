@@ -19,7 +19,8 @@ class AboutMeContainer extends StatelessWidget {
     required this.year,
     required this.major,
     this.skills,
-     this.links, this.cv,
+    this.links,
+    this.cv,
   });
 
   final double width;
@@ -30,7 +31,6 @@ class AboutMeContainer extends StatelessWidget {
   final List<SkillEntity>? skills;
   final List<SocialLinkEntity>? links;
   final String? cv;
-
 
   @override
   Widget build(BuildContext context) {
@@ -68,16 +68,19 @@ class AboutMeContainer extends StatelessWidget {
             ),
             SizedBox(height: 10),
             infoRow(Assets.iconsLink, lang.socialLinks),
-            SocilaLinksListView(lang: lang),
+            links != null && links!.isNotEmpty
+                ? SocilaLinksListView(lang: lang, links: links!,)
+                : Row(children: [Text('no links yet')]),
             SizedBox(height: 10),
             infoRow(Assets.iconsCv, lang.mySV),
-            cv != null?
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, CVPDF.name, arguments: cv!);
-              },
-              child: Text(lang.tapToPreviewTheDocument),
-            ):Text('no CV loaded yet'),
+            cv != null
+                ? TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, CVPDF.name, arguments: cv!);
+                  },
+                  child: Text(lang.tapToPreviewTheDocument),
+                )
+                : Text('no CV loaded yet'),
           ],
         ),
       ),
