@@ -17,14 +17,31 @@ class ApiService {
   Future<Map<String, dynamic>> get({
     required String endPoints,
     var data,
+    Options? options,
   }) async {
-    var response = await _dio.get('$_baseURL$endPoints', queryParameters: data);
+    final token = Hive.box('authBox').get('token');
+
+    final headers = {
+      //if (token != null) 'Authorization': 'Bearer $token',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      ...?options?.headers,
+    };
+    if (token != null) {
+      headers['Authorization'] = 'Bearer $token';
+    }
+    final mergedOptions = Options(headers: headers);
+    var response = await _dio.get(
+      '$_baseURL$endPoints',
+      queryParameters: data,
+      options: mergedOptions,
+    );
     log('$_baseURL$endPoints');
     print(response.data);
     return response.data;
   }
 
-  Future<dynamic> post( {
+  Future<dynamic> post({
     required String endPoint,
     var data,
     Options? options,
@@ -83,6 +100,34 @@ class ApiService {
 
     //return response.data;
     if (response.data is List<dynamic>) {
+      return response.data;
+    } else if (response.data is String) {
+      return {'message': response.data};
+    } else {
+      return {'error': 'Unexpected response type'};
+    }
+  }
+
+  Future<dynamic> delete({required String endPoint, Options? options}) async {
+    final token = Hive.box('authBox').get('token');
+
+    final headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      ...?options?.headers,
+    };
+    if (token != null) {
+      headers['Authorization'] = 'Bearer $token';
+    }
+    final mergedOptions = Options(headers: headers);
+    var response = await _dio.delete(
+      '$_baseURL$endPoint',
+
+      options: mergedOptions,
+    );
+    print(response.data);
+
+    if (response.data is Map<String, dynamic>) {
       return response.data;
     } else if (response.data is String) {
       return {'message': response.data};

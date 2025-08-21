@@ -29,4 +29,19 @@ abstract class AuthRepo {
     Future<Either<Failures, Map<String, dynamic>>> addSocialLinks ({
     required List<SocialLinksModel> socialLinksModel,
   });
+    Future<Either<Failures, Map<String, dynamic>>> deleteProfilePhoto (
+    
+  );  
+      Future<Either<Failures, Map<String, dynamic>>> getStudentInfo(
+  
+  );
+        Future<Either<Failures, Map<String, dynamic>>> getSkills(
+
+  );
+      Future<Either<Failures, Map<String, dynamic>>> postSkills(
+{
+  required Map<String,List<int>> chosenTools,
+}
+  );
+    
 }

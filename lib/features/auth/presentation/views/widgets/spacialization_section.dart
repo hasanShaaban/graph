@@ -29,9 +29,10 @@ class _SpacializationSectionState extends State<SpacializationSection> {
         CustomText(text: lang.pickSpecialization),
         SizedBox(height: 16),
         SpacializationButton(
-          selectSpacialization: (int? newValue) {
+          selectSpacialization: (int? newValue, String name) {
             setState(() {
               spacializationId = newValue;
+                selectedSpecialization = name;
             });
           },
         ),
@@ -42,6 +43,7 @@ class _SpacializationSectionState extends State<SpacializationSection> {
             if (spacializationId != null) {
               final updatedData = widget.signupData.copyWith(
                 specialization: spacializationId!.toString(),
+                specializationName:  selectedSpecialization,
               );
               Navigator.pushNamed(
                 context,

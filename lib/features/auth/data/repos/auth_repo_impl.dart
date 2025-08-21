@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -90,8 +91,8 @@ class AuthRepoImpl implements AuthRepo {
       });
       Map<String, dynamic> response = await apiService.post(
         endPoint: 'Register',
+
         // data: userModel.toJson(),
-      
         data: formData,
 
         options: Options(
@@ -251,24 +252,24 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
-  //Update profile image 
+
+  //Update profile image
   @override
   Future<Either<Failures, Map<String, dynamic>>> profileImage({
     required File image,
   }) async {
     try {
-       FormData formData = FormData.fromMap({
-      'profile_image': await MultipartFile.fromFile(
-        image.path,
-        filename: image.path.split('/').last,
-      ),
-    });
+      FormData formData = FormData.fromMap({
+        'profile_image': await MultipartFile.fromFile(
+          image.path,
+          filename: image.path.split('/').last,
+        ),
+      });
       Map<String, dynamic> response = await apiService.post(
         endPoint: 'student/prfile-photo/update',
- 
-     //   data: {"profile_image": image},
-     data: formData,
+
+        //   data: {"profile_image": image},
+        data: formData,
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -292,30 +293,137 @@ class AuthRepoImpl implements AuthRepo {
 
   //Add social links
   @override
-  Future<Either<Failures, Map<String, dynamic>>> addSocialLinks({required List<SocialLinksModel> socialLinksModel})async {
- try {
-     
-     
-
-       final List<Map<String, dynamic>> links = socialLinksModel.map((link) => {
-      'id': link.id,
-      'name': link.name,
-      'link': link.link,
-    }).toList();
+  Future<Either<Failures, Map<String, dynamic>>> addSocialLinks({
+    required List<SocialLinksModel> socialLinksModel,
+  }) async {
+    try {
+      final List<Map<String, dynamic>> links =
+          socialLinksModel
+              .map(
+                (link) => {'id': link.id, 'name': link.name, 'link': link.link},
+              )
+              .toList();
 
       Map<String, dynamic> response = await apiService.post(
         endPoint: 'student/social_links/add',
-   
-      
-        data: links, 
+
+        data: links,
         options: Options(
           headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
             'Accept': 'application/json',
           },
         ),
       );
       print('Response from add social links: $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      print('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> deleteProfilePhoto() async {
+    try {
+      Map<String, dynamic> response = await apiService.delete(
+        endPoint: 'student/profile-image/delete',
+
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+
+      print('Response for delete photo: $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      print('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> getStudentInfo()async {
+ try {
+      Map<String, dynamic> response = await apiService.get(
+        endPoints: 'user/info',
+
+        
+      );
+
+      print('Response for get user info : $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      print('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> postSkills({required Map<String,List<int>> chosenTools})async {
+  try {
+  Map<String, dynamic> data = {
+  "choice_id": chosenTools["choice_id"],  // 👈 Array مباشر
+};
+      Map<String, dynamic> response = await apiService.post(
+        endPoint: 'select_skill',
+        data: data,
+ options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+        
+      );
+
+      print('Response for post skills : $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      print('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> getSkills()async {
+ try {
+ 
+      Map<String, dynamic> response = await apiService.get(
+        endPoints: 'user_skill',
+ options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+        
+      );
+
+      print('Response for get skills : $response');
 
       return right(response);
     } catch (e) {

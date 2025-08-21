@@ -4,7 +4,7 @@ import '../../../../../core/utils/appAssets.dart';
 import 'animated_container_widget.dart';
 
 class SpacializationButton extends StatefulWidget {
-  final FormFieldSetter<int> selectSpacialization;
+  final Function(int id, String name) selectSpacialization;
   const SpacializationButton({super.key, required this.selectSpacialization});
 
   @override
@@ -25,7 +25,7 @@ class _SpacializationButtonState extends State<SpacializationButton> {
       selected = spacialization;
       selectedSpacializationId = id;
     });
-     widget.selectSpacialization(id); 
+     widget.selectSpacialization(id, spacialization); 
   }
 
   @override

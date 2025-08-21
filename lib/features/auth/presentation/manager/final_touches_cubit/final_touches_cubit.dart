@@ -4,8 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:graph/features/auth/data/models/social_links_model.dart';
-import 'package:graph/features/profile/presentation/views/widgets/social_links_list_view.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../../core/errors/failures.dart';
 import '../../../domain/repos/auth_repo.dart';

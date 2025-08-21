@@ -11,13 +11,16 @@ class FinalTouchesTopSection extends StatelessWidget {
     required this.lang,
     this.image,
     required this.onEditTap,
-    required this.gender,
+    required this.gender, required this.onDelete,
   });
 
   final S lang;
   final File? image;
   final VoidCallback onEditTap;
   final String gender;
+      
+  final VoidCallback onDelete;
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -25,7 +28,7 @@ class FinalTouchesTopSection extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        //Container(height: 100),
+      
         AuthAppBar(
           text1: lang.addFinalTouches,
           text2: '',
@@ -40,6 +43,7 @@ class FinalTouchesTopSection extends StatelessWidget {
           image: image,
           onEditTap: onEditTap,
           gender: gender,
+            onDelete: onDelete, lang: lang,
         ),
       ],
     );

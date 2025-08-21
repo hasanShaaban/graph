@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graph/core/widgets/expandable_text.dart';
-import '../../utils/app_text_style.dart';
 import '../../utils/constants.dart';
 import 'ads_post_widgets/ads_post_header.dart';
 import 'public_post_widgets/react_button.dart';

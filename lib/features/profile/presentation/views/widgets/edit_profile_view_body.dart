@@ -1,6 +1,11 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/features/auth/data/models/signup_data_model.dart';
 import 'package:graph/features/auth/presentation/manager/final_touches_cubit/final_touches_cubit.dart';
+import 'package:graph/features/auth/presentation/manager/post_skills_cubit/post_skills_cubit.dart';
 import '../../../../../core/functions/show_tools_bottom_sheet.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -43,9 +48,34 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   int? selectedYearId;
   int? spacializationId;
   List<String> chosenTools = [];
+
+  SignupDataModel? signupData;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args != null && args is SignupDataModel) {
+      signupData = args;
+    } else {
+      assert(() {
+        print(" No arguments passed, using fake data for design preview");
+        signupData = SignupDataModel(
+          firstName: 'John',
+          lastName: 'Doe',
+          gender: 'Male',
+          birthDate: '2000-01-01',
+          specialization: 'ai',
+          studyYear: '3',
+        );
+        return true;
+      }());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-     final cubit = context.read<FinalTouchesCubit>();
+    final cubit = context.read<FinalTouchesCubit>();
     var lang = S.of(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -59,12 +89,16 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
             ],
           ),
           SizedBox(height: 130),
-          NameAndBirthDateInfo(),
+          NameAndBirthDateInfo(signupDataModel: signupData!),
           SizedBox(height: 36),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
-              children: [FinalTouchesBioSec(onBioChanged: (String ) {  },), SizedBox(height: 13), Divider()],
+              children: [
+                FinalTouchesBioSec(onBioChanged: (String) {}),
+                SizedBox(height: 13),
+                Divider(),
+              ],
             ),
           ),
 
@@ -111,10 +145,28 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 SizedBox(height: 14),
                 Text(lang.techTools, style: AppTextStyle.cairoSemiBold16),
                 chosenTools.isNotEmpty
-                    ? GroupMemberToolsListView(
-                      lang: lang,
-                      chosenTools: chosenTools,
-                      width: width,
+                    ? Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        GroupMemberToolsListView(
+                          lang: lang,
+                          chosenTools: chosenTools,
+                          width: width,
+                        ),
+                        AddButton(
+                          onTap: () async {
+                            final result = await showToolsBottomSheet(
+                              context: context,
+                              initialChosenTools: chosenTools,
+                              lang: lang,
+                              tools: tools,
+                            );
+                            setState(() {
+                              chosenTools = result;
+                            });
+                          },
+                        ),
+                      ],
                     )
                     : AddButton(
                       onTap: () async {
@@ -130,14 +182,60 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                       },
                     ),
                 SizedBox(height: 14),
-                 SocialLinksRow(controller: cubit.facebookController, icon: Assets.iconsFacebook,),
-                      SocialLinksRow(controller: cubit.githubController, icon: Assets.iconsGithub,),
-                      SocialLinksRow(controller: cubit.instagramController, icon: Assets.iconsInstagram,),
-                      SocialLinksRow(controller: cubit.linkedinController, icon: Assets.iconsLinkedin,),
-                    SizedBox(height: 12),
+                SocialLinksRow(
+                  controller: cubit.facebookController,
+                  icon: Assets.iconsFacebook,
+                ),
+                SocialLinksRow(
+                  controller: cubit.githubController,
+                  icon: Assets.iconsGithub,
+                ),
+                SocialLinksRow(
+                  controller: cubit.instagramController,
+                  icon: Assets.iconsInstagram,
+                ),
+                SocialLinksRow(
+                  controller: cubit.linkedinController,
+                  icon: Assets.iconsLinkedin,
+                ),
+                SizedBox(height: 12),
                 CVRow(),
                 SizedBox(height: 40),
-                NextButton(onPressed: () {}, title: lang.Save),
+
+                BlocConsumer<PostSkillsCubit, PostSkillsState>(
+                  listener: (context, state) {
+                    if (state is PostSkillsSuccess) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Skills saved successfully!')),
+                      );
+                    } else if (state is PostSkillsFailuer) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Failed to save skills: ${state.errorMessage}',
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is PostSkillsLoading) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    return SizedBox.shrink(); // أو خليها Container عادي
+                  },
+                ),
+                NextButton(
+                  onPressed: () {
+                    final cubit = context.read<PostSkillsCubit>();
+                    List<int> chosenToolIds =
+                        chosenTools.map((tool) => toolIds[tool]!).toList();
+                    cubit.PostSkills({"choice_id": chosenToolIds});
+                    // cubit.PostSkills({"choice_id": chosenToolIds});
+                  },
+                  title: lang.Save,
+                ),
+                SizedBox(height: 40),
               ],
             ),
           ),
@@ -154,33 +252,14 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
     Assets.imagesGit,
     Assets.imagesPython,
     Assets.imagesJs,
-    Assets.imagesFlutter,
-    Assets.imagesDart,
-    Assets.imagesFigma,
-    Assets.imagesFirebase,
-    Assets.imagesGit,
-    Assets.imagesPython,
-    Assets.imagesJs,
-    Assets.imagesFlutter,
-    Assets.imagesDart,
-    Assets.imagesFigma,
-    Assets.imagesFirebase,
-    Assets.imagesGit,
-    Assets.imagesPython,
-    Assets.imagesJs,
-    Assets.imagesFlutter,
-    Assets.imagesDart,
-    Assets.imagesFigma,
-    Assets.imagesFirebase,
-    Assets.imagesGit,
-    Assets.imagesPython,
-    Assets.imagesJs,
-    Assets.imagesFlutter,
-    Assets.imagesDart,
-    Assets.imagesFigma,
-    Assets.imagesFirebase,
-    Assets.imagesGit,
-    Assets.imagesPython,
-    Assets.imagesJs,
   ];
+  final Map<String, int> toolIds = {
+    Assets.imagesFlutter: 1,
+    Assets.imagesDart: 2,
+    Assets.imagesFigma: 3,
+    Assets.imagesFirebase: 4,
+    Assets.imagesGit: 5,
+    Assets.imagesPython: 6,
+    Assets.imagesJs: 7,
+  };
 }

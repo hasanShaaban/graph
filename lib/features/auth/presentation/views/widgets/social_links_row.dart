@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
 
 class SocialLinksRow extends StatelessWidget {

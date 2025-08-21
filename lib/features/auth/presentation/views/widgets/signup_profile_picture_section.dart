@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'signup_final_touches_sec.dart';
-import 'package:hive/hive.dart';
-import 'signup_verification_section.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../../data/models/user_model.dart';
 import '../../manager/signup_cubit/signup_cubit.dart';

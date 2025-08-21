@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/features/auth/data/models/signup_data_model.dart';
+import 'package:graph/features/auth/presentation/manager/student_info_cubit/student_info_cubit.dart';
 import '../../manager/final_touches_cubit/final_touches_cubit.dart';
 import 'name_and_birth_date_info.dart';
 import '../../../../profile/presentation/views/profile_view.dart';
@@ -22,7 +23,8 @@ import 'tech_tools_icon_add.dart';
 import '../../../../../generated/l10n.dart';
 
 class SignupFinalTouchesSec extends StatefulWidget {
-  const SignupFinalTouchesSec({super.key});
+  const SignupFinalTouchesSec({super.key, required this.signupData});
+  final SignupDataModel signupData;
   static const name = 'finalTouches';
 
   @override
@@ -45,44 +47,34 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
   List<int> selectedItems = [];
 
   String? bioText;
-  File? imageFile;
 
- SignupDataModel? signupData;
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  File? profileImage;
 
-    final args = ModalRoute.of(context)?.settings.arguments;
-    if (args != null && args is SignupDataModel) {
-      signupData = args;
-    } else {
-
-      assert(() {
-        print(" No arguments passed, using fake data for design preview");
-        signupData = SignupDataModel(
-   
-          firstName: 'John',
-          lastName: 'Doe',
-          gender: 'Male',
-          birthDate: '2000-01-01',
-    
-          studyYear: '3',
-        );
-        return true;
-      }());
+  Future<void> pickImage() async {
+    final picker = ImagePicker();
+    final picked = await picker.pickImage(source: ImageSource.gallery);
+    if (picked != null && mounted) {
+      setState(() {
+        profileImage = File(picked.path);
+      });
     }
   }
 
+  void deleteImage() {
+    setState(() => profileImage = null);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<StudentInfoCubit>().getStudentInfo();
+  }
 
   @override
   Widget build(BuildContext context) {
-    
- if (signupData == null) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
-
-  String? gender = signupData!.gender;
- final cubit = context.read<FinalTouchesCubit>();
+    String? gender = widget.signupData.gender;
+    print(gender);
+    final cubit = context.read<FinalTouchesCubit>();
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
@@ -94,21 +86,13 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
               children: [
                 FinalTouchesTopSection(
                   lang: lang,
-                  image: imageFile,
-                  onEditTap: () async {
-                    final picker = ImagePicker();
-                    final picked = await picker.pickImage(
-                      source: ImageSource.gallery,
-                    );
-                    if (picked != null) {
-                      setState(() {
-                        imageFile = File(picked.path);
-                      });
-                    }
-                  },
+                  image: profileImage,
+                  onEditTap: pickImage,
+                  onDelete: deleteImage,
+
                   gender: gender!,
                 ),
-                NameAndBirthDateInfo(),
+                NameAndBirthDateInfo(signupDataModel: widget.signupData),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -117,13 +101,55 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                     children: [
                       FinalTouchesStudySpacializationSec(
                         text1: 'study level: ',
-                        text2: '4th year',
+                        text2: '${widget.signupData.studyYearName!} year',
                       ),
                       SizedBox(height: 7),
                       FinalTouchesStudySpacializationSec(
                         text1: 'spacializtion: ',
-                        text2: 'Software Engineering',
+                        text2: widget.signupData.specializationName ?? '',
                       ),
+
+                      // BlocBuilder<StudentInfoCubit, StudentInfoState>(
+                      //   builder: (context, state) {
+                      //     if (state is StudentInfoLoading) {
+                      //       return Center(child: CircularProgressIndicator());
+                      //     } else if (state is StudentInfoSuccess) {
+                      //       final data = state.response;
+
+                      //       final studyYear =
+                      //           data['year'].firstWhere(
+                      //             (y) =>
+                      //                 y['id'].toString() ==
+                      //                 widget.signupData.studyYear,
+                      //           )['name'];
+
+                      //       final specialization =
+                      //           data['major'].firstWhere(
+                      //             (s) =>
+                      //                 s['id'].toString() ==
+                      //                  widget.signupData.specialization,
+                      //           )['name'];
+
+                      //       return Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.start,
+                      //         children: [
+                      //           FinalTouchesStudySpacializationSec(
+                      //             text1: 'study level: ',
+                      //             text2: studyYear,
+                      //           ),
+                      //           SizedBox(height: 7),
+                      //           FinalTouchesStudySpacializationSec(
+                      //             text1: 'spacialization: ',
+                      //             text2: specialization,
+                      //           ),
+                      //         ],
+                      //       );
+                      //     } else if (state is StudentInfoFailuer) {
+                      //       return Text("خطأ: ${state.errorMessage}");
+                      //     }
+                      //     return SizedBox.shrink();
+                      //   },
+                      // ),
                       SizedBox(height: 30),
                       FinalTouchesBioSec(
                         onBioChanged: (value) {
@@ -206,11 +232,23 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                         ],
                       ),
                       CustomTextCairo16SemiBold(text: 'Social links'),
-                     
-                      SocialLinksRow(controller: cubit.facebookController, icon: Assets.iconsFacebook,),
-                      SocialLinksRow(controller: cubit.githubController, icon: Assets.iconsGithub,),
-                      SocialLinksRow(controller: cubit.instagramController, icon: Assets.iconsInstagram,),
-                      SocialLinksRow(controller: cubit.linkedinController, icon: Assets.iconsLinkedin,),
+
+                      SocialLinksRow(
+                        controller: cubit.facebookController,
+                        icon: Assets.iconsFacebook,
+                      ),
+                      SocialLinksRow(
+                        controller: cubit.githubController,
+                        icon: Assets.iconsGithub,
+                      ),
+                      SocialLinksRow(
+                        controller: cubit.instagramController,
+                        icon: Assets.iconsInstagram,
+                      ),
+                      SocialLinksRow(
+                        controller: cubit.linkedinController,
+                        icon: Assets.iconsLinkedin,
+                      ),
                       SizedBox(height: 20),
                       CVRow(),
                       SizedBox(height: 20),
@@ -233,7 +271,7 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                             onPressed: () {
                               context.read<FinalTouchesCubit>().finalTouches(
                                 bio: bioText,
-                                image: imageFile,
+                                image: profileImage,
                               );
                             },
                           );

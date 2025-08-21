@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graph/core/services/get_it_service.dart';
 import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 
-import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import '../../../../../generated/l10n.dart';
 
 class RemeberMeSection extends StatefulWidget {
   const RemeberMeSection({super.key, this.text});
