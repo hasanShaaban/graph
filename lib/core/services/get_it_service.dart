@@ -1,5 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:graph/core/services/api_service.dart';
+import 'package:graph/features/main/data/repos/main_repo_impl.dart';
+import 'package:graph/features/main/domain/repos/main_repo.dart';
+import 'package:graph/features/profile/data/repos/profile_repo_impl.dart';
+import 'package:graph/features/profile/domain/repos/profile_repo.dart';
 import 'package:graph/core/services/api_service.dart';
 import 'package:graph/features/auth/data/repos/auth_repo_impl.dart';
 import '../../features/main/data/local_data_source/settings_local_data_source.dart';
@@ -19,6 +25,9 @@ void setupGetit() {
   //hive data base service
   getIt.registerSingleton<LocalDataBaseService>(HiveDataBaseService());
 
+  //Dio
+  getIt.registerSingleton<Dio>(Dio());
+
   //onboarding local data source
   getIt.registerSingleton<OnBoardingLocalDataSource>(
     OnBoardingLocalDataSource(getIt<LocalDataBaseService>()),
@@ -29,6 +38,7 @@ void setupGetit() {
     LangeageDataSource(getIt<LocalDataBaseService>()),
   );
 
+  //settings local data source
   getIt.registerSingleton<SettingsLocalDataSource>(
     SettingsLocalDataSource(getIt<LocalDataBaseService>()),
   );
@@ -38,6 +48,18 @@ void setupGetit() {
     AuthLocalDataSource(getIt<LocalDataBaseService>()),
   );
 
+  //Secured api service
+  getIt.registerSingleton<SecureApiService>(
+    SecureApiService(getIt<Dio>(), getIt<AuthLocalDataSource>()),
+  );
+
+  //Profile repo
+  getIt.registerSingleton<ProfileRepo>(
+    ProfileRepoImpl(getIt<SecureApiService>(), getIt<AuthLocalDataSource>()),
+  );
+
+  getIt.registerSingleton<MainRepo>(MainRepoImpl(getIt<SecureApiService>()));
+
   //repo iml data source
-  getIt.registerSingleton<AuthRepoImpl>(AuthRepoImpl(ApiService(Dio())));
+  getIt.registerSingleton<AuthRepoImpl>(AuthRepoImpl(getIt<PublicApiService>()));
 }

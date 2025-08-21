@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/features/main/presentation/views/widgets/home/profile_button.dart';
 import '../../../../../../core/utils/appAssets.dart';
 import '../../../../../../core/utils/constants.dart';
-import '../../../../../profile/presentation/views/profile_view.dart';
 
 import 'package:graph/generated/l10n.dart';
 
@@ -37,15 +37,7 @@ class HomePageAppBar extends StatelessWidget {
             children: [
               SvgPicture.asset(Assets.iconsSearch,color: Constants2.darkPrimaryColor(context),),
               SizedBox(width: 10),
-              IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, ProfileView.name);
-                },
-                icon: CircleAvatar(
-                  radius: 20,
-                  backgroundImage: AssetImage(Assets.imagesProfileImage),
-                ),
-              ),
+              ProfileButton(),
               SizedBox(width: 10),
               SvgPicture.asset(Assets.iconsChat),
               
@@ -56,3 +48,4 @@ class HomePageAppBar extends StatelessWidget {
     );
   }
 }
+

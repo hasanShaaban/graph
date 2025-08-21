@@ -10,4 +10,6 @@ class HiveBoxes {
   static const theme = 'theme';
   static const onBoardingSeen = 'onBoardingSeen';
   static const rejestered = 'rejestered';
+  static const token = 'token';
+  static const userID = 'Id';
 }

@@ -129,6 +129,7 @@
   "profile":"Profile",
   "jobs":"Jobs",
   "ads":"Ads",
-  "apply":"Apply"
+  "apply":"Apply",
+  "noBioYet": "No bio yet"
   
 }

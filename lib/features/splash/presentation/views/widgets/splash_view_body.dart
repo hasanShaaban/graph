@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 import 'package:graph/features/auth/presentation/views/login_view.dart';
+import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
 import 'package:graph/features/main/presentation/views/main_page.dart';
 import 'package:graph/features/onboarding/data/repos/on_boarding_local_data_source.dart';
 import '../../../../../core/services/get_it_service.dart';
@@ -34,10 +35,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     super.initState();
-    _init();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _init(context));
   }
 
-  Future<void> _init() async {
+  Future<void> _init(BuildContext context) async {
     final languageSeen = await langeageDataSource.isLanguageSelected();
     final onBoardingSeen = await onBoardingLocalDataSource.isOnBoardingSeen();
     final rejestered = await authLocalDataSource.isRejestered();
@@ -56,6 +57,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       await Future.delayed(const Duration(seconds: 3));
       if (onBoardingSeen) {
         if (rejestered) {
+          context.read<UserImageCubit>().getUserImage();
           Navigator.pushReplacementNamed(
             context,
             MainPage.name,

@@ -72,7 +72,7 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
                             onTap: () => widget.onRemovePerson(person),
                             child: Stack(
                               children: [
-                                SvgPicture.asset(Assets.iconsRemoveMention),
+                                SvgPicture.asset(Assets.iconsCross),
                                 Positioned(
                                   right: -1,
                                   left: -1,
@@ -100,7 +100,7 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
                   )
                   : BottomButtonContainer(
                     text: lang.mention,
-                    icon: Assets.iconsMention,
+                    icon: Assets.iconsUserTag,
                     onTap: () {
                       showModalBottomSheet(
                         backgroundColor: Colors.transparent,
@@ -125,7 +125,7 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
               SizedBox(width: MediaQuery.of(context).size.width * 15 / 412),
               BottomButtonContainer(
                 text: lang.addTags,
-                icon: Assets.iconsAddTag,
+                icon: Assets.iconsUserTag,
                 onTap: () {
                   showModalBottomSheet(
                     backgroundColor: Colors.transparent,

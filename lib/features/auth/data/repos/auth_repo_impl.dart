@@ -4,7 +4,9 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:graph/core/services/get_it_service.dart';
 import 'package:graph/features/auth/data/models/social_links_model.dart';
+import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 import '../../../../core/services/local_data_base/hive_data_base_service.dart';
 import '../models/company_model.dart';
 import '../models/credintials_model.dart';
@@ -15,9 +17,11 @@ import '../../domain/repos/auth_repo.dart';
 import '../models/user_model.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  final ApiService apiService;
+  final PublicApiService apiService;
 
   AuthRepoImpl(this.apiService);
+
+  final AuthLocalDataSource authLocalDataSource = getIt<AuthLocalDataSource>();
 
   //Email and password
   @override
@@ -135,16 +139,18 @@ class AuthRepoImpl implements AuthRepo {
           },
         ),
       );
-
-      print('Response from login: $response');
+      String token = response['token'];
+      authLocalDataSource.setToken(token);
+      authLocalDataSource.setUserId(response['id']);
+      log('Response from login: $response');
 
       return right(response);
     } catch (e) {
       if (e is DioException) {
-        print('Dio exception: ${e.response?.data}');
+        log('Dio exception: ${e.response?.data}');
         return left(ServerFailure.fromDioError(e));
       }
-      print('Unexpected error: $e');
+      log('Unexpected error: $e');
       return left(ServerFailure(e.toString()));
     }
   }

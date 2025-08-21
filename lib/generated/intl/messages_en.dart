@@ -135,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "mySV": MessageLookupByLibrary.simpleMessage("My SV"),
     "networks": MessageLookupByLibrary.simpleMessage("Networks and OS"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "noBioYet": MessageLookupByLibrary.simpleMessage("No bio yet"),
     "nonStudentAccount": MessageLookupByLibrary.simpleMessage(
       "Non-Student Account",
     ),

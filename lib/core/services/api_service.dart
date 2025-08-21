@@ -2,17 +2,20 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path_provider/path_provider.dart';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 
-class ApiService {
-  final _baseURL = 'http://127.0.0.1:8000/api/';
+final _baseURL = 'http://127.0.0.1:8000/api/';
+
+class PublicApiService {
   final Dio _dio;
 
-  ApiService(this._dio);
+  PublicApiService(this._dio);
 
   Future<Map<String, dynamic>> get({
     required String endPoints,
@@ -37,7 +40,7 @@ class ApiService {
       options: mergedOptions,
     );
     log('$_baseURL$endPoints');
-    print(response.data);
+    log(response.data);
     return response.data;
   }
 
@@ -150,5 +153,33 @@ class ApiService {
     await file.writeAsBytes(byteData.buffer.asUint8List());
 
     return file; // ✅ هذا الملف صار جاهز للإرسال
+  }
+}
+
+class SecureApiService {
+  final Dio _dio;
+  final AuthLocalDataSource authLocalDataSource;
+  SecureApiService(this._dio, this.authLocalDataSource) {
+    
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final token = await authLocalDataSource.getToken();
+          if (token != null) {
+            options.queryParameters['token'] = token;
+          }
+          return handler.next(options);
+        },
+      ),
+    );
+  }
+  Future<Map<String, dynamic>> get({
+    required String endPoints,
+    var data,
+  }) async {
+    var response = await _dio.get('$_baseURL$endPoints', queryParameters: data);
+    log('$_baseURL$endPoints');
+    log('SECURE API SERVICE: get response ================ \n${response.data}');
+    return response.data;
   }
 }
