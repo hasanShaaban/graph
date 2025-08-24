@@ -47,7 +47,6 @@ PublicApiService apiService = PublicApiService(
 final AuthRepo authRepo = AuthRepoImpl(getIt<SecureApiService>());
 final ProfileLocalDataSource profileLocalDataSource =
     getIt<ProfileLocalDataSource>();
-final AuthRepo authRepo = AuthRepoImpl(apiService);
 List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => SignupCubit(authRepo)),
   BlocProvider(create: (context) => LoginCubit(authRepo)),
@@ -70,5 +69,3 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => ProjectCubit(getIt<GroupsRepo>())),
   BlocProvider(create: (context) => ProfilePostsCubit(getIt<ProfileRepo>())),
 ];
-
-

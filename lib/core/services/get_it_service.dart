@@ -66,9 +66,6 @@ void setupGetit() {
   //Public api service
   getIt.registerSingleton<PublicApiService>(PublicApiService(getIt<Dio>()));
 
-  //Public api service
-  getIt.registerSingleton<PublicApiService>(PublicApiService(getIt<Dio>()));
-
   //Profile repo
   getIt.registerSingleton<ProfileRepo>(
     ProfileRepoImpl(getIt<SecureApiService>(), getIt<AuthLocalDataSource>(), getIt<ProfileLocalDataSource>()),
