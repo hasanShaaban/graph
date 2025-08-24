@@ -41,6 +41,7 @@ dependencies:
   flutter_datetime_picker_plus: ^2.2.0
   flutter_localizations:
     sdk: flutter
+  flutter_parsed_text: ^2.2.1
   flutter_svg: ^2.1.0
   font_awesome_flutter: ^10.8.0
   get_it: ^8.0.3

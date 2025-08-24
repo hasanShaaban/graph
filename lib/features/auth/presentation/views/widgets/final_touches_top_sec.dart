@@ -6,19 +6,22 @@ import 'auth_app_bar.dart';
 import '../../../../../generated/l10n.dart';
 
 class FinalTouchesTopSection extends StatelessWidget {
-  const FinalTouchesTopSection({
+   FinalTouchesTopSection({
     super.key,
     required this.lang,
     this.image,
     required this.onEditTap,
-    required this.gender, required this.onDelete,
+    required this.gender,
+    required this.onDelete,  this.text,this.newHeight
   });
 
   final S lang;
   final File? image;
   final VoidCallback onEditTap;
   final String gender;
-      
+  String? text;
+
+double? newHeight;
   final VoidCallback onDelete;
 
   @override
@@ -28,13 +31,13 @@ class FinalTouchesTopSection extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-      
         AuthAppBar(
-          text1: lang.addFinalTouches,
+          text1: text ?? lang.addFinalTouches,
           text2: '',
           onPressed: () {
             Navigator.pop(context);
           },
+          height: newHeight,
         ),
 
         CircularProfilePicture(
@@ -43,7 +46,8 @@ class FinalTouchesTopSection extends StatelessWidget {
           image: image,
           onEditTap: onEditTap,
           gender: gender,
-            onDelete: onDelete, lang: lang,
+          onDelete: onDelete,
+          lang: lang,
         ),
       ],
     );

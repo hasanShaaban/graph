@@ -156,11 +156,39 @@ class PublicApiService {
   }
 }
 
+// class SecureApiService {
+//   final Dio _dio;
+//   final AuthLocalDataSource authLocalDataSource;
+//   SecureApiService(this._dio, this.authLocalDataSource) {
+    
+//     _dio.interceptors.add(
+//       InterceptorsWrapper(
+//         onRequest: (options, handler) async {
+//           final token = await authLocalDataSource.getToken();
+//           if (token != null) {
+//             options.queryParameters['token'] = token;
+//           }
+//           return handler.next(options);
+//         },
+//       ),
+//     );
+//   }
+//   Future<Map<String, dynamic>> get({
+//     required String endPoints,
+//     var data,
+//   }) async {
+//     var response = await _dio.get('$_baseURL$endPoints', queryParameters: data);
+//     log('$_baseURL$endPoints');
+//     log('SECURE API SERVICE: get response ================ \n${response.data}');
+//     return response.data;
+//   }
+// }
+
 class SecureApiService {
   final Dio _dio;
   final AuthLocalDataSource authLocalDataSource;
+
   SecureApiService(this._dio, this.authLocalDataSource) {
-    
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
@@ -173,13 +201,105 @@ class SecureApiService {
       ),
     );
   }
-  Future<Map<String, dynamic>> get({
+
+  final String _baseURL = 'http://127.0.0.1:8000/api/';
+
+  Future<dynamic> get({
     required String endPoints,
     var data,
   }) async {
     var response = await _dio.get('$_baseURL$endPoints', queryParameters: data);
-    log('$_baseURL$endPoints');
-    log('SECURE API SERVICE: get response ================ \n${response.data}');
     return response.data;
+  }
+
+  Future<dynamic> post({
+    required String endPoint,
+    var data,
+    Options? options,
+  }) async {
+    final token = await authLocalDataSource.getToken();
+
+    final headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      ...?options?.headers,
+    };
+    if (token != null) {
+      headers['Authorization'] = 'Bearer $token';
+    }
+
+    final mergedOptions = Options(headers: headers);
+    var response = await _dio.post(
+      '$_baseURL$endPoint',
+      data: data,
+      options: mergedOptions,
+    );
+
+    if (response.data is Map<String, dynamic>) {
+      return response.data;
+    } else if (response.data is String) {
+      return {'message': response.data};
+    } else {
+      return {'error': 'Unexpected response type'};
+    }
+  }
+
+  Future<dynamic> put({
+    required String endPoint,
+    var data,
+    Options? options,
+  }) async {
+    final token = await authLocalDataSource.getToken();
+
+    final headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      ...?options?.headers,
+    };
+    if (token != null) {
+      headers['Authorization'] = 'Bearer $token';
+    }
+
+    final mergedOptions = Options(headers: headers);
+    var response = await _dio.put(
+      '$_baseURL$endPoint',
+      data: data,
+      options: mergedOptions,
+    );
+
+    if (response.data is Map<String, dynamic>) {
+      return response.data;
+    } else if (response.data is String) {
+      return {'message': response.data};
+    } else {
+      return {'error': 'Unexpected response type'};
+    }
+  }
+
+  Future<dynamic> delete({required String endPoint, Options? options}) async {
+    final token = await authLocalDataSource.getToken();
+
+    final headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      ...?options?.headers,
+    };
+    if (token != null) {
+      headers['Authorization'] = 'Bearer $token';
+    }
+
+    final mergedOptions = Options(headers: headers);
+    var response = await _dio.delete(
+      '$_baseURL$endPoint',
+      options: mergedOptions,
+    );
+
+    if (response.data is Map<String, dynamic>) {
+      return response.data;
+    } else if (response.data is String) {
+      return {'message': response.data};
+    } else {
+      return {'error': 'Unexpected response type'};
+    }
   }
 }

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -17,7 +16,7 @@ import '../../domain/repos/auth_repo.dart';
 import '../models/user_model.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  final PublicApiService apiService;
+  final SecureApiService apiService;
 
   AuthRepoImpl(this.apiService);
 
@@ -231,12 +230,40 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   //Update bio
-  @override
-  Future<Either<Failures, List<dynamic>>> bio({required String bio}) async {
-    try {
-      List<dynamic> response = await apiService.put(
-        endPoint: 'student/bio/update',
+  // @override
+  // Future<Either<Failures,  Map<String, dynamic>>> bio({required String bio}) async {
+  //   try {
+  // Map<String, dynamic> response = await apiService.put(
+  //       endPoint: 'student/bio/update',
 
+  //       data: {"bio": bio},
+  //       options: Options(
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Accept': 'application/json',
+  //         },
+  //       ),
+  //     );
+
+  //     print('Response : $response');
+
+  //     return right(response);
+  //   } catch (e) {
+  //     if (e is DioException) {
+  //       print('Dio exception: ${e.response?.data}');
+  //       return left(ServerFailure.fromDioError(e));
+  //     }
+  //     print('Unexpected error: $e');
+  //     return left(ServerFailure(e.toString()));
+  //   }
+  // }
+  @override
+  Future<Either<Failures, List<Map<String, dynamic>>>> bio({
+    required String bio,
+  }) async {
+    try {
+      final response = await apiService.put(
+        endPoint: 'student/bio/update',
         data: {"bio": bio},
         options: Options(
           headers: {
@@ -246,15 +273,18 @@ class AuthRepoImpl implements AuthRepo {
         ),
       );
 
-      print('Response : $response');
-
-      return right(response);
-    } catch (e) {
-      if (e is DioException) {
-        print('Dio exception: ${e.response?.data}');
-        return left(ServerFailure.fromDioError(e));
+      // تحويل أي نوع response إلى List<Map<String, dynamic>>
+      if (response is List) {
+        return right(response.map((e) => e as Map<String, dynamic>).toList());
+      } else if (response is Map) {
+        return right([Map<String, dynamic>.from(response)]);
+      } else {
+        return right([
+          {"error": "Unexpected response type", "data": response.toString()},
+        ]);
       }
-      print('Unexpected error: $e');
+    } catch (e) {
+      if (e is DioException) return left(ServerFailure.fromDioError(e));
       return left(ServerFailure(e.toString()));
     }
   }
@@ -276,12 +306,7 @@ class AuthRepoImpl implements AuthRepo {
 
         //   data: {"profile_image": image},
         data: formData,
-        options: Options(
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-        ),
+        options: Options(headers: {'Accept': 'application/json'}),
       );
 
       print('Response : $response');
@@ -340,12 +365,7 @@ class AuthRepoImpl implements AuthRepo {
       Map<String, dynamic> response = await apiService.delete(
         endPoint: 'student/profile-image/delete',
 
-        options: Options(
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-        ),
+        options: Options(headers: {'Accept': 'application/json'}),
       );
 
       print('Response for delete photo: $response');
@@ -360,14 +380,12 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failures, Map<String, dynamic>>> getStudentInfo()async {
- try {
+  Future<Either<Failures, Map<String, dynamic>>> getStudentInfo() async {
+    try {
       Map<String, dynamic> response = await apiService.get(
         endPoints: 'user/info',
-
-        
       );
 
       print('Response for get user info : $response');
@@ -382,51 +400,67 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
+
+  // @override
+  // Future<Either<Failures, Map<String, dynamic>>> postSkills({
+  //   required Map<String, List<int>> chosenTools,
+  // }) async {
+  //   try {
+  //     Map<String, dynamic> data = {"choice_id": chosenTools["choice_id"]};
+  //     Map<String, dynamic> response = await apiService.post(
+  //       endPoint: 'select_skill',
+  //       data: data,
+  //       options: Options(
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Accept': 'application/json',
+  //         },
+  //       ),
+  //     );
+
+  //     print('Response for post skills : $response');
+
+  //     return right(response);
+  //   } catch (e) {
+  //     if (e is DioException) {
+  //       print('Dio exception: ${e.response?.data}');
+  //       return left(ServerFailure.fromDioError(e));
+  //     }
+  //     print('Unexpected error: $e');
+  //     return left(ServerFailure(e.toString()));
+  //   }
+  // }
+
   @override
-  Future<Either<Failures, Map<String, dynamic>>> postSkills({required Map<String,List<int>> chosenTools})async {
-  try {
-  Map<String, dynamic> data = {
-  "choice_id": chosenTools["choice_id"],  // 👈 Array مباشر
-};
-      Map<String, dynamic> response = await apiService.post(
+  Future<Either<Failures, Map<String, dynamic>>> postSkills({
+    required Map<String, List<int>> chosenTools,
+  }) async {
+    if (chosenTools["choice_id"] == null || chosenTools["choice_id"]!.isEmpty) {
+      return right({"message": "No skills selected"});
+    }
+    try {
+      final response = await apiService.post(
         endPoint: 'select_skill',
-        data: data,
- options: Options(
+        data: {"choice_id": chosenTools["choice_id"]},
+        options: Options(
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
           },
         ),
-        
       );
-
-      print('Response for post skills : $response');
-
       return right(response);
     } catch (e) {
-      if (e is DioException) {
-        print('Dio exception: ${e.response?.data}');
-        return left(ServerFailure.fromDioError(e));
-      }
-      print('Unexpected error: $e');
+      if (e is DioException) return left(ServerFailure.fromDioError(e));
       return left(ServerFailure(e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failures, Map<String, dynamic>>> getSkills()async {
- try {
- 
-      Map<String, dynamic> response = await apiService.get(
-        endPoints: 'user_skill',
- options: Options(
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-        ),
-        
+  Future<Either<Failures, List<dynamic>>> getSkills() async {
+    try {
+      List<dynamic> response = await apiService.get(
+        endPoints: 'skills_list',
       );
 
       print('Response for get skills : $response');

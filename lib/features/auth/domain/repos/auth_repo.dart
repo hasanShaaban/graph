@@ -22,7 +22,7 @@ abstract class AuthRepo {
   Future<Either<Failures, Map<String, dynamic>>> company({
     required CompanyModel companyModel,
   });
-  Future<Either<Failures, List<dynamic>>> bio({required String bio});
+  Future<Either<Failures,  List<Map<String, dynamic>>>> bio({required String bio});
   Future<Either<Failures, Map<String, dynamic>>> profileImage({
     required File image,
   });
@@ -35,7 +35,7 @@ abstract class AuthRepo {
       Future<Either<Failures, Map<String, dynamic>>> getStudentInfo(
   
   );
-        Future<Either<Failures, Map<String, dynamic>>> getSkills(
+        Future<Either<Failures, List<dynamic>>> getSkills(
 
   );
       Future<Either<Failures, Map<String, dynamic>>> postSkills(

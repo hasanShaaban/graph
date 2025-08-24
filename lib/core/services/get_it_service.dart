@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graph/core/services/api_service.dart';
+import 'package:graph/features/auth/domain/repos/auth_repo.dart';
+import 'package:graph/features/create_post/data/repos/create_post_repo_iml.dart';
+import 'package:graph/features/create_post/domain/repos/create_post_repo.dart';
 import 'package:graph/features/main/data/repos/main_repo_impl.dart';
 import 'package:graph/features/main/domain/repos/main_repo.dart';
 import 'package:graph/features/profile/data/repos/profile_repo_impl.dart';
 import 'package:graph/features/profile/domain/repos/profile_repo.dart';
-import 'package:graph/core/services/api_service.dart';
 import 'package:graph/features/auth/data/repos/auth_repo_impl.dart';
 import '../../features/main/data/local_data_source/settings_local_data_source.dart';
 import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
@@ -52,6 +53,8 @@ void setupGetit() {
   getIt.registerSingleton<SecureApiService>(
     SecureApiService(getIt<Dio>(), getIt<AuthLocalDataSource>()),
   );
+  //Public api service
+  getIt.registerSingleton<PublicApiService>(PublicApiService(getIt<Dio>()));
 
   //Profile repo
   getIt.registerSingleton<ProfileRepo>(
@@ -60,6 +63,15 @@ void setupGetit() {
 
   getIt.registerSingleton<MainRepo>(MainRepoImpl(getIt<SecureApiService>()));
 
+  getIt.registerSingleton<AuthRepo>(AuthRepoImpl(getIt<SecureApiService>()));
+  getIt.registerSingleton<CreatePostRepo>(
+    CreatePostRepoIml(getIt<SecureApiService>(), getIt<AuthLocalDataSource>()),
+  );
+
   //repo iml data source
-  getIt.registerSingleton<AuthRepoImpl>(AuthRepoImpl(getIt<PublicApiService>()));
+  //getIt.registerSingleton<AuthRepoImpl>(AuthRepoImpl(PublicApiService(Dio())));
+  //Profile repo
+  // getIt.registerSingleton<AuthRepo>(
+  //   AuthRepoImpl(getIt<SecureApiService>(), getIt<AuthLocalDataSource>()),
+  // );
 }

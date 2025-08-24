@@ -99,9 +99,9 @@ class Assets {
   /// assets/icons/earth-europa.svg
   static const String iconsEarthEuropa = "assets/icons/earth-europa.svg";
 
-  /// Assets for iconsEllipse 
+  /// Assets for iconsEllipse
   /// assets/icons/Ellipse .svg
-  static const String iconsEllipse  = "assets/icons/Ellipse .svg";
+  static const String iconsEllipse = "assets/icons/Ellipse .svg";
 
   /// Assets for iconsEmployeeMan
   /// assets/icons/employee-man.svg
@@ -317,7 +317,6 @@ class Assets {
   /// assets/icons/users.svg
   static const String iconsUsers = "assets/icons/users.svg";
 
-
   ///Assets for users
   ///assets/icons/user-tag.svg
   static const String iconsAddTag = "assets/icons/user-tag.svg";
@@ -330,10 +329,18 @@ class Assets {
   ///assets/icons/Ellipse.svg
   static const String iconsRemoveMention = "assets/icons/Ellipse.svg";
 
- 
+  ///Assets for remove mentioned person
+  ///assets/icons/#.svg
+  static const String iconsHash = "assets/icons/#.svg";
+
+  ///Assets for remove mentioned person
+  ///  assets/icons/check.svg
+  static const String iconsCheck = "assets/icons/check.svg";
+
   /// Assets for images45863881023451830399
   /// assets/images/4_5863881023451830399.jpeg
-  static const String images45863881023451830399 = "assets/images/4_5863881023451830399.jpeg";
+  static const String images45863881023451830399 =
+      "assets/images/4_5863881023451830399.jpeg";
 
   /// Assets for imagesBoyProfile
   /// assets/images/boy_profile.json

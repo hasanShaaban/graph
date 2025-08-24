@@ -27,7 +27,11 @@ class CustomDropDownMap extends StatelessWidget {
   Widget build(BuildContext context) {
     final selectedItem = list!.firstWhere(
       (item) => item['label'] == text,
-      orElse: () => <String, String>{'label': 'public', 'icon': Assets.iconsEarthAfrica},
+      orElse:
+          () => <String, String>{
+            'label': 'public',
+            'icon': Assets.iconsEarthAfrica,
+          },
     );
     return Container(
       width: width,
@@ -46,18 +50,24 @@ class CustomDropDownMap extends StatelessWidget {
                 return DropdownMenuItem<String>(
                   value: map['label'],
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SvgPicture.asset(
-                        map['icon'],
-                        width: 16,
-                        height: 16,
-                        color: Constants2.darkPrimaryColor(context),
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        map['label'],
-                        style: AppTextStyle.cairoSemiBold14.copyWith(
-                          color: Constants2.darkPrimaryColor(context),
+                      // SvgPicture.asset(
+                      //   map['icon'],
+                      //   width: 16,
+                      //   height: 16,
+                      //   color: Constants2.darkPrimaryColor(context),
+                      // ),
+                      // const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          map['label'] ?? '',
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: null,
+                          softWrap: true,
+                          style: AppTextStyle.cairoSemiBold14.copyWith(
+                            color: Constants2.darkPrimaryColor(context),
+                          ),
                         ),
                       ),
                     ],
@@ -70,18 +80,24 @@ class CustomDropDownMap extends StatelessWidget {
           hint: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                selectedItem['icon'],
-                width: 16,
-                height: 16,
-                color: Constants2.primaryColor(context),
-              ),
-              SizedBox(width: 3),
-              Text(
-                text,
-
-                style: AppTextStyle.cairoSemiBold14.copyWith(
+              if (selectedItem['icon'] != null) ...[
+                SvgPicture.asset(
+                  selectedItem['icon'],
+                  width: 16,
+                  height: 16,
                   color: Constants2.primaryColor(context),
+                ),
+                const SizedBox(width: 3),
+              ],
+              Expanded(
+                child: Text(
+                  text,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  softWrap: false,
+                  style: AppTextStyle.cairoSemiBold14.copyWith(
+                    color: Constants2.primaryColor(context),
+                  ),
                 ),
               ),
             ],

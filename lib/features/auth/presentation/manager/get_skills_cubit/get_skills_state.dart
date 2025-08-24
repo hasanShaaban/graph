@@ -8,7 +8,7 @@ final class GetSkillsInitial extends GetSkillsState {}
 final class GetSkillsLoading extends GetSkillsState {}
 
 final class GetSkillsSuccess extends GetSkillsState {
-  final Map<String, dynamic> response;
+  final List<dynamic> response;
 
 GetSkillsSuccess(this.response);
   

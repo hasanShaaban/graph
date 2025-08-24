@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,6 +80,7 @@ class ProfileViewBody extends StatelessWidget {
                         skills: profileModel.skills,
                         links: profileModel.socialLinks,
                         cv: profileModel.cv,
+                        model: profileModel,
                       ),
                       Divider(
                         thickness: 1,

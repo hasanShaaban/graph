@@ -20,7 +20,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graph/features/auth/presentation/views/widgets/full_screen_image_view.dart';
 import 'package:graph/generated/l10n.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
@@ -110,13 +109,12 @@ class CircularProfilePicture extends StatelessWidget {
                     ),
                   ),
                 ),
-
-               
               ),
             ),
           ),
           Positioned(
-            bottom: 0,
+            bottom: 4,
+
             right: width * (134 / 412),
             child: GestureDetector(
               onTap: onEditTap,

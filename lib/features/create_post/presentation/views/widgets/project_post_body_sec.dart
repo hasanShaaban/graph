@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../generated/l10n.dart';
 
 class ProjectPostBodySec extends StatefulWidget {
-  const ProjectPostBodySec({super.key});
+  const ProjectPostBodySec({super.key, this.onChangedTitle, this.onChangedDescription, });
+  final void Function(String)? onChangedTitle;
+    final void Function(String)? onChangedDescription;
 
   @override
   State<ProjectPostBodySec> createState() => _ProjectPostBodySecState();
 }
 
 class _ProjectPostBodySecState extends State<ProjectPostBodySec> {
-  final list = [
-    {'label': 'public', 'icon': Assets.iconsEarthAfrica},
-    {'label': 'friends', 'icon': Assets.iconsUsers},
-    {'label': 'project', 'icon': Assets.iconsPollH},
-    {'label': 'group', 'icon': Assets.iconsCoworking},
-    {'label': 'job', 'icon': Assets.iconsEmployeeMan},
-  ];
 
-  String? selectedProject;
-  String? selectedSubject;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +24,7 @@ class _ProjectPostBodySecState extends State<ProjectPostBodySec> {
           children: [
             SizedBox(height: 20),
             TextField(
+              onChanged: widget.onChangedTitle,
               decoration: InputDecoration(
                 hintText: '${lang.title}:',
                 hintStyle: AppTextStyle.cairoSemiBold14,
@@ -40,6 +33,7 @@ class _ProjectPostBodySecState extends State<ProjectPostBodySec> {
             ),
             SizedBox(height: 20),
             TextField(
+              onChanged: widget.onChangedDescription,
               maxLines: 20,
               decoration: InputDecoration(
                 hintText: '${lang.description}...',

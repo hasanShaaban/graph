@@ -16,8 +16,8 @@ class PostSkillsCubit extends Cubit<PostSkillsState> {
       (failures) {
         emit(PostSkillsFailuer(failures.errMessage));
       },
-      (signupCompany) {
-        emit(PostSkillsSuccess(signupCompany));
+      (postSkills) {
+        emit(PostSkillsSuccess(postSkills));
       },
     );
   }

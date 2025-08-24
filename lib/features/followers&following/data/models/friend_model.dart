@@ -4,16 +4,11 @@ import 'package:graph/features/followers&following/domain/entity/friend_entity.d
 
 class FriendModel extends FriendEntity {
   const FriendModel({
-    required int id,
-    required String name,
-    required String profileImageUrl,
-    required String role,
-  }) : super(
-          id: id,
-          name: name,
-          profileImageUrl: profileImageUrl,
-          role: role,
-        );
+    required super.id,
+    required super.name,
+    required super.profileImageUrl,
+    required super.role,
+  });
 
   factory FriendModel.fromJson(Map<String, dynamic> json) {
     return FriendModel(

@@ -4,12 +4,13 @@ import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
 
 class PostButton extends StatelessWidget {
-  const PostButton({super.key});
-
+  const PostButton({super.key,required this.onTap});
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     final lang = S.of(context);
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

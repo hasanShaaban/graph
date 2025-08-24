@@ -1,11 +1,13 @@
-import 'dart:convert';
+import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/features/auth/data/models/signup_data_model.dart';
 import 'package:graph/features/auth/presentation/manager/final_touches_cubit/final_touches_cubit.dart';
-import 'package:graph/features/auth/presentation/manager/post_skills_cubit/post_skills_cubit.dart';
+import 'package:graph/features/auth/presentation/views/widgets/final_touches_top_sec.dart';
+import 'package:graph/features/auth/presentation/views/widgets/signup_verification_section.dart';
+import 'package:graph/features/profile/data/models/profile_model.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../../core/functions/show_tools_bottom_sheet.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -49,6 +51,23 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   int? spacializationId;
   List<String> chosenTools = [];
 
+  String? bioText;
+
+  File? profileImage;
+  Future<void> pickImage() async {
+    final picker = ImagePicker();
+    final picked = await picker.pickImage(source: ImageSource.gallery);
+    if (picked != null && mounted) {
+      setState(() {
+        profileImage = File(picked.path);
+      });
+    }
+  }
+
+  void deleteImage() {
+    setState(() => profileImage = null);
+  }
+
   SignupDataModel? signupData;
   @override
   void didChangeDependencies() {
@@ -76,6 +95,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<FinalTouchesCubit>();
+    final signupData =
+        ModalRoute.of(context)!.settings.arguments as SignupDataModel;
+    final model = ModalRoute.of(context)!.settings.arguments as ProfileModel;
     var lang = S.of(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -83,19 +105,35 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            children: [
-              EditProfileHeader(height: height, lang: lang, width: width),
-            ],
+          // Column(
+          //   children: [
+          //     EditProfileHeader(height: height, lang: lang, width: width),
+          //   ],
+          // ),
+          FinalTouchesTopSection(
+            text: '',
+            lang: lang,
+            onEditTap: pickImage,
+            gender: signupData.gender!,
+            onDelete: deleteImage,
+            image: profileImage,
+            // newHeight: MediaQuery.of(context).size.height * 200 / 1089,
           ),
-          SizedBox(height: 130),
-          NameAndBirthDateInfo(signupDataModel: signupData!),
+          //SizedBox(height: 130),
+          NameAndBirthDateInfo(signupDataModel: signupData),
+
           SizedBox(height: 36),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
-                FinalTouchesBioSec(onBioChanged: (String) {}),
+                FinalTouchesBioSec(
+                  onBioChanged: (value) {
+                    setState(() {
+                      bioText = value;
+                    });
+                  },
+                ),
                 SizedBox(height: 13),
                 Divider(),
               ],
@@ -107,7 +145,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomTextCairo16SemiBold(text: 'Study level:'),
+                CustomTextCairo16SemiBold(text: signupData.studyYear!),
                 Center(
                   child: CustomDropDown(
                     list: studyYear!,
@@ -125,7 +163,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 SizedBox(height: 14),
                 if (selectVal == studyYear![3] ||
                     selectVal == studyYear![4]) ...[
-                  CustomTextCairo16SemiBold(text: 'Spacialization:'),
+                  CustomTextCairo16SemiBold(text: signupData.specialization!),
                   Center(
                     child: CustomDropDown(
                       list: spacialization!,
@@ -150,8 +188,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                       children: [
                         GroupMemberToolsListView(
                           lang: lang,
-                          chosenTools: chosenTools,
+                          chosenTools:  chosenTools,
                           width: width,
+
                         ),
                         AddButton(
                           onTap: () async {
@@ -202,39 +241,62 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 CVRow(),
                 SizedBox(height: 40),
 
-                BlocConsumer<PostSkillsCubit, PostSkillsState>(
-                  listener: (context, state) {
-                    if (state is PostSkillsSuccess) {
+                // BlocConsumer<PostSkillsCubit, PostSkillsState>(
+                //   listener: (context, state) {
+                //     if (state is PostSkillsSuccess) {
+                //       ScaffoldMessenger.of(context).showSnackBar(
+                //         SnackBar(content: Text('Skills saved successfully!')),
+                //       );
+                //     } else if (state is PostSkillsFailuer) {
+                //       ScaffoldMessenger.of(context).showSnackBar(
+                //         SnackBar(
+                //           content: Text(
+                //             'Failed to save skills: ${state.errorMessage}',
+                //           ),
+                //         ),
+                //       );
+                //     }
+                //   },
+                //   builder: (context, state) {
+                //     if (state is PostSkillsLoading) {
+                //       return Center(child: CircularProgressIndicator());
+                //     }
+                //     return SizedBox.shrink(); // أو خليها Container عادي
+                //   },
+                // ),
+                BlocConsumer<FinalTouchesCubit, FinalTouchesState>(
+                  listener: (context, state) async {
+                    if (state is FinalTouchesSuccess) {
+                      // Navigator.pushNamed(
+                      //   context,
+                      //   SignupVerificationSection.name,
+                      // );
+                      print('well done');
+                    } else if (state is FinalTouchesFailuer) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Skills saved successfully!')),
-                      );
-                    } else if (state is PostSkillsFailuer) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Failed to save skills: ${state.errorMessage}',
-                          ),
-                        ),
+                        SnackBar(content: Text(state.errorMessage)),
                       );
                     }
                   },
                   builder: (context, state) {
-                    if (state is PostSkillsLoading) {
-                      return Center(child: CircularProgressIndicator());
-                    }
-                    return SizedBox.shrink(); // أو خليها Container عادي
+                    return NextButton(
+                      title: lang.Save,
+                      isLoading: state is FinalTouchesLoading,
+
+                      onPressed: () {
+                        final selectedIds =
+                            chosenTools.map((tool) => toolIds[tool]!).toList();
+
+                        context.read<FinalTouchesCubit>().finalTouches(
+                          bio: bioText,
+                          image: profileImage,
+                          chosenTools: {"choice_id": selectedIds},
+                        );
+                      },
+                    );
                   },
                 ),
-                NextButton(
-                  onPressed: () {
-                    final cubit = context.read<PostSkillsCubit>();
-                    List<int> chosenToolIds =
-                        chosenTools.map((tool) => toolIds[tool]!).toList();
-                    cubit.PostSkills({"choice_id": chosenToolIds});
-                    // cubit.PostSkills({"choice_id": chosenToolIds});
-                  },
-                  title: lang.Save,
-                ),
+
                 SizedBox(height: 40),
               ],
             ),
