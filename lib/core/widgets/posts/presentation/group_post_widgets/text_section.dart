@@ -6,7 +6,6 @@ import '../../../../../generated/l10n.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/expandable_text.dart';
-import 'package:graph/generated/l10n.dart';
 
 class TextSection extends StatelessWidget {
   const TextSection({

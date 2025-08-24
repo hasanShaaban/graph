@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/utils/constants.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../generated/l10n.dart';
 
 class PublicPostBodySec extends StatelessWidget {
-  const PublicPostBodySec({super.key});
+  const PublicPostBodySec({super.key, required this.onChanged});
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -16,23 +18,16 @@ class PublicPostBodySec extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              onChanged: onChanged,
               maxLines: 20,
 
               decoration: InputDecoration(
                 hintText: '${lang.description}...',
-                hintStyle: AppTextStyle.cairoSemiBold14,
+                hintStyle: AppTextStyle.cairoSemiBold14.copyWith(
+                  color: Constants2.darkSecondaryColor(context),
+                ),
               ),
             ),
-
-            // SizedBox(height: 10),
-            // TextField(
-            //   maxLines: 20,
-            //   decoration: InputDecoration(
-            //     hintText: '${lang.description}...',
-            //     hintStyle: AppTextStyle.cairoRegular14,
-            //   ),
-            // ),
-            //Expanded(child: Container(child: Image.asset(''))),
           ],
         ),
       ),

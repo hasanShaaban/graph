@@ -22,11 +22,26 @@ abstract class AuthRepo {
   Future<Either<Failures, Map<String, dynamic>>> company({
     required CompanyModel companyModel,
   });
-  Future<Either<Failures, List<dynamic>>> bio({required String bio});
+  Future<Either<Failures,  List<Map<String, dynamic>>>> bio({required String bio});
   Future<Either<Failures, Map<String, dynamic>>> profileImage({
     required File image,
   });
     Future<Either<Failures, Map<String, dynamic>>> addSocialLinks ({
     required List<SocialLinksModel> socialLinksModel,
   });
+    Future<Either<Failures, Map<String, dynamic>>> deleteProfilePhoto (
+    
+  );  
+      Future<Either<Failures, Map<String, dynamic>>> getStudentInfo(
+  
+  );
+        Future<Either<Failures, List<dynamic>>> getSkills(
+
+  );
+      Future<Either<Failures, Map<String, dynamic>>> postSkills(
+{
+  required Map<String,List<int>> chosenTools,
+}
+  );
+    
 }

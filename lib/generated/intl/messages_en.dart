@@ -200,6 +200,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "studentAccount": MessageLookupByLibrary.simpleMessage("Student Account"),
     "subject": MessageLookupByLibrary.simpleMessage("Subject"),
     "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+    "tags": MessageLookupByLibrary.simpleMessage("tags: "),
     "tapToPreviewTheDocument": MessageLookupByLibrary.simpleMessage(
       "Tap to preview the document",
     ),

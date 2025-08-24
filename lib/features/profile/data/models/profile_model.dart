@@ -4,32 +4,19 @@ import 'package:graph/features/profile/domain/entity/profile_entity.dart';
 
 class ProfileModel extends ProfileEntity {
   const ProfileModel({
-    required int id,
-    required String name,
-    required List<String> year,
-    required List<String> major,
-    required String? bio,
-    required String gender,
-    required String? cv,
-    required String? image,
-    required List<SocialLinkModel>? socialLinks,
-    required double? rate,
-    required List<SkillModel>? skills,
-    required int? groupId,
-  }) : super(
-         id: id,
-         name: name,
-         year: year,
-         major: major,
-         bio: bio,
-         gender: gender,
-         cv: cv,
-         image: image,
-         socialLinks: socialLinks,
-         rate: rate,
-         skills: skills,
-         groupId: groupId,
-       );
+    required super.id,
+    required super.name,
+    required super.year,
+    required super.major,
+    required super.bio,
+    required super.gender,
+    required super.cv,
+    required super.image,
+    required List<SocialLinkModel>? super.socialLinks,
+    required super.rate,
+    required List<SkillModel>? super.skills,
+    required super.groupId,
+  });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     return ProfileModel(

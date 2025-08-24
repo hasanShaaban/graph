@@ -1018,6 +1018,11 @@ class S {
   String get noBioYet {
     return Intl.message('No bio yet', name: 'noBioYet', desc: '', args: []);
   }
+
+  /// `tags: `
+  String get tags {
+    return Intl.message('tags: ', name: 'tags', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

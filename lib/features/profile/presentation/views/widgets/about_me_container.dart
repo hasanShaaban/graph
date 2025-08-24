@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/features/profile/domain/entity/profile_entity.dart';
 import 'package:graph/features/profile/domain/entity/skill_entity.dart';
 import 'package:graph/features/profile/domain/entity/social_link_entity.dart';
 import '../../../../../core/utils/appAssets.dart';
@@ -21,6 +22,7 @@ class AboutMeContainer extends StatelessWidget {
     this.skills,
     this.links,
     this.cv,
+    required this.model,
   });
 
   final double width;
@@ -31,6 +33,7 @@ class AboutMeContainer extends StatelessWidget {
   final List<SkillEntity>? skills;
   final List<SocialLinkEntity>? links;
   final String? cv;
+  final ProfileEntity model;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,15 @@ class AboutMeContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AboutMeHeader(lang: lang),
+            AboutMeHeader(
+              lang: lang,
+              year: year,
+              major: major,
+              links: links,
+              cv: cv,
+              skills: skills,
+              model:model
+            ),
             Divider(
               thickness: 1,
               color: Constants2.dividerColor(context),
@@ -69,7 +80,7 @@ class AboutMeContainer extends StatelessWidget {
             SizedBox(height: 10),
             infoRow(Assets.iconsLink, lang.socialLinks),
             links != null && links!.isNotEmpty
-                ? SocilaLinksListView(lang: lang, links: links!,)
+                ? SocilaLinksListView(lang: lang, links: links!)
                 : Row(children: [Text('no links yet')]),
             SizedBox(height: 10),
             infoRow(Assets.iconsCv, lang.mySV),

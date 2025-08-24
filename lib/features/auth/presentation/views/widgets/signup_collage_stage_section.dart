@@ -21,13 +21,13 @@ class SignupCollageStageSection extends StatefulWidget {
 }
 
 class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
-  final List<String>? studyYear = [
-    'first',
-    'second',
-    'third',
-    'fourth',
-    'fifth',
-  ];
+  final Map<int, String> studyYear = {
+    1: 'first',
+    2: 'second',
+    3: 'third',
+    4: 'fourth',
+    5: 'fifth',
+  };
 
   String? selectVal;
   int? selectedYearId;
@@ -41,7 +41,6 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
 
   @override
   Widget build(BuildContext context) {
-    
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
@@ -69,10 +68,10 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 15),                  
+                    SizedBox(height: 15),
                     Material(
                       child: customDropDownButton(
-                        list: studyYear,
+                        list: studyYear.values.toList(),
                         text:
                             selectVal == null
                                 ? lang.selectYear
@@ -81,7 +80,10 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                         onChanged: (value) {
                           setState(() {
                             selectVal = value;
-                            selectedYearId = studyYear!.indexOf(value) + 1;
+                            selectedYearId =
+                                studyYear.entries
+                                    .firstWhere((entry) => entry.value == value)
+                                    .key;
                           });
                         },
                         width: 300,
@@ -91,10 +93,11 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                       ),
                     ),
 
-                    (selectVal == studyYear![3] || selectVal == studyYear![4])
+                    (selectVal == studyYear[4] || selectVal == studyYear[5])
                         ? SpacializationSection(
                           signupData: signupData.copyWith(
                             studyYear: selectedYearId?.toString(),
+                            studyYearName: selectVal,
                           ),
                         )
                         : Padding(
@@ -111,6 +114,7 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
                                   SignupProfilePictureSection.name,
                                   arguments: signupData.copyWith(
                                     studyYear: selectedYearId?.toString(),
+                                    studyYearName: selectVal,
                                   ),
                                 );
                               }
@@ -168,4 +172,4 @@ class _SignupCollageStageSectionState extends State<SignupCollageStageSection> {
 //       ),
 //     );
 //   }
-// }  
+// }

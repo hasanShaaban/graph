@@ -82,6 +82,7 @@ class ProfileViewBody extends StatelessWidget {
                         skills: profileModel.skills,
                         links: profileModel.socialLinks,
                         cv: profileModel.cv,
+                        model: profileModel,
                       ),
                       Divider(
                         thickness: 1,

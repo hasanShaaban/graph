@@ -10,6 +10,8 @@ class SignupDataModel {
   final String? role;
   final String? image;
   final bool? isStudent;
+    String? specializationName;
+      String? studyYearName;
 
   SignupDataModel({
  
@@ -22,6 +24,8 @@ class SignupDataModel {
     this.role,
     this.image,
     this.isStudent,
+    this.specializationName,
+    this.studyYearName,
   });
 
   SignupDataModel copyWith({
@@ -34,6 +38,8 @@ class SignupDataModel {
     String? role,
     String? image,
     bool? isStudent,
+        String? specializationName,
+    String? studyYearName,
   }) {
     return SignupDataModel(
  
@@ -46,6 +52,8 @@ class SignupDataModel {
       role: role ?? this.role,
       image: image ?? this.image,
       isStudent: isStudent ?? this.isStudent,
+            specializationName: specializationName ?? this.specializationName,
+      studyYearName: studyYearName ?? this.studyYearName,
     );
   }
 }

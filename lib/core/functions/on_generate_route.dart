@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/auth/data/models/signup_data_model.dart';
+import 'package:graph/features/auth/presentation/views/widgets/full_screen_image_view.dart';
 import '../../features/auth/presentation/views/widgets/signup_company_name_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_company_picture_sec.dart';
 
@@ -118,9 +120,20 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         builder: (context) => const GroupsManagementView(),
       );
     case SignupFinalTouchesSec.name:
-      return MaterialPageRoute(
-        builder: (context) => const SignupFinalTouchesSec(),
-      );
+      final args = settings.arguments;
+      if (args is SignupDataModel) {
+        return MaterialPageRoute(
+          builder: (context) => SignupFinalTouchesSec(signupData: args),
+          settings: settings,
+        );
+      } else {
+        return MaterialPageRoute(
+          builder:
+              (context) => const Scaffold(
+                body: Center(child: Text('No signup data provided')),
+              ),
+        );
+      }
     case SignupFindFriends.name:
       return MaterialPageRoute(builder: (context) => const SignupFindFriends());
     case MainPage.name:
@@ -137,9 +150,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
             ),
       );
     case CreatPostPage.name:
-      return MaterialPageRoute(
-        builder: (context) => CreatPostPage(),
-      );
+      return MaterialPageRoute(builder: (context) => CreatPostPage());
 
     case SignupCompanyNameSection.name:
       return MaterialPageRoute(
@@ -149,6 +160,25 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => SignupCompanyPictureSec(),
         settings: settings,
+      );
+
+    case FullScreenImageView.name:
+      final args = settings.arguments as Map<String, dynamic>?;
+      if (args == null || args['image'] == null) {
+        return MaterialPageRoute(
+          builder:
+              (context) => const Scaffold(
+                body: Center(child: Text('No image provided')),
+              ),
+        );
+      }
+      return MaterialPageRoute(
+        builder:
+            (context) => FullScreenImageView(
+              image: args['image'],
+              isDeletable: args['isDeletable'] ?? false,
+              heroTag: args['heroTag'] ?? 'profile-image-hero',
+            ),
       );
 
     // case SettingsView.name:

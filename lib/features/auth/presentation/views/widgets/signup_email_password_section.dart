@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_svg/svg.dart';
-import '../../../../../core/services/local_data_base/hive_data_base_service.dart';
+import 'package:graph/core/services/get_it_service.dart';
+import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 import '../../../data/models/credintials_model.dart';
 import '../../manager/credintials_cubit/credintials_cubit.dart';
 import 'signup_role_section.dart';
@@ -95,12 +96,14 @@ class _SignupEmailPasswordSectionState
               BlocConsumer<CredintialsCubit, CredintialsState>(
                 listener: (context, state) async {
                   if (state is CredintialsSuccess) {
-                    final token = state.response['message']['token'];
-                    await HiveDataBaseService().addData(
-                      boxName: 'authBox',
-                      key: 'token',
-                      value: token,
-                    );
+                     final token = state.response['message']['token'];
+                    // await HiveDataBaseService().addData(
+                    //   boxName: 'authBox',
+                    //   key: 'token',
+                    //   value: token,
+                    // );
+                    await getIt<AuthLocalDataSource>().setToken(token);
+
                     Navigator.pushNamed(context, SignupRoleSection.name);
                   } else if (state is CredintialsFailuer) {
                     ScaffoldMessenger.of(

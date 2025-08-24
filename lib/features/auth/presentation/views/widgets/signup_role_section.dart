@@ -21,7 +21,7 @@ class SignupRoleSection extends StatefulWidget {
 
 class _SignupRoleSectionState extends State<SignupRoleSection> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final List<String> role = ['student', 'company'];
+  final List<String> role = ['student', 'company','staff'];
   String? selectedRole;
   int? roleId;
   late SignupDataModel signupData;
@@ -84,6 +84,7 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
           child: BlocConsumer<RoleCubit, RoleState>(
             listener: (context, state) async {
               if (state is RoleSuccess) {
+                
                 if (selectedRole == 'student') {
                   print(selectedRole);
                   Navigator.pushNamed(

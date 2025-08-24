@@ -18,11 +18,18 @@ class CreatPostBottomButtons extends StatefulWidget {
     required this.selectedPersons,
     required this.onAddPerson,
     required this.onRemovePerson,
+    required this.onPickImages,
+    required this.selectedTags,
+    required this.onTagsChanged,
   });
   final String selectedVal;
   final Set<Person> selectedPersons;
   final void Function(Person) onAddPerson;
   final void Function(Person) onRemovePerson;
+  final VoidCallback? onPickImages;
+  final List<String> selectedTags;
+
+  final void Function(List<String>) onTagsChanged;
 
   @override
   State<CreatPostBottomButtons> createState() => _CreatPostBottomButtonsState();
@@ -43,7 +50,6 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-        
           if (widget.selectedPersons.isNotEmpty) ...[
             Wrap(
               spacing: 8,
@@ -126,26 +132,34 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
               BottomButtonContainer(
                 text: lang.addTags,
                 icon: Assets.iconsUserTag,
-                onTap: () {
-                  showModalBottomSheet(
+                onTap: () async {
+                  final result = await showModalBottomSheet(
                     backgroundColor: Colors.transparent,
                     context: context,
                     builder: (BuildContext context) {
                       return SafeArea(
                         child: CustomBottomSheetContainer(
                           lang: lang,
-                          widget: TagBottomSheetBody(lang: lang),
+                          widget: TagBottomSheetBody(
+                            lang: lang,
+                            initialSelectedTags: List.from(widget.selectedTags),
+                          ),
                         ),
                       );
                     },
                   );
+                  if (result != null) {
+                    widget.onTagsChanged(result);
+                  }
                 },
               ),
               SizedBox(width: MediaQuery.of(context).size.width * 15 / 412),
               BottomButtonContainer(
                 text: lang.addImages,
                 icon: Assets.iconsAddImage,
-                onTap: () {},
+                onTap: () {
+                  widget.onPickImages!();
+                },
               ),
             ],
           ),

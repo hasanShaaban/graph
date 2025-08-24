@@ -184,6 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "studentAccount": MessageLookupByLibrary.simpleMessage("حساب طالب"),
     "subject": MessageLookupByLibrary.simpleMessage("اختصاص"),
     "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
+    "tags": MessageLookupByLibrary.simpleMessage("تاغ: "),
     "tapToPreviewTheDocument": MessageLookupByLibrary.simpleMessage(
       "انقر لمعاينة المستند",
     ),
