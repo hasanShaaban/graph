@@ -1,31 +1,32 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../../utils/appAssets.dart';
-import '../../../utils/app_text_style.dart';
-import '../../../utils/constants.dart';
-import '../../profile_image.dart';
+import 'package:flutter/material.dart';
+import '../../../../utils/app_text_style.dart';
+import '../../../../utils/constants.dart';
+import '../../../profile_image.dart';
+import '../../../../../generated/l10n.dart';
 import 'package:intl/intl.dart';
-class AdsPostHeader extends StatelessWidget {
-  const AdsPostHeader({
+
+class GroupPostHeader extends StatelessWidget {
+  const GroupPostHeader({
     super.key,
     required this.width,
     required this.height,
+    required this.lang,
   });
-
   final double width;
   final double height;
-
+  final S lang;
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         ProfileImage(
           width: width,
           height: height,
-          imageWidth: 55,
-          imageHeight: 55,
-          borderThick: 1,
+          imageWidth: 60,
+          imageHeight: 60,
+          borderThick: 2,
+          borderColor: Constants2.primaryColor(context),
         ),
         SizedBox(width: 10),
         Column(
@@ -50,10 +51,22 @@ class AdsPostHeader extends StatelessWidget {
           ],
         ),
         Spacer(),
-        //TODO: implemet save button
-        SvgPicture.asset(
-          Assets.iconsBookmark,
-          color: Constants2.darkSecondaryColor(context),
+        TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            elevation: 2,
+            backgroundColor: Constants2.lightSecondaryColor(context),
+            padding: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(13),
+            ),
+          ),
+          child: Text(
+            lang.join,
+            style: AppTextStyle.cairoSemiBold16.copyWith(
+              color: Constants2.darkSecondaryColor(context),
+            ),
+          ),
         ),
       ],
     );

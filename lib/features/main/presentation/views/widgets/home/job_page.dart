@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:graph/core/widgets/custom_drop_down_button.dart';
-import 'package:graph/core/widgets/posts/job_post.dart';
+import 'package:graph/core/widgets/posts/presentation/job_post.dart';
 
 class JobPage extends StatelessWidget {
   const JobPage({super.key});

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../utils/appAssets.dart';
-import '../../utils/constants.dart';
+import 'package:graph/features/main/domain/entity/noraml_post_entity.dart';
+import '../../../utils/appAssets.dart';
+import '../../../utils/constants.dart';
 import 'public_post_widgets/post_activities.dart';
 import 'public_post_widgets/post_header.dart';
 import 'public_post_widgets/public_post_conent.dart';
 import 'public_post_widgets/react_button.dart';
-import '../../../generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 class PublicPost extends StatelessWidget {
   const PublicPost({
@@ -14,10 +15,12 @@ class PublicPost extends StatelessWidget {
     required this.width,
     required this.height,
     this.onTap,
+    this.data,
   });
   final S lang;
   final double width, height;
   final VoidCallback? onTap;
+  final NormalPostEntity? data;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -36,8 +39,30 @@ class PublicPost extends StatelessWidget {
               children: [
                 // This row includes the profile image, the user name, and the
                 // post's actions including save button.
-                PostHeader(width: width, height: height),
-                PublicPostContent(),
+                PostHeader(
+                  width: width,
+                  height: height,
+                  user:
+                      data?.users ??
+                      [
+                        UserEntity(
+                          id: 1,
+                          name: 'userName',
+                          profileImageUrl: '',
+                        ),
+                      ],
+                  date: data?.createdAt ?? 'january-1-1999',
+                  privecy: data?.privacy ?? 'public',
+                  imageUrl:
+                      data?.users[0].profileImageUrl ??
+                      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+                ),
+                data?.project != null
+                    ? Text('project')
+                    : PublicPostContent(
+                      text: data?.description ?? '',
+                      images: data?.files ?? [],
+                    ),
                 Divider(color: Constants2.dividerColor(context), thickness: 1),
                 // This row includes the post's comments and shares. It
                 // also includes a spacer to align the share button to the
@@ -48,11 +73,9 @@ class PublicPost extends StatelessWidget {
                       onTap: onTap,
                       child: PostActivities(
                         icon: Assets.iconsCommentDots,
-                        count: '234',
+                        count: data?.commentsCount.toString() ?? '0',
                       ),
                     ),
-                    Spacer(),
-                    PostActivities(icon: Assets.iconsShare, count: '234'),
                   ],
                 ),
               ],
@@ -64,6 +87,7 @@ class PublicPost extends StatelessWidget {
           width: width,
           buttonColor: Constants2.lightSecondaryColor(context),
           circleColor: Constants2.lightPrimaryColor(context),
+          reactsCount: data?.reactionsCount.toString() ?? '0',
         ),
       ],
     );

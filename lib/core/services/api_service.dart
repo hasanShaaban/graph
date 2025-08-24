@@ -23,7 +23,7 @@ class PublicApiService {
   }) async {
     var response = await _dio.get('$_baseURL$endPoints', queryParameters: data);
     log('$_baseURL$endPoints');
-    log(response.data);
+    log('-----------------Public API SERVICE: get response ================ \n${response.data}');
     return response.data;
   }
 

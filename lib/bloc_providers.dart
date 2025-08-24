@@ -1,10 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/core/services/get_it_service.dart';
+import 'package:graph/features/followers&following/domain/repo/follow_repo.dart';
+import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
+import 'package:graph/features/groups/domain/repos/groups_repo.dart';
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:graph/features/main/domain/repos/main_repo.dart';
 import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
+import 'package:graph/features/profile/data/repos/profile_local_data_source.dart';
 import 'package:graph/features/profile/domain/repos/profile_repo.dart';
 import 'package:graph/features/profile/presentation/manager/profile/profile_cubit.dart';
+import 'package:graph/features/profile/presentation/manager/profile_posts/profile_posts_cubit.dart';
 import 'features/auth/presentation/manager/company_cubit/company_cubit.dart';
 import 'features/auth/presentation/manager/credintials_cubit/credintials_cubit.dart';
 import 'features/auth/presentation/manager/final_touches_cubit/final_touches_cubit.dart';
@@ -30,7 +36,8 @@ PublicApiService apiService = PublicApiService(
     // ),
   ),
 );
-
+final ProfileLocalDataSource profileLocalDataSource =
+    getIt<ProfileLocalDataSource>();
 final AuthRepo authRepo = AuthRepoImpl(apiService);
 List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => SignupCubit(authRepo)),
@@ -40,6 +47,10 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => CompanyCubit(authRepo)),
   BlocProvider(create: (context) => FinalTouchesCubit(authRepo)),
   BlocProvider(create: (context) => ProfileCubit(getIt<ProfileRepo>())),
-  BlocProvider(create: (context) => UserImageCubit(getIt<MainRepo>()))
+  BlocProvider(create: (context) => UserImageCubit(getIt<MainRepo>())),
+  BlocProvider(create: (context) => FriendsCubit(getIt<FollowRepo>())),
+  BlocProvider(create: (context) => ProjectCubit(getIt<GroupsRepo>())),
+  BlocProvider(create: (context) => ProfilePostsCubit(getIt<ProfileRepo>())),
 ];
+
 

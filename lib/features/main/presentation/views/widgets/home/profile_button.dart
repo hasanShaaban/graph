@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/shimmer_widgets/shimmer_box.dart';
+import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
 import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
 import 'package:graph/features/profile/presentation/manager/profile/profile_cubit.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
@@ -22,6 +23,7 @@ class ProfileButton extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               context.read<ProfileCubit>().getProfileData();
+              
               Navigator.pushNamed(context, ProfileView.name);
             },
             child:
@@ -31,7 +33,7 @@ class ProfileButton extends StatelessWidget {
                       radius: 15,
                       backgroundColor: Constants2.lightPrimaryColor(context),
                       backgroundImage: CachedNetworkImageProvider(
-                        'http://127.0.0.1:8000${state.response.profileImageUrl}',
+                        '${state.response.profileImageUrl}',
                       ),
                     ),
           );

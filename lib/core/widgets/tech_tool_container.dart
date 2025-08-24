@@ -6,15 +6,16 @@ class TechToolContainer extends StatelessWidget {
     super.key,
     required this.width,
     required this.height,
-    required this.color, required this.icon,
+    required this.color, required this.icon, required this.name,
   });
   final double width, height;
   final Color color;
   final String icon;
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: 'Name of the tool',
+      message: name,
       child: Container(
         width: width,
         height: height,
@@ -23,7 +24,11 @@ class TechToolContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: SvgPicture.network(icon, width: width*0.5,),
+
+          child:
+          icon.contains('http')?
+           SvgPicture.network(icon, width: width*0.5,):
+            SvgPicture.asset(icon, width: width*0.5,),
         ),
       ),
     );

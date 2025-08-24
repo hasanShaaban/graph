@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/pritty_log.dart';
+import 'package:graph/core/functions/pritty_log.dart';
 import 'package:graph/features/profile/domain/entity/social_link_entity.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../core/utils/appAssets.dart';

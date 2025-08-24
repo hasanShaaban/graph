@@ -85,6 +85,7 @@ Future<List<String>> showToolsBottomSheet({
                                   });
                                 },
                                 child: TechToolContainer(
+                                  name: '',
                                   width: 60,
                                   height: 60,
                                   color:

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/widgets/posts/public_post.dart';
+import '../../../../../../core/widgets/posts/presentation/public_post.dart';
 import '../../../../../post_details/presentation/view/post_details_view.dart';
 import '../../../../../../generated/l10n.dart';
 

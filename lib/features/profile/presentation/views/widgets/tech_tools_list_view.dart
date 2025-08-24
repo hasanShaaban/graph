@@ -39,6 +39,7 @@ class TechToolsListView extends StatelessWidget {
                         ),
 
                         child: TechToolContainer(
+                          name: skills![index].name,
                           width: iconSize,
                           height: iconSize,
                           color: Constants2.lightPrimaryColor(context),

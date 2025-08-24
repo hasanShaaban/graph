@@ -1,17 +1,18 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../utils/constants.dart';
-import '../../../utils/appAssets.dart';
-import '../../../utils/app_text_style.dart';
+import '../../../../utils/constants.dart';
+import '../../../../utils/appAssets.dart';
+import '../../../../utils/app_text_style.dart';
 import 'dart:developer' as dev;
 
 class ReactButton extends StatefulWidget {
-  const ReactButton({super.key, required this.height, required this.width, required this.buttonColor, required this.circleColor});
+  const ReactButton({super.key, required this.height, required this.width, required this.buttonColor, required this.circleColor, required this.reactsCount});
 
   final double height;
   final double width;
   final Color buttonColor, circleColor;
+  final String reactsCount;
 
   @override
   State<ReactButton> createState() => _ReactButtonState();
@@ -203,7 +204,7 @@ class _ReactButtonState extends State<ReactButton>
                         ),
                         SizedBox(height: 3),
                         Text(
-                          '2.3k',
+                          widget.reactsCount,
                           style: AppTextStyle.cairoRegular12.copyWith(
                             height: 1,
                           ),

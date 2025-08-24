@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/widgets/posts/group_post_widgets/group_member_list_view.dart';
-import '../../utils/appAssets.dart';
-import '../../utils/app_text_style.dart';
-import '../../utils/constants.dart';
+import 'package:graph/core/widgets/posts/presentation/group_post_widgets/group_member_list_view.dart';
+import '../../../utils/appAssets.dart';
+import '../../../utils/app_text_style.dart';
+import '../../../utils/constants.dart';
 import 'group_post_widgets/group_post_header.dart';
 import 'group_post_widgets/text_section.dart';
-import '../../../features/profile/presentation/views/widgets/group_member_info.dart';
-import '../../../generated/l10n.dart';
+import '../../../../features/profile/presentation/views/widgets/group_member_info.dart';
+import '../../../../generated/l10n.dart';
 
 class GroupPost extends StatelessWidget {
   const GroupPost({super.key});

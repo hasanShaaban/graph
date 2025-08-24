@@ -4,18 +4,19 @@ import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
 
 class CountAndDivider extends StatelessWidget {
-  const CountAndDivider({super.key, required this.lang, required this.type});
+  const CountAndDivider({super.key, required this.lang, required this.type, required this.count});
 
   final S lang;
   final String type;
+  final int count;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Text(
           type == lang.followers
-              ? 'You have 245 ${lang.followers}'
-              : 'you are following 245 accounts',
+              ? 'You have $count ${lang.followers}'
+              : 'you are following $count accounts',
           style: AppTextStyle.cairoSemiBold20.copyWith(
             color: Constants2.darkPrimaryColor(context),
           ),
@@ -31,3 +32,4 @@ class CountAndDivider extends StatelessWidget {
     );
   }
 }
+

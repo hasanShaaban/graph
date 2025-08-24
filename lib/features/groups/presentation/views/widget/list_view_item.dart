@@ -49,6 +49,7 @@ class ListViewItem extends StatelessWidget {
           ),
           Spacer(),
           TechToolContainer(
+            name: '',
             width: 40,
             height: 40,
             color: Constants2.lightSecondaryColor(context),

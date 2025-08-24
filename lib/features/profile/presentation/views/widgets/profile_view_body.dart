@@ -1,15 +1,14 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/core/widgets/error_page.dart';
+import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
 import 'package:graph/features/profile/presentation/manager/profile/profile_cubit.dart';
+import 'package:graph/features/profile/presentation/manager/profile_posts/profile_posts_cubit.dart';
 import 'package:graph/features/profile/presentation/views/widgets/name_bio_follow_section.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import '../../../../../core/widgets/posts/public_post.dart';
+import '../../../../../core/widgets/posts/presentation/public_post.dart';
 import '../../../../../core/widgets/profile_image.dart';
-import '../../../../post_details/presentation/view/post_details_view.dart';
 import 'about_me_container.dart';
 import 'go_up_button.dart';
 import 'group_section.dart';
@@ -30,6 +29,8 @@ class ProfileViewBody extends StatelessWidget {
         if (state is ProfileError) {
           return ErrorPage(lang: lang, width: width, state: state);
         } else if (state is ProfileSuccess) {
+          context.read<FriendsCubit>().getFirends();
+          context.read<ProfilePostsCubit>().getProfilePosts();
           var profileModel = state.profileEntity;
           return SingleChildScrollView(
             controller: scrollController,
@@ -96,14 +97,7 @@ class ProfileViewBody extends StatelessWidget {
                         lang.activities,
                         style: AppTextStyle.cairoSemiBold14,
                       ),
-                      PublicPost(
-                        lang: lang,
-                        width: width,
-                        height: height,
-                        onTap: () {
-                          Navigator.pushNamed(context, PostDetailsView.name);
-                        },
-                      ),
+                      PostsListView(width: width, lang: lang, height: height),
                       SizedBox(height: 25),
                       Divider(
                         thickness: 1,
@@ -127,3 +121,43 @@ class ProfileViewBody extends StatelessWidget {
   }
 }
 
+class PostsListView extends StatelessWidget {
+  const PostsListView({
+    super.key,
+    required this.width,
+    required this.height,
+    required this.lang,
+  });
+
+  final double width, height;
+  final S lang;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProfilePostsCubit, ProfilePostsState>(
+      builder: (context, state) {
+        if (state is ProfilePostsSuccess) {
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: state.posts.length,
+            itemBuilder:
+                (context, index) => Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: PublicPost(lang: lang, width: width, height: height, data: state.posts[index],),
+                ),
+          );
+        } else if (state is ProfilePostsError) {
+          return Text(state.errorMessage);
+        } else {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+            ],
+          );
+        }
+      },
+    );
+  }
+}

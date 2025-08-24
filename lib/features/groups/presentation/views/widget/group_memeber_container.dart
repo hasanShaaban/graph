@@ -47,7 +47,7 @@ class GroupMemberContainer extends StatelessWidget {
             ],
           ),
           SizedBox(height: 5),
-          GroupMemberRole(lang: lang, width: width, height: height),
+          // GroupMemberRole(lang: lang, width: width, height: height),
           SizedBox(height: 5),
           GroupMemberTools(lang: lang, width: width, height: height),
         ],
