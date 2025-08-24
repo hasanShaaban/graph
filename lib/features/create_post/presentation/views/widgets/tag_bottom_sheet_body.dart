@@ -6,8 +6,13 @@ import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../generated/l10n.dart';
 
 class TagBottomSheetBody extends StatefulWidget {
-  const TagBottomSheetBody({super.key, required this.lang});
+  const TagBottomSheetBody({
+    super.key,
+    required this.lang,
+    required this.initialSelectedTags,
+  });
   final S lang;
+  final List<String> initialSelectedTags;
 
   @override
   State<TagBottomSheetBody> createState() => _TagBottomSheetBodyState();
@@ -24,6 +29,15 @@ class _TagBottomSheetBodyState extends State<TagBottomSheetBody> {
   String searchQuery = '';
   List<String> filteredTags = [];
   List<String> selectedTags = [];
+  @override
+  void initState() {
+    super.initState();
+    // نسخ التاغات التي تم تمريرها من الصفحة الرئيسية
+    selectedTags = List.from(widget.initialSelectedTags);
+    // الفلترة تبدأ بعرض كل التاغات
+    filteredTags = List.from(allTags);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -74,45 +88,71 @@ class _TagBottomSheetBodyState extends State<TagBottomSheetBody> {
             ),
           ),
           SizedBox(height: 20),
-          Wrap(
-            spacing: 5,
-            runSpacing: 8,
-            children:
-                filteredTags.map((tag) {
-                  final isSelected = selectedTags.contains(tag);
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        if (isSelected) {
-                          selectedTags.remove(tag);
-                        } else {
-                          selectedTags.add(tag);
-                        }
-                      });
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color:
-                            isSelected
-                                ? Constants2.lightSecondaryColor(context)
-                                : Constants2.lightSecondaryColor(
-                                  context,
-                                ).withOpacity(0.3),
-                      ),
-                      child: Text(
-                        '#$tag',
-                        style: AppTextStyle.cairoSemiBold18.copyWith(
+          SingleChildScrollView(
+            child: Wrap(
+              spacing: 5,
+              runSpacing: 8,
+       
+              children:
+                  filteredTags.map((tag) {
+                    final isSelected = selectedTags.contains(tag);
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (isSelected) {
+                            selectedTags.remove(tag);
+                          } else {
+                            selectedTags.add(tag);
+                          }
+                        });
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
                           color:
                               isSelected
-                                  ? Constants2.secondaryColor(context)
-                                  : Constants2.darkSecondaryColor(context),
+                                  ? Constants2.lightSecondaryColor(context)
+                                  : Constants2.lightSecondaryColor(
+                                    context,
+                                  ).withOpacity(0.3),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              '#$tag',
+                              style: AppTextStyle.cairoSemiBold18.copyWith(
+                                color:
+                                    isSelected
+                                        ? Constants2.secondaryColor(context)
+                                        : Constants2.darkSecondaryColor(
+                                          context,
+                                        ),
+                              ),
+                            ),
+                            if (isSelected)
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selectedTags.remove(tag);
+                                  });
+                                },
+                                child: const Padding(
+                                  padding: EdgeInsets.only(left: 4),
+                                  child: Icon(
+                                    Icons.close,
+                                    size: 16,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ),
+                          ],
                         ),
                       ),
-                    ),
-                  );
-                }).toList(),
+                    );
+                  }).toList(),
+            ),
           ),
 
           // Expanded(

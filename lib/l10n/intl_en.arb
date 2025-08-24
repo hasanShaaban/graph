@@ -130,6 +130,7 @@
   "jobs":"Jobs",
   "ads":"Ads",
   "apply":"Apply",
-  "noBioYet": "No bio yet"
+  "noBioYet": "No bio yet",
+  "tags": "tags: "
   
 }

@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/features/auth/data/models/signup_data_model.dart';
 import 'package:graph/features/auth/presentation/manager/final_touches_cubit/final_touches_cubit.dart';
 import 'package:graph/features/auth/presentation/views/widgets/final_touches_top_sec.dart';
-import 'package:graph/features/auth/presentation/views/widgets/signup_verification_section.dart';
 import 'package:graph/features/profile/data/models/profile_model.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../../core/functions/show_tools_bottom_sheet.dart';
@@ -20,7 +19,6 @@ import '../../../../auth/presentation/views/widgets/social_links_row.dart';
 import '../../../../groups/presentation/views/widget/add_button.dart';
 import '../../../../groups/presentation/views/widget/group_member_tools_list_view.dart';
 import 'custom_drop_down.dart';
-import 'edit_profile_header.dart';
 
 import '../../../../../generated/l10n.dart';
 

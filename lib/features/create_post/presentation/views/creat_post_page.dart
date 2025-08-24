@@ -64,11 +64,11 @@ class _CreatPostPageState extends State<CreatPostPage> {
     setState(() => selectedMentions.removeWhere((e) => e.id == p.id));
   }
 
+  final bool _isPickingImages = false;
+
   Future<void> pickImages() async {
     final ImagePicker picker = ImagePicker();
-    final List<XFile>? images = await picker.pickMultiImage(
-      imageQuality: 70, // تحسين حجم الصورة
-    );
+    final List<XFile> images = await picker.pickMultiImage(imageQuality: 70);
 
     if (images != null && images.isNotEmpty) {
       setState(() {
@@ -182,9 +182,7 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                           }
                                           return id;
                                         })
-                                        .whereType<
-                                          int
-                                        >() // يتأكد نرسل بس integers صالحة
+                                        .whereType<int>()
                                         .toList(),
                                 image: selectedImages,
                               );
@@ -313,7 +311,6 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                               border: 7,
                                             );
                                           } else {
-                                            // حالة مبدئية/فشل بدون رسالة
                                             return const SizedBox.shrink();
                                           }
                                         },
@@ -344,6 +341,30 @@ class _CreatPostPageState extends State<CreatPostPage> {
                       SizedBox(height: 20),
 
                       if (selectedImages.isNotEmpty) ...[
+                        // زر حذف كل الصور
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                minimumSize: Size(50, 30),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  selectedImages.clear(); // يحذف كل الصور
+                                });
+                              },
+                              child: const Icon(
+                                Icons.delete,
+                                size: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+
                         GridView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
@@ -352,14 +373,14 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                   ? 4
                                   : selectedImages.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 mainAxisSpacing: 4,
                                 crossAxisSpacing: 4,
                               ),
                           itemBuilder: (context, index) {
+                            final image = selectedImages[index];
                             if (index == 3 && selectedImages.length > 4) {
-                              // آخر خانة تظهر زائد
                               return GestureDetector(
                                 onTap: () {
                                   Navigator.push(
@@ -375,16 +396,13 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                 },
                                 child: Stack(
                                   children: [
-                                    Image.file(
-                                      selectedImages[index],
-                                      fit: BoxFit.cover,
-                                    ),
+                                    Image.file(image, fit: BoxFit.cover),
                                     Container(
                                       color: Colors.black38,
                                       child: Center(
                                         child: Text(
                                           '+${selectedImages.length - 3}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 24,
                                             fontWeight: FontWeight.bold,
@@ -396,31 +414,39 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                 ),
                               );
                             } else {
-                              return Image.file(
-                                selectedImages[index],
-                                fit: BoxFit.cover,
-                              );
+                              return Image.file(image, fit: BoxFit.cover);
                             }
                           },
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                       ],
 
                       if (selectedTags.isNotEmpty) ...[
-                        const SizedBox(height: 10),
-                        Wrap(
-                          spacing: 8,
-                          children:
-                              selectedTags.map((tag) {
-                                return Text(
-                                  '#$tag',
-                                  style: AppTextStyle.cairoSemiBold14.copyWith(
-                                    color: Constants.secondryColor,
-                                  ),
-                                );
-
-                        
-                              }).toList(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            children: [
+                              Text(
+                                lang.tags,
+                                style: AppTextStyle.cairoRegular14.copyWith(
+                                  color: Constants2.darkPrimaryColor(context),
+                                ),
+                              ),
+                              Wrap(
+                                spacing: 8,
+                                children:
+                                    selectedTags.map((tag) {
+                                      return Text(
+                                        '#$tag',
+                                        style: AppTextStyle.cairoSemiBold14
+                                            .copyWith(
+                                              color: Constants.secondryColor,
+                                            ),
+                                      );
+                                    }).toList(),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
 

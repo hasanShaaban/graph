@@ -12,14 +12,15 @@ import 'tag_bottom_sheet_body.dart';
 import '../../../../../generated/l10n.dart';
 
 class CreatPostBottomButtons extends StatefulWidget {
-   const CreatPostBottomButtons({
+  const CreatPostBottomButtons({
     super.key,
     required this.selectedVal,
     required this.selectedPersons,
     required this.onAddPerson,
     required this.onRemovePerson,
     required this.onPickImages,
-    required this.selectedTags, required this.onTagsChanged,
+    required this.selectedTags,
+    required this.onTagsChanged,
   });
   final String selectedVal;
   final Set<Person> selectedPersons;
@@ -27,8 +28,8 @@ class CreatPostBottomButtons extends StatefulWidget {
   final void Function(Person) onRemovePerson;
   final VoidCallback? onPickImages;
   final List<String> selectedTags;
-  
-final void Function(List<String>) onTagsChanged;
+
+  final void Function(List<String>) onTagsChanged;
 
   @override
   State<CreatPostBottomButtons> createState() => _CreatPostBottomButtonsState();
@@ -139,15 +140,17 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
                       return SafeArea(
                         child: CustomBottomSheetContainer(
                           lang: lang,
-                          widget: TagBottomSheetBody(lang: lang),
+                          widget: TagBottomSheetBody(
+                            lang: lang,
+                            initialSelectedTags: List.from(widget.selectedTags),
+                          ),
                         ),
                       );
                     },
                   );
-                 if (result != null) {
-  widget.onTagsChanged(result); // نرجعها للصفحة الرئيسية
-}
-
+                  if (result != null) {
+                    widget.onTagsChanged(result);
+                  }
                 },
               ),
               SizedBox(width: MediaQuery.of(context).size.width * 15 / 412),

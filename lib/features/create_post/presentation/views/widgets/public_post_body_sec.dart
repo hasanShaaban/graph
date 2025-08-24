@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/utils/constants.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../generated/l10n.dart';
 
 class PublicPostBodySec extends StatelessWidget {
-  const PublicPostBodySec({super.key,required this.onChanged});
+  const PublicPostBodySec({super.key, required this.onChanged});
   final void Function(String)? onChanged;
 
   @override
@@ -22,11 +23,11 @@ class PublicPostBodySec extends StatelessWidget {
 
               decoration: InputDecoration(
                 hintText: '${lang.description}...',
-                hintStyle: AppTextStyle.cairoSemiBold14,
+                hintStyle: AppTextStyle.cairoSemiBold14.copyWith(
+                  color: Constants2.darkSecondaryColor(context),
+                ),
               ),
             ),
-
-          
           ],
         ),
       ),
