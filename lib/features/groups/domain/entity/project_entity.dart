@@ -1,20 +1,34 @@
 class ProjectEntity {
   final int id;
   final String name;
-  final String description;
-  final int? majorId;
-  final int? yearId;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final YearEntity year;
+  final MajorEntity? major;
 
   const ProjectEntity({
     required this.id,
     required this.name,
-    required this.description,
-    this.majorId,
-    this.yearId,
-    required this.createdAt,
-    required this.updatedAt,
+    required this.year,
+     this.major,
+  });
+}
+
+class YearEntity {
+  final int id;
+  final String yearName;
+
+  const YearEntity({
+    required this.id,
+    required this.yearName,
+  });
+}
+
+class MajorEntity {
+  final int id;
+  final String majorName;
+
+  const MajorEntity({
+    required this.id,
+    required this.majorName,
   });
 }
 

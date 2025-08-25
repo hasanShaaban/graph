@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/custom_stateless_appbar.dart';
@@ -23,7 +25,6 @@ class MyGroupViewBody extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               SizedBox(height: 15),
               Row(
@@ -35,18 +36,28 @@ class MyGroupViewBody extends StatelessWidget {
                   GroupManagementButton(width: width, height: height),
                 ],
               ),
-              SizedBox(height: 10),
-              RateButton(),
-              SizedBox(height: 10),
-              ...List.generate(
-                3,
-                (index) => ListViewItem(height: height, width: width),
+              BlocListener<GroupInfoCubit, GroupInfoState>(
+                listener: (context, state) {
+                  
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    SizedBox(height: 10),
+                    RateButton(),
+                    SizedBox(height: 10),
+                    ...List.generate(
+                      3,
+                      (index) => ListViewItem(height: height, width: width),
+                    ),
+                    Divider(
+                      thickness: 1,
+                      color: Constants2.darkPrimaryColor(context),
+                    ),
+                    RateRow(),
+                  ],
+                ),
               ),
-              Divider(
-                thickness: 1,
-                color: Constants2.darkPrimaryColor(context),
-              ),
-              RateRow(),
             ],
           ),
         ),

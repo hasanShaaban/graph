@@ -1,35 +1,73 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:graph/core/errors/failures.dart';
 import 'package:graph/core/functions/pritty_log.dart';
 import 'package:graph/core/services/api_service.dart';
+import 'package:graph/features/groups/data/models/group_info_model.dart';
 import 'package:graph/features/groups/data/models/project_model.dart';
+import 'package:graph/features/groups/domain/entity/group_info_entity.dart';
 import 'package:graph/features/groups/domain/entity/project_entity.dart';
 import 'package:graph/features/groups/domain/repos/groups_repo.dart';
+import 'package:graph/features/profile/data/repos/profile_local_data_source.dart';
 
-class GroupsRepoImpl extends GroupsRepo{
-
+class GroupsRepoImpl extends GroupsRepo {
   final PublicApiService publicApiService;
+  final ProfileLocalDataSource profileLocalDataSource;
 
-  GroupsRepoImpl(this.publicApiService);
+  GroupsRepoImpl(this.publicApiService, this.profileLocalDataSource);
 
   @override
-  Future<Either<Failures, List<ProjectEntity>>> getProjects({required int yearId, int? majorId}) async{
-    try{
-      var data = await publicApiService.get(endPoints: 'projects_list?', data: {'year_id': yearId, 'major_id': majorId});
-      final List<ProjectEntity> response = (data as List).map((e) => ProjectModel.fromJson(e)).toList();
+  Future<Either<Failures, List<ProjectEntity>>> getProjects({
+    required int yearId,
+    int? majorId,
+  }) async {
+    int major = await profileLocalDataSource.getStudentMajor();
+    prettyLog('YearId: $yearId, MajorId: $majorId');
+    try {
+      var data = await publicApiService.get(
+        endPoints: 'projects_list?',
+        data: {'year_id': yearId, 'major_id': majorId ?? major},
+      );
+      final List<ProjectModel> response =
+          (data['data'] as List)
+              .map((e) => ProjectModel.fromJson(e as Map<String, dynamic>))
+              .toList();
+
       prettyLog('Project Response ${response[0]}');
       return right(response);
-    }catch (e) {
+    } catch (e) {
       if (e is DioException) {
         prettyLog('Project Response ${e.message}');
         return left(ServerFailure.fromDioError(e));
-        
       }
       prettyLog('Project Response ${e.toString()}');
       return left(ServerFailure(e.toString()));
     }
   }
-}
 
+  @override
+  Future<Either<Failures, GroupInfoEntity>> getGroupInfo({
+    required int projectId,
+  }) async {
+    try {
+      var data = await publicApiService.get(
+        endPoints: 'groupsByProject?',
+        data: {'project_id': projectId},
+      );
+      final GroupInfoModel response = GroupInfoModel.fromJson(
+        data['data'].isNotEmpty
+            ? data['data'][0]
+            : {'id': 0, 'groupName': '', 'groupProject': '', 'isAdmin': false},
+      );
+      prettyLog('Project Response $response');
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        prettyLog('Dio Exception ${e.message}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      prettyLog('Exception ${e.toString()}');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+}

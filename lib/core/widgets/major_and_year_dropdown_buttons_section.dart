@@ -28,7 +28,6 @@ class MajorAndYearDropdownButtonsSection extends StatelessWidget {
               return const Text("No years available");
             }
 
-            // ✅ Pass the resolved list into CustomDropDownButton
             return CustomDropDownButton(
               height: height,
               text: lang.year,

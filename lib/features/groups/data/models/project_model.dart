@@ -2,44 +2,51 @@ import 'package:graph/features/groups/domain/entity/project_entity.dart';
 
 class ProjectModel extends ProjectEntity {
   const ProjectModel({
-    required int id,
-    required String name,
-    required String description,
-    int? majorId,
-    int? yearId,
-    required DateTime createdAt,
-    required DateTime updatedAt,
-  }) : super(
-          id: id,
-          name: name,
-          description: description,
-          majorId: majorId,
-          yearId: yearId,
-          createdAt: createdAt,
-          updatedAt: updatedAt,
-        );
+    required super.id,
+    required super.name,
+    required super.year,
+    super.major,
+  });
 
   factory ProjectModel.fromJson(Map<String, dynamic> json) {
     return ProjectModel(
-      id: json['id'] ?? 0,
+      id: json['id'],
       name: json['name'] ?? '',
-      description: json['description'] ?? '',
-      majorId: json['major_id'],
-      yearId: json['year_id'],
-      createdAt: DateTime.parse(json['created_at']),
-      updatedAt: DateTime.parse(json['updated_at']),
+      year: YearModel.fromJson(json['year']),
+      major: json['major'] == null ? null : MajorModel.fromJson(json['major']),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      "id": id,
-      "name": name,
-      "description": description,
-      "major_id": majorId,
-      "year_id": yearId,
-      "created_at": createdAt.toIso8601String(),
-      "updated_at": updatedAt.toIso8601String(),
+      'id': id,
+      'name': name,
+      'year': (year as YearModel).toJson(),
+      'major':major != null ? (major as MajorModel).toJson() : null,
     };
+  }
+}
+
+class YearModel extends YearEntity {
+  const YearModel({required super.id, required super.yearName});
+
+  factory YearModel.fromJson(Map<String, dynamic> json) {
+    return YearModel(id: json['id'], yearName: json['Year_name'] ?? '');
+  }
+
+  Map<String, dynamic> toJson() {
+    return {'id': id, 'Year_name': yearName};
+  }
+}
+
+class MajorModel extends MajorEntity {
+  const MajorModel({required super.id, required super.majorName});
+
+  factory MajorModel.fromJson(Map<String, dynamic> json) {
+    return MajorModel(id: json['id'], majorName: json['Major_name'] ?? '');
+  }
+
+  Map<String, dynamic> toJson() {
+    return {'id': id, 'Major_name': majorName};
   }
 }
