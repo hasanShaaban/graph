@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/core/utils/years_and_major.dart';
 import 'package:graph/core/widgets/error_page.dart';
 import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:graph/features/profile/presentation/manager/profile/profile_cubit.dart';
 import 'package:graph/features/profile/presentation/manager/profile_posts/profile_posts_cubit.dart';
 import 'package:graph/features/profile/presentation/views/widgets/name_bio_follow_section.dart';
+import 'package:graph/features/profile/presentation/views/widgets/posts_list_view.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import '../../../../../core/widgets/posts/presentation/public_post.dart';
 import '../../../../../core/widgets/profile_image.dart';
 import 'about_me_container.dart';
 import 'go_up_button.dart';
@@ -31,6 +33,7 @@ class ProfileViewBody extends StatelessWidget {
         } else if (state is ProfileSuccess) {
           context.read<FriendsCubit>().getFirends();
           context.read<ProfilePostsCubit>().getProfilePosts();
+          context.read<ProjectCubit>().getProjects(yearId: Year.yearbyName[state.profileEntity.year[0]]!);
           var profileModel = state.profileEntity;
           return SingleChildScrollView(
             controller: scrollController,
@@ -122,43 +125,3 @@ class ProfileViewBody extends StatelessWidget {
   }
 }
 
-class PostsListView extends StatelessWidget {
-  const PostsListView({
-    super.key,
-    required this.width,
-    required this.height,
-    required this.lang,
-  });
-
-  final double width, height;
-  final S lang;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ProfilePostsCubit, ProfilePostsState>(
-      builder: (context, state) {
-        if (state is ProfilePostsSuccess) {
-          return ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: state.posts.length,
-            itemBuilder:
-                (context, index) => Padding(
-                  padding: const EdgeInsets.only(bottom: 30),
-                  child: PublicPost(lang: lang, width: width, height: height, data: state.posts[index],),
-                ),
-          );
-        } else if (state is ProfilePostsError) {
-          return Text(state.errorMessage);
-        } else {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(),
-            ],
-          );
-        }
-      },
-    );
-  }
-}

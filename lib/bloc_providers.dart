@@ -10,6 +10,8 @@ import 'package:graph/features/create_post/presentation/manager/post_new_post_cu
 import 'package:graph/features/followers&following/domain/repo/follow_repo.dart';
 import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
 import 'package:graph/features/groups/domain/repos/groups_repo.dart';
+import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/group_member_cubit/group_member_cubit.dart';
 import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:graph/features/main/domain/repos/main_repo.dart';
 import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
@@ -68,4 +70,6 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => FriendsCubit(getIt<FollowRepo>())),
   BlocProvider(create: (context) => ProjectCubit(getIt<GroupsRepo>())),
   BlocProvider(create: (context) => ProfilePostsCubit(getIt<ProfileRepo>())),
+  BlocProvider(create: (context) => GroupInfoCubit(getIt<GroupsRepo>())),
+  BlocProvider(create: (context) => GroupMemberCubit(getIt<GroupsRepo>())),
 ];

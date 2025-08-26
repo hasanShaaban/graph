@@ -93,6 +93,6 @@ void setupGetit() {
 
   //Group repo
   getIt.registerSingleton<GroupsRepo>(
-    GroupsRepoImpl(getIt<PublicApiService>(), getIt<ProfileLocalDataSource>()),
+    GroupsRepoImpl(getIt<PublicApiService>(), getIt<ProfileLocalDataSource>(), getIt<SecureApiService>()),
   );
 }

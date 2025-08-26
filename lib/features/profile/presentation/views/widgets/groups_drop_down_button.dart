@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graph/features/groups/domain/entity/project_entity.dart';
+import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
@@ -12,9 +17,9 @@ class GroupsDropDownButton extends StatefulWidget {
 }
 
 class _GroupsDropDownButtonState extends State<GroupsDropDownButton> {
-  String selected = projects[1];
+  String selected = 'Projects';
   final GlobalKey _key = GlobalKey();
-  double _width = 0;
+  double _width = 70;
 
   @override
   void initState() {
@@ -34,41 +39,69 @@ class _GroupsDropDownButtonState extends State<GroupsDropDownButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 25,
-      width: _width,
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(
-        color: Constants2.primaryColor(context),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: GestureDetector(
-              onTap: () => _showMenu(context),
-              child: Row(
-                children: [
-                  Text(
-                    selected,
-                    key: _key,
-                    style: AppTextStyle.cairoRegular12.copyWith(
-                      color: Colors.white,
+    return BlocBuilder<ProjectCubit, ProjectState>(
+      builder: (context, state) {
+        if (state is ProjectSuccess) {
+          context.read<GroupInfoCubit>().getGroupInfo(projectId: state.response[0].id);
+          return Container(
+            height: 25,
+            width: _width,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            decoration: BoxDecoration(
+              color: Constants2.primaryColor(context),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => _showMenu(context, state.response),
+                    child: Row(
+                      children: [
+                        Text(
+                          selected,
+                          key: _key,
+                          style: AppTextStyle.cairoRegular12.copyWith(
+                            color: Colors.white,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const Spacer(),
+                        SvgPicture.asset(Assets.iconsDrobeDownArrow, width: 12),
+                      ],
                     ),
-                    overflow: TextOverflow.ellipsis,
                   ),
-                  const Spacer(),
-                  SvgPicture.asset(Assets.iconsDrobeDownArrow, width: 12),
-                ],
+                ),
+              ],
+            ),
+          );
+        } else if (state is ProjectError) {
+          return Text(
+            state.errorMessage,
+            style: AppTextStyle.cairoSemiBold14.copyWith(
+              color: Constants2.darkPrimaryColor(context),
+            ),
+          );
+        } else {
+          return Shimmer.fromColors(
+            baseColor: Constants2.lightSecondaryColor(context),
+            highlightColor: Constants2.dividerColor(context),
+            child: Container(
+              height: 25,
+              width: _width,
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                color: Constants2.primaryColor(context),
+                borderRadius: BorderRadius.circular(15),
               ),
             ),
-          ),
-        ],
-      ),
+          );
+        }
+      },
     );
   }
 
-  void _showMenu(BuildContext context) async {
+  void _showMenu(BuildContext context, List<ProjectEntity> projects) async {
     final RenderBox box = context.findRenderObject() as RenderBox;
     final Offset position = box.localToGlobal(Offset.zero);
 
@@ -85,9 +118,9 @@ class _GroupsDropDownButtonState extends State<GroupsDropDownButton> {
       items:
           projects.map((e) {
             return PopupMenuItem<String>(
-              value: e,
+              value: e.name,
               child: Text(
-                e,
+                e.name,
                 style: AppTextStyle.cairoRegular12.copyWith(
                   color: Colors.black,
                 ),
@@ -105,13 +138,3 @@ class _GroupsDropDownButtonState extends State<GroupsDropDownButton> {
     }
   }
 }
-
-List<String> projects = [
-  'Algorithms and data structures',
-  'project 1',
-  'data base 1',
-  'project 2',
-  'data base 2',
-  'project 3',
-  'data base 3',
-];

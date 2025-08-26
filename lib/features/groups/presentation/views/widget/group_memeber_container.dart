@@ -43,7 +43,7 @@ class GroupMemberContainer extends StatelessWidget {
                 borderThick: 2,
               ),
               SizedBox(width: 10),
-              PesronalInfoColumn(),
+              PesronalInfoColumn(name: 'hasan',),
             ],
           ),
           SizedBox(height: 5),

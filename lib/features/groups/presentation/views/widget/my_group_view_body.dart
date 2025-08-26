@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/group_member_cubit/group_member_cubit.dart';
+import 'package:graph/features/groups/presentation/views/widget/rate_button.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/custom_stateless_appbar.dart';
@@ -36,27 +38,63 @@ class MyGroupViewBody extends StatelessWidget {
                   GroupManagementButton(width: width, height: height),
                 ],
               ),
-              BlocListener<GroupInfoCubit, GroupInfoState>(
+              BlocConsumer<GroupInfoCubit, GroupInfoState>(
                 listener: (context, state) {
-                  
+                  if (state is GroupInfoSuccess) {
+                    if (state.response.id != 0) {
+                      context.read<GroupMemberCubit>().getGroupMembers(
+                        groupId: state.response.id,
+                      );
+                    }
+                  }
                 },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SizedBox(height: 10),
-                    RateButton(),
-                    SizedBox(height: 10),
-                    ...List.generate(
-                      3,
-                      (index) => ListViewItem(height: height, width: width),
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: Constants2.darkPrimaryColor(context),
-                    ),
-                    RateRow(),
-                  ],
-                ),
+                builder: (context, state) {
+                  if (state is GroupInfoSuccess) {
+                    if (state.response.id != 0) {
+                      return BlocBuilder<GroupMemberCubit, GroupMemberState>(
+                        builder: (context, memberState) {
+                          if (memberState is GroupMemberSuccess) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                SizedBox(height: 10),
+                                RateButton(),
+                                SizedBox(height: 10),
+                                ...List.generate(
+                                  memberState.members.length,
+                                  (index) => ListViewItem(
+                                    member: memberState.members[index],
+                                    height: height,
+                                    width: width,
+                                  ),
+                                ),
+                                Divider(
+                                  thickness: 1,
+                                  color: Constants2.darkPrimaryColor(context),
+                                ),
+                                RateRow(),
+                              ],
+                            );
+                          }else if(memberState is GroupMemberError){
+                            return Text(memberState.errorMessage);
+                          }else{
+                            return Text('loading . . . ');
+                          }
+                        },
+                      );
+                    } else {
+                      return Center(
+                        child: Text(
+                          'You don\'t have group for this project yet',
+                        ),
+                      );
+                    }
+                  } else if (state is GroupInfoError) {
+                    return Center(child: Text(state.errorMessage));
+                  } else {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                },
               ),
             ],
           ),
@@ -66,32 +104,4 @@ class MyGroupViewBody extends StatelessWidget {
   }
 }
 
-class RateButton extends StatefulWidget {
-  const RateButton({super.key});
 
-  @override
-  State<RateButton> createState() => _RateButtonState();
-}
-
-class _RateButtonState extends State<RateButton> {
-  String icon = Assets.iconsStarRateBoder;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          if (icon == Assets.iconsStarRateBoder) {
-            icon = Assets.iconsStarRate;
-          } else {
-            icon = Assets.iconsStarRateBoder;
-          }
-        });
-      },
-      child: SizedBox(
-        width: 26,
-        height: 26,
-        child: Center(child: SvgPicture.asset(icon)),
-      ),
-    );
-  }
-}
