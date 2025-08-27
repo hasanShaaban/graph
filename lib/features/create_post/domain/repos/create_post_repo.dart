@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:graph/core/errors/failures.dart';
-import 'package:graph/features/create_post/data/models/new_post_model.dart';
+import '../../../../core/errors/failures.dart';
+import '../../data/models/new_post_model.dart';
 
 
 abstract class CreatePostRepo {
@@ -10,4 +10,10 @@ abstract class CreatePostRepo {
      Future<Either<Failures, Map<String, dynamic>>> getAllProject(
 
   );
+      Future<Either<Failures, Map<String, dynamic>>> postSearch({
+      required String name,
+    });
+       Future<Either<Failures, Map<String, dynamic>>> getHashtagSearch({
+      required String name,
+    });
 }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/data/models/signup_data_model.dart';
-import 'package:graph/features/auth/presentation/views/widgets/full_screen_image_view.dart';
+import 'package:graph/features/main/presentation/views/widgets/settings/change_password_sec.dart';
+import '../../features/auth/data/models/signup_data_model.dart';
+import '../../features/auth/presentation/views/widgets/full_screen_image_view.dart';
+import '../../features/auth/presentation/views/widgets/staff_identity_sec.dart';
+import '../../features/auth/presentation/views/widgets/staff_image_section.dart';
+import '../../features/auth/presentation/views/widgets/staff_name_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_company_name_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_company_picture_sec.dart';
 
@@ -111,8 +115,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ProfileView.name:
       return MaterialPageRoute(builder: (context) => ProfileView());
     case CVPDF.name:
-    String cv = settings.arguments as String;
-      return MaterialPageRoute(builder: (context) => CVPDF(cv: cv,));
+      String cv = settings.arguments as String;
+      return MaterialPageRoute(builder: (context) => CVPDF(cv: cv));
     case EditProfileView.name:
       return MaterialPageRoute(builder: (context) => const EditProfileView());
     case GroupsManagementView.name:
@@ -161,6 +165,25 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         builder: (context) => SignupCompanyPictureSec(),
         settings: settings,
       );
+    case StaffNameSection.name:
+      return MaterialPageRoute(
+        builder: (context) => StaffNameSection(),
+        settings: settings,
+      );
+    case StaffImageSection.name:
+      return MaterialPageRoute(
+        builder: (context) => StaffImageSection(),
+        settings: settings,
+      );
+
+    case StaffIdentitySec.name:
+      return MaterialPageRoute(
+        builder: (context) => StaffIdentitySec(),
+        settings: settings,
+      );
+
+    case ChangePasswordSec.name:
+      return MaterialPageRoute(builder: (context) => ChangePasswordSec());
 
     case FullScreenImageView.name:
       final args = settings.arguments as Map<String, dynamic>?;

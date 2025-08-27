@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/features/main/domain/entity/user_image_entity.dart';
-import 'package:graph/features/main/domain/repos/main_repo.dart';
+import '../../../domain/entity/user_image_entity.dart';
+import '../../../domain/repos/main_repo.dart';
 
 part 'user_image_state.dart';
 

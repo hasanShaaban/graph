@@ -4,27 +4,27 @@ class UserModel extends UserEntity {
   UserModel({
     required super.firstName,
     required super.lastName,
-   
-    required super.dateOfBirht,
-    required super.gender,
+
+    super.dateOfBirht,
+    super.gender,
     // required super.studentOrNOt,
     // required super.role,
-    required super.studyYear,
-    required super.spacialization,
+    super.studyYear,
+    super.spacialization,
     required super.image,
   });
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       firstName: json['first_name'],
       lastName: json['last_name'],
-  
+
       dateOfBirht: json['birth_date'],
       gender: json['gender'],
 
       studyYear: json['year_id'],
       spacialization: json['major_id'],
       image: json['profile_image'],
-       // image: null,
+      // image: null,
     );
   }
 

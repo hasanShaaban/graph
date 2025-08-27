@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/custom_stateless_appbar.dart';
 import '../../../../../core/widgets/major_and_year_dropdown_buttons_section.dart';
+import '../../../../../generated/l10n.dart';
 import 'group_management_custom_button.dart';
 import 'group_memeber_container.dart';
 import 'group_vacancy_section.dart';
 import 'remove_button.dart';
-import '../../../../../generated/l10n.dart';
 
 class GroupManagementViewBody extends StatelessWidget {
   const GroupManagementViewBody({super.key});

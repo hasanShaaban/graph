@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
-import '../../../domain/repos/auth_repo.dart';
 import 'package:meta/meta.dart';
+
+import '../../../domain/repos/auth_repo.dart';
 
 part 'role_state.dart';
 

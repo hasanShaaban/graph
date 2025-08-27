@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
-import 'package:graph/features/main/presentation/views/main_page.dart';
+import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../main/presentation/manager/user_image_cubit/user_image_cubit.dart';
+import '../../../../main/presentation/views/main_page.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../manager/login_cubit/login_cubit.dart';
 import '../../../../../generated/l10n.dart';
@@ -75,7 +76,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     context.read<UserImageCubit>().getUserImage();
                     Navigator.pushReplacementNamed(
                       context,
-                      MainPage.name,
+                      ProfileView.name,
                       arguments: signupData,
                     );
                   } else if (state is LoginFailuer) {

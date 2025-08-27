@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
+import '../../../generated/l10n.dart';
 import '../../utils/appAssets.dart';
 import '../../utils/constants.dart';
 import 'public_post_widgets/post_activities.dart';
 import 'public_post_widgets/post_header.dart';
 import 'public_post_widgets/public_post_conent.dart';
 import 'public_post_widgets/react_button.dart';
-import '../../../generated/l10n.dart';
 
 class PublicPost extends StatelessWidget {
   const PublicPost({

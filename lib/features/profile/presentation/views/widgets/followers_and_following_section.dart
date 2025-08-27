@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import '../../../../followers&following/presentation/views/follow_view.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../followers&following/presentation/views/follow_view.dart';
 
 class FollowersAndFollowingSection extends StatelessWidget {
   const FollowersAndFollowingSection({

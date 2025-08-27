@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+
 import 'find_you_friends_item.dart';
 
 class FindYouFriendsListView extends StatelessWidget {

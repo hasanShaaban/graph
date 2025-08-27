@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
+import '../utils/appAssets.dart';
+import '../utils/app_text_style.dart';
+import '../utils/constants.dart';
 
 class CustomDropDownButton extends StatefulWidget {
   const CustomDropDownButton({

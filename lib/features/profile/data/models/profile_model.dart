@@ -1,6 +1,6 @@
-import 'package:graph/features/profile/data/models/skill_model.dart';
-import 'package:graph/features/profile/data/models/social_link_model.dart';
-import 'package:graph/features/profile/domain/entity/profile_entity.dart';
+import 'skill_model.dart';
+import 'social_link_model.dart';
+import '../../domain/entity/profile_entity.dart';
 
 class ProfileModel extends ProfileEntity {
   const ProfileModel({

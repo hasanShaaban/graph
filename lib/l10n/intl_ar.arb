@@ -132,7 +132,15 @@
   "ads":"الاعلانات",
   "apply":"تقدم",
   "noBioYet": "لا يوجد نبذة تعرفية بعد",
-  "tags":"تاغ: "
+  "tags":"تاغ: ",
+  "verifyIdentity":"تأكيد الهوية",
+  "pleasseVerfyIdentity":"يرجى رفع صورة واضحة لهويتك لتأكيد هويتك.",
+  "makeSureAllDetailsVisible":" تأكد من أن جميع التفاصيل واضحة ويمكن قراءتها",
+  "changeYourPassword": "تغيير كلمة المرور",
+  "oldPassowrd": "كلمة المرور السابقة",
+  "newPassword":"كلمة المرور الجديدة",
+  "confirmNewPass": "تأكيد كلمة المرور الجديدة"
+  
   
 
 }

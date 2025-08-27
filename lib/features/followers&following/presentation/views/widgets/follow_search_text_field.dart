@@ -7,7 +7,7 @@ import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
 
 class FollowSearchTextField extends StatelessWidget {
-  const FollowSearchTextField({super.key, required this.lang});
+  const FollowSearchTextField({super.key, required this.lang, });
   final S lang;
 
   @override

@@ -1,4 +1,4 @@
-import 'package:graph/features/profile/domain/entity/skill_entity.dart';
+import '../../domain/entity/skill_entity.dart';
 
 class SkillModel extends SkillEntity {
   const SkillModel({

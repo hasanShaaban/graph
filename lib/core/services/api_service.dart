@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
+import '../../features/auth/data/repos/auth_local_data_source.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path_provider/path_provider.dart';
 

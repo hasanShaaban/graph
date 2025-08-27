@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/core/widgets/error_page.dart';
-import 'package:graph/features/profile/presentation/manager/profile/profile_cubit.dart';
-import 'package:graph/features/profile/presentation/views/widgets/name_bio_follow_section.dart';
+import '../../../../../core/widgets/error_page.dart';
+import '../../manager/profile/profile_cubit.dart';
+import 'name_bio_follow_section.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/posts/public_post.dart';
@@ -17,6 +17,7 @@ import '../../../../../generated/l10n.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
+  
 
   @override
   Widget build(BuildContext context) {

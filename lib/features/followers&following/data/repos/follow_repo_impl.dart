@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:graph/core/errors/failures.dart';
-import 'package:graph/core/services/api_service.dart';
-import 'package:graph/core/utils/pritty_log.dart';
-import 'package:graph/features/followers&following/data/models/friend_model.dart';
-import 'package:graph/features/followers&following/domain/entity/friend_entity.dart';
-import 'package:graph/features/followers&following/domain/repo/follow_repo.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../../core/services/api_service.dart';
+import '../../../../core/utils/pritty_log.dart';
+import '../models/friend_model.dart';
+import '../../domain/entity/friend_entity.dart';
+import '../../domain/repo/follow_repo.dart';
 
 class FollowRepoImpl extends FollowRepo{
   final SecureApiService apiService;

@@ -1,8 +1,8 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/features/profile/domain/entity/profile_entity.dart';
-import 'package:graph/features/profile/domain/repos/profile_repo.dart';
+import '../../../domain/entity/profile_entity.dart';
+import '../../../domain/repos/profile_repo.dart';
 
 part 'profile_state.dart';
 

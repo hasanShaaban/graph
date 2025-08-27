@@ -4,17 +4,17 @@ import '../../../../../core/utils/appAssets.dart';
 import 'custom_text_field.dart';
 
 class SignupTextFormFields extends StatefulWidget {
-
-
   final FormFieldSetter<String> onEmailSaved;
   final FormFieldSetter<String> onPasswordSaved;
   final FormFieldSetter<String> onConfirmPasswordSaved;
+
 
   const SignupTextFormFields({
     super.key,
     required this.onEmailSaved,
     required this.onPasswordSaved,
     required this.onConfirmPasswordSaved,
+
   });
 
   @override
@@ -39,8 +39,9 @@ class _SignupTextFormFieldsState extends State<SignupTextFormFields> {
             return null;
           },
 
-          hintText: lang.email,
-          prefixIcon: Assets.iconsEnvelope,
+          hintText:  lang.email,
+          prefixIcon:
+       Assets.iconsEnvelope,
           textInputType: TextInputType.emailAddress,
           onSaved: widget.onEmailSaved,
         ),
@@ -74,7 +75,8 @@ class _SignupTextFormFieldsState extends State<SignupTextFormFields> {
             }
             return null;
           },
-          hintText: lang.confirmPassword,
+          hintText:
+           lang.confirmPassword,
           prefixIcon: Assets.iconsPassword,
           textInputType: TextInputType.visiblePassword,
           onSaved: widget.onConfirmPasswordSaved,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/features/profile/domain/entity/profile_entity.dart';
-import 'package:graph/features/profile/domain/entity/skill_entity.dart';
-import 'package:graph/features/profile/domain/entity/social_link_entity.dart';
+import '../../../domain/entity/profile_entity.dart';
+import '../../../domain/entity/skill_entity.dart';
+import '../../../domain/entity/social_link_entity.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
 import 'about_me_header.dart';

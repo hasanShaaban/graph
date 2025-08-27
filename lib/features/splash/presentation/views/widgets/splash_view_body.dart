@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
-import 'package:graph/features/auth/presentation/views/login_view.dart';
-import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
-import 'package:graph/features/main/presentation/views/main_page.dart';
-import 'package:graph/features/onboarding/data/repos/on_boarding_local_data_source.dart';
+import '../../../../auth/data/repos/auth_local_data_source.dart';
+import '../../../../auth/presentation/views/login_view.dart';
+import '../../../../main/presentation/manager/user_image_cubit/user_image_cubit.dart';
+import '../../../../main/presentation/views/main_page.dart';
+import '../../../../onboarding/data/repos/on_boarding_local_data_source.dart';
 import '../../../../../core/services/get_it_service.dart';
 import '../../../../../core/services/providers/local_provider.dart';
 import '../../../../../core/services/sources/langeage_data_source.dart';

@@ -52,6 +52,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeNameAndPassowrd": MessageLookupByLibrary.simpleMessage(
       "Change name and password",
     ),
+    "changeYourPassword": MessageLookupByLibrary.simpleMessage(
+      "Change your password",
+    ),
     "codeVerification": MessageLookupByLibrary.simpleMessage(
       "check your email inbox and inter the code :",
     ),
@@ -60,6 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "comments": MessageLookupByLibrary.simpleMessage("Comments"),
     "companyName": MessageLookupByLibrary.simpleMessage("company name"),
+    "confirmNewPass": MessageLookupByLibrary.simpleMessage(
+      "Confirm new password",
+    ),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm password"),
     "createNewAccount": MessageLookupByLibrary.simpleMessage(
       "Create new account",
@@ -122,6 +128,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "login": MessageLookupByLibrary.simpleMessage("Login!"),
     "loginTitle": MessageLookupByLibrary.simpleMessage("Login to your account"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "makeSureAllDetailsVisible": MessageLookupByLibrary.simpleMessage(
+      " Make sure all details are visible and readable.",
+    ),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "managementAndPrivacy": MessageLookupByLibrary.simpleMessage(
       "management & privacy",
@@ -134,12 +143,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "myGroups": MessageLookupByLibrary.simpleMessage("MY Groups"),
     "mySV": MessageLookupByLibrary.simpleMessage("My SV"),
     "networks": MessageLookupByLibrary.simpleMessage("Networks and OS"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "noBioYet": MessageLookupByLibrary.simpleMessage("No bio yet"),
     "nonStudentAccount": MessageLookupByLibrary.simpleMessage(
       "Non-Student Account",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "oldPassowrd": MessageLookupByLibrary.simpleMessage("Old password"),
     "onboarding1": MessageLookupByLibrary.simpleMessage(
       "With Graph, you\'re always part of the ITE circle.",
     ),
@@ -170,6 +181,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "pleaseSelectSpacialization": MessageLookupByLibrary.simpleMessage(
       "Please, Select your specialization!",
+    ),
+    "pleasseVerfyIdentity": MessageLookupByLibrary.simpleMessage(
+      "Please upload a clear photo of your ID to verify your identity.",
     ),
     "post": MessageLookupByLibrary.simpleMessage("Post"),
     "postsManagement": MessageLookupByLibrary.simpleMessage("Posts management"),
@@ -220,6 +234,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "uploadPicture": MessageLookupByLibrary.simpleMessage(
       "Upload Your Picture",
     ),
+    "verifyIdentity": MessageLookupByLibrary.simpleMessage("Verify Identity"),
     "viewProfile": MessageLookupByLibrary.simpleMessage("View Profile"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
     "whatToCallYou": MessageLookupByLibrary.simpleMessage(

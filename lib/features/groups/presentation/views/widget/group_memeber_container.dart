@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/profile_image.dart';
+import '../../../../../generated/l10n.dart';
 import 'group_member_container_header.dart';
 import 'group_member_role.dart';
 import 'group_member_tools.dart';
 import 'personal_info_column.dart';
-import '../../../../../generated/l10n.dart';
 
 class GroupMemberContainer extends StatelessWidget {
   const GroupMemberContainer({

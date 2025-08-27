@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'follow_list_view_item.dart';
 
 class FollowListView extends StatelessWidget {

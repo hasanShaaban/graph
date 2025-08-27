@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:graph/features/profile/domain/entity/skill_entity.dart';
+import '../../../domain/entity/skill_entity.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/tech_tool_container.dart';
 import '../../../../../generated/l10n.dart';

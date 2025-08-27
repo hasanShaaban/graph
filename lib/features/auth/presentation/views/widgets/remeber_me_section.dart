@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
+import '../../../../../core/services/get_it_service.dart';
+import '../../../data/repos/auth_local_data_source.dart';
 
 import '../../../../../core/utils/constants.dart';
 

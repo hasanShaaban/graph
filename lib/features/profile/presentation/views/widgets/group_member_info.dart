@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../generated/l10n.dart';
 import 'alert_dialog_action_button.dart';
 import 'tech_tools_list_view.dart';
-import '../../../../../generated/l10n.dart';
 
 class GroupMemberInfo extends StatelessWidget {
   const GroupMemberInfo({super.key, required this.lang});

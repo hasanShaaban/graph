@@ -1,4 +1,4 @@
-import 'package:graph/features/profile/domain/entity/social_link_entity.dart';
+import '../../domain/entity/social_link_entity.dart';
 
 class SocialLinkModel extends SocialLinkEntity {
   const SocialLinkModel({

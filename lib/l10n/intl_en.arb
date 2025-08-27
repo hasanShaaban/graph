@@ -131,6 +131,13 @@
   "ads":"Ads",
   "apply":"Apply",
   "noBioYet": "No bio yet",
-  "tags": "tags: "
+  "tags": "tags: ",
+  "verifyIdentity": "Verify Identity",
+  "pleasseVerfyIdentity":"Please upload a clear photo of your ID to verify your identity.",
+  "makeSureAllDetailsVisible":" Make sure all details are visible and readable.",
+  "changeYourPassword": "Change your password",
+  "oldPassowrd": "Old password",
+  "newPassword":"New password",
+  "confirmNewPass": "Confirm new password"
   
 }

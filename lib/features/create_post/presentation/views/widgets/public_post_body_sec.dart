@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/constants.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../generated/l10n.dart';
 

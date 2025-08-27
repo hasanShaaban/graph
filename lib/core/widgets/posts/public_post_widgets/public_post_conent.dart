@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/widgets/expandable_text.dart';
+import '../../expandable_text.dart';
 import '../../../utils/appAssets.dart';
 import '../../../utils/app_text_style.dart';
 import '../../../utils/constants.dart';

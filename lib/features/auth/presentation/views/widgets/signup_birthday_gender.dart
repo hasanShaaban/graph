@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'signup_collage_stage_section.dart';
+
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/signup_data_model.dart';
 import 'auth_app_bar.dart';
-import '../../../../../generated/l10n.dart';
 import 'birthday_gender_body.dart';
 import 'next_button.dart';
+import 'signup_collage_stage_section.dart';
 
 class SignupBirthdayGender extends StatefulWidget {
   const SignupBirthdayGender({super.key});

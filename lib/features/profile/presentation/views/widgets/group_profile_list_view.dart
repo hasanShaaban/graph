@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import 'group_member_info.dart';
 import '../../../../../generated/l10n.dart';
+import 'group_member_info.dart';
 
 class GroupProfileListView extends StatelessWidget {
   const GroupProfileListView({
