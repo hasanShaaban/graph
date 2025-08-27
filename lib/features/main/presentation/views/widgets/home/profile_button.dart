@@ -21,6 +21,7 @@ class ProfileButton extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               context.read<ProfileCubit>().getProfileData();
+              
               Navigator.pushNamed(context, ProfileView.name);
             },
             child:
@@ -30,7 +31,7 @@ class ProfileButton extends StatelessWidget {
                       radius: 15,
                       backgroundColor: Constants2.lightPrimaryColor(context),
                       backgroundImage: CachedNetworkImageProvider(
-                        'http://127.0.0.1:8000${state.response.profileImageUrl}',
+                        '${state.response.profileImageUrl}',
                       ),
                     ),
           );

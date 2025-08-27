@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/core/functions/custom_snack_bar.dart';
+import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/group_member_cubit/group_member_cubit.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
@@ -38,7 +42,24 @@ class GroupSection extends StatelessWidget {
           ],
         ),
         SizedBox(height: 10),
-        GroupProfileListView(height: height, width: width, lang: lang),
+        BlocListener<GroupInfoCubit, GroupInfoState>(
+          listener: (context, state) {
+            if (state is GroupInfoSuccess && state.response.id != 0) {
+              context.read<GroupMemberCubit>().getGroupMembers(
+                groupId: state.response.id,
+              );
+            } else if (state is GroupInfoError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                customSnackBar(
+                  message: state.errorMessage,
+                  backgroundColor: Constants2.darkSecondaryColor(context),
+                  textColor: Constants2.lightPrimaryColor(context),
+                ),
+              );
+            }
+          },
+          child: GroupProfileListView(height: height, width: width, lang: lang),
+        ),
       ],
     );
   }

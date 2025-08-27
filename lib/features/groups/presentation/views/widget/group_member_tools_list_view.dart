@@ -30,6 +30,7 @@ class GroupMemberToolsListView extends StatelessWidget {
               left: lang.lang == 'ar' ? 10 : 0,
             ),
             child: TechToolContainer(
+              name: '',
               width: 40,
               height: 40,
               color: Constants2.lightPrimaryColor(context),

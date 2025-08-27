@@ -20,27 +20,12 @@ class PublicApiService {
   Future<Map<String, dynamic>> get({
     required String endPoints,
     var data,
-    Options? options,
   }) async {
-    final token = Hive.box('authBox').get('token');
-
-    final headers = {
-      //if (token != null) 'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      ...?options?.headers,
-    };
-    if (token != null) {
-      headers['Authorization'] = 'Bearer $token';
-    }
-    final mergedOptions = Options(headers: headers);
-    var response = await _dio.get(
-      '$_baseURL$endPoints',
-      queryParameters: data,
-      options: mergedOptions,
-    );
+    var response = await _dio.get('$_baseURL$endPoints', queryParameters: data);
     log('$_baseURL$endPoints');
-    log(response.data);
+    log(
+      '-----------------Public API SERVICE: get response ================ \n${response.data}',
+    );
     return response.data;
   }
 
@@ -160,7 +145,7 @@ class PublicApiService {
 //   final Dio _dio;
 //   final AuthLocalDataSource authLocalDataSource;
 //   SecureApiService(this._dio, this.authLocalDataSource) {
-    
+
 //     _dio.interceptors.add(
 //       InterceptorsWrapper(
 //         onRequest: (options, handler) async {
@@ -204,10 +189,7 @@ class SecureApiService {
 
   final String _baseURL = 'http://127.0.0.1:8000/api/';
 
-  Future<dynamic> get({
-    required String endPoints,
-    var data,
-  }) async {
+  Future<dynamic> get({required String endPoints, var data}) async {
     var response = await _dio.get('$_baseURL$endPoints', queryParameters: data);
     return response.data;
   }
@@ -217,16 +199,11 @@ class SecureApiService {
     var data,
     Options? options,
   }) async {
-    final token = await authLocalDataSource.getToken();
-
     final headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       ...?options?.headers,
     };
-    if (token != null) {
-      headers['Authorization'] = 'Bearer $token';
-    }
 
     final mergedOptions = Options(headers: headers);
     var response = await _dio.post(
@@ -249,17 +226,11 @@ class SecureApiService {
     var data,
     Options? options,
   }) async {
-    final token = await authLocalDataSource.getToken();
-
     final headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       ...?options?.headers,
     };
-    if (token != null) {
-      headers['Authorization'] = 'Bearer $token';
-    }
-
     final mergedOptions = Options(headers: headers);
     var response = await _dio.put(
       '$_baseURL$endPoint',
@@ -277,16 +248,11 @@ class SecureApiService {
   }
 
   Future<dynamic> delete({required String endPoint, Options? options}) async {
-    final token = await authLocalDataSource.getToken();
-
     final headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       ...?options?.headers,
     };
-    if (token != null) {
-      headers['Authorization'] = 'Bearer $token';
-    }
 
     final mergedOptions = Options(headers: headers);
     var response = await _dio.delete(

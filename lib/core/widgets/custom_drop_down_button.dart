@@ -4,6 +4,10 @@ import '../utils/appAssets.dart';
 import '../utils/app_text_style.dart';
 import '../utils/constants.dart';
 
+import 'package:graph/core/utils/years_and_major.dart';
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
+import 'package:provider/provider.dart';
+
 class CustomDropDownButton extends StatefulWidget {
   const CustomDropDownButton({
     super.key,
@@ -22,6 +26,7 @@ class CustomDropDownButton extends StatefulWidget {
 class _CustomDropDownButtonState extends State<CustomDropDownButton> {
   String? selected;
   final GlobalKey _key = GlobalKey();
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +88,9 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
       items:
           list.map((e) {
             return PopupMenuItem<String>(
+              onTap: () {
+                context.read<ProjectCubit>().getProjects(yearId: Year.yearbyName[e]!);
+              },
               value: e,
               child: Text(
                 e,
@@ -95,9 +103,13 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
       color: Constants2.lightSecondaryColor(context),
     );
     if (result != null && result != selected) {
+      
       setState(() {
+        
         selected = result;
+
       });
     }
   }
 }
+

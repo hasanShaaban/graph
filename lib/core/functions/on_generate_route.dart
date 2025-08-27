@@ -8,7 +8,7 @@ import '../../features/auth/presentation/views/widgets/staff_name_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_company_name_section.dart';
 import '../../features/auth/presentation/views/widgets/signup_company_picture_sec.dart';
 
-import '../widgets/posts/public_post_widgets/image_viewer.dart';
+import '../widgets/posts/presentation/public_post_widgets/image_viewer.dart';
 
 import '../../features/followers&following/presentation/views/follow_view.dart';
 import '../../features/groups/presentation/views/group_management_view.dart';
@@ -97,12 +97,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       final args = settings.arguments;
       if (args == null || args is! Map<String, dynamic>) {
         return MaterialPageRoute(
-          builder: (context) => FollowView(type: 'defaultType'),
+          builder: (context) => FollowView(type: 'defaultType', data: [],),
         );
       } else {
         final Map<String, dynamic> arguments = args;
         return MaterialPageRoute(
-          builder: (context) => FollowView(type: arguments['type']),
+          builder: (context) => FollowView(type: arguments['type'], data: arguments['data'],),
         );
       }
 

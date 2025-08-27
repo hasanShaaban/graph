@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import '../../../../../../core/widgets/major_and_year_dropdown_buttons_section.dart';
-import '../../../../../../core/widgets/posts/group_post.dart';
+import '../../../../../../core/widgets/posts/presentation/group_post.dart';
 
 class GroupsPage extends StatelessWidget {
   const GroupsPage({super.key});

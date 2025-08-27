@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../utils/constants.dart';
-import '../../custom_back_button.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../utils/constants.dart';
+import '../../../custom_back_button.dart';
+import '../../../../../generated/l10n.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
@@ -37,7 +37,7 @@ class ImageViewer extends StatelessWidget {
         builder: (context, index) {
           return PhotoViewGalleryPageOptions(
             semanticLabel: index.toString(),
-            imageProvider: AssetImage(imageUrls[index]),
+            imageProvider: NetworkImage('http://127.0.0.1:8000${imageUrls[index]}'),
             heroAttributes: PhotoViewHeroAttributes(tag: imageUrls[index]),
             minScale: PhotoViewComputedScale.contained,
             maxScale: PhotoViewComputedScale.covered * 1,

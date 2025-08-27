@@ -1,15 +1,16 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/profile_image.dart';
+import '../../../../utils/appAssets.dart';
+import '../../../../utils/app_text_style.dart';
+import '../../../../utils/constants.dart';
+import '../../../profile_image.dart';
 import 'package:intl/intl.dart';
-
-class PostHeader extends StatelessWidget {
-  const PostHeader({super.key, required this.width, required this.height});
+class AdsPostHeader extends StatelessWidget {
+  const AdsPostHeader({
+    super.key,
+    required this.width,
+    required this.height,
+  });
 
   final double width;
   final double height;
@@ -30,22 +31,12 @@ class PostHeader extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Text(
-                  'Hasan Shaaban',
-                  style: AppTextStyle.cairoSemiBold18.copyWith(
-                    color: Constants2.darkPrimaryColor(context),
-                    height: 1.1,
-                  ),
-                ),
-                SizedBox(width: 7),
-                SvgPicture.asset(
-                  Assets.iconsEarthAfrica,
-                  width: 12,
-                  color: Constants2.darkSecondaryColor(context),
-                ),
-              ],
+            Text(
+              'Hasan Shaaban',
+              style: AppTextStyle.cairoSemiBold18.copyWith(
+                color: Constants2.darkPrimaryColor(context),
+                height: 1.1,
+              ),
             ),
             Text(
               DateFormat(
@@ -62,12 +53,6 @@ class PostHeader extends StatelessWidget {
         //TODO: implemet save button
         SvgPicture.asset(
           Assets.iconsBookmark,
-          color: Constants2.darkSecondaryColor(context),
-        ),
-        SizedBox(width: 10),
-        //TODO: implemet more button
-        SvgPicture.asset(
-          Assets.iconsDots,
           color: Constants2.darkSecondaryColor(context),
         ),
       ],

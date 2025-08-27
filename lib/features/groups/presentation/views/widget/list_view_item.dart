@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:graph/features/groups/domain/entity/group_member_entity.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
@@ -6,10 +8,12 @@ import '../../../../../core/widgets/tech_tool_container.dart';
 import 'personal_info_column.dart';
 
 class ListViewItem extends StatelessWidget {
-  const ListViewItem({super.key, required this.height, required this.width});
+  const ListViewItem({super.key, required this.height, required this.width, required this.member});
   final double height, width;
+  final GroupMemberEntity member;
 
   @override
+
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -28,7 +32,7 @@ class ListViewItem extends StatelessWidget {
             child: CircleAvatar(
               radius: 30,
               backgroundColor: Colors.grey,
-              backgroundImage: AssetImage(Assets.imagesProfileImage),
+              backgroundImage: CachedNetworkImageProvider('http://127.0.0.1:8000${member.image}'),
             ),
           ),
 
@@ -37,9 +41,9 @@ class ListViewItem extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PesronalInfoColumn(),
+              PesronalInfoColumn(name: member.name),
               Text(
-                'mobile developer + UI-UX',
+                '${member.skill.skillName} Developer',
                 style: AppTextStyle.cairoRegular14.copyWith(
                   color: Constants2.darkSecondaryColor(context),
                   height: 1.3,
@@ -49,6 +53,7 @@ class ListViewItem extends StatelessWidget {
           ),
           Spacer(),
           TechToolContainer(
+            name: '',
             width: 40,
             height: 40,
             color: Constants2.lightSecondaryColor(context),

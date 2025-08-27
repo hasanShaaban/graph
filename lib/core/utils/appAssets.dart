@@ -127,6 +127,10 @@ class Assets {
   /// assets/icons/facebook.svg
   static const String iconsFacebook = "assets/icons/facebook.svg";
 
+  /// Assets for iconsFriends
+  /// assets/icons/friends.svg
+  static const String iconsFriends = "assets/icons/friends.svg";
+
   /// Assets for iconsGithub
   /// assets/icons/github.svg
   static const String iconsGithub = "assets/icons/github.svg";
@@ -275,6 +279,10 @@ class Assets {
   /// Assets for iconsStarRateBoder
   /// assets/icons/star_rate_boder.svg
   static const String iconsStarRateBoder = "assets/icons/star_rate_boder.svg";
+
+  /// Assets for iconsTag
+  /// assets/icons/tag.svg
+  static const String iconsTag = "assets/icons/tag.svg";
 
   /// Assets for iconsTerminal
   /// assets/icons/terminal.svg

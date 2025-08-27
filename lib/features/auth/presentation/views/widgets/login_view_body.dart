@@ -4,6 +4,12 @@ import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../main/presentation/manager/user_image_cubit/user_image_cubit.dart';
 import '../../../../main/presentation/views/main_page.dart';
+import 'package:graph/bloc_providers.dart';
+import 'package:graph/core/functions/custom_snack_bar.dart';
+import 'package:graph/core/utils/constants.dart';
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
+import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
+import 'package:graph/features/main/presentation/views/main_page.dart';
 import '../../../data/models/signup_data_model.dart';
 import '../../manager/login_cubit/login_cubit.dart';
 import '../../../../../generated/l10n.dart';
@@ -71,9 +77,16 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               RemeberMeSection(text: lang.rememberMe),
               SizedBox(height: 20),
               BlocConsumer<LoginCubit, LoginState>(
-                listener: (context, state) {
+                listener: (context, state) async {
                   if (state is LoginSuccess) {
+                    final year = await profileLocalDataSource.getStudentYear();
+                    final major =
+                        await profileLocalDataSource.getStudentMajor();
                     context.read<UserImageCubit>().getUserImage();
+                    context.read<ProjectCubit>().getProjects(
+                      yearId: year == 0 ? 1 : year,
+                      majorId: major == 0 ? null : major,
+                    );
                     Navigator.pushReplacementNamed(
                       context,
                       ProfileView.name,
@@ -126,35 +139,4 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       ),
     );
   }
-}
-
-SnackBar customSnackBar({
-  required String message,
-  required Color backgroundColor,
-  required Color textColor,
-  IconData icon = Icons.error,
-}) {
-  return SnackBar(
-    backgroundColor: Colors.transparent,
-    elevation: 0,
-    content: Container(
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Row(
-          children: [
-            Icon(icon, color: textColor),
-            SizedBox(width: 10),
-            Text(
-              message,
-              style: AppTextStyle.cairoSemiBold16.copyWith(color: textColor),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
 }

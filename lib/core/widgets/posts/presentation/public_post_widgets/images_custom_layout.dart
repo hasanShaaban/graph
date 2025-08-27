@@ -152,8 +152,8 @@ class ImagesCustomLayout extends StatelessWidget {
       child: Container(
         height: height,
         color: Colors.grey[300],
-        child: Image.asset(
-          url,
+        child: Image.network(
+          'http://127.0.0.1:8000$url',
           fit: fit,
           width: double.infinity,
           height: height,

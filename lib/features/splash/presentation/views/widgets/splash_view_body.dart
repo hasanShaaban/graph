@@ -7,6 +7,10 @@ import '../../../../auth/presentation/views/login_view.dart';
 import '../../../../main/presentation/manager/user_image_cubit/user_image_cubit.dart';
 import '../../../../main/presentation/views/main_page.dart';
 import '../../../../onboarding/data/repos/on_boarding_local_data_source.dart';
+
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
+
+import 'package:graph/features/profile/data/repos/profile_local_data_source.dart';
 import '../../../../../core/services/get_it_service.dart';
 import '../../../../../core/services/providers/local_provider.dart';
 import '../../../../../core/services/sources/langeage_data_source.dart';
@@ -28,6 +32,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   final OnBoardingLocalDataSource onBoardingLocalDataSource =
       getIt<OnBoardingLocalDataSource>();
   final AuthLocalDataSource authLocalDataSource = getIt<AuthLocalDataSource>();
+  final ProfileLocalDataSource profileLocalDataSource =
+      getIt<ProfileLocalDataSource>();
 
   bool opacityEffect = false;
   bool? isFirstTime;
@@ -42,6 +48,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     final languageSeen = await langeageDataSource.isLanguageSelected();
     final onBoardingSeen = await onBoardingLocalDataSource.isOnBoardingSeen();
     final rejestered = await authLocalDataSource.isRejestered();
+    final year = await profileLocalDataSource.getStudentYear();
+    final major = await profileLocalDataSource.getStudentMajor();
+
     setState(() {
       isFirstTime = !languageSeen;
     });
@@ -58,6 +67,11 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       if (onBoardingSeen) {
         if (rejestered) {
           context.read<UserImageCubit>().getUserImage();
+          context.read<ProjectCubit>().getProjects(
+            yearId: year == 0 ? 1 : year,
+            majorId: major == 0 ? null : major,
+          );
+
           Navigator.pushReplacementNamed(
             context,
             MainPage.name,

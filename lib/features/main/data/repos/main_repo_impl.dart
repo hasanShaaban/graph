@@ -3,10 +3,13 @@ import 'package:dio/dio.dart';
 import 'package:graph/features/main/data/models/change_password_model.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/services/api_service.dart';
-import '../../../../core/utils/pritty_log.dart';
+//import '../../../../core/utils/pritty_log.dart';
 import '../models/user_image_model.dart';
 import '../../domain/entity/user_image_entity.dart';
 import '../../domain/repos/main_repo.dart';
+
+import 'package:graph/core/functions/pritty_log.dart';
+
 
 class MainRepoImpl extends MainRepo {
   final SecureApiService apiService;

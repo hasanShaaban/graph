@@ -1,14 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/error_page.dart';
 import '../../manager/profile/profile_cubit.dart';
 import 'name_bio_follow_section.dart';
+import 'package:graph/core/utils/years_and_major.dart';
+
+import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
+import 'package:graph/features/profile/presentation/manager/profile_posts/profile_posts_cubit.dart';
+
+import 'package:graph/features/profile/presentation/views/widgets/posts_list_view.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import '../../../../../core/widgets/posts/public_post.dart';
 import '../../../../../core/widgets/profile_image.dart';
-import '../../../../post_details/presentation/view/post_details_view.dart';
 import 'about_me_container.dart';
 import 'go_up_button.dart';
 import 'group_section.dart';
@@ -30,6 +34,9 @@ class ProfileViewBody extends StatelessWidget {
         if (state is ProfileError) {
           return ErrorPage(lang: lang, width: width, state: state);
         } else if (state is ProfileSuccess) {
+          context.read<FriendsCubit>().getFirends();
+          context.read<ProfilePostsCubit>().getProfilePosts();
+          context.read<ProjectCubit>().getProjects(yearId: Year.yearbyName[state.profileEntity.year[0]]!);
           var profileModel = state.profileEntity;
           return SingleChildScrollView(
             controller: scrollController,
@@ -97,14 +104,7 @@ class ProfileViewBody extends StatelessWidget {
                         lang.activities,
                         style: AppTextStyle.cairoSemiBold14,
                       ),
-                      PublicPost(
-                        lang: lang,
-                        width: width,
-                        height: height,
-                        onTap: () {
-                          Navigator.pushNamed(context, PostDetailsView.name);
-                        },
-                      ),
+                      PostsListView(width: width, lang: lang, height: height),
                       SizedBox(height: 25),
                       Divider(
                         thickness: 1,

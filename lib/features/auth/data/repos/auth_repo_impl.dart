@@ -142,6 +142,7 @@ class AuthRepoImpl implements AuthRepo {
       authLocalDataSource.setToken(token);
       authLocalDataSource.setUserId(response['id']);
       log('Response from login: $response');
+      log('Token from login: $token');
 
       return right(response);
     } catch (e) {
