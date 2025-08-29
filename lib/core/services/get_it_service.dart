@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graph/core/services/api_service.dart';
+import 'package:graph/core/widgets/posts/data/repos/public_post_repo_impl.dart';
+import 'package:graph/core/widgets/posts/domain/repos/public_post_repo.dart';
 import 'package:graph/features/auth/domain/repos/auth_repo.dart';
 import 'package:graph/features/create_post/data/repos/create_post_repo_iml.dart';
 import 'package:graph/features/create_post/domain/repos/create_post_repo.dart';
@@ -95,4 +97,6 @@ void setupGetit() {
   getIt.registerSingleton<GroupsRepo>(
     GroupsRepoImpl(getIt<PublicApiService>(), getIt<ProfileLocalDataSource>(), getIt<SecureApiService>()),
   );
+
+  getIt.registerSingleton<PublicPostRepo>(PublicPostRepoImpl( getIt<SecureApiService>()));
 }

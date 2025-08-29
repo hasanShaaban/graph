@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:graph/core/services/providers/followers_provider.dart';
 import 'package:graph/core/services/providers/group_provider.dart';
 import 'package:graph/core/services/providers/personal_data_provider.dart';
 import 'package:graph/features/splash/presentation/views/splash_view.dart';
@@ -31,7 +32,8 @@ void main() async {
         ChangeNotifierProvider(create: (context) => UserInfoProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => PersonalDataProvider()),
-        ChangeNotifierProvider(create: (context) => GroupProvider())
+        ChangeNotifierProvider(create: (context) => GroupProvider()),
+        ChangeNotifierProvider(create: (create) => FollowersProvider()),
       ],
       child: MyApp(),
     ),

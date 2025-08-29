@@ -109,9 +109,42 @@ class GroupsRepoImpl extends GroupsRepo {
     try {
       var data = await secureApiService.post(
         endPoint: 'groups_Create?',
-        data: {'group_name': 'groupName', 'project_id': projectId, 'skill_id': skillID},
+        data: {
+          'group_name': 'groupName',
+          'project_id': projectId,
+          'skill_id': skillID,
+        },
       );
       prettyLog('Group created successfully');
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        prettyLog('Dio Exception ${e.message}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      prettyLog('Exception ${e.toString()}');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> inviteMember({
+    required int projectId,
+    required int skillID,
+    required int groupId,
+    required int userId,
+  }) async {
+    try {
+      var data = await secureApiService.post(
+        endPoint: 'groups/invite?',
+        data: {
+          'project_id': projectId,
+          'skill_id': skillID,
+          'groupId': groupId,
+          'user_id': userId,
+        },
+      );
+      prettyLog('Member invited successfully');
       return right(data);
     } catch (e) {
       if (e is DioException) {

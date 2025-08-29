@@ -1,18 +1,22 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graph/core/functions/pritty_log.dart';
+import 'package:graph/core/widgets/posts/presentation/manager/react_cubit/react_cubit.dart';
 import '../../../../utils/constants.dart';
 import '../../../../utils/appAssets.dart';
 import '../../../../utils/app_text_style.dart';
 import 'dart:developer' as dev;
 
 class ReactButton extends StatefulWidget {
-  const ReactButton({super.key, required this.height, required this.width, required this.buttonColor, required this.circleColor, required this.reactsCount});
+  const ReactButton({super.key, required this.height, required this.width, required this.buttonColor, required this.circleColor, required this.reactsCount, this.postId});
 
   final double height;
   final double width;
   final Color buttonColor, circleColor;
   final String reactsCount;
+  final int? postId;
 
   @override
   State<ReactButton> createState() => _ReactButtonState();
@@ -37,6 +41,11 @@ class _ReactButtonState extends State<ReactButton>
     Assets.iconsReactLaugh,
     Assets.iconsReactClap,
   ];
+  final Map<String, int> reactsByName = {
+    Assets.iconsReactLove : 1,
+    Assets.iconsReactClap : 2,
+    Assets.iconsReactLaugh : 3
+  };
 
   @override
   void initState() {
@@ -146,6 +155,11 @@ class _ReactButtonState extends State<ReactButton>
                             dev.log('tapped');
                             setState(() {
                               icon = reacts[index];
+                              if(widget.postId != null){
+                                int reactId = reactsByName[icon]!;
+                                prettyLog('reactId :$reactId, postId: ${widget.postId}');
+                                context.read<ReactCubit>().addReact(postId: widget.postId!, reactId: reactId);
+                              }
                             });
                             _onTapCancel();
                           },

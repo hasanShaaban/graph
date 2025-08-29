@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/core/services/providers/personal_data_provider.dart';
 import 'package:graph/core/utils/years_and_major.dart';
 import 'package:graph/core/widgets/error_page.dart';
+
 import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
 import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:graph/features/profile/presentation/manager/profile/profile_cubit.dart';
 import 'package:graph/features/profile/presentation/manager/profile_posts/profile_posts_cubit.dart';
 import 'package:graph/features/profile/presentation/views/widgets/name_bio_follow_section.dart';
+
 import 'package:graph/features/profile/presentation/views/widgets/posts_list_view.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
@@ -20,6 +22,7 @@ import '../../../../../generated/l10n.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
+  
 
   @override
   Widget build(BuildContext context) {

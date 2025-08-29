@@ -106,7 +106,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const MyGroupView());
     case GroupManagementView.name:
       return MaterialPageRoute(
-        builder: (context) => const GroupManagementView(),
+        
+        builder: (context) => GroupManagementView(),
       );
     case ProfileView.name:
       return MaterialPageRoute(builder: (context) => ProfileView());

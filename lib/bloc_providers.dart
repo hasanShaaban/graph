@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/core/services/api_service.dart';
 import 'package:graph/core/services/get_it_service.dart';
+import 'package:graph/core/widgets/posts/domain/repos/public_post_repo.dart';
+import 'package:graph/core/widgets/posts/presentation/manager/react_cubit/react_cubit.dart';
 import 'package:graph/features/auth/domain/repos/auth_repo.dart';
 import 'package:graph/features/auth/presentation/manager/get_skills_cubit/get_skills_cubit.dart';
 import 'package:graph/features/create_post/domain/repos/create_post_repo.dart';
@@ -15,6 +17,8 @@ import 'package:graph/features/groups/presentation/manager/group_info_cubit/grou
 import 'package:graph/features/groups/presentation/manager/group_member_cubit/group_member_cubit.dart';
 import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:graph/features/main/domain/repos/main_repo.dart';
+import 'package:graph/features/main/presentation/manager/pending_invitations_cubit/pending_invitations_cubit.dart';
+import 'package:graph/features/main/presentation/manager/public_post_cubit/public_post_cubit.dart';
 import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
 import 'package:graph/features/profile/data/repos/profile_local_data_source.dart';
 import 'package:graph/features/profile/domain/repos/profile_repo.dart';
@@ -73,5 +77,10 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => ProfilePostsCubit(getIt<ProfileRepo>())),
   BlocProvider(create: (context) => GroupInfoCubit(getIt<GroupsRepo>())),
   BlocProvider(create: (context) => GroupMemberCubit(getIt<GroupsRepo>())),
-  BlocProvider(create: (context) => CreateGroupCubit(getIt<GroupsRepo>()))
+  BlocProvider(create: (context) => CreateGroupCubit(getIt<GroupsRepo>())),
+  BlocProvider(
+    create: (context) => PublicPostCubit(getIt<MainRepo>()),
+  ),
+  BlocProvider(create: (context) => ReactCubit(getIt<PublicPostRepo>())),
+  BlocProvider(create: (context) => PendingInvitationsCubit(getIt<MainRepo>()),)
 ];

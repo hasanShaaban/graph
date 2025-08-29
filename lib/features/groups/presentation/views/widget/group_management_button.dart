@@ -10,7 +10,6 @@ class GroupManagementButton extends StatelessWidget {
     required this.width,
     required this.height,
   });
-
   final double width;
   final double height;
 
@@ -26,7 +25,7 @@ class GroupManagementButton extends StatelessWidget {
       child: IconButton(
         splashRadius: 20,
         onPressed: () {
-          Navigator.of(context).pushNamed(GroupManagementView.name);
+          Navigator.of(context).pushNamed(GroupManagementView.name,);
         },
         icon: SvgPicture.asset(Assets.iconsLeadManagement),
       ),

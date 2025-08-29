@@ -16,9 +16,12 @@ class GroupMemberTools extends StatefulWidget {
     required this.width,
     required this.height,
     this.tool,
+    this.onToolSelected, this.returnedSkillId,
   });
   final double width, height;
   final SkillEntity? tool;
+  final ValueChanged<SkillEntity>? onToolSelected;
+  final ValueChanged<int>? returnedSkillId;
 
   final S lang;
 
@@ -27,12 +30,16 @@ class GroupMemberTools extends StatefulWidget {
 }
 
 class _GroupMemberToolsState extends State<GroupMemberTools> {
-
   @override
   void initState() {
-    widget.tool != null ? chosenTools = widget.tool! : chosenTools = null;
+    widget.tool != null
+        ? widget.tool!.skillLogo != ''
+            ? chosenTools = widget.tool!
+            : chosenTools = null
+        : chosenTools = null;
     super.initState();
   }
+
   SkillEntity? chosenTools;
   @override
   Widget build(BuildContext context) {
@@ -61,23 +68,18 @@ class _GroupMemberToolsState extends State<GroupMemberTools> {
               context: context,
               initialChosenTool: chosenTools,
               lang: widget.lang,
+              returnedSkillId: widget.returnedSkillId,
             );
             prettyLog(result?.skillLogo);
-            if(result != null){
+            if (result != null) {
               setState(() {
-              chosenTools = result;
-            });
+                chosenTools = result;
+              });
+              widget.onToolSelected?.call(result);
             }
           },
         ),
       ],
     );
   }
-
-  
-
-  
 }
-
-
- 

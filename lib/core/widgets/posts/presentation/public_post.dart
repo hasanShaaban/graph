@@ -90,6 +90,7 @@ class PublicPost extends StatelessWidget {
           buttonColor: Constants2.lightSecondaryColor(context),
           circleColor: Constants2.lightPrimaryColor(context),
           reactsCount: data?.reactionsCount.toString() ?? '0',
+          postId: data?.postId,
         ),
       ],
     );

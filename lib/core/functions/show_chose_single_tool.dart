@@ -13,6 +13,7 @@ Future<SkillEntity?> showSingleToolBottomSheet({
   required BuildContext context,
   required SkillEntity? initialChosenTool,
   required S lang,
+  ValueChanged<int>? returnedSkillId
 }) async {
   return await showModalBottomSheet<SkillEntity>(
         isScrollControlled: true,
@@ -85,6 +86,7 @@ Future<SkillEntity?> showSingleToolBottomSheet({
                                 return GestureDetector(
                                   onTap: () {
                                     context.read<GroupProvider>().setSkillId(skills[index].id);
+                                    returnedSkillId?.call(skills[index].id);
                                     Navigator.pop(
                                       context,
                                       SkillEntity(skillName: skills[index].name, skillLogo: tool),

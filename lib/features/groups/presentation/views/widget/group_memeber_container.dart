@@ -7,7 +7,7 @@ import 'group_member_tools.dart';
 import 'personal_info_column.dart';
 import '../../../../../generated/l10n.dart';
 
-class GroupMemberContainer extends StatelessWidget {
+class GroupMemberContainer extends StatefulWidget {
   const GroupMemberContainer({
     super.key,
     required this.lang,
@@ -15,7 +15,7 @@ class GroupMemberContainer extends StatelessWidget {
     required this.height,
     this.skill,
     required this.name,
-    this.image,
+    this.image,required this.isAdmin, this.onSkillSelected, this.returnedSkillId,
   });
 
   final S lang;
@@ -24,7 +24,15 @@ class GroupMemberContainer extends StatelessWidget {
   final String name;
   final String? image;
   final SkillEntity? skill;
+  final bool isAdmin;
+  final ValueChanged<SkillEntity>? onSkillSelected;
+  final ValueChanged<int>? returnedSkillId;
 
+  @override
+  State<GroupMemberContainer> createState() => _GroupMemberContainerState();
+}
+
+class _GroupMemberContainerState extends State<GroupMemberContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,33 +46,35 @@ class GroupMemberContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          GroupMemberContainerHeader(lang: lang),
+          GroupMemberContainerHeader(lang: widget.lang, isAdmin: widget.isAdmin,),
           SizedBox(height: 5),
           Row(
             children: [
               ProfileImage(
-                width: width,
-                height: height,
+                width: widget.width,
+                height: widget.height,
                 imageWidth: 65,
                 imageHeight: 65,
                 borderThick: 2,
                 image:
-                    image!.startsWith('http')
-                        ? image
-                        : 'http://127.0.0.1:8000$image',
+                    widget.image!.startsWith('http')
+                        ? widget.image
+                        : 'http://127.0.0.1:8000${widget.image}',
               ),
               SizedBox(width: 10),
-              PesronalInfoColumn(name: name),
+              PesronalInfoColumn(name: widget.name),
             ],
           ),
           SizedBox(height: 5),
           // GroupMemberRole(lang: lang, width: width, height: height),
           SizedBox(height: 5),
           GroupMemberTools(
-            lang: lang,
-            width: width,
-            height: height,
-            tool: skill
+            lang: widget.lang,
+            width: widget.width,
+            height: widget.height,
+            tool: widget.skill,
+            onToolSelected: widget.onSkillSelected,
+            returnedSkillId: widget.returnedSkillId,
           ),
         ],
       ),

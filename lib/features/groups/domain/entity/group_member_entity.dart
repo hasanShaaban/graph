@@ -10,6 +10,20 @@ class GroupMemberEntity {
     required this.skill,
     required this.isAdmin,
   });
+
+  GroupMemberEntity copyWith({
+    String? name,
+    String? image,
+    SkillEntity? skill,
+    bool? isAdmin,
+  }) {
+    return GroupMemberEntity(
+      name: name ?? this.name,
+      image: image ?? this.image,
+      skill: skill ?? this.skill,
+      isAdmin: isAdmin ?? this.isAdmin,
+    );
+  }
 }
 
 class SkillEntity {

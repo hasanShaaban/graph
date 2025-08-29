@@ -14,9 +14,15 @@ import 'list_view_item.dart';
 import 'rate_row.dart';
 import '../../../../../generated/l10n.dart';
 
-class MyGroupViewBody extends StatelessWidget {
+class MyGroupViewBody extends StatefulWidget {
   const MyGroupViewBody({super.key});
 
+  @override
+  State<MyGroupViewBody> createState() => _MyGroupViewBodyState();
+}
+
+class _MyGroupViewBodyState extends State<MyGroupViewBody> {
+  bool isadmin = true;
   @override
   Widget build(BuildContext context) {
     final lang = S.of(context);
@@ -36,16 +42,27 @@ class MyGroupViewBody extends StatelessWidget {
                     child: MajorAndYearDropdownButtonsSection(height: height),
                   ),
                   SizedBox(width: 10),
-                  GroupManagementButton(width: width, height: height),
+
+                  isadmin
+                      ? GroupManagementButton(width: width, height: height)
+                      : Container(),
                 ],
               ),
               BlocConsumer<GroupInfoCubit, GroupInfoState>(
                 listener: (context, state) {
                   if (state is GroupInfoSuccess) {
                     if (state.response.id != 0) {
+                      setState(() {
+                        isadmin = state.response.isAdmin;
+                      });
                       context.read<GroupMemberCubit>().getGroupMembers(
                         groupId: state.response.id,
                       );
+                    }
+                    else{
+                      setState(() {
+                        isadmin = true;
+                      });
                     }
                   }
                 },
@@ -108,8 +125,8 @@ class MyGroupViewBody extends StatelessWidget {
                   } else {
                     return Column(
                       children: [
-                        SizedBox(height: height / 2 -200),
-                        Center(child: CircularProgressIndicator())
+                        SizedBox(height: height / 2 - 200),
+                        Center(child: CircularProgressIndicator()),
                       ],
                     );
                   }

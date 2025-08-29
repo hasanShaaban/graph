@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,10 +15,11 @@ class ProjectDropDownButton extends StatefulWidget {
   const ProjectDropDownButton({
     super.key,
     required this.height,
-    required this.text,
+    required this.text, this.selectedProject,
   });
   final String text;
   final double height;
+  final ValueChanged<int>? selectedProject;
 
   @override
   State<ProjectDropDownButton> createState() => _ProjectDropDownButtonState();
@@ -34,6 +36,7 @@ class _ProjectDropDownButtonState extends State<ProjectDropDownButton> {
       builder: (context, state) {
         if (state is ProjectSuccess) {
           selected = state.response[0].name;
+          widget.selectedProject?.call(state.response[0].id);
           return Expanded(
             child: GestureDetector(
               onTap: () => _showMenu(context, state.response),
@@ -176,6 +179,7 @@ class _ProjectDropDownButtonState extends State<ProjectDropDownButton> {
               onTap: () {
                 context.read<GroupInfoCubit>().getGroupInfo(projectId: e.id);
                 context.read<GroupProvider>().setProjectId(e.id);
+                widget.selectedProject?.call(e.id);
               },
               value: e.name,
               child: Text(

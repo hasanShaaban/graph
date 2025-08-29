@@ -1,11 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:graph/features/followers&following/domain/entity/friend_entity.dart';
-
 import '../../../../../core/utils/constants.dart';
-
-import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 
 class FollowListViewItem extends StatelessWidget {
@@ -43,11 +39,6 @@ class FollowListViewItem extends StatelessWidget {
             ],
           ),
 
-          Spacer(),
-          SvgPicture.asset(
-            Assets.iconsDots,
-            color: Constants2.darkSecondaryColor(context),
-          ),
         ],
       ),
     );
