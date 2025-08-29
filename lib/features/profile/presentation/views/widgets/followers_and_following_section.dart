@@ -5,10 +5,11 @@ import 'package:graph/core/services/providers/followers_provider.dart';
 import 'package:graph/core/widgets/shimmer_widgets/shimmer_box.dart';
 import 'package:graph/features/followers&following/domain/entity/friend_entity.dart';
 import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
+
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import '../../../../followers&following/presentation/views/follow_view.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../followers&following/presentation/views/follow_view.dart';
 
 class FollowersAndFollowingSection extends StatelessWidget {
   const FollowersAndFollowingSection({

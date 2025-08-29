@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:graph/features/auth/data/models/social_links_model.dart';
+import '../../data/models/social_links_model.dart';
 import '../../data/models/company_model.dart';
 import '../../data/models/credintials_model.dart';
 import '../../../../core/errors/failures.dart';
@@ -43,5 +43,15 @@ abstract class AuthRepo {
   required Map<String,List<int>> chosenTools,
 }
   );
-    
+      Future<Either<Failures, Map<String, dynamic>>> staff({
+    required UserModel userModel,
+  });
+    Future<Either<Failures, Map<String, dynamic>>> staffIdentity({
+    required File image,
+  });
+  Future<Either<Failures, Map<String, dynamic>>> verifyOtp({
+  required String otp,
+});
+
+
 }

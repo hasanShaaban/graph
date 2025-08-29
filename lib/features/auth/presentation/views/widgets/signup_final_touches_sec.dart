@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/core/functions/show_tools_bottom_sheet.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/features/auth/data/models/signup_data_model.dart';
-import 'package:graph/features/auth/presentation/manager/get_skills_cubit/get_skills_cubit.dart';
-import 'package:graph/features/create_post/presentation/views/creat_post_page.dart';
-import 'package:graph/features/groups/presentation/views/widget/add_button.dart';
-import 'package:graph/features/groups/presentation/views/widget/group_member_tools_list_view.dart';
+import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import '../../../../../core/functions/show_tools_bottom_sheet.dart';
+import '../../../../../core/utils/app_text_style.dart';
+import '../../../data/models/signup_data_model.dart';
+import '../../manager/get_skills_cubit/get_skills_cubit.dart';
+import '../../../../groups/presentation/views/widget/add_button.dart';
+import '../../../../groups/presentation/views/widget/group_member_tools_list_view.dart';
 import '../../manager/final_touches_cubit/final_touches_cubit.dart';
 import 'name_and_birth_date_info.dart';
 import 'package:image_picker/image_picker.dart';
@@ -61,7 +61,10 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
   }
 
   void deleteImage() {
-    setState(() => profileImage = null);
+    setState(() {
+      profileImage = null;
+      signupData = signupData.copyWith(selectedImage: null);
+    });
   }
 
   List<String> chosenTools = [];
@@ -69,6 +72,37 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
   void initState() {
     super.initState();
     context.read<GetSkillsCubit>().getSkills();
+  }
+
+  late SignupDataModel signupData;
+
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   final args = ModalRoute.of(context)?.settings.arguments;
+
+  //   if (args != null && args is SignupDataModel) {
+  //     signupData = args;
+  //   } else {
+  //     WidgetsBinding.instance.addPostFrameCallback((_) {
+  //       Navigator.pop(context);
+  //     });
+  //   }
+  // }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final args = ModalRoute.of(context)?.settings.arguments;
+
+    if (args != null && args is SignupDataModel) {
+      signupData = args;
+      profileImage = signupData.selectedImage; // <--- هنا نحفظ الصورة
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pop(context);
+      });
+    }
   }
 
   @override
@@ -127,44 +161,6 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                       ),
                       SizedBox(height: 13),
 
-                      // Text(lang.techTools, style: AppTextStyle.cairoSemiBold16),
-                      // chosenTools.isNotEmpty
-                      //     ? Row(
-                      //       mainAxisAlignment: MainAxisAlignment.start,
-                      //       children: [
-                      //         GroupMemberToolsListView(
-                      //           lang: lang,
-                      //           chosenTools: chosenTools,
-                      //           width: width,
-                      //         ),
-                      //         AddButton(
-                      //           onTap: () async {
-                      //             final result = await showToolsBottomSheet(
-                      //               context: context,
-                      //               initialChosenTools: chosenTools,
-                      //               lang: lang,
-                      //               tools: tools,
-                      //             );
-                      //             setState(() {
-                      //               chosenTools = result;
-                      //             });
-                      //           },
-                      //         ),
-                      //       ],
-                      //     )
-                      //     : AddButton(
-                      //       onTap: () async {
-                      //         final result = await showToolsBottomSheet(
-                      //           context: context,
-                      //           initialChosenTools: chosenTools,
-                      //           lang: lang,
-                      //           tools: tools,
-                      //         );
-                      //         setState(() {
-                      //           chosenTools = result;
-                      //         });
-                      //       },
-                      //     ),
                       Text(lang.techTools, style: AppTextStyle.cairoSemiBold16),
                       BlocConsumer<GetSkillsCubit, GetSkillsState>(
                         listener: (context, state) {
@@ -219,7 +215,7 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                                               context: context,
                                               initialChosenTools: chosenTools,
                                               lang: lang,
-                                              // مرق skills بدل tools الثابتة
+
                                               tools: skillIcons,
                                             );
                                         setState(() {
@@ -273,7 +269,11 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                       BlocConsumer<FinalTouchesCubit, FinalTouchesState>(
                         listener: (context, state) async {
                           if (state is FinalTouchesSuccess) {
-                            Navigator.pushNamed(context, CreatPostPage.name);
+                            Navigator.pushNamed(
+                              context,
+                              ProfileView.name,
+                              arguments: signupData,
+                            );
                           } else if (state is FinalTouchesFailuer) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text(state.errorMessage)),
@@ -286,10 +286,6 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                             isLoading: state is FinalTouchesLoading,
 
                             onPressed: () {
-                              // final selectedIds =
-                              //     chosenTools
-                              //         .map((tool) => toolIds[tool]!)
-                              //         .toList();
                               final skillsList =
                                   context.read<GetSkillsCubit>().state
                                           is GetSkillsSuccess

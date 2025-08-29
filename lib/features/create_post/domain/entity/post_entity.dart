@@ -7,7 +7,8 @@ class PostEntity {
   final String privacy;
   final List<File>? image;
     final List<int>? mentionIds; 
+      final List<int>? tags; 
 
-  PostEntity( {required this.description,  this.title,  this.projectId, required this.privacy,  this.image,this.mentionIds,});
+  PostEntity( {required this.description,  this.title,  this.projectId, required this.privacy,  this.image,this.mentionIds,this.tags, });
   
 }

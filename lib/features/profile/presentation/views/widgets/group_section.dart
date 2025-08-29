@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/core/functions/custom_snack_bar.dart';
 import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
 import 'package:graph/features/groups/presentation/manager/group_member_cubit/group_member_cubit.dart';
+
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../generated/l10n.dart';
 import 'group_profile_list_view.dart';
 import 'groups_drop_down_button.dart';
 import 'see_all_groups_button.dart';
-import '../../../../../generated/l10n.dart';
 
 class GroupSection extends StatelessWidget {
   const GroupSection({

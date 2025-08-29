@@ -3,13 +3,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/shimmer_widgets/shimmer_box.dart';
-import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
-import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
-import 'package:graph/features/profile/presentation/manager/profile/profile_cubit.dart';
-import 'package:graph/features/profile/presentation/views/profile_view.dart';
+import '../../../../../../core/utils/appAssets.dart';
+import '../../../../../../core/utils/constants.dart';
+import '../../../../../../core/widgets/shimmer_widgets/shimmer_box.dart';
+import '../../../manager/user_image_cubit/user_image_cubit.dart';
+import '../../../../../profile/presentation/manager/profile/profile_cubit.dart';
+import '../../../../../profile/presentation/views/profile_view.dart';
 
 class ProfileButton extends StatelessWidget {
   const ProfileButton({super.key});

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/core/widgets/posts/presentation/manager/react_cubit/react_cubit.dart';
 import 'package:graph/features/main/presentation/manager/public_post_cubit/public_post_cubit.dart';
+import 'package:graph/generated/l10n.dart';
 import '../../../../../../core/widgets/posts/presentation/public_post.dart';
 import '../../../../../post_details/presentation/view/post_details_view.dart';
-import '../../../../../../generated/l10n.dart';
 
 class PublicPage extends StatelessWidget {
   const PublicPage({super.key});

@@ -1,10 +1,11 @@
 
 import 'package:flutter/widgets.dart';
+
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/custom_back_button.dart';
 import '../../../../../core/widgets/profile_image.dart';
-import 'profile_app_bar.dart';
 import '../../../../../generated/l10n.dart';
+import 'profile_app_bar.dart';
 
 class EditProfileHeader extends StatelessWidget {
   const EditProfileHeader({

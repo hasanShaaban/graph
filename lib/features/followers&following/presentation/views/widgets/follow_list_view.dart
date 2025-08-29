@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:graph/features/followers&following/domain/entity/friend_entity.dart';
 import 'follow_list_view_item.dart';
 

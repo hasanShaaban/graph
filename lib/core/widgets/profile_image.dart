@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../generated/l10n.dart';
 import '../utils/appAssets.dart';
 import '../utils/constants.dart';
-import '../../generated/l10n.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({

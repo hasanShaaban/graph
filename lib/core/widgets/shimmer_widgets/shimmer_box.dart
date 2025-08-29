@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/utils/constants.dart';
+import '../../utils/constants.dart';
 import 'package:shimmer/shimmer.dart';
 
 Widget shimmerBox({required BuildContext context ,double width = double.infinity, double height = 16, double radius = 8}) {

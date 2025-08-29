@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/utils/constants.dart';
 
 class ProfileAppBar extends StatelessWidget {

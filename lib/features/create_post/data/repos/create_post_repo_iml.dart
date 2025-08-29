@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:graph/core/errors/failures.dart';
-import 'package:graph/core/services/api_service.dart';
-import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
-import 'package:graph/features/create_post/data/models/new_post_model.dart';
-import 'package:graph/features/create_post/domain/repos/create_post_repo.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../../core/services/api_service.dart';
+import '../../../auth/data/repos/auth_local_data_source.dart';
+import '../models/new_post_model.dart';
+import '../../domain/repos/create_post_repo.dart';
 
 class CreatePostRepoIml implements CreatePostRepo {
   final SecureApiService apiService;
@@ -96,6 +96,59 @@ class CreatePostRepoIml implements CreatePostRepo {
         return left(ServerFailure.fromDioError(e));
       }
       print('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> postSearch({
+    required String name,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.post(
+        endPoint: 'student/find',
+        data: {'name': name},
+
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+
+      log('Response from search: $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        log('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      log('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> getHashtagSearch({
+    required String name,
+  }) async {
+    try {
+      Map<String, dynamic> response = await apiService.get(
+        endPoints: 'hashtags/search',
+        data: {'query': name},
+      );
+
+      log('Response from search hashtag: $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        log('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      log('Unexpected error: $e');
       return left(ServerFailure(e.toString()));
     }
   }

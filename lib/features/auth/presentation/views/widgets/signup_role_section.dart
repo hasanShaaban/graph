@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'staff_name_section.dart';
 import '../../manager/role_cubit/role_cubit.dart';
 import 'next_button.dart';
 import 'signup_company_name_section.dart';
@@ -101,6 +102,13 @@ class _SignupRoleSectionState extends State<SignupRoleSection> {
                     arguments: signupData.copyWith(role: selectedRole),
                   );
                   print(selectedRole);
+                }else if(selectedRole == 'staff'){
+ print(selectedRole);
+                  Navigator.pushNamed(
+                    context,
+                    StaffNameSection.name,
+                    arguments: signupData.copyWith(role: selectedRole),
+                  );
                 }
               } else if (state is RoleFailuer) {
                 ScaffoldMessenger.of(

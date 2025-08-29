@@ -3,13 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../profile/data/models/person_model.dart';
-
+import '../../../data/models/tag_model.dart';
 import 'bottom_button_container.dart';
 import 'custom_bottom_sheet_container.dart';
 import 'mention_bottom_sheet_body.dart';
 import 'tag_bottom_sheet_body.dart';
-import '../../../../../generated/l10n.dart';
 
 class CreatPostBottomButtons extends StatefulWidget {
   const CreatPostBottomButtons({
@@ -27,19 +27,15 @@ class CreatPostBottomButtons extends StatefulWidget {
   final void Function(Person) onAddPerson;
   final void Function(Person) onRemovePerson;
   final VoidCallback? onPickImages;
-  final List<String> selectedTags;
-
-  final void Function(List<String>) onTagsChanged;
+  final List<TagModel> selectedTags;
+  final void Function(List<TagModel>) onTagsChanged;
 
   @override
   State<CreatPostBottomButtons> createState() => _CreatPostBottomButtonsState();
 }
 
 class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
-  final List<Person> allPersons = List.generate(
-    20,
-    (index) => Person(id: '$index', name: 'User $index'),
-  );
+  List<Person> allPersons = [];
 
   @override
   Widget build(BuildContext context) {
@@ -78,14 +74,14 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
                             onTap: () => widget.onRemovePerson(person),
                             child: Stack(
                               children: [
-                                SvgPicture.asset(Assets.iconsCross),
-                                Positioned(
-                                  right: -1,
-                                  left: -1,
-                                  top: 5,
+                                SvgPicture.asset(Assets.iconsRemove),
+                                // Positioned(
+                                //   right: -1,
+                                //   left: -1,
+                                //   top: 5,
 
-                                  child: SvgPicture.asset(Assets.iconsCross),
-                                ),
+                                //   child: SvgPicture.asset(Assets.iconsCross),
+                                // ),
                               ],
                             ),
                           ),
@@ -142,7 +138,8 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
                           lang: lang,
                           widget: TagBottomSheetBody(
                             lang: lang,
-                            initialSelectedTags: List.from(widget.selectedTags),
+                            initialSelectedTags:
+                                widget.selectedTags.map((t) => t.id).toList(),
                           ),
                         ),
                       );
@@ -157,9 +154,7 @@ class _CreatPostBottomButtonsState extends State<CreatPostBottomButtons> {
               BottomButtonContainer(
                 text: lang.addImages,
                 icon: Assets.iconsAddImage,
-                onTap: () {
-                  widget.onPickImages!();
-                },
+                onTap: widget.onPickImages ?? () {},
               ),
             ],
           ),

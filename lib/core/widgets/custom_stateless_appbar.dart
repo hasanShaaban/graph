@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
+import '../../generated/l10n.dart';
 import '../utils/app_text_style.dart';
 import '../utils/constants.dart';
 import 'custom_back_button.dart';
-import '../../generated/l10n.dart';
 
 class CustomStatelessAppbar extends StatelessWidget {
   const CustomStatelessAppbar({

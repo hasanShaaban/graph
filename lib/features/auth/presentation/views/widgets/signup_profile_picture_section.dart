@@ -182,11 +182,11 @@ class _SignupProfilePictureSectionState
           child: BlocConsumer<SignupCubit, SignupState>(
             listener: (context, state) async {
               if (state is SignupSuccess) {
-                Navigator.pushNamed(
+                Navigator.pushReplacementNamed(
                   context,
                   // SignupVerificationSection.name,
                   SignupFinalTouchesSec.name,
-                  arguments: signupData,
+                  arguments: signupData.copyWith(selectedImage: selectedImage),
                 );
               } else if (state is SignupFailuer) {
                 ScaffoldMessenger.of(

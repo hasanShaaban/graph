@@ -1,8 +1,9 @@
 class Person {
   final String id;
   final String name;
+  final String image;
 
-  Person({required this.id, required this.name});
+  Person( {required this.id, required this.name, required this.image});
 
   @override
   bool operator ==(Object other) =>

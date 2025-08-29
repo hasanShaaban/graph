@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/features/auth/data/models/social_links_model.dart';
-import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
+import '../../../../core/services/get_it_service.dart';
+import '../models/social_links_model.dart';
+import 'auth_local_data_source.dart';
 import '../../../../core/services/local_data_base/hive_data_base_service.dart';
 import '../models/company_model.dart';
 import '../models/credintials_model.dart';
@@ -460,9 +460,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failures, List<dynamic>>> getSkills() async {
     try {
-      List<dynamic> response = await apiService.get(
-        endPoints: 'skills_list',
-      );
+      List<dynamic> response = await apiService.get(endPoints: 'skills_list');
 
       print('Response for get skills : $response');
 
@@ -474,6 +472,101 @@ class AuthRepoImpl implements AuthRepo {
       }
       print('Unexpected error: $e');
       return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> staff({
+    required UserModel userModel,
+  }) async {
+    try {
+      final token = await HiveDataBaseService().getData(
+        boxName: 'authBox',
+        key: 'token',
+      );
+      final file = userModel.image;
+
+      FormData formData = FormData.fromMap({
+        'first_name': userModel.firstName,
+        'last_name': userModel.lastName,
+
+        if (file != null)
+          'profile_image': await MultipartFile.fromFile(
+            file.path,
+            filename: file.path.split('/').last,
+          ),
+      });
+      Map<String, dynamic> response = await apiService.post(
+        endPoint: 'staff/register',
+
+        data: formData,
+
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+
+            'Content-Type': 'multipart/form-data',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+      print('Response from staff signup: $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      print('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> staffIdentity({
+    required File image,
+  }) async {
+    try {
+      FormData formData = FormData.fromMap({
+        'image': await MultipartFile.fromFile(
+          image.path,
+          filename: image.path.split('/').last,
+        ),
+      });
+      Map<String, dynamic> response = await apiService.post(
+        endPoint: 'identity/set-info',
+        data: formData,
+        options: Options(headers: {'Accept': 'application/json'}),
+      );
+
+      log('Response : $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        log('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      log('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> verifyOtp({
+    required String otp,
+  }) async {
+    try {
+      final response = await apiService.post(
+        endPoint: "email/verify-otp",
+        data: {"otp": otp},
+      );
+      log(response.toString());
+      log('response = $response');
+      return Right(response);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
     }
   }
 }

@@ -74,8 +74,8 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerateRoute,
-         initialRoute: SplashView.name,
-        // initialRoute: CreatPostPage.name,
+        initialRoute: SplashView.name,
+        //initialRoute: MainPage.name,
       ),
     );
   }

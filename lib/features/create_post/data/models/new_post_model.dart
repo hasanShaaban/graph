@@ -1,4 +1,4 @@
-import 'package:graph/features/create_post/domain/entity/post_entity.dart';
+import '../../domain/entity/post_entity.dart';
 
 class NewPostModel extends PostEntity {
   NewPostModel({
@@ -8,6 +8,7 @@ class NewPostModel extends PostEntity {
     required super.privacy,
     super.image,
     super.mentionIds,
+    super.tags,
   });
 
   factory NewPostModel.fromJson(Map<String, dynamic> json) {
@@ -18,6 +19,7 @@ class NewPostModel extends PostEntity {
       privacy: json['privacy'],
       image: json['files[]'],
       mentionIds: json['ids[]'],
+      tags: json['ids[]'],
     );
   }
 
@@ -27,8 +29,9 @@ class NewPostModel extends PostEntity {
       'title': description,
       'project_id': projectId,
       'privacy': privacy,
-    
+
       'ids[]': mentionIds,
+      'ids[]': tags,
     };
   }
 }

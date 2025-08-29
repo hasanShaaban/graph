@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
+import '../utils/appAssets.dart';
+import '../utils/app_text_style.dart';
+import '../utils/constants.dart';
+
 import 'package:graph/core/utils/years_and_major.dart';
 import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:provider/provider.dart';

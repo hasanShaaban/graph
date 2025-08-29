@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/features/auth/presentation/views/login_view.dart';
+import 'package:graph/features/main/presentation/manager/logout_cubit/logout_cubit.dart';
+import 'package:graph/features/main/presentation/views/widgets/settings/change_password_sec.dart';
 import '../../../../../../core/services/get_it_service.dart';
 import '../../../../../../core/services/providers/local_provider.dart';
 import '../../../../../../core/services/providers/theme_provider.dart';
@@ -37,7 +41,9 @@ class _SettingsPageBodyState extends State<SettingsPageBody> {
           SettingsRow(
             text: lang.changeNameAndPassowrd,
             icon: Assets.iconsKey,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, ChangePasswordSec.name);
+            },
           ),
           SettingsRow(
             text: lang.editProfile,
@@ -117,10 +123,25 @@ class _SettingsPageBodyState extends State<SettingsPageBody> {
               ),
             ],
           ),
-          SettingsRow(
-            text: lang.logout,
-            icon: Assets.iconsExit,
-            onPressed: () {},
+          BlocListener<LogoutCubit, LogoutState>(
+            listener: (context, state) {
+              if (state is LogoutSuccess) {
+                //  AuthLocalDataSource.clear();
+
+                Navigator.pushNamed(context, LoginView.name);
+              } else if (state is LogoutError) {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+              }
+            },
+            child: SettingsRow(
+              text: lang.logout,
+              icon: Assets.iconsExit,
+              onPressed: () {
+                context.read<LogoutCubit>().logout();
+              },
+            ),
           ),
         ],
       ),

@@ -1023,6 +1023,76 @@ class S {
   String get tags {
     return Intl.message('tags: ', name: 'tags', desc: '', args: []);
   }
+
+  /// `Verify Identity`
+  String get verifyIdentity {
+    return Intl.message(
+      'Verify Identity',
+      name: 'verifyIdentity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please upload a clear photo of your ID to verify your identity.`
+  String get pleasseVerfyIdentity {
+    return Intl.message(
+      'Please upload a clear photo of your ID to verify your identity.',
+      name: 'pleasseVerfyIdentity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Make sure all details are visible and readable.`
+  String get makeSureAllDetailsVisible {
+    return Intl.message(
+      ' Make sure all details are visible and readable.',
+      name: 'makeSureAllDetailsVisible',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change your password`
+  String get changeYourPassword {
+    return Intl.message(
+      'Change your password',
+      name: 'changeYourPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old password`
+  String get oldPassowrd {
+    return Intl.message(
+      'Old password',
+      name: 'oldPassowrd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm new password`
+  String get confirmNewPass {
+    return Intl.message(
+      'Confirm new password',
+      name: 'confirmNewPass',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

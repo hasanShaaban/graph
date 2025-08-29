@@ -1,6 +1,6 @@
+import 'dart:io';
+
 class SignupDataModel {
-
-
   final String? firstName;
   final String? lastName;
   final String? birthDate;
@@ -10,11 +10,11 @@ class SignupDataModel {
   final String? role;
   final String? image;
   final bool? isStudent;
-    String? specializationName;
-      String? studyYearName;
+  String? specializationName;
+  String? studyYearName;
+  File? selectedImage;
 
   SignupDataModel({
- 
     this.firstName,
     this.lastName,
     this.birthDate,
@@ -26,6 +26,7 @@ class SignupDataModel {
     this.isStudent,
     this.specializationName,
     this.studyYearName,
+    this.selectedImage,
   });
 
   SignupDataModel copyWith({
@@ -37,12 +38,12 @@ class SignupDataModel {
     String? specialization,
     String? role,
     String? image,
+ File? selectedImage,
     bool? isStudent,
-        String? specializationName,
+    String? specializationName,
     String? studyYearName,
   }) {
     return SignupDataModel(
- 
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       birthDate: birthDate ?? this.birthDate,
@@ -51,8 +52,9 @@ class SignupDataModel {
       specialization: specialization ?? this.specialization,
       role: role ?? this.role,
       image: image ?? this.image,
+      selectedImage: selectedImage ?? this.selectedImage,
       isStudent: isStudent ?? this.isStudent,
-            specializationName: specializationName ?? this.specializationName,
+      specializationName: specializationName ?? this.specializationName,
       studyYearName: studyYearName ?? this.studyYearName,
     );
   }

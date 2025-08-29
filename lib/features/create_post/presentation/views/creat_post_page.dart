@@ -2,12 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/features/create_post/data/models/new_post_model.dart';
-import 'package:graph/features/create_post/data/models/subject_model.dart';
-import 'package:graph/features/create_post/presentation/get_all_project_cubit/get_all_project_cubit.dart';
-import 'package:graph/features/create_post/presentation/manager/post_new_post_cubit/post_new_post_cubit.dart';
-import 'package:graph/features/create_post/presentation/views/widgets/full_images_page.dart';
+import '../../../../core/utils/constants.dart';
+import '../../data/models/new_post_model.dart';
+import '../../data/models/subject_model.dart';
+import '../../data/models/tag_model.dart';
+import '../manager/get_all_project_cubit/get_all_project_cubit.dart';
+import '../manager/post_new_post_cubit/post_new_post_cubit.dart';
+import 'widgets/full_images_page.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../core/utils/appAssets.dart';
 import '../../../../core/utils/app_text_style.dart';
@@ -41,7 +42,8 @@ class _CreatPostPageState extends State<CreatPostPage> {
     {'label': 'algebra', 'icon': Assets.iconsCoworking},
     {'label': 'algorithms', 'icon': Assets.iconsEmployeeMan},
   ];
-  List<String> selectedTags = [];
+ List<TagModel> selectedTags = [];
+
   List<SubjectModel> subjects = [];
   int? selectedSubjectId;
   String selectedSubjectName = 'Subject';
@@ -70,7 +72,7 @@ class _CreatPostPageState extends State<CreatPostPage> {
     final ImagePicker picker = ImagePicker();
     final List<XFile> images = await picker.pickMultiImage(imageQuality: 70);
 
-    if (images != null && images.isNotEmpty) {
+    if (images.isNotEmpty) {
       setState(() {
         selectedImages = images.map((xfile) => File(xfile.path)).toList();
       });
@@ -185,6 +187,8 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                         .whereType<int>()
                                         .toList(),
                                 image: selectedImages,
+                                tags: selectedTags.map((t) => t.id).toList(),
+
                               );
 
                               print('title = $title');
@@ -341,7 +345,7 @@ class _CreatPostPageState extends State<CreatPostPage> {
                       SizedBox(height: 20),
 
                       if (selectedImages.isNotEmpty) ...[
-                        // زر حذف كل الصور
+                    
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -437,7 +441,7 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                 children:
                                     selectedTags.map((tag) {
                                       return Text(
-                                        '#$tag',
+                                         '#${tag.name}',
                                         style: AppTextStyle.cairoSemiBold14
                                             .copyWith(
                                               color: Constants.secondryColor,
@@ -484,11 +488,12 @@ class _CreatPostPageState extends State<CreatPostPage> {
             onRemovePerson: removeMention,
             onPickImages: pickImages,
             selectedTags: selectedTags,
-            onTagsChanged: (List<String> tags) {
-              setState(() {
-                selectedTags = tags;
-              });
-            },
+            onTagsChanged: (List<TagModel> tags) {
+  setState(() {
+    selectedTags = tags;
+  });
+},
+
           ),
         ),
         //  : null,

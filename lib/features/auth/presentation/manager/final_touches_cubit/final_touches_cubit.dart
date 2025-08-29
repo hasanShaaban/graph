@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:graph/features/auth/data/models/social_links_model.dart';
+import '../../../data/models/social_links_model.dart';
 
 import '../../../domain/repos/auth_repo.dart';
 
@@ -75,8 +75,15 @@ class FinalTouchesCubit extends Cubit<FinalTouchesState> {
         socialLinksModel: socialLinksList,
       );
       result.fold(
-        (failure) => errors.add("Social links failed: ${failure.errMessage}"),
-        (data) => successes.add("Social links updated"),
+        (failure) {
+          errors.add("Social links failed: ${failure.errMessage}");
+          log("❌ Social links request failed: ${failure.errMessage}");
+        },
+
+        (data) {
+          successes.add("Social links updated");
+          log("✅ Social links response: $data");
+        },
       );
     }
 

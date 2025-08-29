@@ -24,7 +24,7 @@ import 'package:lottie/lottie.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
 
-class CircularProfilePicture extends StatelessWidget {
+class CircularProfilePicture extends StatefulWidget {
   const CircularProfilePicture({
     super.key,
     required this.width,
@@ -45,6 +45,35 @@ class CircularProfilePicture extends StatelessWidget {
   final S lang;
 
   @override
+  State<CircularProfilePicture> createState() => _CircularProfilePictureState();
+}
+
+class _CircularProfilePictureState extends State<CircularProfilePicture> {
+  File? currentImage;
+  @override
+  void initState() {
+    super.initState();
+    currentImage = widget.image;
+  }
+
+  void deleteImage() {
+    setState(() {
+      currentImage = null;
+    });
+    widget.onDelete();
+  }
+
+  @override
+  void didUpdateWidget(covariant CircularProfilePicture oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.image != widget.image) {
+      setState(() {
+        currentImage = widget.image;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     //final lang = S.of(context);
     return SizedBox(
@@ -54,8 +83,10 @@ class CircularProfilePicture extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Positioned(
-            left: width / 2 - 90, // 90= 180/2 , width/2 to center the widget.
-            top: height * 0.14, // (95 / 924) , //0.14, //(150 / 924),
+            left:
+                widget.width / 2 -
+                90, // 90= 180/2 , width/2 to center the widget.
+            top: widget.height * 0.14, // (95 / 924) , //0.14, //(150 / 924),
             child: Container(
               width: 180,
               height: 180,
@@ -72,15 +103,18 @@ class CircularProfilePicture extends StatelessWidget {
                     context,
                     FullScreenImageView.name,
                     arguments: {
-                      'image': image != null ? FileImage(image!) : null,
+                      'image':
+                          currentImage != null
+                              ? FileImage(currentImage!)
+                              : null,
 
-                      'isDeletable': image != null,
+                      'isDeletable': currentImage != null,
                       'heroTag': 'profile-image-hero',
                     },
                   );
 
                   if (result == 'delete') {
-                    onDelete();
+                    deleteImage();
                   }
                 },
                 child: Hero(
@@ -91,15 +125,15 @@ class CircularProfilePicture extends StatelessWidget {
                       height: 180,
                       color: Constants2.lightPrimaryColor(context),
                       child:
-                          image != null
+                          currentImage != null
                               ? Image.file(
-                                image!,
+                                currentImage!,
                                 fit: BoxFit.cover,
                                 width: 180,
                                 height: 180,
                               )
                               : Lottie.asset(
-                                gender == lang.male
+                                widget.gender == widget.lang.male
                                     ? Assets.imagesBoyProfile
                                     : Assets.imagesGirlProfile,
                                 fit: BoxFit.fill,
@@ -115,9 +149,9 @@ class CircularProfilePicture extends StatelessWidget {
           Positioned(
             bottom: 4,
 
-            right: width * (134 / 412),
+            right: widget.width * (134 / 412),
             child: GestureDetector(
-              onTap: onEditTap,
+              onTap: widget.onEditTap,
               child: Container(
                 width: 30,
                 height: 30,

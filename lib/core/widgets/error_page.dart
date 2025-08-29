@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/utils/appAssets.dart';
-import 'package:graph/core/utils/app_text_style.dart';
-import 'package:graph/core/utils/constants.dart';
-import 'package:graph/core/widgets/custom_back_button.dart';
-import 'package:graph/generated/l10n.dart';
+import '../utils/appAssets.dart';
+import '../utils/app_text_style.dart';
+import '../utils/constants.dart';
+import 'custom_back_button.dart';
+import '../../generated/l10n.dart';
 
 class ErrorPage extends StatelessWidget {
   const ErrorPage({

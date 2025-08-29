@@ -52,6 +52,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeNameAndPassowrd": MessageLookupByLibrary.simpleMessage(
       "تغيير الاسم وكلمة المرور",
     ),
+    "changeYourPassword": MessageLookupByLibrary.simpleMessage(
+      "تغيير كلمة المرور",
+    ),
     "codeVerification": MessageLookupByLibrary.simpleMessage(
       "تحقق من صندوق بريدك الإلكتروني وأدخل رمز التحقق",
     ),
@@ -60,6 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "comments": MessageLookupByLibrary.simpleMessage("التعليقات"),
     "companyName": MessageLookupByLibrary.simpleMessage("اسم الشركة"),
+    "confirmNewPass": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور الجديدة",
+    ),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -114,6 +120,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "تسجيل الدخول إلى حسابك",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
+    "makeSureAllDetailsVisible": MessageLookupByLibrary.simpleMessage(
+      " تأكد من أن جميع التفاصيل واضحة ويمكن قراءتها",
+    ),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "managementAndPrivacy": MessageLookupByLibrary.simpleMessage(
       "الادارة والخصوصية",
@@ -126,10 +135,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "myGroups": MessageLookupByLibrary.simpleMessage("فريقي"),
     "mySV": MessageLookupByLibrary.simpleMessage("سيرتي الذاتية"),
     "networks": MessageLookupByLibrary.simpleMessage("الشبكات ونظم التشغيل"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
     "noBioYet": MessageLookupByLibrary.simpleMessage("لا يوجد نبذة تعرفية بعد"),
     "nonStudentAccount": MessageLookupByLibrary.simpleMessage("حساب غير طالب"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
+    "oldPassowrd": MessageLookupByLibrary.simpleMessage("كلمة المرور السابقة"),
     "onboarding1": MessageLookupByLibrary.simpleMessage(
       "مع Graph، أنت دائمًا جزء من مجتمع ITE.",
     ),
@@ -158,6 +169,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "pleaseSelectSpacialization": MessageLookupByLibrary.simpleMessage(
       " يرجى اختيار اختصاصك",
+    ),
+    "pleasseVerfyIdentity": MessageLookupByLibrary.simpleMessage(
+      "يرجى رفع صورة واضحة لهويتك لتأكيد هويتك.",
     ),
     "post": MessageLookupByLibrary.simpleMessage("نشر"),
     "postsManagement": MessageLookupByLibrary.simpleMessage("ادارة المنشورات"),
@@ -200,6 +214,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "title": MessageLookupByLibrary.simpleMessage("العنوان"),
     "tools": MessageLookupByLibrary.simpleMessage("ادوات"),
     "uploadPicture": MessageLookupByLibrary.simpleMessage("ارفع صورتك الشخصية"),
+    "verifyIdentity": MessageLookupByLibrary.simpleMessage("تأكيد الهوية"),
     "viewProfile": MessageLookupByLibrary.simpleMessage("زيارة"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
     "whatToCallYou": MessageLookupByLibrary.simpleMessage("بماذا نناديك؟"),

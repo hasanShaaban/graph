@@ -57,6 +57,7 @@ class _MainPageState extends State<MainPage> {
             Center(child: Text('Notifications')),
             SettingsPageBody(),
             PendingPageBody(lang: lang),
+            PendingPageBody(lang: lang),
           ],
         ),
         bottomNavigationBar: MainNavigationBar(

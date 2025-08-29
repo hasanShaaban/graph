@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:graph/features/create_post/data/models/new_post_model.dart';
-import 'package:graph/features/create_post/domain/repos/create_post_repo.dart';
+import '../../../data/models/new_post_model.dart';
+import '../../../domain/repos/create_post_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'post_new_post_state.dart';

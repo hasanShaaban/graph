@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
+import '../../../../../core/services/get_it_service.dart';
+import '../../../data/repos/auth_local_data_source.dart';
 import '../../../data/models/credintials_model.dart';
 import '../../manager/credintials_cubit/credintials_cubit.dart';
 import 'signup_role_section.dart';

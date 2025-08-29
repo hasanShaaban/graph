@@ -1,16 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:graph/core/errors/failures.dart';
-import 'package:graph/core/services/api_service.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../../core/services/api_service.dart';
+//import '../../../../core/utils/pritty_log.dart';
+import '../../../auth/data/repos/auth_local_data_source.dart';
+import '../models/profile_model.dart';
+import '../../domain/entity/profile_entity.dart';
+import '../../domain/repos/profile_repo.dart';
+
 import 'package:graph/core/functions/pritty_log.dart';
 import 'package:graph/core/utils/years_and_major.dart';
-import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 import 'package:graph/features/main/data/models/noraml_post_model.dart';
 import 'package:graph/features/main/domain/entity/noraml_post_entity.dart';
-import 'package:graph/features/profile/data/models/profile_model.dart';
 import 'package:graph/features/profile/data/repos/profile_local_data_source.dart';
-import 'package:graph/features/profile/domain/entity/profile_entity.dart';
-import 'package:graph/features/profile/domain/repos/profile_repo.dart';
 
 class ProfileRepoImpl implements ProfileRepo {
   final SecureApiService apiService;

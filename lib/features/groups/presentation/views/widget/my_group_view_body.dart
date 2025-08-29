@@ -9,10 +9,10 @@ import 'package:graph/features/groups/presentation/views/widget/rate_button.dart
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/custom_stateless_appbar.dart';
 import '../../../../../core/widgets/major_and_year_dropdown_buttons_section.dart';
+import '../../../../../generated/l10n.dart';
 import 'group_management_button.dart';
 import 'list_view_item.dart';
 import 'rate_row.dart';
-import '../../../../../generated/l10n.dart';
 
 class MyGroupViewBody extends StatefulWidget {
   const MyGroupViewBody({super.key});

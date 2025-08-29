@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/core/widgets/shimmer_widgets/shimmer_box.dart';
 import 'package:graph/features/groups/presentation/manager/group_member_cubit/group_member_cubit.dart';
 import 'package:shimmer/shimmer.dart';
+
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
-import 'group_member_info.dart';
 import '../../../../../generated/l10n.dart';
+import 'group_member_info.dart';
 
 class GroupProfileListView extends StatelessWidget {
   const GroupProfileListView({

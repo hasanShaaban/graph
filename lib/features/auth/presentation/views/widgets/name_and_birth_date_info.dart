@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:graph/features/auth/data/models/signup_data_model.dart';
+import '../../../data/models/signup_data_model.dart';
 import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 
 class NameAndBirthDateInfo extends StatelessWidget {
   const NameAndBirthDateInfo({super.key, required this.signupDataModel});
   final SignupDataModel signupDataModel;
+  
 
   @override
   Widget build(BuildContext context) {

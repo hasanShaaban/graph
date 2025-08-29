@@ -1,5 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'api_service.dart';
+import '../../features/auth/domain/repos/auth_repo.dart';
+import '../../features/create_post/data/repos/create_post_repo_iml.dart';
+import '../../features/create_post/domain/repos/create_post_repo.dart';
+import '../../features/main/data/repos/main_repo_impl.dart';
+import '../../features/main/domain/repos/main_repo.dart';
+import '../../features/profile/data/repos/profile_repo_impl.dart';
+import '../../features/profile/domain/repos/profile_repo.dart';
+import '../../features/auth/data/repos/auth_repo_impl.dart';
+
 import 'package:graph/core/services/api_service.dart';
 import 'package:graph/core/widgets/posts/data/repos/public_post_repo_impl.dart';
 import 'package:graph/core/widgets/posts/domain/repos/public_post_repo.dart';
@@ -10,14 +20,11 @@ import 'package:graph/features/followers&following/data/repos/follow_repo_impl.d
 import 'package:graph/features/followers&following/domain/repo/follow_repo.dart';
 import 'package:graph/features/groups/data/repos/groups_repo_impl.dart';
 import 'package:graph/features/groups/domain/repos/groups_repo.dart';
-import 'package:graph/features/main/data/repos/main_repo_impl.dart';
-import 'package:graph/features/main/domain/repos/main_repo.dart';
+
 import 'package:graph/features/profile/data/repos/profile_local_data_source.dart';
-import 'package:graph/features/profile/data/repos/profile_repo_impl.dart';
-import 'package:graph/features/profile/domain/repos/profile_repo.dart';
-import 'package:graph/features/auth/data/repos/auth_repo_impl.dart';
+
 import '../../features/main/data/local_data_source/settings_local_data_source.dart';
-import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
+import '../../features/auth/data/repos/auth_local_data_source.dart';
 
 import '../../features/onboarding/data/repos/on_boarding_local_data_source.dart';
 import 'local_data_base/hive_data_base_service.dart';
