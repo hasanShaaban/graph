@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/widgets/posts/presentation/ads_post_widgets/ads_post_header.dart';
 import '../expandable_text.dart';
 import '../../utils/constants.dart';
-import 'ads_post_widgets/ads_post_header.dart';
 import 'public_post_widgets/react_button.dart';
 
 class AdsPost extends StatelessWidget {
