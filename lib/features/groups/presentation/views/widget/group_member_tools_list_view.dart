@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/functions/fix_skill_url.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/tech_tool_container.dart';
 import '../../../../../generated/l10n.dart';
@@ -34,7 +35,7 @@ class GroupMemberToolsListView extends StatelessWidget {
               width: 40,
               height: 40,
               color: Constants2.lightPrimaryColor(context),
-              icon: chosenTools[index],
+              icon: fixSkillUrl(chosenTools[index]),
             ),
           );
         },
@@ -42,3 +43,4 @@ class GroupMemberToolsListView extends StatelessWidget {
     );
   }
 }
+

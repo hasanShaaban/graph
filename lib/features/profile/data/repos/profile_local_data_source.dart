@@ -39,4 +39,34 @@ class ProfileLocalDataSource {
 
     return major ?? 0;
   }
+
+  Future<void> setStudentName(String name) async {
+    await localDataBaseService.addData(
+      boxName: HiveBoxes.userBox,
+      key: HiveBoxes.name,
+      value: name,
+    );
+  }
+
+  Future<String> getStudentName() async {
+    return  await localDataBaseService.getData(
+      boxName: HiveBoxes.userBox,
+      key: HiveBoxes.name,
+    );
+  }
+
+  Future<void> setUserImage(String image) async {
+    await localDataBaseService.addData(
+      boxName: HiveBoxes.userBox,
+      key: HiveBoxes.image,
+      value: image,
+    );
+  }
+
+  Future<String> getUserImage() async {
+    return  await localDataBaseService.getData(
+      boxName: HiveBoxes.userBox,
+      key: HiveBoxes.image,
+    );
+  }
 }

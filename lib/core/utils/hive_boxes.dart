@@ -14,6 +14,8 @@ class HiveBoxes {
   //user keys
   static const token = 'token';
   static const userID = 'Id';
+  static const name = 'name';
+  static const image = 'image';
   static const year = 'year';
   static const major = 'major';
 }

@@ -17,13 +17,14 @@ class PostHeader extends StatelessWidget {
     required this.user,
     required this.date,
     required this.privecy,
-    required this.imageUrl,
+    required this.imageUrl, this.project,
   });
 
   final double width;
   final double height;
   final String date, privecy, imageUrl;
   final List<UserEntity> user;
+  final String? project;
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +69,7 @@ class PostHeader extends StatelessWidget {
                 ),
                 SizedBox(width: 7),
                 SvgPicture.asset(
+                  project != null? Assets.iconsPollH :
                   privecy == 'public'
                       ? Assets.iconsEarthAfrica
                       : Assets.iconsFriends,

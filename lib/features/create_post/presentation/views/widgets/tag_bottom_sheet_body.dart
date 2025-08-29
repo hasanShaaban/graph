@@ -56,7 +56,7 @@ class _TagBottomSheetBodyState extends State<TagBottomSheetBody> {
             child: Row(
               children: [
                 SizedBox(width: 15),
-                SvgPicture.asset(Assets.iconsHash),
+                SvgPicture.asset(Assets.iconsTag),
                 SizedBox(width: 3),
                 Expanded(
                   child: TextField(

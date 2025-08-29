@@ -40,6 +40,11 @@ class ProfileRepoImpl implements ProfileRepo {
             Major.major[response.major[0]],
           );
         }
+        profileLocalDataSource.setStudentName(response.name);
+        if(response.image != null) {
+          profileLocalDataSource.setUserImage(response.image!);
+        }
+        
       }
       prettyLog(response.toJson());
       return right(response);

@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+
   /// Assets for iconsAdd
   /// assets/icons/add.svg
   static const String iconsAdd = "assets/icons/add.svg";
@@ -24,8 +25,7 @@ class Assets {
 
   /// Assets for iconsArrowRightToBracket
   /// assets/icons/arrow-right-to-bracket.svg
-  static const String iconsArrowRightToBracket =
-      "assets/icons/arrow-right-to-bracket.svg";
+  static const String iconsArrowRightToBracket = "assets/icons/arrow-right-to-bracket.svg";
 
   /// Assets for iconsBookmark
   /// assets/icons/bookmark.svg
@@ -46,6 +46,10 @@ class Assets {
   /// Assets for iconsChat
   /// assets/icons/chat.svg
   static const String iconsChat = "assets/icons/chat.svg";
+
+  /// Assets for iconsCheck
+  /// assets/icons/check.svg
+  static const String iconsCheck = "assets/icons/check.svg";
 
   /// Assets for iconsCircleUser
   /// assets/icons/circle-user.svg
@@ -87,6 +91,10 @@ class Assets {
   /// assets/icons/dots.svg
   static const String iconsDots = "assets/icons/dots.svg";
 
+  /// Assets for iconsDrawerEmpty
+  /// assets/icons/drawer-empty.svg
+  static const String iconsDrawerEmpty = "assets/icons/drawer-empty.svg";
+
   /// Assets for iconsDrobeDownArrow
   /// assets/icons/drobe_down_arrow.svg
   static const String iconsDrobeDownArrow = "assets/icons/drobe_down_arrow.svg";
@@ -100,8 +108,8 @@ class Assets {
   static const String iconsEarthEuropa = "assets/icons/earth-europa.svg";
 
   /// Assets for iconsEllipse
-  /// assets/icons/Ellipse .svg
-  static const String iconsEllipse = "assets/icons/Ellipse .svg";
+  /// assets/icons/Ellipse.svg
+  static const String iconsEllipse = "assets/icons/Ellipse.svg";
 
   /// Assets for iconsEmployeeMan
   /// assets/icons/employee-man.svg
@@ -201,8 +209,7 @@ class Assets {
 
   /// Assets for iconsNotifecationBell
   /// assets/icons/notifecation_bell.svg
-  static const String iconsNotifecationBell =
-      "assets/icons/notifecation_bell.svg";
+  static const String iconsNotifecationBell = "assets/icons/notifecation_bell.svg";
 
   /// Assets for iconsPaperPlane
   /// assets/icons/paper-plane.svg
@@ -288,9 +295,9 @@ class Assets {
   /// assets/icons/terminal.svg
   static const String iconsTerminal = "assets/icons/terminal.svg";
 
-  /// Assets for iconsTrash
-  ///assets/icons/trash1.svg
-  static const String iconsTrash = "assets/icons/trash1.svg";
+  /// Assets for iconsTrash1
+  /// assets/icons/trash1.svg
+  static const String iconsTrash1 = "assets/icons/trash1.svg";
 
   /// Assets for iconsUserAdd
   /// assets/icons/user-add.svg
@@ -298,8 +305,7 @@ class Assets {
 
   /// Assets for iconsUserForbiddenAlt
   /// assets/icons/user-forbidden-alt.svg
-  static const String iconsUserForbiddenAlt =
-      "assets/icons/user-forbidden-alt.svg";
+  static const String iconsUserForbiddenAlt = "assets/icons/user-forbidden-alt.svg";
 
   /// Assets for iconsUserGear
   /// assets/icons/user-gear.svg
@@ -325,30 +331,9 @@ class Assets {
   /// assets/icons/users.svg
   static const String iconsUsers = "assets/icons/users.svg";
 
-  ///Assets for users
-  ///assets/icons/user-tag.svg
-  static const String iconsAddTag = "assets/icons/user-tag.svg";
-
-  ///Assets for users
-  ///assets/icons/users.svg
-  static const String iconsMention = "assets/icons/users.svg";
-
-  ///Assets for remove mentioned person
-  ///assets/icons/Ellipse.svg
-  static const String iconsRemoveMention = "assets/icons/Ellipse.svg";
-
-  ///Assets for remove mentioned person
-  ///assets/icons/#.svg
-  static const String iconsHash = "assets/icons/#.svg";
-
-  ///Assets for remove mentioned person
-  ///  assets/icons/check.svg
-  static const String iconsCheck = "assets/icons/check.svg";
-
   /// Assets for images45863881023451830399
   /// assets/images/4_5863881023451830399.jpeg
-  static const String images45863881023451830399 =
-      "assets/images/4_5863881023451830399.jpeg";
+  static const String images45863881023451830399 = "assets/images/4_5863881023451830399.jpeg";
 
   /// Assets for imagesBoyProfile
   /// assets/images/boy_profile.json
@@ -356,8 +341,7 @@ class Assets {
 
   /// Assets for imagesCreateNewAccount
   /// assets/images/create_new_account.json
-  static const String imagesCreateNewAccount =
-      "assets/images/create_new_account.json";
+  static const String imagesCreateNewAccount = "assets/images/create_new_account.json";
 
   /// Assets for imagesDart
   /// assets/images/dart.svg
@@ -413,6 +397,6 @@ class Assets {
 
   /// Assets for imagesVisualStudioCode
   /// assets/images/visual-studio-code.svg
-  static const String imagesVisualStudioCode =
-      "assets/images/visual-studio-code.svg";
+  static const String imagesVisualStudioCode = "assets/images/visual-studio-code.svg";
 }
+

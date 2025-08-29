@@ -1,4 +1,4 @@
-import 'package:graph/bloc_providers.dart';
+
 import 'package:graph/core/services/get_it_service.dart';
 import 'package:graph/core/utils/years_and_major.dart';
 import 'package:graph/features/profile/data/repos/profile_local_data_source.dart';

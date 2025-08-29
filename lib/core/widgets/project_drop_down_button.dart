@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/core/services/providers/group_provider.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
@@ -32,6 +33,7 @@ class _ProjectDropDownButtonState extends State<ProjectDropDownButton> {
     return BlocBuilder<ProjectCubit, ProjectState>(
       builder: (context, state) {
         if (state is ProjectSuccess) {
+          selected = state.response[0].name;
           return Expanded(
             child: GestureDetector(
               onTap: () => _showMenu(context, state.response),
@@ -173,6 +175,7 @@ class _ProjectDropDownButtonState extends State<ProjectDropDownButton> {
             return PopupMenuItem<String>(
               onTap: () {
                 context.read<GroupInfoCubit>().getGroupInfo(projectId: e.id);
+                context.read<GroupProvider>().setProjectId(e.id);
               },
               value: e.name,
               child: Text(
@@ -231,3 +234,4 @@ class _ProjectDropDownButtonState extends State<ProjectDropDownButton> {
     }
   }
 }
+

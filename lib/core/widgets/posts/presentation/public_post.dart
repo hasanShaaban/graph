@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/core/widgets/posts/presentation/public_post_widgets/project_post_content.dart';
 import 'package:graph/features/main/domain/entity/noraml_post_entity.dart';
 import '../../../utils/appAssets.dart';
 import '../../../utils/constants.dart';
@@ -42,6 +43,7 @@ class PublicPost extends StatelessWidget {
                 PostHeader(
                   width: width,
                   height: height,
+                  project: data?.project,
                   user:
                       data?.users ??
                       [
@@ -58,7 +60,7 @@ class PublicPost extends StatelessWidget {
                       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
                 ),
                 data?.project != null
-                    ? Text('project')
+                    ? ProjectPostContent(post: data!)
                     : PublicPostContent(
                       text: data?.description ?? '',
                       images: data?.files ?? [],

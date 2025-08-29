@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:graph/core/utils/appAssets.dart';
+import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
 import 'package:graph/features/groups/presentation/manager/group_member_cubit/group_member_cubit.dart';
 import 'package:graph/features/groups/presentation/views/widget/rate_button.dart';
-import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/custom_stateless_appbar.dart';
 import '../../../../../core/widgets/major_and_year_dropdown_buttons_section.dart';
@@ -75,24 +76,42 @@ class MyGroupViewBody extends StatelessWidget {
                                 RateRow(),
                               ],
                             );
-                          }else if(memberState is GroupMemberError){
+                          } else if (memberState is GroupMemberError) {
                             return Text(memberState.errorMessage);
-                          }else{
+                          } else {
                             return Text('loading . . . ');
                           }
                         },
                       );
                     } else {
-                      return Center(
-                        child: Text(
-                          'You don\'t have group for this project yet',
-                        ),
+                      return Column(
+                        children: [
+                          SizedBox(height: height / 2 - 250),
+                          SvgPicture.asset(
+                            Assets.iconsDrawerEmpty,
+                            width: 90,
+                            color: Constants2.darkPrimaryColor(context),
+                          ),
+                          SizedBox(
+                            width: 150,
+                            child: Text(
+                              'You don\'t have group for this project yet',
+                              textAlign: TextAlign.center,
+                              style: AppTextStyle.cairoSemiBold16,
+                            ),
+                          ),
+                        ],
                       );
                     }
                   } else if (state is GroupInfoError) {
                     return Center(child: Text(state.errorMessage));
                   } else {
-                    return Center(child: CircularProgressIndicator());
+                    return Column(
+                      children: [
+                        SizedBox(height: height / 2 -200),
+                        Center(child: CircularProgressIndicator())
+                      ],
+                    );
                   }
                 },
               ),
@@ -103,5 +122,3 @@ class MyGroupViewBody extends StatelessWidget {
     );
   }
 }
-
-

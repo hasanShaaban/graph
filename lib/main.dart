@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:graph/features/create_post/presentation/views/creat_post_page.dart';
+import 'package:graph/core/services/providers/group_provider.dart';
+import 'package:graph/core/services/providers/personal_data_provider.dart';
 import 'package:graph/features/splash/presentation/views/splash_view.dart';
 import 'core/services/providers/theme_provider.dart';
 import 'bloc_providers.dart';
@@ -29,6 +30,8 @@ void main() async {
         ),
         ChangeNotifierProvider(create: (context) => UserInfoProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => PersonalDataProvider()),
+        ChangeNotifierProvider(create: (context) => GroupProvider())
       ],
       child: MyApp(),
     ),

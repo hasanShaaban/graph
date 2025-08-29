@@ -8,5 +8,6 @@ abstract class GroupsRepo {
   Future<Either<Failures, List<ProjectEntity>>> getProjects({required int yearId, int? majorId});
   Future<Either<Failures, GroupInfoEntity>> getGroupInfo({required int projectId});
   Future<Either<Failures, List<GroupMemberEntity>>> getGroupMembers({required int groupId});
+  Future<Either<Failures, Map<String, dynamic>>> createGroup({required int projectId, required int skillID});
 }
 
