@@ -28,7 +28,7 @@ class PostsListView extends StatelessWidget {
             itemBuilder:
                 (context, index) => Padding(
                   padding: const EdgeInsets.only(bottom: 30),
-                  child: PublicPost(lang: lang, width: width, height: height, data: state.posts[index],),
+                 // child: PublicPost(lang: lang, width: width, height: height, data: state.posts[index],),
                 ),
           );
         } else if (state is ProfilePostsError) {

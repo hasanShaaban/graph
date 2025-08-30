@@ -23,6 +23,22 @@ import 'features/profile/presentation/manager/profile/profile_cubit.dart';
 import 'features/auth/presentation/manager/delete_profile_image_cubit/delete_profile_image_cubit.dart';
 import 'features/auth/presentation/manager/post_skills_cubit/post_skills_cubit.dart';
 import 'features/auth/presentation/manager/student_info_cubit/student_info_cubit.dart';
+import 'package:graph/core/services/api_service.dart';
+import 'package:graph/core/services/get_it_service.dart';
+import 'package:graph/features/auth/domain/repos/auth_repo.dart';
+import 'package:graph/features/auth/presentation/manager/get_skills_cubit/get_skills_cubit.dart';
+import 'package:graph/features/create_post/domain/repos/create_post_repo.dart';
+import 'package:graph/features/create_post/presentation/manager/post_new_post_cubit/post_new_post_cubit.dart';
+import 'package:graph/features/followers&following/domain/repo/follow_repo.dart';
+import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
+import 'package:graph/features/groups/domain/repos/groups_repo.dart';
+import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/group_member_cubit/group_member_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
+
+import 'package:graph/features/profile/data/repos/profile_local_data_source.dart';
+
+import 'package:graph/features/profile/presentation/manager/profile_posts/profile_posts_cubit.dart';
 import 'features/auth/presentation/manager/company_cubit/company_cubit.dart';
 import 'features/auth/presentation/manager/credintials_cubit/credintials_cubit.dart';
 import 'features/auth/presentation/manager/final_touches_cubit/final_touches_cubit.dart';
@@ -35,6 +51,8 @@ import 'package:provider/single_child_widget.dart';
 PublicApiService apiService = PublicApiService(Dio());
 
 final AuthRepo authRepo = AuthRepoImpl(getIt<SecureApiService>());
+final ProfileLocalDataSource profileLocalDataSource =
+    getIt<ProfileLocalDataSource>();
 List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => SignupCubit(authRepo)),
   BlocProvider(create: (context) => LoginCubit(authRepo)),
@@ -61,4 +79,10 @@ List<SingleChildWidget> providers = [
   BlocProvider(
     create: (context) => HashtagSearchCubit(getIt<CreatePostRepo>()),
   ),
+  BlocProvider(create: (context) => UserImageCubit(getIt<MainRepo>())),
+  BlocProvider(create: (context) => FriendsCubit(getIt<FollowRepo>())),
+  BlocProvider(create: (context) => ProjectCubit(getIt<GroupsRepo>())),
+  BlocProvider(create: (context) => ProfilePostsCubit(getIt<ProfileRepo>())),
+  BlocProvider(create: (context) => GroupInfoCubit(getIt<GroupsRepo>())),
+  BlocProvider(create: (context) => GroupMemberCubit(getIt<GroupsRepo>())),
 ];

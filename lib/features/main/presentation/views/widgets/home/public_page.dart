@@ -23,14 +23,14 @@ class PublicPage extends StatelessWidget {
               right: 20,
               top: 10,
             ),
-            child: PublicPost(
-              lang: lang,
-              width: width,
-              height: height,
-              onTap: () {
-                Navigator.pushNamed(context, PostDetailsView.name);
-              },
-            ),
+            // child: PublicPost(
+            //   lang: lang,
+            //   width: width,
+            //   height: height,
+            //   onTap: () {
+            //     Navigator.pushNamed(context, PostDetailsView.name);
+            //   },
+            // ),
           ),
       itemCount: 20,
     );

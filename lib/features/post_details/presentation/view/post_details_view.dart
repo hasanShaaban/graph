@@ -58,7 +58,7 @@ class PostDetailsViewBody extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
-                      PublicPost(lang: lang, width: width, height: height),
+                      //PublicPost(lang: lang, width: width, height: height),
                       SizedBox(height: 25),
                       SizedBox(
                         width: width / 1.8,
