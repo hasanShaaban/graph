@@ -1,11 +1,11 @@
-
 import 'package:flutter/material.dart';
 
 import 'custom_text_cairo16_semi_bold.dart';
 import 'next_button.dart';
 
 class CVRow extends StatelessWidget {
-  const CVRow({super.key});
+  const CVRow({super.key, required this.onCVPicked});
+  final VoidCallback onCVPicked;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CVRow extends StatelessWidget {
         SizedBox(width: 10),
         Expanded(
           child: NextButton(
-            onPressed: () {},
+            onPressed: onCVPicked,
             height: 40,
             title: 'tap to select a document',
           ),

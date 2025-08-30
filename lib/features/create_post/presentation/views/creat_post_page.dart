@@ -42,7 +42,7 @@ class _CreatPostPageState extends State<CreatPostPage> {
     {'label': 'algebra', 'icon': Assets.iconsCoworking},
     {'label': 'algorithms', 'icon': Assets.iconsEmployeeMan},
   ];
- List<TagModel> selectedTags = [];
+  List<TagModel> selectedTags = [];
 
   List<SubjectModel> subjects = [];
   int? selectedSubjectId;
@@ -79,6 +79,7 @@ class _CreatPostPageState extends State<CreatPostPage> {
     }
   }
 
+  List<String> newHashtags = [];
   String? description;
   String? title;
   List<File> selectedImages = [];
@@ -188,7 +189,9 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                         .toList(),
                                 image: selectedImages,
                                 tags: selectedTags.map((t) => t.id).toList(),
+                                hashIds: [],
 
+                                newHashtags: newHashtags,
                               );
 
                               print('title = $title');
@@ -320,6 +323,7 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                         },
                                       )
                                       : SizedBox(),
+                                      
                                   SizedBox(width: 10),
                                   CustomDropDownMap(
                                     list: privacy,
@@ -345,7 +349,6 @@ class _CreatPostPageState extends State<CreatPostPage> {
                       SizedBox(height: 20),
 
                       if (selectedImages.isNotEmpty) ...[
-                    
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -428,7 +431,8 @@ class _CreatPostPageState extends State<CreatPostPage> {
                       if (selectedTags.isNotEmpty) ...[
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Row(
+                          child: 
+                          Row(
                             children: [
                               Text(
                                 lang.tags,
@@ -441,7 +445,7 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                 children:
                                     selectedTags.map((tag) {
                                       return Text(
-                                         '#${tag.name}',
+                                        '#${tag.name}',
                                         style: AppTextStyle.cairoSemiBold14
                                             .copyWith(
                                               color: Constants.secondryColor,
@@ -450,6 +454,24 @@ class _CreatPostPageState extends State<CreatPostPage> {
                                     }).toList(),
                               ),
                             ],
+                          ),
+                        ),
+                      ],
+                      if (newHashtags.isNotEmpty) ...[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Wrap(
+                            spacing: 8,
+                            children:
+                                newHashtags.map((tag) {
+                                  return Text(
+                                    '#$tag',
+                                    style: AppTextStyle.cairoSemiBold14
+                                        .copyWith(
+                                          color: Colors.blue, // 🔹 أزرق
+                                        ),
+                                  );
+                                }).toList(),
                           ),
                         ),
                       ],
@@ -487,13 +509,14 @@ class _CreatPostPageState extends State<CreatPostPage> {
             onAddPerson: addMention,
             onRemovePerson: removeMention,
             onPickImages: pickImages,
-            selectedTags: selectedTags,
-            onTagsChanged: (List<TagModel> tags) {
-  setState(() {
-    selectedTags = tags;
-  });
-},
-
+            selectedNewHashtags: newHashtags, // 🔹
+            onNewHashtagsChanged: (hashtags) {
+              setState(() => newHashtags = hashtags); // 🔹
+            },
+            selectedTags: selectedTags, // 🔹 مهم إذا بدك تبين tags مختارة
+            onTagsChanged: (tags) {
+              setState(() => selectedTags = tags);
+            },
           ),
         ),
         //  : null,

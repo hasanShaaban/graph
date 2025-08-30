@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/constants.dart';
 
 class FinalTouchesBioSec extends StatelessWidget {
-  const FinalTouchesBioSec({super.key, required this.onBioChanged});
+  const FinalTouchesBioSec({
+    super.key,
+    required this.onBioChanged,
+    required this.controller,
+  });
   final Function(String) onBioChanged;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
         TextField(
-          onChanged:  onBioChanged,
+          controller: controller,
+           onChanged: onBioChanged,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderSide: BorderSide.none,

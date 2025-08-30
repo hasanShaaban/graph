@@ -13,7 +13,7 @@ abstract class CreatePostRepo {
       Future<Either<Failures, Map<String, dynamic>>> postSearch({
       required String name,
     });
-       Future<Either<Failures, Map<String, dynamic>>> getHashtagSearch({
-      required String name,
-    });
+     Future<Either<Failures, Map<String, dynamic>>> postHashtagSearch({
+    required String name,
+  });
 }

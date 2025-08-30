@@ -21,7 +21,6 @@ import '../../../../../generated/l10n.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,9 @@ class ProfileViewBody extends StatelessWidget {
         } else if (state is ProfileSuccess) {
           context.read<FriendsCubit>().getFirends();
           context.read<ProfilePostsCubit>().getProfilePosts();
-          context.read<ProjectCubit>().getProjects(yearId: Year.yearbyName[state.profileEntity.year[0]]!);
+          context.read<ProjectCubit>().getProjects(
+            yearId: Year.yearbyName[state.profileEntity.year[0]]!,
+          );
           var profileModel = state.profileEntity;
           return SingleChildScrollView(
             controller: scrollController,
@@ -84,7 +85,10 @@ class ProfileViewBody extends StatelessWidget {
                         height: height,
                         lang: lang,
                         year: profileModel.year[0],
-                        major: profileModel.major[0],
+                        major:
+                            profileModel.major.isNotEmpty
+                                ? profileModel.major[0]
+                                : '',
                         skills: profileModel.skills,
                         links: profileModel.socialLinks,
                         cv: profileModel.cv,
@@ -127,4 +131,3 @@ class ProfileViewBody extends StatelessWidget {
     );
   }
 }
-

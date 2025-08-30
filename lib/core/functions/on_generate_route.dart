@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graph/features/main/presentation/views/widgets/settings/change_password_sec.dart';
+import 'package:graph/features/profile/domain/entity/profile_entity.dart';
 import '../../features/auth/data/models/signup_data_model.dart';
 import '../../features/auth/presentation/views/widgets/full_screen_image_view.dart';
 import '../../features/auth/presentation/views/widgets/staff_identity_sec.dart';
@@ -97,12 +98,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       final args = settings.arguments;
       if (args == null || args is! Map<String, dynamic>) {
         return MaterialPageRoute(
-          builder: (context) => FollowView(type: 'defaultType', data: [],),
+          builder: (context) => FollowView(type: 'defaultType', data: []),
         );
       } else {
         final Map<String, dynamic> arguments = args;
         return MaterialPageRoute(
-          builder: (context) => FollowView(type: arguments['type'], data: arguments['data'],),
+          builder:
+              (context) =>
+                  FollowView(type: arguments['type'], data: arguments['data']),
         );
       }
 
@@ -118,7 +121,20 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       String cv = settings.arguments as String;
       return MaterialPageRoute(builder: (context) => CVPDF(cv: cv));
     case EditProfileView.name:
-      return MaterialPageRoute(builder: (context) => const EditProfileView());
+      final args = settings.arguments;
+      if (args != null && args is ProfileEntity) {
+        return MaterialPageRoute(
+          builder: (context) => EditProfileView(profile: args),
+        );
+      } else {
+        return MaterialPageRoute(
+          builder:
+              (context) => const Scaffold(
+                body: Center(child: Text('No profile data provided')),
+              ),
+        );
+      }
+
     case GroupsManagementView.name:
       return MaterialPageRoute(
         builder: (context) => const GroupsManagementView(),

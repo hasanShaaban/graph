@@ -46,6 +46,8 @@ class _SignupProfilePictureSectionState
     }
   }
 
+  //final authLocalDataSource = getIt<AuthLocalDataSource>();
+
   @override
   Widget build(BuildContext context) {
     String? gender = signupData.gender;
@@ -182,6 +184,10 @@ class _SignupProfilePictureSectionState
           child: BlocConsumer<SignupCubit, SignupState>(
             listener: (context, state) async {
               if (state is SignupSuccess) {
+                final token = state.response['token'];
+                // await authLocalDataSource.setToken(token);
+                // final box = Hive.box('authBox');
+                // await box.put('token', token);
                 Navigator.pushReplacementNamed(
                   context,
                   // SignupVerificationSection.name,

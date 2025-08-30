@@ -23,12 +23,6 @@ import 'features/profile/presentation/manager/profile/profile_cubit.dart';
 import 'features/auth/presentation/manager/delete_profile_image_cubit/delete_profile_image_cubit.dart';
 import 'features/auth/presentation/manager/post_skills_cubit/post_skills_cubit.dart';
 import 'features/auth/presentation/manager/student_info_cubit/student_info_cubit.dart';
-import 'package:graph/core/services/api_service.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/features/auth/domain/repos/auth_repo.dart';
-import 'package:graph/features/auth/presentation/manager/get_skills_cubit/get_skills_cubit.dart';
-import 'package:graph/features/create_post/domain/repos/create_post_repo.dart';
-import 'package:graph/features/create_post/presentation/manager/post_new_post_cubit/post_new_post_cubit.dart';
 import 'package:graph/features/followers&following/domain/repo/follow_repo.dart';
 import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
 import 'package:graph/features/groups/domain/repos/groups_repo.dart';
@@ -70,15 +64,16 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => ProfileCubit(getIt<ProfileRepo>())),
   BlocProvider(create: (context) => UserImageCubit(getIt<MainRepo>())),
   BlocProvider(create: (context) => ChangePasswordCubit(getIt<MainRepo>())),
-    BlocProvider(create: (context) => LogoutCubit(getIt<MainRepo>())),
+  BlocProvider(create: (context) => LogoutCubit(getIt<MainRepo>())),
   BlocProvider(create: (context) => PostNewPostCubit(getIt<CreatePostRepo>())),
+  BlocProvider(
+    create: (context) => PostHashtagSearchCubit(getIt<CreatePostRepo>()),
+  ),
   BlocProvider(
     create: (context) => GetAllProjectCubit(getIt<CreatePostRepo>()),
   ),
   BlocProvider(create: (context) => SearchCubit(getIt<CreatePostRepo>())),
-  BlocProvider(
-    create: (context) => HashtagSearchCubit(getIt<CreatePostRepo>()),
-  ),
+
   BlocProvider(create: (context) => UserImageCubit(getIt<MainRepo>())),
   BlocProvider(create: (context) => FriendsCubit(getIt<FollowRepo>())),
   BlocProvider(create: (context) => ProjectCubit(getIt<GroupsRepo>())),

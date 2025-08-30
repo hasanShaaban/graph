@@ -26,6 +26,9 @@ abstract class AuthRepo {
   Future<Either<Failures, Map<String, dynamic>>> profileImage({
     required File image,
   });
+    Future<Either<Failures, Map<String, dynamic>>> postCV({
+    required File cv,
+  });
     Future<Either<Failures, Map<String, dynamic>>> addSocialLinks ({
     required List<SocialLinksModel> socialLinksModel,
   });
@@ -53,5 +56,12 @@ abstract class AuthRepo {
   required String otp,
 });
 
+
+    Future<Either<Failures, Map<String, dynamic>>> postUpdateYear({
+    required int yearId,
+  });
+     Future<Either<Failures, Map<String, dynamic>>> postUpdateMajor({
+    required int majorId,
+  });
 
 }

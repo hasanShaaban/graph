@@ -20,15 +20,20 @@ class FinalTouchesCubit extends Cubit<FinalTouchesState> {
   Future<void> finalTouches({
     String? bio,
     File? image,
+    File? cv,
+    int? yearId,
+    int? majorId,
     Map<String, List<int>>? chosenTools,
+    required List<Map<String, String>> socialLinks,
   }) async {
     emit(FinalTouchesLoading());
-    log("🚀 Starting finalTouches...", name: "FinalTouchesCubit");
+    log(" Starting finalTouches...", name: "FinalTouchesCubit");
 
     final List<String> errors = [];
     final List<String> successes = [];
 
-    // 1️⃣ تحديث البايو
+    //Bio
+    log(" BIO: ${bio ?? 'null'}");
     if (bio != null && bio.isNotEmpty) {
       final result = await authRepo.bio(bio: bio);
       result.fold(
@@ -37,7 +42,7 @@ class FinalTouchesCubit extends Cubit<FinalTouchesState> {
       );
     }
 
-    // 2️⃣ رفع الصورة
+    // Image
     if (image != null) {
       final result = await authRepo.profileImage(image: image);
       result.fold(
@@ -46,48 +51,34 @@ class FinalTouchesCubit extends Cubit<FinalTouchesState> {
       );
     }
 
-    // 3️⃣ روابط التواصل
-    final List<SocialLinksModel> socialLinksList = [
-      if (facebookController.text.isNotEmpty)
-        SocialLinksModel(
-          id: 1,
-          name: "facebook",
-          link: facebookController.text,
-        ),
-      if (instagramController.text.isNotEmpty)
-        SocialLinksModel(
-          id: 2,
-          name: "instagram",
-          link: instagramController.text,
-        ),
-      if (githubController.text.isNotEmpty)
-        SocialLinksModel(id: 3, name: "github", link: githubController.text),
-      if (linkedinController.text.isNotEmpty)
-        SocialLinksModel(
-          id: 4,
-          name: "linkedin",
-          link: linkedinController.text,
-        ),
-    ];
+    // Social links
+    log(" SOCIAL LINKS: ${socialLinks.map((e) => e.toString()).toList()}");
+    if (socialLinks.isNotEmpty) {
+      final socialLinksList =
+          socialLinks.map((link) {
+            return SocialLinksModel(
+              id: 0, // أو id حسب الباك (ممكن تخليه null لو السيرفر يولد)
+              name: link["name"]!,
+              link: link["link"]!,
+            );
+          }).toList();
 
-    if (socialLinksList.isNotEmpty) {
       final result = await authRepo.addSocialLinks(
         socialLinksModel: socialLinksList,
       );
       result.fold(
         (failure) {
           errors.add("Social links failed: ${failure.errMessage}");
-          log("❌ Social links request failed: ${failure.errMessage}");
+          log(" Social links request failed: ${failure.errMessage}");
         },
-
         (data) {
           successes.add("Social links updated");
-          log("✅ Social links response: $data");
+          log("Social links response: $data");
         },
       );
     }
 
-    // 4️⃣ المهارات
+    // Skills
     if (chosenTools != null &&
         chosenTools["choice_id"] != null &&
         chosenTools["choice_id"]!.isNotEmpty) {
@@ -97,8 +88,59 @@ class FinalTouchesCubit extends Cubit<FinalTouchesState> {
         (data) => successes.add("Skills updated"),
       );
     }
+    // CV
+    if (cv != null) {
+      final result = await authRepo.postCV(cv: cv);
+      result.fold(
+        (failure) {
+          errors.add("CV upload failed: ${failure.errMessage}");
+          log(" CV request failed: ${failure.errMessage}");
+        },
+        (data) {
+          successes.add("CV uploaded");
+          log(" CV response: $data");
+        },
+      );
+    }
+    // Update year
+    if (yearId != null) {
+      log(" Updating year with ID: $yearId", name: "FinalTouchesCubit");
+      final result = await authRepo.postUpdateYear(yearId: yearId);
+      result.fold(
+        (failure) {
+          errors.add("Update year failed: ${failure.errMessage}");
+          log(
+            " Update year failed: ${failure.errMessage}",
+            name: "FinalTouchesCubit",
+          );
+        },
+        (data) {
+          successes.add("Year updated successfully");
+          log(" Year updated successfully: $data", name: "FinalTouchesCubit");
+        },
+      );
+    }
 
-    // ✅ النتيجة النهائية
+    // Update major
+    if (majorId != null) {
+      log(" Updating major with ID: $majorId", name: "FinalTouchesCubit");
+      final result = await authRepo.postUpdateMajor(majorId: majorId);
+      result.fold(
+        (failure) {
+          errors.add("Update mjor failed: ${failure.errMessage}");
+          log(
+            " Update mjor failed: ${failure.errMessage}",
+            name: "FinalTouchesCubit",
+          );
+        },
+        (data) {
+          successes.add("mjor updated successfully");
+          log(" mjor updated successfully: $data", name: "FinalTouchesCubit");
+        },
+      );
+    }
+
+    // final result
     if (errors.isNotEmpty) {
       emit(FinalTouchesFailuer(errors.join("\n")));
     } else {
@@ -114,122 +156,4 @@ class FinalTouchesCubit extends Cubit<FinalTouchesState> {
       name: "FinalTouchesCubit",
     );
   }
-
-  // Future<void> finalTouches({
-  //   String? bio,
-  //   File? image,
-  //   Map<String, List<int>>? chosenTools,
-  // }) async {
-  //   emit(FinalTouchesLoading());
-  //   log("🚀 Starting finalTouches...", name: "FinalTouchesCubit");
-  //   final futures = <Future<Either<Failures, dynamic>>>[];
-
-  //   if (bio != null) {
-  //     futures.add(authRepo.bio(bio: bio));
-  //     final bioResult = await authRepo.bio(bio: bio);
-  //     bioResult.fold(
-  //       (failure) => log("❌ Bio request failed: ${failure.errMessage}"),
-  //       (data) => log("✅ Bio request success: $data"),
-  //     );
-  //   }
-  //   if (image != null) {
-  //     futures.add(authRepo.profileImage(image: image));
-  //     log("📌 Profile Image request added", name: "FinalTouchesCubit");
-  //   }
-  //   final List<SocialLinksModel> socialLinksList = [
-  //     if (facebookController.text.isNotEmpty)
-  //       SocialLinksModel(
-  //         id: 1,
-  //         name: "facebook",
-  //         link: facebookController.text,
-  //       ),
-  //     if (instagramController.text.isNotEmpty)
-  //       SocialLinksModel(
-  //         id: 2,
-  //         name: "instagram",
-  //         link: instagramController.text,
-  //       ),
-  //     if (githubController.text.isNotEmpty)
-  //       SocialLinksModel(id: 3, name: "github", link: githubController.text),
-  //     if (linkedinController.text.isNotEmpty)
-  //       SocialLinksModel(
-  //         id: 4,
-  //         name: "linkedin",
-  //         link: linkedinController.text,
-  //       ),
-  //   ];
-  //   if (socialLinksList.isNotEmpty) {
-  //     futures.add(authRepo.addSocialLinks(socialLinksModel: socialLinksList));
-  //     log("📌 Social Links request added", name: "FinalTouchesCubit");
-  //   }
-  //   if (chosenTools != null &&
-  //       chosenTools.isNotEmpty &&
-  //       chosenTools["choice_id"] != null &&
-  //       chosenTools["choice_id"]!.isNotEmpty) {
-  //     futures.add(authRepo.postSkills(chosenTools: chosenTools));
-  //     log("📌 Chosen Tools request added", name: "FinalTouchesCubit");
-  //   }
-
-  //   log("🚀 عدد الـ requests = ${futures.length}", name: "FinalTouchesCubit");
-
-  //   if (futures.isEmpty) {
-  //     log("⚠️ No changes to send", name: "FinalTouchesCubit");
-  //     emit(
-  //       FinalTouchesSuccess([
-  //         {"response": "No changes, profile already up-to-date"},
-  //       ]),
-  //     );
-  //   }
-
-  //   final results = await Future.wait(futures);
-
-  //   for (var i = 0; i < results.length; i++) {
-  //     final result = results[i];
-  //     bool hasError = false;
-  //     result.fold(
-  //       (failure) {
-  //         hasError = true;
-  //         log(
-  //           "❌ Request #$i failed: ${failure.errMessage}",
-  //           name: "FinalTouchesCubit",
-  //         );
-  //       },
-  //       (data) {
-  //         // لو data هي Map فيها "error" أو List فيها Map فيها "error"
-  //         bool errorFound = false;
-  //         if (data is Map && data.containsKey('error')) errorFound = true;
-  //         if (data is List) {
-  //           for (var item in data) {
-  //             if (item is Map && item.containsKey('error')) errorFound = true;
-  //           }
-  //         }
-
-  //         if (errorFound) {
-  //           hasError = true;
-  //           log(
-  //             "⚠️ Request #$i has error in response: ${data.toString()}",
-  //             name: "FinalTouchesCubit",
-  //           );
-  //         }
-  //       },
-  //     );
-
-  //     if (hasError) {
-  //       emit(
-  //         FinalTouchesFailuer(
-  //           "Request #$i failed: ${results[i].fold((f) => f.errMessage, (d) => d.toString())}",
-  //         ),
-  //       );
-  //       return; // توقف العملية
-  //     }
-  //   }
-
-  //   // إذا ما في errors
-  //   emit(
-  //     FinalTouchesSuccess([
-  //       {"response": "Profile updated successfully"},
-  //     ]),
-  //   );
-  //   log("🎉 All requests done successfully", name: "FinalTouchesCubit");
-  // }
 }

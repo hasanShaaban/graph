@@ -339,7 +339,8 @@ class AuthRepoImpl implements AuthRepo {
       Map<String, dynamic> response = await apiService.post(
         endPoint: 'student/social_links/add',
 
-        data: links,
+        //  data: links,
+        data: {"links": links},
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -567,6 +568,86 @@ class AuthRepoImpl implements AuthRepo {
       return Right(response);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> postCV({
+    required File cv,
+  }) async {
+    try {
+      final ext = cv.path.split('.').last.toLowerCase();
+      if (ext != "pdf") {
+        return left(ServerFailure("Only PDF files are allowed"));
+      }
+      FormData formData = FormData.fromMap({
+        'cv': await MultipartFile.fromFile(
+          cv.path,
+          filename: cv.path.split('/').last,
+          contentType: DioMediaType("application", "pdf"),
+        ),
+      });
+      Map<String, dynamic> response = await apiService.post(
+        endPoint: 'fill/user/info?',
+
+        data: formData,
+        options: Options(headers: {'Accept': 'application/json'}),
+      );
+
+      log('Response from post CV: $response');
+
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        log('Dio exception: ${e.response?.data}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      log('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> postUpdateYear({required int yearId})async {
+try {
+      final response = await apiService.post(
+        endPoint: 'student/update-year',
+        data: {"year_id": yearId},
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+
+        log('Response from update year id : $response');
+      return right(response);
+    } catch (e) {
+      if (e is DioException) return left(ServerFailure.fromDioError(e));
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> postUpdateMajor({required int majorId})async {
+  try {
+      final response = await apiService.post(
+        endPoint: 'student/major',
+        data: {"major_id": majorId},
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+
+        log('Response from update major id : $response');
+      return right(response);
+    } catch (e) {
+      if (e is DioException) return left(ServerFailure.fromDioError(e));
+      return left(ServerFailure(e.toString()));
     }
   }
 }

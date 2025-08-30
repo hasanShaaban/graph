@@ -1,7 +1,12 @@
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/bloc_providers.dart';
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
+import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
+import 'package:graph/features/main/presentation/views/main_page.dart';
 import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import '../../../../../core/functions/show_tools_bottom_sheet.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -50,45 +55,48 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
 
   File? profileImage;
 
+  File? cvFile;
+  bool _isInitialized = false;
+
+  late FinalTouchesCubit cubit;
   Future<void> pickImage() async {
     final picker = ImagePicker();
     final picked = await picker.pickImage(source: ImageSource.gallery);
     if (picked != null && mounted) {
       setState(() {
-        profileImage = File(picked.path);
+        profileImage = File(picked.path); 
       });
     }
   }
 
   void deleteImage() {
     setState(() {
-      profileImage = null;
-      signupData = signupData.copyWith(selectedImage: null);
+       profileImage = null;
     });
+  }
+
+  Future<void> pickCV() async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
+
+    if (result != null && result.files.single.path != null) {
+      setState(() {
+        cvFile = File(result.files.single.path!);
+      });
+    }
   }
 
   List<String> chosenTools = [];
   @override
   void initState() {
     super.initState();
+    cubit = context.read<FinalTouchesCubit>();
     context.read<GetSkillsCubit>().getSkills();
   }
 
   late SignupDataModel signupData;
-
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   final args = ModalRoute.of(context)?.settings.arguments;
-
-  //   if (args != null && args is SignupDataModel) {
-  //     signupData = args;
-  //   } else {
-  //     WidgetsBinding.instance.addPostFrameCallback((_) {
-  //       Navigator.pop(context);
-  //     });
-  //   }
-  // }
 
   @override
   void didChangeDependencies() {
@@ -96,13 +104,22 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
     final args = ModalRoute.of(context)?.settings.arguments;
 
     if (args != null && args is SignupDataModel) {
-      signupData = args;
-      profileImage = signupData.selectedImage; // <--- هنا نحفظ الصورة
+      signupData = args;  
+        profileImage = signupData.selectedImage;
     } else {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.pop(context);
       });
     }
+    _isInitialized = true;
+  }
+
+  final TextEditingController bioController = TextEditingController();
+
+  @override
+  void dispose() {
+    bioController.dispose();
+    super.dispose();
   }
 
   @override
@@ -115,6 +132,7 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
     final lang = S.of(context);
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 20),
@@ -155,6 +173,7 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                       ),
 
                       FinalTouchesBioSec(
+                        controller: bioController,
                         onBioChanged: (value) {
                           bioText = value;
                         },
@@ -178,6 +197,7 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                               child: CircularProgressIndicator(),
                             );
                           } else if (state is GetSkillsSuccess) {
+
                             final skillsList = List<Map<String, dynamic>>.from(
                               state.response,
                             );
@@ -263,15 +283,23 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                         icon: Assets.iconsLinkedin,
                       ),
                       SizedBox(height: 20),
-                      CVRow(),
+                      CVRow(onCVPicked: pickCV),
                       SizedBox(height: 20),
 
                       BlocConsumer<FinalTouchesCubit, FinalTouchesState>(
                         listener: (context, state) async {
                           if (state is FinalTouchesSuccess) {
+                             final year = await profileLocalDataSource.getStudentYear();
+                    final major =
+                        await profileLocalDataSource.getStudentMajor();
+                    context.read<UserImageCubit>().getUserImage();
+                    context.read<ProjectCubit>().getProjects(
+                      yearId: year == 0 ? 1 : year,
+                      majorId: major == 0 ? null : major,
+                    );
                             Navigator.pushNamed(
                               context,
-                              ProfileView.name,
+                              MainPage.name,
                               arguments: signupData,
                             );
                           } else if (state is FinalTouchesFailuer) {
@@ -306,10 +334,53 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                                       .map<int>((tool) => toolIds[tool]!)
                                       .toList();
 
+                              final socialLinks = [
+                                {
+                                  "name": "facebook",
+                                  "link": cubit.facebookController.text,
+                                },
+                                {
+                                  "name": "github",
+                                  "link": cubit.githubController.text,
+                                },
+                                {
+                                  "name": "instagram",
+                                  "link": cubit.instagramController.text,
+                                },
+                                {
+                                  "name": "linkedin",
+                                  "link": cubit.linkedinController.text,
+                                },
+                              ];
+
                               context.read<FinalTouchesCubit>().finalTouches(
-                                bio: bioText,
+                                bio: bioController.text,
                                 image: profileImage,
+                                cv: cvFile,
                                 chosenTools: {"choice_id": selectedIds},
+                                socialLinks: [
+                                  // ✅ تعديل 2: تمرير روابط التواصل
+                                  if (cubit.facebookController.text.isNotEmpty)
+                                    {
+                                      "name": "facebook",
+                                      "link": cubit.facebookController.text,
+                                    },
+                                  if (cubit.githubController.text.isNotEmpty)
+                                    {
+                                      "name": "github",
+                                      "link": cubit.githubController.text,
+                                    },
+                                  if (cubit.instagramController.text.isNotEmpty)
+                                    {
+                                      "name": "instagram",
+                                      "link": cubit.instagramController.text,
+                                    },
+                                  if (cubit.linkedinController.text.isNotEmpty)
+                                    {
+                                      "name": "linkedin",
+                                      "link": cubit.linkedinController.text,
+                                    },
+                                ],
                               );
                             },
                           );

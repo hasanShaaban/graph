@@ -6,7 +6,6 @@ import '../../../../utils/app_text_style.dart';
 import '../../../../utils/constants.dart';
 import '../../../profile_image.dart';
 import '../../../../../generated/l10n.dart';
-import 'package:intl/intl.dart';
 
 class GroupPostHeader extends StatelessWidget {
   const GroupPostHeader({

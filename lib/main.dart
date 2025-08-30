@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:graph/features/create_post/presentation/views/creat_post_page.dart';
 import 'package:graph/features/splash/presentation/views/splash_view.dart';
-import 'features/splash/presentation/views/splash_view.dart';
 import 'core/services/providers/theme_provider.dart';
 import 'bloc_providers.dart';
 import 'core/services/providers/user_info_provider.dart';

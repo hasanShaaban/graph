@@ -44,7 +44,7 @@ class _BirthdayGenderBodyState extends State<BirthdayGenderBody> {
               },
               onSaved: (value) {
                 widget.onBirthDateSaved(
-                  DateFormat("yyyy-MM-dd").format(selectedTime!),
+                  DateFormat("yyyy-MM-dd", "en").format(selectedTime!),
                 );
               },
               builder: (fieldState) {
@@ -52,7 +52,7 @@ class _BirthdayGenderBodyState extends State<BirthdayGenderBody> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      //  color: Constants.lightSecondryColor,
+
                       width: MediaQuery.of(context).size.width * 372 / 412,
                       height: MediaQuery.of(context).size.height * 55 / 892,
                       child: ElevatedButton(
@@ -75,16 +75,18 @@ class _BirthdayGenderBodyState extends State<BirthdayGenderBody> {
                               });
                             },
                             currentTime: DateTime.now(),
-                            locale:
-                                lang.lang == 'en'
-                                    ? LocaleType.en
-                                    : LocaleType.ar,
+                            //locale: lang.lang == 'en',
+                            //         ? LocaleType.en
+                            //         : LocaleType.ar,
                           );
                         },
                         child: Text(
                           selectedTime == null
                               ? 'yyyy-mm-dd'
-                              : DateFormat("yyyy-MM-dd").format(selectedTime!),
+                              : DateFormat(
+                                "yyyy-MM-dd",
+                                "en",
+                              ).format(selectedTime!),
                           style: AppTextStyle.cairoRegular18.copyWith(
                             color: Constants.darkSecondryColor,
                           ),

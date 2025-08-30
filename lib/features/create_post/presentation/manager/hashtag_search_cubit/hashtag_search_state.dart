@@ -1,21 +1,23 @@
-part of 'hashtag_search_cubit.dart';
+import 'package:graph/features/create_post/data/models/hashtag_model.dart';
+
+
+import 'package:flutter/material.dart';
 
 @immutable
-sealed class HashtagSearchState {}
+sealed class PostHashtagSearchState {}
 
-final class HashtagSearchInitial extends HashtagSearchState {}
+final class PostHashtagSearchInitial extends PostHashtagSearchState {}
 
-final class  HashtagSearchLoading extends HashtagSearchState {}
+final class PostHashtagSearchLoading extends PostHashtagSearchState {}
 
-final class  HashtagSearchSuccess extends HashtagSearchState {
-  final Map<String, dynamic> response;
+final class PostHashtagSearchSuccess extends PostHashtagSearchState {
+  final HashtagModel hashtags;
 
-  HashtagSearchSuccess(this.response);
-  
+  PostHashtagSearchSuccess(this.hashtags);
 }
 
-final class HashtagSearchFailuer extends HashtagSearchState {
+final class PostHashtagSearchFailure extends PostHashtagSearchState {
   final String errorMessage;
 
-HashtagSearchFailuer(this.errorMessage);
+  PostHashtagSearchFailure(this.errorMessage);
 }

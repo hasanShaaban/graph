@@ -31,7 +31,7 @@ class ProfileButton extends StatelessWidget {
                       radius: 15,
                       backgroundColor: Constants2.lightPrimaryColor(context),
                       backgroundImage: CachedNetworkImageProvider(
-                        '${state.response.profileImageUrl}',
+                        state.response.profileImageUrl,
                       ),
                     ),
           );

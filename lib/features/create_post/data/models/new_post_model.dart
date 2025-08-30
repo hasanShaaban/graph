@@ -8,7 +8,8 @@ class NewPostModel extends PostEntity {
     required super.privacy,
     super.image,
     super.mentionIds,
-    super.tags,
+    super.tags, required super.hashIds, required super.newHashtags,
+    
   });
 
   factory NewPostModel.fromJson(Map<String, dynamic> json) {
@@ -19,19 +20,22 @@ class NewPostModel extends PostEntity {
       privacy: json['privacy'],
       image: json['files[]'],
       mentionIds: json['ids[]'],
-      tags: json['ids[]'],
+       hashIds: List<int>.from(json['hash_ids[]'] ?? []), 
+       newHashtags: List<String>.from(json['new_hashtags[]'] ?? []),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'description': description,
-      'title': description,
+      'title': title,
       'project_id': projectId,
       'privacy': privacy,
 
       'ids[]': mentionIds,
-      'ids[]': tags,
+ 
+      'hash_ids[]': hashIds,
+      'new_hashtags[]': newHashtags,
     };
   }
 }

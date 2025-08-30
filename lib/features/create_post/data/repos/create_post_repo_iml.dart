@@ -39,12 +39,17 @@ class CreatePostRepoIml implements CreatePostRepo {
         if (newPostModel.projectId != null)
           'project_id': newPostModel.projectId,
         'privacy': newPostModel.privacy,
-        if (newPostModel.mentionIds != null) 'ids[]': newPostModel.mentionIds,
+        if (newPostModel.mentionIds != null) 
+        'ids[]': newPostModel.mentionIds,
+          if (newPostModel.newHashtags != null && newPostModel.newHashtags!.isNotEmpty)
+    'new_hashtags[]': newPostModel.newHashtags,
+  if (newPostModel.hashIds != null && newPostModel.hashIds!.isNotEmpty)
+    'hash_id[]': newPostModel.hashIds,
         if (files != null) 'files[]': files,
       });
       Map<String, dynamic> response = await apiService.post(
         endPoint: 'posts/make',
-        data: formData, // <-- هنا نرسل FormData بدل toJson
+        data: formData, 
         options: Options(
           headers: {
             'Content-Type': 'multipart/form-data',
@@ -131,16 +136,22 @@ class CreatePostRepoIml implements CreatePostRepo {
   }
 
   @override
-  Future<Either<Failures, Map<String, dynamic>>> getHashtagSearch({
+  Future<Either<Failures, Map<String, dynamic>>> postHashtagSearch({
     required String name,
   }) async {
     try {
-      Map<String, dynamic> response = await apiService.get(
-        endPoints: 'hashtags/search',
+      Map<String, dynamic> response = await apiService.post(
+        endPoint: 'search/Hashtags',
         data: {'query': name},
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
       );
 
-      log('Response from search hashtag: $response');
+      log('Response from postHashtagSearch: $response');
 
       return right(response);
     } catch (e) {

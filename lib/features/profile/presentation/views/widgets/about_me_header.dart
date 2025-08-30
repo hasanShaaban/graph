@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../domain/entity/profile_entity.dart';
@@ -47,8 +48,7 @@ class AboutMeHeader extends StatelessWidget {
               Navigator.pushNamed(
                 context,
                 EditProfileView.name,
-                arguments: [model],
-              //  arguments: [year, major, skills, links, cv, model.image,model.bio,model.gender, model.name],
+                arguments: model,
               );
             },
             child: Row(

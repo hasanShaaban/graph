@@ -8,7 +8,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../utils/constants.dart';
 import '../../../../utils/appAssets.dart';
 import '../../../../utils/app_text_style.dart';
-import 'dart:developer' as dev;
 
 class ReactButton extends StatefulWidget {
   const ReactButton({super.key, required this.height, required this.width, required this.buttonColor, required this.circleColor, required this.reactsCount});

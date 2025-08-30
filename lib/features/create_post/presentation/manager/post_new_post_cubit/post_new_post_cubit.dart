@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import '../../../data/models/new_post_model.dart';
 import '../../../domain/repos/create_post_repo.dart';
@@ -9,30 +11,23 @@ class PostNewPostCubit extends Cubit<PostNewPostState> {
   PostNewPostCubit(this.createPostRepo) : super(PostNewPostInitial());
   final CreatePostRepo createPostRepo;
   Future<void> postNewPost({required NewPostModel newPostModel}) async {
-    print(" Starting postNewPost...");
-    print(" Post Data:");
-    print(" title: ${newPostModel.title}");
-    print(" description: ${newPostModel.description}");
-    print(" projectId: ${newPostModel.projectId}");
-    print(" privacy: ${newPostModel.privacy}");
-    print(" mentionIds: ${newPostModel.mentionIds}");
-    print(" image: ${newPostModel.image}");
 
+    log('starting .......');
     emit(PostNewPostLoading());
     var result = await createPostRepo.postNewPost(newPostModel: newPostModel);
 
     result.fold(
       (failures) {
-        print(" Post failed with error: ${failures.errMessage}");
+        log(" Post failed with error: ${failures.errMessage}");
         emit(PostNewPostFailuer(failures.errMessage));
       },
       (credintials) {
-        
+        log('psost succedded with response: $credintials');
         print(" Post succeeded with response: $credintials");
         emit(PostNewPostSuccess(credintials));
       },
     );
 
-    print("Finished postNewPost.");
+    log("Finished postNewPost.");
   }
 }

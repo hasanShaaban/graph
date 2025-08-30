@@ -179,7 +179,8 @@ class SecureApiService {
         onRequest: (options, handler) async {
           final token = await authLocalDataSource.getToken();
           if (token != null) {
-            options.queryParameters['token'] = token;
+            //  options.queryParameters['token'] = token;
+            options.headers['Authorization'] = 'Bearer $token';
           }
           return handler.next(options);
         },

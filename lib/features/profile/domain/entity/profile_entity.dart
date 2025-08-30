@@ -17,6 +17,7 @@ class ProfileEntity {
   final double? rate;
   final List<SkillEntity>? skills;
   final int? groupId;
+   final String? birthDate;
 
   const ProfileEntity({
     required this.id,
@@ -31,6 +32,7 @@ class ProfileEntity {
     required this.rate,
     required this.skills,
     required this.groupId,
+     this.birthDate, 
   });
   
   ProfileEntity copyWith({
@@ -46,6 +48,8 @@ class ProfileEntity {
     int? id,
     double? rate,
     int? groupId,
+        String? birthDate,
+    
   }) {
     return ProfileEntity(
       name: name ?? this.name,
@@ -60,6 +64,7 @@ class ProfileEntity {
       id: id ?? this.id,
       rate: rate ?? this.rate,
       groupId: groupId ?? this.groupId,
+            birthDate: birthDate ?? this.birthDate,
     );
   }
   factory ProfileEntity.fromSignup(SignupDataModel signupData) {
@@ -72,10 +77,11 @@ class ProfileEntity {
       skills: [],
       socialLinks: [],
       cv: "",
-      image: "",
+      image: signupData.selectedImage?.path ?? signupData.image ?? "",
       id: 0,
       rate: 0,
       groupId: 0,
+           birthDate: signupData.birthDate,
     );
   }
 }

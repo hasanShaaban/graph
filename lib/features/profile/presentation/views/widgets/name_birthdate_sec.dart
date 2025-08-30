@@ -17,16 +17,13 @@ class NameBirthdateSec extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              '${profileEntity.name} ',
-              style: AppTextStyle.cairoBold22,
-            ),
+            Text('${profileEntity.name} ', style: AppTextStyle.cairoBold22),
             SvgPicture.asset(Assets.iconsLock),
           ],
         ),
         Align(
           alignment: Alignment.center,
-          child: Text('1-2-2005'),
+          child: Text(profileEntity.birthDate ?? 'No birth date'),
         ),
       ],
     );
