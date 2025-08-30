@@ -7,7 +7,6 @@ import 'package:graph/bloc_providers.dart';
 import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
 import 'package:graph/features/main/presentation/views/main_page.dart';
-import 'package:graph/features/profile/presentation/views/profile_view.dart';
 import '../../../../../core/functions/show_tools_bottom_sheet.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../data/models/signup_data_model.dart';
@@ -401,3 +400,4 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
     );
   }
 }
+
