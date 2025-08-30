@@ -128,7 +128,7 @@ class _SettingsPageBodyState extends State<SettingsPageBody> {
               if (state is LogoutSuccess) {
                 //  AuthLocalDataSource.clear();
 
-                Navigator.pushNamed(context, LoginView.name);
+                Navigator.pushReplacementNamed(context, LoginView.name);
               } else if (state is LogoutError) {
                 ScaffoldMessenger.of(
                   context,

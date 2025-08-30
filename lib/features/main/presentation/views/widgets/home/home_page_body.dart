@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graph/features/main/presentation/manager/group_post_cubit/group_posts_cubit.dart';
 import '../../../../../../core/utils/appAssets.dart';
 import '../../../../../../core/utils/app_text_style.dart';
 import '../../../../../../core/utils/constants.dart';
@@ -75,9 +77,9 @@ class _HomePageBodyState extends State<HomePageBody>
                         setState(() {
                           _currentIndex = index;
                         });
-                        log(
-                          '$isSelected, index = $index, controller endex = ${_tabController.index}',
-                        );
+                        if (_currentIndex == 1) {
+                          context.read<GroupPostsCubit>().getGroupsPagePosts();
+                        }
                         _tabController.animateTo(index);
                       },
                       child: Column(
@@ -127,12 +129,7 @@ class _HomePageBodyState extends State<HomePageBody>
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _tabController,
-        children: [
-          PublicPage(),
-          GroupsPage(),
-          JobPage(),
-          AdsPage(),
-        ],
+        children: [PublicPage(), GroupsPage(), JobPage(), AdsPage()],
       ),
     );
   }

@@ -11,7 +11,6 @@ import 'package:graph/core/widgets/error_page.dart';
 import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
 import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:graph/features/profile/presentation/manager/profile_posts/profile_posts_cubit.dart';
-import 'package:graph/features/profile/presentation/views/widgets/name_bio_follow_section.dart';
 
 
 import 'package:graph/features/profile/presentation/views/widgets/posts_list_view.dart';

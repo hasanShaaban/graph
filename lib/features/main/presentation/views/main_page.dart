@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graph/core/services/get_it_service.dart';
-import 'package:graph/features/main/domain/repos/main_repo.dart';
 import 'package:graph/features/main/presentation/manager/pending_invitations_cubit/pending_invitations_cubit.dart';
 import 'package:graph/features/main/presentation/views/widgets/pending/pending_page_body.dart';
 import '../../../../core/utils/constants.dart';
