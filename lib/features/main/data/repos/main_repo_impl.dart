@@ -138,7 +138,7 @@ Future<Either<Failures, Map<String, dynamic>>> changePassword({
 @override
 Future<Either<Failures, Map<String, dynamic>>> logout() async {
   try {
-    var response = await apiService.get(endPoints: 'logout');
+    var response = await apiService.get(endPoints: 'logout?');
 
     //  prettyLog(response.toJson());
     return right(response);

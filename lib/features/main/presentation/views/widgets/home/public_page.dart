@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/core/widgets/posts/presentation/manager/react_cubit/react_cubit.dart';
 import 'package:graph/features/main/presentation/manager/public_post_cubit/public_post_cubit.dart';
+import 'package:graph/features/post_details/presentation/manager/comments_cubit/comment_cubit.dart';
+import 'package:graph/features/post_details/presentation/manager/reactions_cubit/reactions_cubit.dart';
 import 'package:graph/generated/l10n.dart';
 import '../../../../../../core/widgets/posts/presentation/public_post.dart';
 import '../../../../../post_details/presentation/view/post_details_view.dart';
@@ -26,9 +28,9 @@ class PublicPage extends StatelessWidget {
             },
             child: BlocListener<ReactCubit, ReactState>(
               listener: (context, state) {
-                if(state is ReactSuccess){
+                if (state is ReactSuccess) {
                   log('React ADDED Successfully');
-                }else if(state is ReactError){
+                } else if (state is ReactError) {
                   log(state.message);
                 }
               },
@@ -48,7 +50,17 @@ class PublicPage extends StatelessWidget {
                         width: width,
                         height: height,
                         onTap: () {
-                          Navigator.pushNamed(context, PostDetailsView.name);
+                          context.read<ReactionsCubit>().getReactions(
+                            postId: state.posts[index].postId,
+                          );
+                          context.read<CommentCubit>().getPostComments(
+                            postId: state.posts[index].postId,
+                          );
+                          Navigator.pushNamed(
+                            context,
+                            PostDetailsView.name,
+                            arguments: {'data': state.posts[index]},
+                          );
                         },
                       ),
                     ),

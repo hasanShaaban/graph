@@ -2,6 +2,7 @@ import 'package:comment_tree/data/comment.dart';
 import 'package:comment_tree/widgets/comment_tree_widget.dart';
 import 'package:comment_tree/widgets/tree_theme_data.dart';
 import 'package:flutter/material.dart';
+import 'package:graph/features/post_details/domain/entity/comment_entity.dart';
 import '../../../../../core/utils/constants.dart';
 import 'comment_content.dart';
 import '../../../../../generated/l10n.dart';
@@ -9,8 +10,12 @@ import '../../../../../generated/l10n.dart';
 class CommentRootAndChildrens extends StatelessWidget {
   const CommentRootAndChildrens({
     super.key,
-    required this.lang, required this.index,
+    required this.lang,
+    required this.index,
+    required this.postComments,
   });
+
+  final List<CommentEntity> postComments;
 
   final S lang;
   final int index;
@@ -19,20 +24,16 @@ class CommentRootAndChildrens extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommentTreeWidget<Comment, Comment>(
       Comment(
-        avatar: '${comments['comments'][index]['image']}',
-        userName:
-            '${comments['comments'][index]['userName']}',
-        content: '${comments['comments'][index]['content']}',
+        avatar: postComments[index].user.imageUrl,
+        userName: postComments[index].user.name,
+        content: postComments[index].comment,
       ),
       List.generate(
-        comments['comments'][index]['replies'].length,
+        postComments[index].responses.length,
         (replyIndex) => Comment(
-          avatar:
-              '${comments['comments'][index]['replies'][replyIndex]['image']}',
-          userName:
-              '${comments['comments'][index]['replies'][replyIndex]['userName']}',
-          content:
-              '${comments['comments'][index]['replies'][replyIndex]['content']}',
+          avatar: postComments[index].responses[replyIndex].user.imageUrl,
+          userName: postComments[index].responses[replyIndex].user.name,
+          content: postComments[index].responses[replyIndex].comment,
         ),
       ),
       treeThemeData: TreeThemeData(
@@ -45,7 +46,7 @@ class CommentRootAndChildrens extends StatelessWidget {
             child: CircleAvatar(
               radius: 35 / 2,
               backgroundColor: Colors.grey,
-              backgroundImage: AssetImage('${data.avatar}'),
+              backgroundImage: NetworkImage('${data.avatar}'),
             ),
           ),
       avatarChild:
@@ -54,58 +55,21 @@ class CommentRootAndChildrens extends StatelessWidget {
             child: CircleAvatar(
               radius: 15,
               backgroundColor: Colors.grey,
-              backgroundImage: AssetImage('${data.avatar}'),
+              backgroundImage: NetworkImage('${data.avatar}'),
             ),
           ),
       contentChild: (context, data) {
         return CommentContent(lang: lang, data: data);
       },
       contentRoot: (context, data) {
-        return CommentContent(lang: lang, data: data);
+        return CommentContent(
+          lang: lang,
+          data: data,
+          responseCount: postComments[index].responses.length,
+        );
       },
     );
   }
 }
 
-// comments examples
 
-Map<String, dynamic> comments = {
-  'comments': [
-    {
-      'id': 1,
-      'userName': 'Hasan Shaaban',
-      'image': 'assets/images/profile_image.jpg',
-      'content':
-          'Absolutely agree! Hot reload has saved me HOURS during debugging 😩🔥',
-      'replies': [
-      ]
-    },
-    {
-      'id': 2,
-      'userName': 'Hasan Shaaban',
-      'image': 'assets/images/graph_logo.png',
-      'content':
-          'I’ve been using it for UI-heavy apps and it’s insane how fast you can build prototypes 😍',
-      'replies': [
-        {
-          'id': 3,
-          'userName': 'Hasan Shaaban',
-          'image': 'assets/images/profile_image.jpg',
-          'content':
-              'Absolutely agree! Hot reload has saved me HOURS during debugging',
-          'replies': [
-          ]
-        },
-      ],
-    },
-    {
-      'id': 4,
-      'userName': 'Hasan Shaaban',
-      'image': 'assets/images/profile_image.jpg',
-      'content':
-          'Absolutely agree! Hot reload has saved me HOURS during debugging 😩🔥',
-      'replies': [
-      ]
-    },
-  ],
-};

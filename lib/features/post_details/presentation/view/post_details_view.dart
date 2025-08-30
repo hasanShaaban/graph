@@ -5,19 +5,21 @@ import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/core/widgets/custom_back_button.dart';
 import 'package:graph/core/widgets/posts/presentation/public_post.dart';
+import 'package:graph/features/main/domain/entity/noraml_post_entity.dart';
 import 'package:graph/features/post_details/presentation/view/widgets/comments_page.dart';
 import 'package:graph/features/post_details/presentation/view/widgets/reacts_page.dart';
 import 'package:graph/generated/l10n.dart';
 
 class PostDetailsView extends StatelessWidget {
-  const PostDetailsView({super.key});
+  const PostDetailsView({super.key, required this.data});
   static const name = 'postDetailsView';
+  final NormalPostEntity data;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: PostDetailsViewBody(),
+        body: PostDetailsViewBody(data: data,),
         backgroundColor: Constants2.lightPrimaryColor(context),
       ),
     );
@@ -25,7 +27,8 @@ class PostDetailsView extends StatelessWidget {
 }
 
 class PostDetailsViewBody extends StatelessWidget {
-  const PostDetailsViewBody({super.key});
+  const PostDetailsViewBody({super.key, required this.data});
+  final NormalPostEntity data;
 
   static const Map reactsId = {
     1: Assets.iconsReactLove,
@@ -58,7 +61,7 @@ class PostDetailsViewBody extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
-                      PublicPost(lang: lang, width: width, height: height),
+                      PublicPost(lang: lang, width: width, height: height, data: data,),
                       SizedBox(height: 25),
                       SizedBox(
                         width: width / 1.8,

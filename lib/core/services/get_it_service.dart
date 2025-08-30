@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:graph/features/post_details/data/repo/post_details_repo_impl.dart';
+import 'package:graph/features/post_details/domain/repo/post_details_repo.dart';
 import 'api_service.dart';
 import '../../features/auth/domain/repos/auth_repo.dart';
 import '../../features/create_post/data/repos/create_post_repo_iml.dart';
@@ -9,13 +11,8 @@ import '../../features/main/domain/repos/main_repo.dart';
 import '../../features/profile/data/repos/profile_repo_impl.dart';
 import '../../features/profile/domain/repos/profile_repo.dart';
 import '../../features/auth/data/repos/auth_repo_impl.dart';
-
-import 'package:graph/core/services/api_service.dart';
 import 'package:graph/core/widgets/posts/data/repos/public_post_repo_impl.dart';
 import 'package:graph/core/widgets/posts/domain/repos/public_post_repo.dart';
-import 'package:graph/features/auth/domain/repos/auth_repo.dart';
-import 'package:graph/features/create_post/data/repos/create_post_repo_iml.dart';
-import 'package:graph/features/create_post/domain/repos/create_post_repo.dart';
 import 'package:graph/features/followers&following/data/repos/follow_repo_impl.dart';
 import 'package:graph/features/followers&following/domain/repo/follow_repo.dart';
 import 'package:graph/features/groups/data/repos/groups_repo_impl.dart';
@@ -77,7 +74,11 @@ void setupGetit() {
 
   //Profile repo
   getIt.registerSingleton<ProfileRepo>(
-    ProfileRepoImpl(getIt<SecureApiService>(), getIt<AuthLocalDataSource>(), getIt<ProfileLocalDataSource>()),
+    ProfileRepoImpl(
+      getIt<SecureApiService>(),
+      getIt<AuthLocalDataSource>(),
+      getIt<ProfileLocalDataSource>(),
+    ),
   );
 
   //Main repo
@@ -102,8 +103,18 @@ void setupGetit() {
 
   //Group repo
   getIt.registerSingleton<GroupsRepo>(
-    GroupsRepoImpl(getIt<PublicApiService>(), getIt<ProfileLocalDataSource>(), getIt<SecureApiService>()),
+    GroupsRepoImpl(
+      getIt<PublicApiService>(),
+      getIt<ProfileLocalDataSource>(),
+      getIt<SecureApiService>(),
+    ),
   );
 
-  getIt.registerSingleton<PublicPostRepo>(PublicPostRepoImpl( getIt<SecureApiService>()));
+  getIt.registerSingleton<PublicPostRepo>(
+    PublicPostRepoImpl(getIt<SecureApiService>()),
+  );
+
+  getIt.registerSingleton<PostDetailsRepo>(
+    PostDetailsRepoImpl(getIt<SecureApiService>()),
+  );
 }

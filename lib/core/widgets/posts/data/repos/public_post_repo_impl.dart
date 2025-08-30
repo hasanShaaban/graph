@@ -3,9 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:graph/core/errors/failures.dart';
 import 'package:graph/core/functions/pritty_log.dart';
 import 'package:graph/core/services/api_service.dart';
-import 'package:graph/core/services/get_it_service.dart';
 import 'package:graph/core/widgets/posts/domain/repos/public_post_repo.dart';
-import 'package:graph/features/auth/data/repos/auth_local_data_source.dart';
 
 class PublicPostRepoImpl extends PublicPostRepo {
   final SecureApiService secureApiService;
@@ -16,7 +14,6 @@ class PublicPostRepoImpl extends PublicPostRepo {
     required int postId,
     required int reactId,
   }) async {
-    AuthLocalDataSource authLocalDataSource = getIt<AuthLocalDataSource>();
 
     try {
       var data = await secureApiService.post(
@@ -33,4 +30,40 @@ class PublicPostRepoImpl extends PublicPostRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+  
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> removeReact({required int postId}) async{
+    try {
+      var data = await secureApiService.delete(
+        endPoint: 'reaction/delete/$postId?',
+      );
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        prettyLog('Delete React Dio Exception ${e.message}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      prettyLog('Delete React Exception ${e.toString()}');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> updateReact({required int postId, required int reactId}) async{
+    try {
+      var data = await secureApiService.post(
+        endPoint: 'reaction/update?',
+        data: {'post_id': postId, 'reaction_id': reactId},
+      );
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        prettyLog('Reaction update Response ${e.message}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      prettyLog('Reaction update Response ${e.toString()}');
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }
+

@@ -11,11 +11,14 @@ import 'package:graph/generated/l10n.dart';
 class CommentContent extends StatelessWidget {
   const CommentContent({
     super.key,
-    required this.lang, required this.data,
+    required this.lang,
+    required this.data,
+    this.responseCount,
   });
 
   final S lang;
   final Comment data;
+  final int? responseCount;
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +42,8 @@ class CommentContent extends StatelessWidget {
               ),
             ],
             borderRadius: BorderRadius.only(
-              topLeft:
-                  lang.lang == 'en'
-                      ? Radius.zero
-                      : Radius.circular(19),
-              topRight:
-                  lang.lang == 'en'
-                      ? Radius.circular(19)
-                      : Radius.zero,
+              topLeft: lang.lang == 'en' ? Radius.zero : Radius.circular(19),
+              topRight: lang.lang == 'en' ? Radius.circular(19) : Radius.zero,
               bottomLeft: Radius.circular(19),
               bottomRight: Radius.circular(19),
             ),
@@ -61,45 +58,29 @@ class CommentContent extends StatelessWidget {
           ),
         ),
         SizedBox(height: 5),
-        Row(
-          children: [
-            Text(
-              '1',
-              style: AppTextStyle.cairoSemiBold14.copyWith(
-                color: Constants2.darkSecondaryColor(context),
-              ),
-            ),
-            SizedBox(width: 5),
-            SvgPicture.asset(Assets.iconsReply),
-            SizedBox(width: 5),
-            Text(
-              lang.reply,
-              style: AppTextStyle.cairoSemiBold14.copyWith(
-                color: Constants2.darkSecondaryColor(context),
-              ),
-            ),
-            SizedBox(width: 15),
-            Text(
-              '12',
-              style: AppTextStyle.cairoSemiBold14.copyWith(
-                color: Constants2.darkSecondaryColor(context),
-              ),
-            ),
-            SizedBox(width: 5),
-            SvgPicture.asset(
-              Assets.iconsHeart,
-              width: 15,
-              color: Constants2.darkSecondaryColor(context),
-            ),
-            SizedBox(width: 5),
-            Text(
-              lang.reply,
-              style: AppTextStyle.cairoSemiBold14.copyWith(
-                color: Constants2.darkSecondaryColor(context),
-              ),
-            ),
-          ],
-        ),
+
+        responseCount != null
+            ? Row(
+              children: [
+                Text(
+                  responseCount.toString(),
+                  style: AppTextStyle.cairoSemiBold14.copyWith(
+                    color: Constants2.darkSecondaryColor(context),
+                  ),
+                ),
+                SizedBox(width: 5),
+                SvgPicture.asset(Assets.iconsReply),
+                SizedBox(width: 5),
+                Text(
+                  lang.reply,
+                  style: AppTextStyle.cairoSemiBold14.copyWith(
+                    color: Constants2.darkSecondaryColor(context),
+                  ),
+                ),
+                SizedBox(width: 15),
+              ],
+            )
+            : SizedBox(),
       ],
     );
   }
