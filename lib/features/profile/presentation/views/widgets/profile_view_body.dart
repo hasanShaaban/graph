@@ -90,6 +90,7 @@ class ProfileViewBody extends StatelessWidget {
                         lang: lang,
                         width: width,
                         model: profileModel,
+                        
                       ),
 
                       Divider(

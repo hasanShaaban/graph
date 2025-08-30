@@ -6,6 +6,7 @@ import 'package:graph/features/main/domain/entity/noraml_post_entity.dart';
 
 abstract class ProfileRepo {
   Future<Either<Failures, ProfileEntity>> getProfileData();
+  Future<Either<Failures, ProfileEntity>> getUserProfileData(int id);
   Future<Either<Failures, List<NormalPostEntity>>> getProfilePosts();
 
 }
