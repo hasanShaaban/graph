@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:graph/core/functions/fix_skill_url.dart';
 import 'package:graph/features/groups/domain/entity/group_member_entity.dart';
-import '../../../../../core/utils/appAssets.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/tech_tool_container.dart';
@@ -57,7 +57,7 @@ class ListViewItem extends StatelessWidget {
             width: 40,
             height: 40,
             color: Constants2.lightSecondaryColor(context),
-            icon: Assets.imagesFlutter,
+            icon: fixSkillUrl(member.skill.skillLogo),
           ),
         ],
       ),

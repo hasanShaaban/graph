@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/core/services/providers/personal_data_provider.dart';
 import '../../../../../core/widgets/error_page.dart';
 import '../../manager/profile/profile_cubit.dart';
 import 'name_bio_follow_section.dart';
 import 'package:graph/core/utils/years_and_major.dart';
+import 'package:graph/core/widgets/error_page.dart';
+
 
 import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
 import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:graph/features/profile/presentation/manager/profile_posts/profile_posts_cubit.dart';
+
 
 import 'package:graph/features/profile/presentation/views/widgets/posts_list_view.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -28,7 +32,21 @@ class ProfileViewBody extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     var lang = S.of(context);
-    return BlocBuilder<ProfileCubit, ProfileState>(
+    return BlocConsumer<ProfileCubit, ProfileState>(
+      listener: (context, state) {
+        if (state is ProfileSuccess) {
+          context.read<FriendsCubit>().getFirends();
+          context.read<ProfilePostsCubit>().getProfilePosts();
+          context.read<ProjectCubit>().getProjects(
+            yearId: Year.yearbyName[state.profileEntity.year[0]]!,
+          );
+
+          context.read<PersonalDataProvider>().setUserData(
+            username: state.profileEntity.name,
+            userImage: state.profileEntity.image,
+          );
+        }
+      },
       builder: (context, state) {
         if (state is ProfileError) {
           return ErrorPage(lang: lang, width: width, state: state);
@@ -39,6 +57,7 @@ class ProfileViewBody extends StatelessWidget {
             yearId: Year.yearbyName[state.profileEntity.year[0]]!,
           );
           var profileModel = state.profileEntity;
+
           return SingleChildScrollView(
             controller: scrollController,
             physics: BouncingScrollPhysics(
@@ -74,6 +93,7 @@ class ProfileViewBody extends StatelessWidget {
                         lang: lang,
                         width: width,
                         model: profileModel,
+                        
                       ),
 
                       Divider(

@@ -18,4 +18,12 @@ class ProfileCubit extends Cubit<ProfileState> {
       (response) => emit(ProfileSuccess(response)),
     );
   }
+  Future<void> getUserProfileData(int id) async {
+    emit(ProfileLoading());
+    var restult = await profileRepo.getUserProfileData(id);
+    restult.fold(
+      (failure) => emit(ProfileError(failure.errMessage)),
+      (response) => emit(ProfileSuccess(response)),
+    );
+  }
 }

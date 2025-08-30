@@ -25,13 +25,26 @@ class GroupMemberModel extends GroupMemberEntity {
       'is_admin': isAdmin ? 1 : 0,
     };
   }
+
+   @override
+  GroupMemberModel copyWith({
+    String? name,
+    String? image,
+    SkillEntity? skill,
+    bool? isAdmin,
+  }) {
+    return GroupMemberModel(
+      name: name ?? this.name,
+      image: image ?? this.image,
+      skill: skill ?? this.skill,
+      isAdmin: isAdmin ?? this.isAdmin,
+    );
+  }
+  
 }
 
 class SkillModel extends SkillEntity {
-  const SkillModel({
-    required super.skillName,
-    required super.skillLogo,
-  });
+  const SkillModel({required super.skillName, required super.skillLogo});
 
   factory SkillModel.fromJson(Map<String, dynamic> json) {
     return SkillModel(
@@ -41,9 +54,6 @@ class SkillModel extends SkillEntity {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'skill_name': skillName,
-      'skill_logo': skillLogo,
-    };
+    return {'skill_name': skillName, 'skill_logo': skillLogo};
   }
 }

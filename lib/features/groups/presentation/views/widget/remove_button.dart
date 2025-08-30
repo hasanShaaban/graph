@@ -19,7 +19,7 @@ class RemoveButton extends StatelessWidget {
       minWidth: width * 40 / 412,
       height: width * 40 / 412,
       onPressed: () {},
-      child: SvgPicture.asset(Assets.iconsTrash, width: 18, color: Colors.red),
+      child: SvgPicture.asset(Assets.iconsTrash1, width: 18, color: Colors.red),
     );
   }
 }

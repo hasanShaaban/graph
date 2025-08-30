@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graph/core/services/providers/group_provider.dart';
 import 'package:graph/features/groups/domain/entity/project_entity.dart';
 import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
 import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
@@ -40,10 +41,18 @@ class _GroupsDropDownButtonState extends State<GroupsDropDownButton> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectCubit, ProjectState>(
+    return BlocConsumer<ProjectCubit, ProjectState>(
+      listener: (context, state) {
+        if (state is ProjectSuccess) {
+          context.read<GroupProvider>().setProjectId(state.response[0].id);
+        }
+      },
       builder: (context, state) {
         if (state is ProjectSuccess) {
-          context.read<GroupInfoCubit>().getGroupInfo(projectId: state.response[0].id);
+          context.read<GroupInfoCubit>().getGroupInfo(
+            projectId: state.response[0].id,
+          );
+
           return Container(
             height: 25,
             width: _width,

@@ -1,20 +1,42 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/core/services/api_service.dart';
+import 'package:graph/core/services/get_it_service.dart';
+import 'package:graph/core/widgets/posts/domain/repos/public_post_repo.dart';
+import 'package:graph/core/widgets/posts/presentation/manager/react_cubit/react_cubit.dart';
+import 'package:graph/features/auth/domain/repos/auth_repo.dart';
+import 'package:graph/features/auth/presentation/manager/get_skills_cubit/get_skills_cubit.dart';
+import 'package:graph/features/create_post/domain/repos/create_post_repo.dart';
+import 'package:graph/features/create_post/presentation/manager/post_new_post_cubit/post_new_post_cubit.dart';
+import 'package:graph/features/followers&following/domain/repo/follow_repo.dart';
+import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
+import 'package:graph/features/groups/domain/repos/groups_repo.dart';
+import 'package:graph/features/groups/presentation/manager/create_group_cubit/create_group_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/group_info_cubit/group_info_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/group_member_cubit/group_member_cubit.dart';
+import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
+import 'package:graph/features/main/domain/repos/main_repo.dart';
+import 'package:graph/features/main/presentation/manager/group_post_cubit/group_posts_cubit.dart';
+import 'package:graph/features/main/presentation/manager/pending_invitations_cubit/pending_invitations_cubit.dart';
+import 'package:graph/features/main/presentation/manager/public_post_cubit/public_post_cubit.dart';
+import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
+import 'package:graph/features/post_details/domain/repo/post_details_repo.dart';
+import 'package:graph/features/post_details/presentation/manager/add_comment_cubit/add_comment_cubit.dart';
+import 'package:graph/features/post_details/presentation/manager/comments_cubit/comment_cubit.dart';
+import 'package:graph/features/post_details/presentation/manager/reactions_cubit/reactions_cubit.dart';
+import 'package:graph/features/profile/domain/repos/profile_repo.dart';
+import 'package:graph/features/profile/presentation/manager/profile/profile_cubit.dart';
+import 'package:graph/features/auth/presentation/manager/delete_profile_image_cubit/delete_profile_image_cubit.dart';
+import 'package:graph/features/auth/presentation/manager/post_skills_cubit/post_skills_cubit.dart';
+import 'package:graph/features/auth/presentation/manager/student_info_cubit/student_info_cubit.dart';
+import 'package:graph/features/profile/presentation/manager/profile_posts/profile_posts_cubit.dart';
 import 'package:graph/features/auth/presentation/manager/staff_identity_cubit/staff_identity_cubit.dart';
 import 'package:graph/features/auth/presentation/manager/verfiy_cubit/verification_cubit_cubit.dart';
 import 'package:graph/features/main/presentation/manager/change_password_cubit/change_password_cubit.dart';
 import 'package:graph/features/main/presentation/manager/logout_cubit/logout_cubit.dart';
-
-import 'core/services/api_service.dart';
-import 'core/services/get_it_service.dart';
-import 'features/auth/domain/repos/auth_repo.dart';
-import 'features/auth/presentation/manager/get_skills_cubit/get_skills_cubit.dart';
-
 import 'features/auth/presentation/manager/staff_signup_cubit/staff_signup_cubit.dart';
-import 'features/create_post/domain/repos/create_post_repo.dart';
 import 'features/create_post/presentation/manager/get_all_project_cubit/get_all_project_cubit.dart';
 import 'features/create_post/presentation/manager/hashtag_search_cubit/hashtag_search_cubit.dart';
-import 'features/create_post/presentation/manager/post_new_post_cubit/post_new_post_cubit.dart';
 import 'features/create_post/presentation/manager/search_cubit/search_cubit.dart';
 import 'features/main/domain/repos/main_repo.dart';
 import 'features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
@@ -60,10 +82,11 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => DeleteProfileImageCubit(authRepo)),
   BlocProvider(create: (context) => StudentInfoCubit(authRepo)),
   BlocProvider(create: (context) => PostSkillsCubit(authRepo)),
-  BlocProvider(create: (context) => GetSkillsCubit(authRepo)),
+  BlocProvider(create: (context) => GetSkillsCubit(authRepo)..getSkills()),
   BlocProvider(create: (context) => ProfileCubit(getIt<ProfileRepo>())),
   BlocProvider(create: (context) => UserImageCubit(getIt<MainRepo>())),
   BlocProvider(create: (context) => ChangePasswordCubit(getIt<MainRepo>())),
+  BlocProvider(create: (context) => LogoutCubit(getIt<MainRepo>())),
   BlocProvider(create: (context) => LogoutCubit(getIt<MainRepo>())),
   BlocProvider(create: (context) => PostNewPostCubit(getIt<CreatePostRepo>())),
   BlocProvider(
@@ -72,7 +95,24 @@ List<SingleChildWidget> providers = [
   BlocProvider(
     create: (context) => GetAllProjectCubit(getIt<CreatePostRepo>()),
   ),
+  BlocProvider(create: (context) => UserImageCubit(getIt<MainRepo>())),
+  BlocProvider(create: (context) => FriendsCubit(getIt<FollowRepo>())),
+  BlocProvider(create: (context) => ProjectCubit(getIt<GroupsRepo>())),
+  BlocProvider(create: (context) => ProfilePostsCubit(getIt<ProfileRepo>())),
+  BlocProvider(create: (context) => GroupInfoCubit(getIt<GroupsRepo>())),
+  BlocProvider(create: (context) => GroupMemberCubit(getIt<GroupsRepo>())),
+  BlocProvider(create: (context) => CreateGroupCubit(getIt<GroupsRepo>())),
+  BlocProvider(create: (context) => PublicPostCubit(getIt<MainRepo>())),
+  BlocProvider(create: (context) => ReactCubit(getIt<PublicPostRepo>())),
+  BlocProvider(create: (context) => PendingInvitationsCubit(getIt<MainRepo>())),
   BlocProvider(create: (context) => SearchCubit(getIt<CreatePostRepo>())),
+  BlocProvider(
+    create: (context) => HashtagSearchCubit(getIt<CreatePostRepo>()),
+  ),
+  BlocProvider(create: (context) => ReactionsCubit(getIt<PostDetailsRepo>())),
+  BlocProvider(create: (context) => CommentCubit(getIt<PostDetailsRepo>())),
+  BlocProvider(create: (context) => AddCommentCubit(getIt<PostDetailsRepo>())),
+  BlocProvider(create: (context) => GroupPostsCubit(getIt<MainRepo>())),
 
   BlocProvider(create: (context) => UserImageCubit(getIt<MainRepo>())),
   BlocProvider(create: (context) => FriendsCubit(getIt<FollowRepo>())),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graph/features/create_post/presentation/views/creat_post_page.dart';
+import 'package:graph/core/functions/get_years_list.dart';
+import 'package:graph/features/main/presentation/manager/public_post_cubit/public_post_cubit.dart';
+import 'package:graph/features/main/presentation/views/main_page.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../main/presentation/manager/user_image_cubit/user_image_cubit.dart';
-import '../../../../main/presentation/views/main_page.dart';
-import 'package:graph/bloc_providers.dart';
 import 'package:graph/core/functions/custom_snack_bar.dart';
 import 'package:graph/features/groups/presentation/manager/project_cubit/project_cubit.dart';
 import '../../../data/models/signup_data_model.dart';
@@ -80,6 +81,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     final major =
                         await profileLocalDataSource.getStudentMajor();
                     context.read<UserImageCubit>().getUserImage();
+                    context.read<PublicPostCubit>().getMainPagePosts();
                     context.read<ProjectCubit>().getProjects(
                       yearId: year == 0 ? 1 : year,
                       majorId: major == 0 ? null : major,

@@ -6,16 +6,16 @@ import 'package:graph/core/widgets/project_drop_down_button.dart';
 import '../../generated/l10n.dart';
 
 class MajorAndYearDropdownButtonsSection extends StatelessWidget {
-  const MajorAndYearDropdownButtonsSection({super.key, required this.height});
+  const MajorAndYearDropdownButtonsSection({super.key, required this.height, this.selectedProject});
   final double height;
-
+  final ValueChanged<int>? selectedProject;
 
   @override
   Widget build(BuildContext context) {
     var lang = S.of(context);
     return Row(
       children: [
-        ProjectDropDownButton(height: height, text: lang.project),
+        ProjectDropDownButton(height: height, text: lang.project, selectedProject: selectedProject,),
         SizedBox(width: 10),
         FutureBuilder<List<String>>(
           future: getYearsList(), // your async function

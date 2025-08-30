@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'widgets/pending/pending_page_body.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/features/main/presentation/manager/pending_invitations_cubit/pending_invitations_cubit.dart';
+import 'package:graph/features/main/presentation/views/widgets/pending/pending_page_body.dart';
 import '../../../../core/utils/constants.dart';
 import 'widgets/home/home_page_body.dart';
 import 'widgets/main_floating_action_button.dart';
@@ -40,7 +42,9 @@ class _MainPageState extends State<MainPage> {
                 : FloatingActionButtonLocation.startDocked,
         floatingActionButton: MainFloatingActionButton(width: width),
         body: PageView(
+          
           onPageChanged: (value) {
+            
             setState(() {
               selected = value;
             });
@@ -51,11 +55,15 @@ class _MainPageState extends State<MainPage> {
             Center(child: Text('Notifications')),
             SettingsPageBody(),
             PendingPageBody(lang: lang),
+            PendingPageBody(lang: lang),
           ],
         ),
         bottomNavigationBar: MainNavigationBar(
           lang: lang,
           onTap: (index) {
+            if(index == 3){
+              context.read<PendingInvitationsCubit>().getPendingInvitations();
+            }
             setState(() {
               selected = index;
               controller.jumpToPage(index);

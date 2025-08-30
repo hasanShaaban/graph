@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graph/core/services/providers/followers_provider.dart';
 import 'package:graph/core/widgets/shimmer_widgets/shimmer_box.dart';
 import 'package:graph/features/followers&following/domain/entity/friend_entity.dart';
 import 'package:graph/features/followers&following/presentation/manager/cubit/friends_cubit.dart';
@@ -22,7 +23,12 @@ class FollowersAndFollowingSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FriendsCubit, FriendsState>(
+    return BlocConsumer<FriendsCubit, FriendsState>(
+      listener: (context, state) {
+        if (state is FriendsSuccess) {
+          context.read<FollowersProvider>().setFollowers(state.follow.followers);
+        }
+      },
       builder: (context, state) {
         if (state is FriendsSuccess) {
           List<FriendEntity> followers = state.follow.followers;

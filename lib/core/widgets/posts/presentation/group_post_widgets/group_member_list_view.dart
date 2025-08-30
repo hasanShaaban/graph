@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graph/features/main/domain/entity/group_post_entity.dart';
 import 'package:graph/core/utils/appAssets.dart';
 import 'package:graph/core/utils/constants.dart';
 import 'package:graph/features/profile/presentation/views/widgets/group_member_info.dart';
@@ -11,19 +12,20 @@ class GroupMembersListView extends StatelessWidget {
     required this.height,
     required this.width,
     required this.lang,
+    required this.members,
   });
 
   final double height;
   final double width;
   final S lang;
-
+  final List<GroupMemberEntity> members;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height * 75 / 890,
       width: width,
       child: ListView.builder(
-        itemCount: 6,
+        itemCount: members.length,
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemBuilder:
@@ -44,8 +46,8 @@ class GroupMembersListView extends StatelessWidget {
                     CircleAvatar(
                       backgroundColor: Constants2.primaryColor(context),
                       radius: 65 / 2,
-                      backgroundImage: AssetImage(
-                        Assets.imagesProfileImage,
+                      backgroundImage: NetworkImage(
+                        members[index].profileImageUrl,
                       ),
                     ),
                   ],

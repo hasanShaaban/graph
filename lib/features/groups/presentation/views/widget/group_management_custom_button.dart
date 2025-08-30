@@ -10,10 +10,12 @@ class GroupManagementCutomButton extends StatelessWidget {
     required this.onPressed,
     required this.title,
     required this.icon,
+    this.enable,
   });
   final double height;
   final VoidCallback onPressed;
   final String title, icon;
+  final bool? enable;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +28,19 @@ class GroupManagementCutomButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(14),
             ),
             padding: EdgeInsets.zero,
-            backgroundColor: Constants2.primaryColor(context),
+            backgroundColor:
+                enable != null
+                    ? !enable!
+                        ? Constants2.darkSecondaryColor(context)
+                        : Constants2.primaryColor(context)
+                    : Constants2.primaryColor(context),
           ),
-          onPressed: onPressed,
+          onPressed:
+              enable != null
+                  ? enable!
+                      ? onPressed
+                      : null
+                  : onPressed,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

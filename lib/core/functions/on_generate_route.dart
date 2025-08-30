@@ -113,7 +113,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const MyGroupView());
     case GroupManagementView.name:
       return MaterialPageRoute(
-        builder: (context) => const GroupManagementView(),
+        
+        builder: (context) => GroupManagementView(),
       );
     case ProfileView.name:
       return MaterialPageRoute(builder: (context) => ProfileView());
@@ -159,7 +160,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case MainPage.name:
       return MaterialPageRoute(builder: (context) => const MainPage());
     case PostDetailsView.name:
-      return MaterialPageRoute(builder: (context) => const PostDetailsView());
+    final args = settings.arguments as Map<String, dynamic>;
+      return MaterialPageRoute(builder: (context) => PostDetailsView(data: args['data'],));
     case ImageViewer.name:
       final args = settings.arguments as Map<String, dynamic>;
       return MaterialPageRoute(

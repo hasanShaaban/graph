@@ -47,7 +47,7 @@ class NameBioFollowSection extends StatelessWidget {
           children: [
             FollowersAndFollowingSection(width: width, lang: lang),
             SizedBox(width: 5),
-            AddPostButton(lang: lang),
+             AddPostButton(lang: lang),
           ],
         ),
       ],

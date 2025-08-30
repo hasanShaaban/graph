@@ -35,7 +35,6 @@ class HomePageAppBar extends StatelessWidget {
           ),
           child: Row(
             children: [
-              SvgPicture.asset(Assets.iconsSearch,color: Constants2.darkPrimaryColor(context),),
               SizedBox(width: 10),
               ProfileButton(),
               SizedBox(width: 10),

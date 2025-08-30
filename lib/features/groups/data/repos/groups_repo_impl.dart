@@ -17,8 +17,11 @@ class GroupsRepoImpl extends GroupsRepo {
   final SecureApiService secureApiService;
   final ProfileLocalDataSource profileLocalDataSource;
 
-
-  GroupsRepoImpl(this.publicApiService, this.profileLocalDataSource, this.secureApiService);
+  GroupsRepoImpl(
+    this.publicApiService,
+    this.profileLocalDataSource,
+    this.secureApiService,
+  );
 
   @override
   Future<Either<Failures, List<ProjectEntity>>> getProjects({
@@ -76,12 +79,74 @@ class GroupsRepoImpl extends GroupsRepo {
   }
 
   @override
-  Future<Either<Failures, List<GroupMemberEntity>>> getGroupMembers({required int groupId}) async{
-    try{
-      var data = await secureApiService.get(endPoints:'group/member/$groupId?');
-      final List<GroupMemberModel> response = (data['data'] as List).map((e) => GroupMemberModel.fromJson(e as Map<String, dynamic>)).toList();
+  Future<Either<Failures, List<GroupMemberEntity>>> getGroupMembers({
+    required int groupId,
+  }) async {
+    try {
+      var data = await secureApiService.get(
+        endPoints: 'group/member/$groupId?',
+      );
+      final List<GroupMemberModel> response =
+          (data['data'] as List)
+              .map((e) => GroupMemberModel.fromJson(e as Map<String, dynamic>))
+              .toList();
       return right(response);
-    }catch (e) {
+    } catch (e) {
+      if (e is DioException) {
+        prettyLog('Dio Exception ${e.message}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      prettyLog('Exception ${e.toString()}');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> createGroup({
+    required int projectId,
+    required int skillID,
+  }) async {
+    try {
+      var data = await secureApiService.post(
+        endPoint: 'groups_Create?',
+        data: {
+          'group_name': 'groupName',
+          'project_id': projectId,
+          'skill_id': skillID,
+        },
+      );
+      prettyLog('Group created successfully');
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        prettyLog('Dio Exception ${e.message}');
+        return left(ServerFailure.fromDioError(e));
+      }
+      prettyLog('Exception ${e.toString()}');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, Map<String, dynamic>>> inviteMember({
+    required int projectId,
+    required int skillID,
+    required int groupId,
+    required int userId,
+  }) async {
+    try {
+      var data = await secureApiService.post(
+        endPoint: 'groups/invite?',
+        data: {
+          'project_id': projectId,
+          'skill_id': skillID,
+          'groupId': groupId,
+          'user_id': userId,
+        },
+      );
+      prettyLog('Member invited successfully');
+      return right(data);
+    } catch (e) {
       if (e is DioException) {
         prettyLog('Dio Exception ${e.message}');
         return left(ServerFailure.fromDioError(e));

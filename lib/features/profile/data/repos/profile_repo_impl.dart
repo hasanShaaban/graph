@@ -42,6 +42,11 @@ class ProfileRepoImpl implements ProfileRepo {
             Major.major[response.major[0]],
           );
         }
+        profileLocalDataSource.setStudentName(response.name);
+        if(response.image != null) {
+          profileLocalDataSource.setUserImage(response.image!);
+        }
+        
       }
       prettyLog(response.toJson());
       return right(response);
@@ -72,6 +77,39 @@ class ProfileRepoImpl implements ProfileRepo {
         return left(ServerFailure.fromDioError(e));
       }
       prettyLog('Unexpected error: $e');
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failures, ProfileEntity>> getUserProfileData(int id) async{
+    try {
+      var data = await apiService.get(endPoints: 'user/info/$id?');
+      ProfileModel response = ProfileModel.fromJson(data['data']);
+      int year = await profileLocalDataSource.getStudentYear();
+
+      if (year == 0) {
+        profileLocalDataSource.setStudentYear(
+          Year.yearbyName[response.year[0]]!,
+        );
+        int major = await profileLocalDataSource.getStudentMajor();
+        if (response.major.isNotEmpty && major == 0) {
+          profileLocalDataSource.setStudentMajor(
+            Major.major[response.major[0]],
+          );
+        }
+        profileLocalDataSource.setStudentName(response.name);
+        if(response.image != null) {
+          profileLocalDataSource.setUserImage(response.image!);
+        }
+        
+      }
+      prettyLog(response.toJson());
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
       return left(ServerFailure(e.toString()));
     }
   }

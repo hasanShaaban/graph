@@ -2,20 +2,30 @@ import 'dart:developer' as dev;
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-
+import 'package:graph/core/functions/pritty_log.dart';
+import 'package:graph/core/widgets/posts/presentation/manager/react_cubit/react_cubit.dart';
 import '../../../../utils/constants.dart';
 import '../../../../utils/appAssets.dart';
 import '../../../../utils/app_text_style.dart';
 
 class ReactButton extends StatefulWidget {
-  const ReactButton({super.key, required this.height, required this.width, required this.buttonColor, required this.circleColor, required this.reactsCount});
+  const ReactButton({
+    super.key,
+    required this.height,
+    required this.width,
+    required this.buttonColor,
+    required this.circleColor,
+    required this.reactsCount,
+    this.postId,
+  });
 
   final double height;
   final double width;
   final Color buttonColor, circleColor;
   final String reactsCount;
+  final int? postId;
 
   @override
   State<ReactButton> createState() => _ReactButtonState();
@@ -29,6 +39,8 @@ class _ReactButtonState extends State<ReactButton>
   late AnimationController reactController;
   late Animation<double> reactAnimation;
 
+  late int reactCount;
+
   bool _showArc = false;
   bool _showReacts = false;
   bool isPressed = false;
@@ -40,6 +52,11 @@ class _ReactButtonState extends State<ReactButton>
     Assets.iconsReactLaugh,
     Assets.iconsReactClap,
   ];
+  final Map<String, int> reactsByName = {
+    Assets.iconsReactLove: 1,
+    Assets.iconsReactClap: 2,
+    Assets.iconsReactLaugh: 3,
+  };
 
   @override
   void initState() {
@@ -64,8 +81,10 @@ class _ReactButtonState extends State<ReactButton>
 
     reactAnimation = CurvedAnimation(
       parent: reactController,
-      curve: Curves.easeInOutQuint, // or Curves.easeOutBack, etc.
+      curve: Curves.easeInOutQuint,
     );
+
+    reactCount = int.parse(widget.reactsCount);
   }
 
   void _onLongPress() {
@@ -148,7 +167,26 @@ class _ReactButtonState extends State<ReactButton>
                           onTap: () {
                             dev.log('tapped');
                             setState(() {
+                              String lastIcon = icon;
                               icon = reacts[index];
+                              if (widget.postId != null) {
+                                int reactId = reactsByName[icon]!;
+                                prettyLog(
+                                  'reactId :$reactId, postId: ${widget.postId}',
+                                );
+                                reactCount++;
+                                if (lastIcon == Assets.iconsHeart) {
+                                  context.read<ReactCubit>().addReact(
+                                    postId: widget.postId!,
+                                    reactId: reactId,
+                                  );
+                                } else {
+                                  context.read<ReactCubit>().updateReact(
+                                    postId: widget.postId!,
+                                    reactId: reactId,
+                                  );
+                                }
+                              }
                             });
                             _onTapCancel();
                           },
@@ -178,8 +216,25 @@ class _ReactButtonState extends State<ReactButton>
                   setState(() {
                     if (icon == Assets.iconsHeart) {
                       icon = Assets.iconsReactLove;
+                      if (widget.postId != null) {
+                        int reactId = reactsByName[icon]!;
+                        prettyLog(
+                          'reactId :$reactId, postId: ${widget.postId}',
+                        );
+                        reactCount++;
+                        context.read<ReactCubit>().addReact(
+                          postId: widget.postId!,
+                          reactId: reactId,
+                        );
+                      }
                     } else {
                       icon = Assets.iconsHeart;
+                      if (widget.postId != null) {
+                        reactCount--;
+                        context.read<ReactCubit>().removeReact(
+                          postId: widget.postId!,
+                        );
+                      }
                     }
                   });
                 },
@@ -207,7 +262,7 @@ class _ReactButtonState extends State<ReactButton>
                         ),
                         SizedBox(height: 3),
                         Text(
-                          widget.reactsCount,
+                          reactCount.toString(),
                           style: AppTextStyle.cairoRegular12.copyWith(
                             height: 1,
                           ),
@@ -235,7 +290,7 @@ class AnimatedHalfCirclePainter extends CustomPainter {
   final double screenWidth;
   final BuildContext context;
   final Color color;
-  AnimatedHalfCirclePainter( {
+  AnimatedHalfCirclePainter({
     required this.color,
     required this.context,
     required this.screenWidth,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'job_post/job_post_header.dart';
+import 'package:graph/core/widgets/posts/job_post/job_post_header.dart';
 
 import 'package:graph/core/utils/app_text_style.dart';
 import 'package:graph/core/utils/constants.dart';

@@ -190,8 +190,27 @@ class SecureApiService {
 
   final String _baseURL = 'http://127.0.0.1:8000/api/';
 
-  Future<dynamic> get({required String endPoints, var data}) async {
-    var response = await _dio.get('$_baseURL$endPoints', queryParameters: data);
+  Future<dynamic> get({
+    required String endPoints,
+    var data,
+    Options? options,
+  }) async {
+    final token = Hive.box('authBox').get('token');
+
+    final headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      ...?options?.headers,
+    };
+    if (token != null) {
+      headers['Authorization'] = 'Bearer $token';
+    }
+    final mergedOptions = Options(headers: headers);
+    var response = await _dio.get(
+      '$_baseURL$endPoints',
+      queryParameters: data,
+      options: mergedOptions,
+    );
     return response.data;
   }
 

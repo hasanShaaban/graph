@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
+import 'package:graph/core/functions/fix_skill_url.dart';
+import 'package:graph/core/widgets/tech_tool_container.dart';
 
 import '../../../../utils/app_text_style.dart';
 import '../../../../utils/constants.dart';
@@ -13,44 +13,32 @@ class GroupPostHeader extends StatelessWidget {
     required this.width,
     required this.height,
     required this.lang,
+    required this.skillName,
+    required this.skillIcon,
   });
   final double width;
   final double height;
   final S lang;
+  final String skillName, skillIcon;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        ProfileImage(
-          width: width,
-          height: height,
-          imageWidth: 60,
-          imageHeight: 60,
-          borderThick: 2,
-          borderColor: Constants2.primaryColor(context),
+        TechToolContainer(
+          width: 45,
+          height: 45,
+          color: Constants2.lightSecondaryColor(context),
+          icon: fixSkillUrl(skillIcon),
+          name: skillName,
         ),
         SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Hasan Shaaban',
-              style: AppTextStyle.cairoSemiBold18.copyWith(
-                color: Constants2.darkPrimaryColor(context),
-                height: 1.1,
-              ),
-            ),
-            Text(
-              DateFormat(
-                'MMM d, yyyy – h:mm a',
-              ).format(DateTime.parse("2024-06-20T12:30:00")),
-              style: AppTextStyle.cairoRegular12.copyWith(
-                color: Constants2.darkSecondaryColor(context),
-                height: 0.9,
-              ),
-            ),
-          ],
+        Text(
+          '$skillName Developer',
+          style: AppTextStyle.cairoSemiBold18.copyWith(
+            color: Constants2.primaryColor(context),
+          ),
         ),
         Spacer(),
         TextButton(
