@@ -107,7 +107,7 @@ List<SingleChildWidget> providers = [
   BlocProvider(create: (context) => PendingInvitationsCubit(getIt<MainRepo>())),
   BlocProvider(create: (context) => SearchCubit(getIt<CreatePostRepo>())),
   BlocProvider(
-    create: (context) => HashtagSearchCubit(getIt<CreatePostRepo>()),
+    create: (context) => PostHashtagSearchCubit(getIt<CreatePostRepo>()),
   ),
   BlocProvider(create: (context) => ReactionsCubit(getIt<PostDetailsRepo>())),
   BlocProvider(create: (context) => CommentCubit(getIt<PostDetailsRepo>())),

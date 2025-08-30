@@ -64,14 +64,14 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
     final picked = await picker.pickImage(source: ImageSource.gallery);
     if (picked != null && mounted) {
       setState(() {
-        profileImage = File(picked.path); 
+        profileImage = File(picked.path);
       });
     }
   }
 
   void deleteImage() {
     setState(() {
-       profileImage = null;
+      profileImage = null;
     });
   }
 
@@ -97,21 +97,25 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
   }
 
   late SignupDataModel signupData;
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final args = ModalRoute.of(context)?.settings.arguments;
+    if (!_isInitialized) {
+      final args = ModalRoute.of(context)?.settings.arguments;
 
-    if (args != null && args is SignupDataModel) {
-      signupData = args;  
-        profileImage = signupData.selectedImage;
-    } else {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        Navigator.pop(context);
-      });
+      if (args != null && args is SignupDataModel) {
+        signupData = args;
+
+        if (profileImage == null) {
+          profileImage = signupData.selectedImage;
+        }
+      } else {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Navigator.pop(context);
+        });
+      }
+      _isInitialized = true;
     }
-    _isInitialized = true;
   }
 
   final TextEditingController bioController = TextEditingController();
@@ -197,7 +201,6 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                               child: CircularProgressIndicator(),
                             );
                           } else if (state is GetSkillsSuccess) {
-
                             final skillsList = List<Map<String, dynamic>>.from(
                               state.response,
                             );
@@ -289,14 +292,15 @@ class _SignupFinalTouchesSecState extends State<SignupFinalTouchesSec> {
                       BlocConsumer<FinalTouchesCubit, FinalTouchesState>(
                         listener: (context, state) async {
                           if (state is FinalTouchesSuccess) {
-                             final year = await profileLocalDataSource.getStudentYear();
-                    final major =
-                        await profileLocalDataSource.getStudentMajor();
-                    context.read<UserImageCubit>().getUserImage();
-                    context.read<ProjectCubit>().getProjects(
-                      yearId: year == 0 ? 1 : year,
-                      majorId: major == 0 ? null : major,
-                    );
+                            final year =
+                                await profileLocalDataSource.getStudentYear();
+                            final major =
+                                await profileLocalDataSource.getStudentMajor();
+                            context.read<UserImageCubit>().getUserImage();
+                            context.read<ProjectCubit>().getProjects(
+                              yearId: year == 0 ? 1 : year,
+                              majorId: major == 0 ? null : major,
+                            );
                             Navigator.pushNamed(
                               context,
                               MainPage.name,

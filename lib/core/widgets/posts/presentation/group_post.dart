@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graph/core/widgets/posts/group_post_widgets/group_member_list_view.dart';
+import 'package:graph/core/widgets/posts/presentation/group_post_widgets/group_member_list_view.dart';
 import 'package:graph/features/main/domain/entity/group_post_entity.dart';
 import '../../../utils/constants.dart';
 import 'group_post_widgets/group_post_header.dart';

@@ -62,6 +62,12 @@ class _SettingsPageBodyState extends State<SettingsPageBody> {
             icon: Assets.iconsSettingsWindow,
             onPressed: () {},
           ),
+          ////////////////////////////////
+          SettingsRow(
+            text: 'contact us',
+            icon: Assets.iconsSettingsWindow,
+            onPressed: () {},
+          ),
           DividLine(text: lang.settings),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

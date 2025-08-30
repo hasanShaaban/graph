@@ -59,28 +59,36 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   void initState() {
     super.initState();
     profile = widget.profile;
-    if (profile.skills != null && profile.skills!.isNotEmpty) {
-      chosenTools = profile.skills!.map((skill) => skill.logoUrl).toList();
-    }
+
     final cubit = context.read<FinalTouchesCubit>();
-    if (profile.socialLinks != null && profile.socialLinks!.isNotEmpty) {
-      for (var social in profile.socialLinks!) {
-        switch (social.name) {
-          case 'facebook':
-            cubit.facebookController.text = social.link;
-            break;
-          case 'github':
-            cubit.githubController.text = social.link;
-            break;
-          case 'instagram':
-            cubit.instagramController.text = social.link;
-            break;
-          case 'linkedin':
-            cubit.linkedinController.text = social.link;
-            break;
+
+    // ✨ نفذ بعد أول frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (profile.socialLinks != null && profile.socialLinks!.isNotEmpty) {
+        for (var social in profile.socialLinks!) {
+          switch (social.name) {
+            case 'facebook':
+              cubit.facebookController.text = social.link;
+              break;
+            case 'github':
+              cubit.githubController.text = social.link;
+              break;
+            case 'instagram':
+              cubit.instagramController.text = social.link;
+              break;
+            case 'linkedin':
+              cubit.linkedinController.text = social.link;
+              break;
+          }
         }
       }
-    }
+
+      if (profile.skills != null && profile.skills!.isNotEmpty) {
+        setState(() {
+          chosenTools = profile.skills!.map((skill) => skill.logoUrl).toList();
+        });
+      }
+    });
   }
 
   Future<void> pickImage() async {
