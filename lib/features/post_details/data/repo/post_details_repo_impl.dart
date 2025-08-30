@@ -69,7 +69,7 @@ class PostDetailsRepoImpl extends PostDetailsRepo {
         endPoint: 'comment/make?',
         data: {'comment': comment, 'post_id': postId},
       );
-      return right(data['message']);
+      return right(data);
     } catch (e) {
       if (e is DioException) {
         prettyLog('Dio Exception ${e.message}');

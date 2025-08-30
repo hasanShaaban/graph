@@ -59,13 +59,14 @@ class CommentRootAndChildrens extends StatelessWidget {
             ),
           ),
       contentChild: (context, data) {
-        return CommentContent(lang: lang, data: data);
+        return CommentContent(lang: lang, data: data, id: postComments[index].commentId,);
       },
       contentRoot: (context, data) {
         return CommentContent(
           lang: lang,
           data: data,
           responseCount: postComments[index].responses.length,
+          id: postComments[index].commentId,
         );
       },
     );

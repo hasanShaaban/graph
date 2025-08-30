@@ -19,7 +19,7 @@ class PostDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: PostDetailsViewBody(data: data,),
+        body: PostDetailsViewBody(data: data),
         backgroundColor: Constants2.lightPrimaryColor(context),
       ),
     );
@@ -61,7 +61,12 @@ class PostDetailsViewBody extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
-                      PublicPost(lang: lang, width: width, height: height, data: data,),
+                      PublicPost(
+                        lang: lang,
+                        width: width,
+                        height: height,
+                        data: data,
+                      ),
                       SizedBox(height: 25),
                       SizedBox(
                         width: width / 1.8,
@@ -94,7 +99,7 @@ class PostDetailsViewBody extends StatelessWidget {
           body: TabBarView(
             children: [
               // Comments Page
-              CommentsPage(lang: lang, width: width),
+              CommentsPage(lang: lang, width: width, postId: data.postId),
               // Reacts Page
               ReactsPage(reactsId: reactsId),
             ],

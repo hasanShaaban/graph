@@ -20,6 +20,7 @@ import 'package:graph/features/main/presentation/manager/pending_invitations_cub
 import 'package:graph/features/main/presentation/manager/public_post_cubit/public_post_cubit.dart';
 import 'package:graph/features/main/presentation/manager/user_image_cubit/user_image_cubit.dart';
 import 'package:graph/features/post_details/domain/repo/post_details_repo.dart';
+import 'package:graph/features/post_details/presentation/manager/add_comment_cubit/add_comment_cubit.dart';
 import 'package:graph/features/post_details/presentation/manager/comments_cubit/comment_cubit.dart';
 import 'package:graph/features/post_details/presentation/manager/reactions_cubit/reactions_cubit.dart';
 import 'package:graph/features/profile/domain/repos/profile_repo.dart';
@@ -86,4 +87,6 @@ List<SingleChildWidget> providers = [
   ),
   BlocProvider(create: (context) => ReactionsCubit(getIt<PostDetailsRepo>())),
   BlocProvider(create: (context) => CommentCubit(getIt<PostDetailsRepo>())),
+  BlocProvider(create: (context) => AddCommentCubit(getIt<PostDetailsRepo>())),
+
 ];
